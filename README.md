@@ -1,2 +1,2 @@
 # Java004.Grp03Pjt
-Java004 Group03 Project: Content Creator Crowd Funding - Wise
+NTUT.Java004 Group03 Project: Crowd Funding for Content Creators- Wise
