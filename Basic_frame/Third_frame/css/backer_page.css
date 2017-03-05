@@ -1,0 +1,47 @@
+  /* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+	background: #DC6A1C;
+	margin-bottom: 0;
+	border-radius: 0;
+}
+    
+  /* Add a gray background color and some padding to the footer */
+footer {
+	
+	padding: 25px;
+}
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+.sidenav {
+    height: auto;
+    padding: 10px;
+}
+.row.content {height:auto;} 
+}
+
+#mySidenav a {
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+	
+}
+#mySidenav a:hover {
+    left: 0;
+}
+
+#about {
+    top: 20px;
+    background-color: red;
+}
+
+#blog {
+    top: 80px;
+    background-color: red;
+}   
