@@ -4,7 +4,10 @@
 // init Isotope
 var $grid = $('.grid').isotope({
   itemSelector: '.element-item',
-  layoutMode: 'fitRows',
+  layoutMode: 'masonry',
+  masonry:{
+    columnWidth:20
+  },
   getSortData: {
     name: '.name',
     symbol: '.symbol',
