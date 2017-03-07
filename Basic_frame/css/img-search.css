@@ -9,15 +9,14 @@ body {
 .button {
   display: inline-block;
   padding: 0.5em 1.0em;
-  background: #EEE;
-  border: none;
+  background: #fff;
+  /*border: none;*/
   border-radius: 7px;
-  background-image: linear-gradient( to bottom, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.2) );
   color: #222;
-  font-family: sans-serif;
+  font-family: Monospace sans-serif;
   font-size: 16px;
-  text-shadow: 0 1px white;
-  cursor: pointer;
+  /*text-shadow: 0 1px white;*/
+  /*cursor: pointer;*/
 }
 
 .button:hover {
@@ -43,7 +42,8 @@ body {
 /* ---- button-group ---- */
 
 .button-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding: 0;
 }
 
 .button-group:after {
