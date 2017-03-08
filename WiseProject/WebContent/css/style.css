@@ -1,0 +1,24 @@
+.block {
+	width: 100px;
+	height: 100px;
+}
+
+.b-block {
+    height: 200px;
+}
+
+.block1 {
+    background: #dd7e6b; 
+}
+
+.block2 {
+    background: #f9cb9c;
+}
+
+.block3 {
+    background: #a4c2f4;
+}
+
+.block4 {
+    background: #a2c4c9;
+}

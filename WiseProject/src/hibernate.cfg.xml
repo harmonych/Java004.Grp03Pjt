@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <!-- 只要替 session-factory元素加上name屬性, Hibernate就會自動將SessionFactory物件Bind到JNDI-->
+	<session-factory>
+	<!-- 1. SQL方言與提供連結資料庫所需資訊(透過JNDI API來連結)之設定方式 -->
+    <!-- SQL方言，設定是SQLServer -->
+      
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+    
+    <!-- SQL方言，設定是MySQL -->
+    <!-- 
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+     -->
+	<!-- JNDI設定 , 設定了DataSource屬性 -->
+	<property name="hibernate.connection.datasource">java:comp/env/jdbc/BookDataSQLver</property>
+     <!-- JDBC設定 , 設定driver_class, url, username, password -->
+ <!-- 
+     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+     <property name="connection.url">jdbc:mysql://localhost:3306/jspdb?useUnicode=true&amp;characterEncoding=utf8</property>
+     <property name="connection.username">root</property>
+     <property name="connection.password">password</property>
+ -->
+     
+    <!-- 2. 其他與資料存取有關的設定 -->
+    <!-- 自動產生資料庫的Schema -->
+	<property name="hbm2ddl.auto">create</property>
+	<!-- 顯示實際操作資料庫時的SQL --> 
+    <property name="show_sql">true</property> 
+    <!-- 將顯示的SQL排版，方便觀看 -->
+    <property name="format_sql">true</property>
+      
+    
+    <!-- 定義程式交易管理的類型，本範例使用JDBC Transaction -->
+    <property name = "transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+	<!-- hibernate 相關效能設定 -->
+	<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+	<property name="connection_pool_size">1</property>
+	
+	<!-- 3. 宣告程式使用的Mapping檔 ，每個永續類別都需要定義一個Mapping檔	-->
+	<mapping resource="ch04/ex03/model/member.hbm.xml"></mapping>
+	</session-factory>
+</hibernate-configuration>
