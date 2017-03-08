@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?> 
+<Context displayName="eDM Web Application" docBase="eDM" path="/eDM" reloadable="true">
+  <!--  請注意，此標籤的寫法不能用於 tomcat 5.x             -->
+  <!--                  SQLServer2005, 2008                 -->                  
+  <Resource name="jdbc/BookDataSQLver" type="javax.sql.DataSource"
+       username="root" password="password"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://127.0.0.1:3306/jspdb"
+      connectionProperties="useUnicode=yes;characterEncoding=utf8;"
+      maxActive="8"
+      maxIdle="4"
+      maxWait="5000" 
+  />   
+</Context>
