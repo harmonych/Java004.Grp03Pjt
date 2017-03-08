@@ -1,34 +1,36 @@
 
+//-------------- window scrolling bottom get item 
 $(window).scroll(function () {
+  // test Json Text to set
+  var jsonText = { "category": "creatter", "name": "alex" };
   if ($(document).height() - $(window).height() - $(document).scrollTop() < 250) {
     for (var n = 1; n <= 12; n++) {
-    var $items = getItemElement(n);
-
-    // append elements to container
-    $grid.append($items)
-      // add and lay out newly appended elements
-      .isotope('appended', $items);
-  }  }});
+      var $items = getItemElement(n, jsonText["category"]);
+      // append elements to container
+      $grid.append($items)
+        // add and lay out newly appended elements
+        .isotope('appended', $items);
+    }
+  }
+});
 //------------ add element-item
 $('.append-button').on('click', function () {
   // create new item elements
   for (var n = 1; n <= 12; n++) {
     var $items = getItemElement(n);
-
     // append elements to container
     $grid.append($items)
       // add and lay out newly appended elements
       .isotope('appended', $items);
   }
 });
-
-
+//---------set item then push to grid 
 // make <div class="element-item element-item--width# element-item--height#" />
-function getItemElement(n) {
-  var jsonText = { "category": "creatter", "name": "alex" };
+function getItemElement(n,category) {
   var $item = $('<div class="element-item"></div>');
   //  data-category="alkali"
-  $item.addClass('creatter');
+  $item.addClass(category);
+  $item.attr("data-category",category);
   $item.append('<img src="img/' + n + '.jpg" alt="..."><h3 class="name">Potassium</h3><p class="symbol">K</p><p class="number">19</p><p class="weight">39.0983</p></div>');
   // add width and height class
   // var wRand = Math.random();
