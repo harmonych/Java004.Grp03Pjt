@@ -17,7 +17,7 @@ section {
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 30px;
 }
 
 .sidenav a {
@@ -117,7 +117,7 @@ section {
 }
 
 .container-fluid {
-    padding: 80px 40px;
+    padding: 50px 40px;
 }
 
 
