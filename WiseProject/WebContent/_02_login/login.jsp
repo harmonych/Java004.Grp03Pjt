@@ -35,9 +35,9 @@ function setFocusToUserId(){
 <!-- 下列敘述設定變數funcName的值為LOG，top.jsp 會用到此變數 -->
 <c:set var="funcName" value="LOG" scope="session"/>
 <c:set var="msg" value="登入" />
-<c:if test="${ ! empty sessionScope.timeOut }" > <!-- 表示使用逾時，重新登入 -->
-   <c:set var="msg" value="<font color='red'>${sessionScope.timeOut}</font>" />
-</c:if>
+<%-- <c:if test="${ ! empty sessionScope.timeOut }" > <!-- 表示使用逾時，重新登入 --> --%>
+<%--    <c:set var="msg" value="<font color='red'>${sessionScope.timeOut}</font>" /> --%>
+<%-- </c:if> --%>
 <!-- 引入共同的頁首 -->
 <jsp:include page="/fragment/top.jsp" />
 

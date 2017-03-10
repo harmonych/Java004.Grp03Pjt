@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="zh">
-
+<!--  Harmony@Mar.10.17：備份用，主要登入首頁請使用index.jsp -->
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,10 @@
 	<link rel="stylesheet" href="asset/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/page.css">
 	<title>創作募資平台</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
 
+    <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -40,11 +43,11 @@
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
-			
+			  <span class="sr-only">Toggle navigation</span>
 				<ul class="nav navbar-nav navbar-right">
-				
-					<li><a href="_02_login/login.jsp">登入</a></li>
-					<li><a href="_01_register/register.jsp">註冊</a></li>
+					<li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
+					<li><a href="_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+					<li><a href="_02_login/logout.jsp"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
 					<!-- <li><a href="#">搜尋</a></li>
 					<li><a href="#">購物車</a></li> -->
 				</ul>
@@ -88,17 +91,17 @@
 				</li>
 				
 				<li>
-					<a href="_06_creativeWorks/CreativeWorks.html">創作作品</a>
+					<a href="Second_frame/Creations.html">創作作品</a>
 				</li>
 				<li>
-					<a href="#">募資平台</a>
+					<a href="Third_frame/backer.html">募資平台</a>
 				</li>
 				<li>
-					<a href="#">購物車</a>
+					<a href="#">商城系統</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a href="#">社群交流</a>
-				</li>
+				</li> -->
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">

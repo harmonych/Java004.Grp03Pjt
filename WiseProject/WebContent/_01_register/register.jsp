@@ -167,13 +167,16 @@ function setFocusToUserId(){
           <font color="red" size="-1">${MsgMap.errorEmail}</font>
       <br/>
       
-      <label class="fontSize" >會員性別：</label>
-          <input type="text"  name="gender" value="${param.gender}"   class="fieldWidth" style="width: 30px;">
-          <font color="red" size="-1">${MsgMap.errorGender}</font> 
-      <br/>
       
-       <label class="fontSize" >會員生日：</label>
-          <input type="text"  name="birthday" value="${param.birthday}"   class="fieldWidth" style="width: 30px;">
+      <label class="fontSize" >會員性別：</label>
+      <select name="gender" class="fieldWidth" style="width: 60px;">
+　			<option value="男">男</option>
+　			<option value="女">女</option>
+	  </select>
+	   <br/>
+      
+      <label class="fontSize" >會員生日：</label>
+          <input type="date"  name="birthday"  value="${param.birthday}"   class="fieldWidth" style="width: 150px;">
           <font color="red" size="-1">${MsgMap.errorBirthday}</font> 
       <br/>
       

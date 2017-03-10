@@ -12,10 +12,9 @@ import _01_register.model.*;
 		urlPatterns = { "/*" }, 
 		//需要登入的頁面
 		initParams = { 
-				@WebInitParam(name = "mustLogin1", value = "/_03_listBooks/*"), 
-				@WebInitParam(name = "mustLogin2", value = "/_04_ShoppingCart/*"), 
-				@WebInitParam(name = "mustLogin3", value = "/_05_orderProcess/*"),
-				@WebInitParam(name = "mustLogin4", value = "/_20_productMaintain/*")				
+				@WebInitParam(name = "mustLogin1", value = "/Second_frame/*"),
+				@WebInitParam(name = "mustLogin2", value = "/Third_frame/*"), 
+				
 		})
 public class LoginFilter implements Filter {
 	//將需要登入的頁面路徑加入url Collection內
@@ -44,7 +43,7 @@ public class LoginFilter implements Filter {
 			contextPath = req.getContextPath();
 			requestURI  = req.getRequestURI();
 			//確認SessionID是否合法
-			isRequestedSessionIdValid = req.isRequestedSessionIdValid();
+//			isRequestedSessionIdValid = req.isRequestedSessionIdValid();
 			
 			if (mustLogin()) {
 				if (checkLogin(req)) {   //  需要登入，已經登入
@@ -52,9 +51,9 @@ public class LoginFilter implements Filter {
 				} else {				//  需要登入，尚未登入
 					HttpSession session = req.getSession();
 					session.setAttribute("requestURI", requestURI);
-					if ( ! isRequestedSessionIdValid ) {
-						session.setAttribute("timeOut", "使用逾時，請重新登入");
-					}
+//					if ( ! isRequestedSessionIdValid ) {
+//						session.setAttribute("timeOut", "使用逾時，請重新登入");
+//					}
 					resp.sendRedirect(contextPath + "/_02_login/login.jsp");
 					return;
 				}

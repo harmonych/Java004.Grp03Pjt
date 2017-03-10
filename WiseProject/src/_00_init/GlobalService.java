@@ -24,8 +24,8 @@ public class GlobalService {
 	//public static final String host = "192.168.11.22";
 	public static final String USERID = "root";
 	public static final String PASSWORD = "password";
-	public static final String SYSTEM_NAME = "軍雅網路購物商城";
-	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/BookDataSQLver";
+	public static final String SYSTEM_NAME = "彙思創作募資平台";
+	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/customer";
 	public static final int IMAGE_FILENAME_LENGTH = 20;
 	public static final String DB_URL = "jdbc:sqlserver://" + GlobalService.host + ":1433;databaseName=JSPDB" ;
 	public static final String DB_URLMySQL = "jdbc:mysql://" + GlobalService.host + "/jspdb?useUnicode=yes&characterEncoding=utf8" ;
