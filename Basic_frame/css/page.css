@@ -2,10 +2,12 @@ section {
     padding: 40px 20px 40px;
 }
 
+
 .body {
     font-family: "Lato", sans-serif;
 	background-color: #111;
 }
+
 
 .sidenav {
     height: 100%;
@@ -76,20 +78,24 @@ section {
 }
 
 .navbar {
+
 	
     margin-bottom: 0;
     background: #DC6A1C;
    /*  color: #FEB7B2; */
+
     border: 0;
     font-size: 12px;
     line-height: 1.5px;
     letter-spacing: 4px;
     border-radius: 0;
+
 }
 
 .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
 	
+
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -453,10 +459,12 @@ body {
     background-color: transparent;
 }
 
+
 .sidebar-nav > .sidebar-brand {
     height: 65px;
     font-size: 20px;
     line-height: 44px;
+
 }
 .sidebar-nav .dropdown-menu {
     position: relative;
