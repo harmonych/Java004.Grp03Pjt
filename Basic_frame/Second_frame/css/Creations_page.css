@@ -14,10 +14,10 @@
     height: 100%;
 }
     
-    /* Set black background color, white text and some padding */
+ /* Set black background color, white text and some padding */
 footer {
-	background-color: #FF8C42;
-	font-size:20px;
+/* 	background-color: #FF8C42;
+	font-size:20px; */
 	color: #A23E48;
 }
     
@@ -40,6 +40,7 @@ footer {
     font-size: 20px;
     color: white;
     border-radius: 0 5px 5px 0;
+	
 }
 #mySidenav a:hover {
     left: 0;
@@ -47,12 +48,14 @@ footer {
 
 #about {
     top: 20px;
-    background-color: #4CAF50;
+   /*  background-color: #4CAF50; */
+   background: linear-gradient(to right, red , yellow);
 }
 
 #blog {
     top: 80px;
-    background-color: #2196F3;
+	background: linear-gradient(to bottom right, red, yellow);
+    /* background-color: #2196F3; */
 }
 
 /* #projects {
@@ -67,11 +70,11 @@ footer {
 .card {
 	font-size:50px;
 	font-weight:bolder;
-	color:#e9ee22;
+	color:#FFA58A;
     text-align:center; 
 	line-height:150px;
     height: 150px;
-    background: #bbb;/* rgba(255, 0, 0 , 0.4); */
+    background: #ddc;/* rgba(255, 0, 0 , 0.4); */
     background-size: cover;
     background-position: center;
     border: solid 1px #ccc;

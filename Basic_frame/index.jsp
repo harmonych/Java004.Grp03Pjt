@@ -1,6 +1,10 @@
 
-<!DOCTYPE html>
-<html lang="zh">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+</* html lang="zh" */>
 
 <head>
 	<meta charset="UTF-8">
@@ -11,7 +15,10 @@
 	<link rel="stylesheet" href="asset/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/page.css">
 	<title>創作募資平台</title>
-	
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -40,7 +47,8 @@
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
-			 	<ul class="nav navbar-nav navbar-right">
+			  <span class="sr-only">Toggle navigation</span>
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">註冊</a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					<!-- <li><a href="#">搜尋</a></li>
@@ -141,17 +149,17 @@
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
 					<h4 ><br><span style="font-style:normal;">
-					<img src="images/photocamera2.png"> <!-- class="img-rounded" width="100" height="60" -->
+					<img src="images/picture.png" class="img-rounded" width="50" height="60">
 					新作品分享圖</span></h4>
 				</div>
 				<div class="item">
-					<h4><br><span style="font-style:normal;">
-					<img src="images/photocamera1.png" class="img-circle" width="50" height="60" >
+					<h4> <br><span style="font-style:normal;">
+					<img src="images/photocamera1.png" class="img-circle" width="60" height="60" >
 					募資新資訊</span></h4>
 				</div>
 				<div class="item">
-					<h4><br><span style="font-style:normal;">
-					<img src="images/image.png" > <!-- class="img-thumbnail" width="40" height="40" -->
+					<h4> <br><span style="font-style:normal;">
+					<img src="images/teddybear.png" class="img-thumbnail" width="30" height="30">
 					新加入創作者</span></h4>
 				</div>
 			
@@ -193,3 +201,4 @@
 </body>
 
 </html>
+<%@><%>
