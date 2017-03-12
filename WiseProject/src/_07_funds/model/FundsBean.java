@@ -1,23 +1,31 @@
-package ch07.model;
+package _07_funds.model;
 
 import java.io.Serializable;
 
-//本類別封裝單筆募資專案資料
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
+
 public class FundsBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	int fcid;
-	int artid;
-	String fcname;
-	int fcmoney;
-	int nowmoney;
-	int createtime;
-	int starttime;
-	int endtime;
-	int updatetime;
-	String fcintroduction;
+	private int fcid;
+	private int artid;
+	private String fcname;
+	private int fcmoney;
+	private int nowmoney;
+	private String createtime;
+	private String starttime;
+	private String endtime;
+	private String updatetime;
+	private char[] fcintroduction;
 	
 	public FundsBean(int fcid, int artid,String fcname,int fcmoney,int nowmoney,
-			int createtime,int starttime,int endtime,int updatetime, String fcintroduction) {
+			String createtime,String starttime,String endtime,String updatetime, char[] fcintroduction) {
 		this.fcid = fcid;
 		this.artid = artid;
 		this.fcname = fcname;
@@ -32,7 +40,8 @@ public class FundsBean implements Serializable {
 	public FundsBean(){
 		
 	}
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getFcid() {
 		return fcid;
 	}
@@ -63,34 +72,35 @@ public class FundsBean implements Serializable {
 	public void setNowmoney(int nowmoney) {
 		this.nowmoney = nowmoney;
 	}
-	public int getCreatetime() {
+	public String getCreatetime() {
 		return createtime;
 	}
-	public void setCreatetime(int createtime) {
+	public void setCreatetime(String createtime) {
 		this.createtime = createtime;
 	}
-	public int getStarttime() {
+	public String getStarttime() {
 		return starttime;
 	}
-	public void setStarttime(int starttime) {
+	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
-	public int getEndtime() {
+	public String getEndtime() {
 		return endtime;
 	}
-	public void setEndtime(int endtime) {
+	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
-	public int getUpdatetime() {
+	public String getUpdatetime() {
 		return updatetime;
 	}
-	public void setUpdatetime(int updatetime) {
+	public void setUpdatetime(String updatetime) {
 		this.updatetime = updatetime;
 	}
-	public String getFcintroduction() {
+	@Column(columnDefinition="LongText")
+	public char[] getFcintroduction() {
 		return fcintroduction;
 	}
-	public void setFcintroduction(String fcintroduction) {
+	public void setFcintroduction(char[] fcintroduction) {
 		this.fcintroduction = fcintroduction;
 	}
 }

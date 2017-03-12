@@ -1,8 +1,8 @@
-package ch07.controller;
+package _07_funds.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import ch07.model.FundsBean;
-import ch07.model.FundsJDBC;
+import _07_funds.model.FundsBean;
+import _07_funds.model.FundsHibernateDAO;
+import _07_funds.model.IFundsDAO;
+
+
 /*
 1. 呼叫DAO類別(BookJDBC.java)來取得單筆書籍資料
 2. 將前端程式送來的書籍記錄的主鍵值，經由DAO類別(BookJDBC.java)的setBookId(bookId);方法傳入DAO內
@@ -25,7 +28,7 @@ import ch07.model.FundsJDBC;
 		PrintWriter out = response.getWriter();
 
 */
-@WebServlet("/ch07/singlefund.json")
+@WebServlet("/_07_funds/singlefund.json")
 
 public class SingleFundJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -43,20 +46,15 @@ public class SingleFundJsonServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		try {
-			FundsJDBC jdbc = new FundsJDBC();
+			IFundsDAO jdbc = new FundsHibernateDAO();
 			jdbc.setFcId(fcid);
-			FundsBean fb = jdbc.getFundsTextOnly();
-//			Map<String, Object> map = new HashMap<>();
-//			map.put("bookId", bb.getBookId());
-//			map.put("title", bb.getTitle());
-//			map.put("author", bb.getAuthor());
-//			map.put("price", bb.getPrice());
-//			map.put("bookNo", bb.getBookNo());
+			FundsBean fb = jdbc.findByPrimaryKey(fcid);
+
 			
 			String singleFundsJson = new Gson().toJson(fb); 
 			
             out.write(singleFundsJson);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			throw new ServletException("DB error", e);
 		} finally {
 			out.close();

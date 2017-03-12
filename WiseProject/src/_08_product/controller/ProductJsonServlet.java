@@ -1,8 +1,8 @@
-package ch07.controller;
+package _08_product.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,8 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 
-import ch07.model.FundsBean;
-import ch07.model.FundsJDBC;
+import _08_product.model.IProductDAO;
+import _08_product.model.ProductBean;
+import _08_product.model.ProductHibernateDAO;
+
+
+
 /*
   1. 呼叫DAO類別(BookJDBC.java)來取得所有的書籍資料，這些書籍資料存放入List<BookBean>物件內
   2. 呼叫Gson的toJson()方法，將List<BookBean>內所有書籍資料全部轉換為JSON格式的陣列
@@ -25,8 +29,8 @@ import ch07.model.FundsJDBC;
   
  */
 // 
-@WebServlet("/ch07/allfunds.json")
-public class FundsJsonServlet extends HttpServlet {
+@WebServlet("/_08_product/allproducts.json")
+public class ProductJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -35,12 +39,15 @@ public class FundsJsonServlet extends HttpServlet {
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		try {
-			FundsJDBC jdbc = new FundsJDBC();
-			List<FundsBean> list = jdbc.getAllFundsJSON();
+			IProductDAO dao = new ProductHibernateDAO();
+			List<ProductBean> list = dao.getAllProductJSON();
+//			for (FundsBean temp : list) {
+//				System.out.println(temp.getArtid());
+//			}
 			String categoriesJson = new Gson().toJson(list); 
             out.write(categoriesJson);
             out.flush();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			throw new ServletException("DB error", e);
 		} finally {
 			out.close();

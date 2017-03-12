@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <!-- 只要替 session-factory元素加上name屬性, Hibernate就會自動將SessionFactory物件Bind到JNDI-->
+	<session-factory> 
+	<!-- 1. SQL方言與提供連結資料庫所需資訊(透過JDBC API來連結)之設定方式 -->
+    <!-- SQL方言，設定是SQLServer -->
+    <!--  
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+     -->
+    <!-- SQL方言，設定是MySQL -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="connection.url">jdbc:mysql://localhost:3306/jspdb?useUnicode=true&amp;characterEncoding=utf8</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">password</property> 
+<!-- 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
+<!-- 		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
+<!-- 		<property name="connection.url">jdbc:sqlserver://127.0.0.1:1433;DatabaseName=JSPDB</property> -->
+<!-- 		<property name="connection.username">sa</property> -->
+<!-- 		<property name="connection.password">sa123456</property> -->
+    <!-- 2. 其他與資料存取有關的設定 -->
+    <!-- 自動產生資料庫的Schema -->
+	<property name="hbm2ddl.auto">update</property>
+	<!-- 顯示實際操作資料庫時的SQL --> 
+    <property name="show_sql">true</property> 
+    <!-- 將顯示的SQL排版，方便觀看 -->
+    <property name="format_sql">true</property>
+      
+    <property name="hibernate.current_session_context_class">thread</property>
+    
+    
+	<!-- hibernate 相關效能設定 -->
+	<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+	<property name="connection_pool_size">1</property>
+	
+	<!-- 3. 宣告程式使用的永續類別 -->
+	
+	<mapping class="_08_funds.model.ProductBean"/>
+	</session-factory>
+</hibernate-configuration>

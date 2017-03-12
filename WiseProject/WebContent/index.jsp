@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<c:set var="userName" value="${LoginOK.user_name}" />
 
 <header class="container-fluid">
 
@@ -49,9 +50,17 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 			  <span class="sr-only">Toggle navigation</span>
 				<ul class="nav navbar-nav navbar-right">
+					
+					<li classe="username"><span>${userName}</span></li>
 					<li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
-					<li><a href="_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
-					<li><a href="_02_login/logout.jsp"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
+					<c:choose>
+						<c:when test="${empty LoginOK}">
+							<li><a href="_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+						</c:when>
+						<c:when test="${!empty LoginOK}">
+							<li><a href="_02_login/logout.jsp"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
+						</c:when>
+					</c:choose>
 					<!-- <li><a href="#">搜尋</a></li>
 					<li><a href="#">購物車</a></li> -->
 				</ul>
@@ -95,10 +104,10 @@
 				</li>
 				
 				<li>
-					<a href="Second_frame/Creations.html">創作作品</a>
+					<a href="Second_frame/Creations.jsp">創作作品</a>
 				</li>
 				<li>
-					<a href="Third_frame/backer.html">募資平台</a>
+					<a href="Third_frame/backer.jsp">募資平台</a>
 				</li>
 				<li>
 					<a href="#">商城系統</a>
