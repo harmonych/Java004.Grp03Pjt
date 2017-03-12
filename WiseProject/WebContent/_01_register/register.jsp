@@ -107,8 +107,6 @@ function setFocusToUserId(){
 </head>
 <body onLoad="setFocusToUserId()" >
 <c:set var="funcName" value="REG" scope="session"/>
-<!-- 引入共同的頁首 -->
-<jsp:include page="/fragment/top.jsp" />
   <div id="content"> 
   <Table width="700" border='2' cellspacing="0" bgColor='#E7CDFF'>
      <TR height="60" >
@@ -184,6 +182,54 @@ function setFocusToUserId(){
       <label class="fontSize" >大頭貼照：</label>
       <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="head_pic"><BR>
       <br/>
+        	
+      
+      <label >註冊為創作者</label>	
+      <input type="checkbox" name="RegisterArtist" value="true"><BR>
+      <br/>	
+      
+      <label class="fontSize" >作者簡介：</label>
+      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth"></textarea><br>
+      <font color="red" size="-1">${MsgMap.errorIntroduction}</font>
+      <br/>
+      
+      <label class="fontSize" >簡介圖片：</label>
+      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="intro_pic"><BR>
+      <br/>
+      
+      <label class="fontSize" >銀行帳戶：</label>
+          <input type="text"  name="bank_account" value="${param.bank_account}"   class="fieldWidth" style="width: 200px;">
+          <font color="red" size="-1">${MsgMap.errorBankAccount}</font>
+      <br/>
+      
+      <label class="fontSize" >身分證字號：</label>
+          <input type="text"  name="ID" value="${param.ID}"   class="fieldWidth" style="width: 200px;">
+          <font color="red" size="-1">${MsgMap.errorID}</font>
+      <br/>
+      
+      <label class="fontSize" >真實姓名：</label>
+          <input type="text"  name="art_name" value="${param.art_name}"   class="fieldWidth" style="width: 200px;">
+          <font color="red" size="-1">${MsgMap.errorArtName}</font>
+      <br/>
+      
+      <label class="fontSize" >通訊地址：</label>
+          <input type="text"  name="art_address" value="${param.art_address}"   class="fieldWidth" style="width: 200px;">
+          <font color="red" size="-1">${MsgMap.errorArtAddress}</font>
+      <br/>
+      
+      <label class="fontSize" >聯絡電話：</label>
+          <input type="text"  name="art_num" value="${param.art_num}"   class="fieldWidth" style="width: 200px;">
+          <font color="red" size="-1">${MsgMap.errorArtNum}</font>
+      <br/>
+      
+      <label class="fontSize" >分類標籤：</label>
+          <input type="text"  name="hash_tag" value="${param.hash_tag}"   class="fieldWidth" style="width: 200px;">
+          <font color="red" size="-1">${MsgMap.errorHashTag}</font>
+      <br/>
+      
+      
+      
+        	
       <div id="btnArea" align="center">
          <input type="submit" name="submit" id="submit" value="註冊"/>
          <input type="reset" name="cancel" id="cancel" value="重填">

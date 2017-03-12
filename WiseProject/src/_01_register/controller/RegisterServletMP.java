@@ -1,4 +1,5 @@
 package _01_register.controller;
+
 import java.io.*;
 import java.util.*;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.*;
 
 import _00_init.GlobalService;
 import _01_register.model.*;
+
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
  * 進行Business Logic運算，依照Business Logic運算結果來挑選適當的畫面
@@ -37,46 +39,53 @@ import _01_register.model.*;
 //否則存放在主記憶體。
 //maxFileSize: 上傳單一檔案之長度限制，如果超過此數值，Web Container會丟出例外
 //maxRequestSize: 上傳所有檔案之總長度限制，如果超過此數值，Web Container會丟出例外
-@MultipartConfig(location = "", 
-fileSizeThreshold = 5*1024 * 1024, 
-maxFileSize = 1024 * 1024 * 500, 
-maxRequestSize = 1024 * 1024 * 500 * 5)
+@MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
+		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 @WebServlet("/_01_register/register.do")
 public class RegisterServletMP extends HttpServlet {
-	private static final long serialVersionUID = 1L;	
-    public void doPost(HttpServletRequest request,
-                       HttpServletResponse response)
-            throws IOException, ServletException {
-    	request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
+	private static final long serialVersionUID = 1L;
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		// 準備存放註冊成功之訊息的Map物件
 		Map<String, String> msgOK = new HashMap<String, String>();
-        // 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
+		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
 		// session物件來存放共用資料。
 		HttpSession session = request.getSession();
-        request.setAttribute("MsgMap", errorMsg);  //顯示錯誤訊息
-        session.setAttribute("MsgOK", msgOK);      //顯示正常訊息
+		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
+		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
 
 		String account = "";
-		String password  = "" ;
-		String password2  = "";
-		String user_name  = "";
-		String phonenum  = "";
-		String email  = "";
-		String gender  = "";
-		String birthday  = "";
+		String password = "";
+		String password2 = "";
+		String user_name = "";
+		String phonenum = "";
+		String email = "";
+		String gender = "";
+		String birthday = "";
 		String fileName = "";
+		String RegisterArtist = null;
+		String Introduction = "";
+		String bank_account = "";
+		String ID = "";
+		String art_name = "";
+		String art_address = "";
+		String art_num = "";
+		String hash_tag = "";
+
 		long sizeInBytes = 0;
 		InputStream is = null;
-		Collection<Part> parts = request.getParts(); // 取出HTTP multipart request內所有的parts
+		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
+														// request內所有的parts
 		GlobalService.exploreParts(parts, request);
 		// 由parts != null來判斷此上傳資料是否為HTTP multipart request
-		if (parts != null) {   // 如果這是一個上傳資料的表單				
-			for (Part p : parts) {   
+		if (parts != null) { // 如果這是一個上傳資料的表單
+			for (Part p : parts) {
 				String fldName = p.getName();
 				String value = request.getParameter(fldName);
-				
+
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
 					if (fldName.equals("account")) {
@@ -93,8 +102,29 @@ public class RegisterServletMP extends HttpServlet {
 						email = value;
 					} else if (fldName.equalsIgnoreCase("gender")) {
 						gender = value;
-					}else if (fldName.equalsIgnoreCase("birthday")) {
+					} else if (fldName.equalsIgnoreCase("birthday")) {
 						birthday = value;
+					} else if (fldName.equalsIgnoreCase("RegisterArtist")) {
+						RegisterArtist = value;
+						if (RegisterArtist != null) {
+							continue;
+						} else {
+							break;
+						}
+					} else if (fldName.equalsIgnoreCase("Introduction")) {
+						Introduction = value;
+					} else if (fldName.equalsIgnoreCase("bank_account")) {
+						bank_account = value;
+					} else if (fldName.equalsIgnoreCase("ID")) {
+						ID = value;
+					} else if (fldName.equalsIgnoreCase("art_name")) {
+						art_name = value;
+					} else if (fldName.equalsIgnoreCase("art_address")) {
+						art_address = value;
+					} else if (fldName.equalsIgnoreCase("art_num")) {
+						art_num = value;
+					} else if (fldName.equalsIgnoreCase("hash_tag")) {
+						hash_tag = value;
 					}
 				} else {
 					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
@@ -102,76 +132,89 @@ public class RegisterServletMP extends HttpServlet {
 					if (fileName != null && fileName.trim().length() > 0) {
 						sizeInBytes = p.getSize();
 						is = p.getInputStream();
-					} 
-				
+					}
+
 				}
 			}
 			// 2. 進行必要的資料轉換
-		
+
 			// 3. 檢查使用者輸入資料
 			if (account == null || account.trim().length() == 0) {
-				errorMsg.put("errorAccountEmpty","會員帳號欄必須輸入");
+				errorMsg.put("errorAccountEmpty", "會員帳號欄必須輸入");
 			}
 			if (password == null || password.trim().length() == 0) {
-				errorMsg.put("errorPasswordEmpty","會員密碼欄必須輸入");
+				errorMsg.put("errorPasswordEmpty", "會員密碼欄必須輸入");
 			}
 			if (password2 == null || password2.trim().length() == 0) {
-				errorMsg.put("errorPassword2Empty","會員密碼確認欄必須輸入");
+				errorMsg.put("errorPassword2Empty", "會員密碼確認欄必須輸入");
 			}
-			if (password.trim().length() > 0 && password2.trim().length() > 0){
-				if (!password.trim().equals(password2.trim())){
-					errorMsg.put("errorPassword2Empty","密碼欄必須與確認欄一致");
-					errorMsg.put("errorPasswordEmpty","*");
-				}			
+			if (password.trim().length() > 0 && password2.trim().length() > 0) {
+				if (!password.trim().equals(password2.trim())) {
+					errorMsg.put("errorPassword2Empty", "密碼欄必須與確認欄一致");
+					errorMsg.put("errorPasswordEmpty", "*");
+				}
 			}
 			if (user_name == null || user_name.trim().length() == 0) {
-				errorMsg.put("errorUserName","會員名稱欄必須輸入");
+				errorMsg.put("errorUserName", "會員名稱欄必須輸入");
 			}
 			if (phonenum == null || phonenum.trim().length() == 0) {
-				errorMsg.put("errorPhonenum","手機號碼欄必須輸入");
+				errorMsg.put("errorPhonenum", "手機號碼欄必須輸入");
 			}
 			if (email == null || email.trim().length() == 0) {
-				errorMsg.put("errorEmail","會員信箱欄必須輸入");
+				errorMsg.put("errorEmail", "會員信箱欄必須輸入");
 			}
-			
+
 			if (gender == null || gender.trim().length() == 0) {
-				errorMsg.put("errorGender","性別欄資料錯誤");
+				errorMsg.put("errorGender", "性別欄資料錯誤");
 			}
 			if (birthday == null || birthday.trim().length() == 0) {
-				errorMsg.put("errorBirthday","生日欄資料錯誤");
+				errorMsg.put("errorBirthday", "生日欄資料錯誤");
 			}
-			
+
+			if (RegisterArtist != null) {
+				if (ID == null || ID.trim().length() == 0) {
+					errorMsg.put("errorID", "身分證字號欄必須輸入");
+				}
+				if (art_name == null || art_name.trim().length() == 0) {
+					errorMsg.put("errorArtName", "真實姓名欄必須輸入");
+				}
+				if (art_address == null || art_address.trim().length() == 0) {
+					errorMsg.put("errorArtAddress", "通訊地址欄必須輸入");
+				}
+				if (art_num == null || art_num.trim().length() == 0) {
+					errorMsg.put("errorArt_Num", "聯絡電話欄必須輸入");
+				}
+			}
 		} else {
-				errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
+			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}
-			// 如果有錯誤
-			if (!errorMsg.isEmpty()) {
-				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-				RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
-				rd.forward(request, response);
-				return;
-			}
-			try {
+		// 如果有錯誤
+		if (!errorMsg.isEmpty()) {
+			// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
+			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		try {
 			// 4. 進行Business Logic運算
 			// RegisterServiceFile類別的功能：
 			// 1.檢查帳號是否已經存在
-			// 2.儲存會員的資料 
-			RegisterServiceDAO rs = new RegisterServiceDAO_JDBC();  
+			// 2.儲存會員的資料
+			RegisterServiceDAO rs = new RegisterServiceDAO_JDBC();
 			if (rs.idExists(account)) {
-				errorMsg.put("errorAccountDup","此帳號已存在，請換新帳號");
+				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
 			} else {
-					MemberBean mem = new MemberBean(account, 
-							password, user_name, phonenum, email, gender, birthday);
-					// 將MemberBean mem立即寫入Database				
-					System.out.println("filename:" + fileName);
-					int n = rs.saveMember(mem, is, sizeInBytes, fileName);
-					if ( n == 1) {
-						msgOK.put("InsertOK","<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../index.html");
-						return;
-					} else {
-						errorMsg.put("errorAccountDup","新增此筆資料有誤(RegisterServlet)");
-					}
+				MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday);
+				// 將MemberBean mem立即寫入Database
+				System.out.println("filename:" + fileName);
+				int n = rs.saveMember(mem, is, sizeInBytes, fileName);
+				if (n == 1) {
+					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
+					response.sendRedirect("../index.jsp");
+					return;
+				} else {
+					errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
+				}
 			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			if (!errorMsg.isEmpty()) {
@@ -179,12 +222,12 @@ public class RegisterServletMP extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
 				rd.forward(request, response);
 				return;
-			}		
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			errorMsg.put("errorAccountDup", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
 			rd.forward(request, response);
-		}		
-     }
-}   
+		}
+	}
+}
