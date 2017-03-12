@@ -2,6 +2,10 @@ section {
     padding: 40px 20px 40px;
 }
 
+.username{
+	margin:100px;
+}
+
 
 .body {
     font-family: "Lato", sans-serif;

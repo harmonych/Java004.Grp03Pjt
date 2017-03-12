@@ -96,7 +96,7 @@ public class EDMTableDataWithImageReset {
           return ;
       }
       // 定義刪除eMember表格的SQL命令
-      dropString = "DROP TABLE IF EXISTS UserInfo;" ;
+      dropString = "DROP Table UserInfo " ;
       try {    
     	  // 執行刪除eMember表格的SQL命令
           stmt.executeUpdate(dropString); 
@@ -161,7 +161,7 @@ public class EDMTableDataWithImageReset {
                 encrypedString = GlobalService.encryptString("456");
                 pstmt1.setString(2, GlobalService.getMD5Endocing(encrypedString));  //密碼都是 123
                 pstmt1.setString(3, "MaryChen");
-                pstmt1.setString(4, "0954653423");
+                pstmt1.setString(4, "z0954653423");
                 pstmt1.setString(5, "MaryChen@gmail.com");
                 pstmt1.setString(6, "女");
                 pstmt1.setString(7, "1993-01-01");

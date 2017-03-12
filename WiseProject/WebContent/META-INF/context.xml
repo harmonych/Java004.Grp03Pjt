@@ -3,7 +3,7 @@
   <!--  請注意，此標籤的寫法不能用於 tomcat 5.x             -->
   <!--                  SQLServer2005, 2008                 -->                  
   <Resource name="jdbc/customer" type="javax.sql.DataSource"
-       username="root" password="1234"
+       username="root" password="password"
       driverClassName="com.mysql.jdbc.Driver"
       url="jdbc:mysql://127.0.0.1:3306/jspdb"
       connectionProperties="useUnicode=yes;characterEncoding=utf8;"
