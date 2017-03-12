@@ -67,7 +67,6 @@ public class RegisterServletMP extends HttpServlet {
 		String gender  = "";
 		String birthday  = "";
 		String fileName = "";
-		int experience = 0;
 		long sizeInBytes = 0;
 		InputStream is = null;
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart request內所有的parts
@@ -135,9 +134,13 @@ public class RegisterServletMP extends HttpServlet {
 				errorMsg.put("errorEmail","會員信箱欄必須輸入");
 			}
 			
-			if (!gender.equals("男")||!gender.equals("女")) {
+			if (gender == null || gender.trim().length() == 0) {
 				errorMsg.put("errorGender","性別欄資料錯誤");
 			}
+			if (birthday == null || birthday.trim().length() == 0) {
+				errorMsg.put("errorBirthday","生日欄資料錯誤");
+			}
+			
 		} else {
 				errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}

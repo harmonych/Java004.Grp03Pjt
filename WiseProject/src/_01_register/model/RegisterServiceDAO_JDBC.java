@@ -2,6 +2,7 @@ package _01_register.model;
 
 import java.io.*;
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 
 import javax.naming.*;
@@ -43,7 +44,7 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 					" (account, password, user_name, phonenum, email, gender, birthday, " +
 	      	  		" head_pic, fileName) " +
 	      	  		" values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+			
 			pstmt1 = conn.prepareStatement(sql1);
 			pstmt1.setString(1, mb.getAccount());
 			String encrypedString = GlobalService.encryptString(mb.getPassword());

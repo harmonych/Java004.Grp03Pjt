@@ -8,21 +8,21 @@
 	<!-- 1. SQL方言與提供連結資料庫所需資訊(透過JNDI API來連結)之設定方式 -->
     <!-- SQL方言，設定是SQLServer -->
       
-    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+<!--     <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
     
     <!-- SQL方言，設定是MySQL -->
-    <!-- 
+
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-     -->
+
 	<!-- JNDI設定 , 設定了DataSource屬性 -->
-	<property name="hibernate.connection.datasource">java:comp/env/jdbc/BookDataSQLver</property>
+<!-- 	<property name="hibernate.connection.datasource">java:comp/env/jdbc/BookDataSQLver</property> -->
      <!-- JDBC設定 , 設定driver_class, url, username, password -->
- <!-- 
+
      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
      <property name="connection.url">jdbc:mysql://localhost:3306/jspdb?useUnicode=true&amp;characterEncoding=utf8</property>
      <property name="connection.username">root</property>
-     <property name="connection.password">password</property>
- -->
+     <property name="connection.password">1234</property>
+
      
     <!-- 2. 其他與資料存取有關的設定 -->
     <!-- 自動產生資料庫的Schema -->
