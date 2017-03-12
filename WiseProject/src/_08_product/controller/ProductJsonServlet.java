@@ -29,7 +29,7 @@ import _08_product.model.ProductHibernateDAO;
   
  */
 // 
-@WebServlet("/_07_funds/allfunds.json")
+@WebServlet("/_08_product/allproducts.json")
 public class ProductJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
