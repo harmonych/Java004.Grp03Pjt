@@ -100,8 +100,11 @@ public class DBUtils {
 //			  }catch(ParseException e){
 //				  e.printStackTrace();
 //			  }
-			  char[] fcintroduction = DBUtils.fileToChars("text/" + sa[9].trim(), encoding);
-			  FundsBean fb = new FundsBean(fcid,artid,fcname,fcmoney,nowmoney,createtime,starttime,endtime,updatetime,fcintroduction);
+			  String fcintroduction = sa[9].trim();
+			  //char[] fcintroduction = DBUtils.fileToChars("text/" + sa[9].trim(), encoding);
+			  String hashtag = sa[10].trim();
+			  FundsBean fb = new FundsBean(fcid,artid,fcname,fcmoney,nowmoney,createtime,starttime,endtime,updatetime,fcintroduction,hashtag);
+			  
 			  dao.insert(fb);
 
 			}
@@ -112,29 +115,29 @@ public class DBUtils {
 		}
 	}
 
-	public static void displayData(FundsBean fb) {
-		String saveFolderImg = "D:\\images1221";
-		File dirImg = new File(saveFolderImg);
-		if (!dirImg.exists())  dirImg.mkdirs();
-		String filenameImg = fb.getFcname(); 
-		File fileImg = new File(dirImg, filenameImg);
-		
-		
-		String saveFolderTxt = "D:\\text1221";
-		File dirTxt = new File(saveFolderTxt);
-		if (!dirTxt.exists())  dirTxt.mkdirs();
-		String filenameTxt = "Comment" + fb.getFcid() + ".txt"; 
-		File fileTxt = new File(dirTxt, filenameTxt);
-		
-		System.out.println("Fcid :"  + fb.getFcid());
-		System.out.println("Artid  :"  + fb.getArtid());
-		System.out.println("Fcname     :"  + fb.getFcname());
-		System.out.println("Fcmoney    :"  + fb.getFcmoney());
-		System.out.println("Nowmoney  :"  + fb.getNowmoney());
-		System.out.println("Createtime:"  + fb.getCreatetime());
-		System.out.println("Starttime:"  + fb.getStarttime());
-		System.out.println("Endtime     :"  + fb.getEndtime());
-		System.out.println("Updatetime :"  + fb.getUpdatetime());
-		saveCharsToFile(fb.getFcintroduction(), fileTxt, "BIG5");
-	}
+//	public static void displayData(FundsBean fb) {
+//		String saveFolderImg = "D:\\images1221";
+//		File dirImg = new File(saveFolderImg);
+//		if (!dirImg.exists())  dirImg.mkdirs();
+//		String filenameImg = fb.getFcname(); 
+//		File fileImg = new File(dirImg, filenameImg);
+//		
+//		
+//		String saveFolderTxt = "D:\\text1221";
+//		File dirTxt = new File(saveFolderTxt);
+//		if (!dirTxt.exists())  dirTxt.mkdirs();
+//		String filenameTxt = "Comment" + fb.getFcid() + ".txt"; 
+//		File fileTxt = new File(dirTxt, filenameTxt);
+//		
+//		System.out.println("Fcid :"  + fb.getFcid());
+//		System.out.println("Artid  :"  + fb.getArtid());
+//		System.out.println("Fcname     :"  + fb.getFcname());
+//		System.out.println("Fcmoney    :"  + fb.getFcmoney());
+//		System.out.println("Nowmoney  :"  + fb.getNowmoney());
+//		System.out.println("Createtime:"  + fb.getCreatetime());
+//		System.out.println("Starttime:"  + fb.getStarttime());
+//		System.out.println("Endtime     :"  + fb.getEndtime());
+//		System.out.println("Updatetime :"  + fb.getUpdatetime());
+//		saveCharsToFile(fb.getFcintroduction(), fileTxt, "BIG5");
+//	}
 }

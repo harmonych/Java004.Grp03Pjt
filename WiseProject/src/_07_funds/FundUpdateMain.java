@@ -16,7 +16,7 @@ public class FundUpdateMain {
 		FundsBean fb = new FundsBean(0, 5, "韓式烤肉", 123, 
 			 1253, "2111/11/11", 
 			"2111/11/11", "2111/11/11", 
-			 "2111/11/11" ,comment); 
+			 "2111/11/11" ,"",""); 
 		int n = dao.update(fb);
 		if (n == 1) {
 			System.out.println("修改一筆紀錄");

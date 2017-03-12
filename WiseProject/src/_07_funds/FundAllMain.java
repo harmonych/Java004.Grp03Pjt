@@ -14,7 +14,7 @@ public class FundAllMain {
 		IFundsDAO dao = new FundsHibernateDAO();
 		List<FundsBean> list = dao.getAllFundsJSON();
 		for(FundsBean fb: list){
-			DBUtils.displayData(fb);
+			//DBUtils.displayData(fb);
 			System.out.println("-------------------");
 		}
 	}

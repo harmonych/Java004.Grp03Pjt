@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
-
+@Table(name="fundscollection")
 public class FundsBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int fcid;
@@ -22,10 +23,12 @@ public class FundsBean implements Serializable {
 	private String starttime;
 	private String endtime;
 	private String updatetime;
-	private char[] fcintroduction;
+	private String fcintroduction;
+	private String hashtag;
+	
 	
 	public FundsBean(int fcid, int artid,String fcname,int fcmoney,int nowmoney,
-			String createtime,String starttime,String endtime,String updatetime, char[] fcintroduction) {
+			String createtime,String starttime,String endtime,String updatetime, String fcintroduction,String hashtag) {
 		this.fcid = fcid;
 		this.artid = artid;
 		this.fcname = fcname;
@@ -36,6 +39,7 @@ public class FundsBean implements Serializable {
 		this.endtime =endtime;
 		this.updatetime =updatetime;
 		this.fcintroduction =fcintroduction;
+		this.hashtag=hashtag;
 	}
 	public FundsBean(){
 		
@@ -97,10 +101,16 @@ public class FundsBean implements Serializable {
 		this.updatetime = updatetime;
 	}
 	@Column(columnDefinition="LongText")
-	public char[] getFcintroduction() {
+	public String getFcintroduction() {
 		return fcintroduction;
 	}
-	public void setFcintroduction(char[] fcintroduction) {
+	public void setFcintroduction(String fcintroduction) {
 		this.fcintroduction = fcintroduction;
+	}
+	public String getHashtag() {
+		return hashtag;
+	}
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
 	}
 }

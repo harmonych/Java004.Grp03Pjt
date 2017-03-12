@@ -82,7 +82,8 @@ public class DBUtils {
 			  int price = Integer.parseInt(sa[2].trim());
 		      int amount = Integer.parseInt(sa[3].trim());
 			  String saletime = sa[4].trim();
-			  char[] prointroduction = DBUtils.fileToChars("text/" + sa[5].trim(), encoding);
+			  String prointroduction =sa[5].trim();
+			  //char[] prointroduction = DBUtils.fileToChars("text/" + sa[5].trim(), encoding);
 			  int artid = Integer.parseInt(sa[6].trim());
 			  String hashtag = sa[7].trim();
 			  

@@ -9,7 +9,7 @@ public class FundsInitMain {
 		
 	//	IPlaceDAO dao = new PlaceHibernateDAO();
       //  dao.createTables();
-        DBUtils.initPlace("PlaceData.csv", "BIG5");    
+        DBUtils.initPlace("funds_collection.csv", "BIG5");    
         HibernateUtil.close();
 		
 	}

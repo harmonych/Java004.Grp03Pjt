@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
-
+@Table(name="product")
 public class ProductBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int proid;
@@ -18,11 +19,11 @@ public class ProductBean implements Serializable {
 	private int price;
 	private int amount;
 	private String saletime;
-	private char[] prointroduction;
+	private String prointroduction;
 	private int artid;
 	private String hashtag;
 	
-	public ProductBean(int proid, String proname, int price, int amount, String saletime, char[] prointroduction,
+	public ProductBean(int proid, String proname, int price, int amount, String saletime,String prointroduction,
 			int artid, String hashtag) {
 		super();
 		this.proid = proid;
@@ -72,10 +73,10 @@ public class ProductBean implements Serializable {
 		this.saletime = saletime;
 	}
 	@Column(columnDefinition="LongText")
-	public char[] getProintroduction() {
+	public String getProintroduction() {
 		return prointroduction;
 	}
-	public void setProintroduction(char[] prointroduction) {
+	public void setProintroduction(String prointroduction) {
 		this.prointroduction = prointroduction;
 	}
 	public int getArtid() {

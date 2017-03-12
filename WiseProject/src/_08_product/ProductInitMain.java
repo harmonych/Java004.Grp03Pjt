@@ -9,7 +9,7 @@ public class ProductInitMain {
 		
 	//	IPlaceDAO dao = new PlaceHibernateDAO();
       //  dao.createTables();
-        DBUtils.initPlace("PlaceData.csv", "BIG5");    
+        DBUtils.initPlace("productData.csv", "BIG5");    
         HibernateUtil.close();
 		
 	}
