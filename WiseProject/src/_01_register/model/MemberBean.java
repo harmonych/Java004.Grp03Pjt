@@ -1,10 +1,19 @@
 ﻿package _01_register.model;
 
 import java.io.*;
-import java.sql.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="userInfo")
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+	int user_Id;
 	String account;
 	String password;
 	String user_name;
@@ -12,10 +21,11 @@ public class MemberBean implements Serializable {
 	String email;
 	String gender;
 	String birthday;
-	Blob head_pic;
-	String fileName;
+	String head_pic;
+//	String file_name;
 
-	public MemberBean(String account, String password, String user_name, String phonenum, String email,  String gender,
+	//為了RegisterServletMP.java而做的建構子
+	public MemberBean(String account, String password, String user_name, String phonenum, String email, String gender,
 			String birthday) {
 		super();
 		this.account = account;
@@ -24,13 +34,42 @@ public class MemberBean implements Serializable {
 		this.phonenum = phonenum;
 		this.email = email;
 		this.gender = gender;
-		this.birthday = birthday;		
+		this.birthday = birthday;
 	}
 	
+
+
+	public MemberBean(int user_Id, String account, String password, String user_name, 
+			String phonenum, String email,  String gender, String birthday, String head_pic) {
+		super();
+		this.user_Id = user_Id;
+		this.account = account;
+		this.password = password;
+		this.user_name = user_name;
+		this.phonenum = phonenum;
+		this.email = email;
+		this.gender = gender;
+		this.birthday = birthday;		
+		this.head_pic = head_pic;
+	}
+	
+
+
+	@Id	
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	public int getUser_Id() {
+	return user_Id;
+	}
+	
+	
+	
+	public void setUser_Id(int user_Id) {
+	this.user_Id = user_Id;
+	}
+
 	public String getAccount() {
 		return account;
 	}
-
 	public void setAccount(String account) {
 		this.account = account;
 	}
@@ -58,7 +97,7 @@ public class MemberBean implements Serializable {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -83,6 +122,21 @@ public class MemberBean implements Serializable {
 		this.birthday = birthday;
 	}
 
+	@Column(name = "head_pic")
+	public String getHead_pic() {
+		return head_pic;
+	}
+	public void setHead_pic(String head_pic) {
+		this.head_pic = head_pic;
+	}
+//	public String getFile_name() {
+//		return file_name;
+//	}
+//
+//	public void setFile_name(String file_name) {
+//		this.file_name = file_name;
+//	}
+	
 //	public Blob getHead_pic() {
 //		return head_pic;
 //	}
@@ -90,15 +144,6 @@ public class MemberBean implements Serializable {
 //	public void setHead_pic(Blob head_pic) {
 //		this.head_pic = head_pic;
 //	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
 	public MemberBean() {
 		super();
 	}	

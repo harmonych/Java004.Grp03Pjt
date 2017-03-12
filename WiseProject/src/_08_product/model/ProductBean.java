@@ -23,7 +23,7 @@ public class ProductBean implements Serializable {
 	private int artid;
 	private String hashtag;
 	
-	public ProductBean(int proid, String proname, int price, int amount, String saletime,String prointroduction,
+	public ProductBean(int proid, String proname, int price, int amount, String saletime, String prointroduction,
 			int artid, String hashtag) {
 		super();
 		this.proid = proid;

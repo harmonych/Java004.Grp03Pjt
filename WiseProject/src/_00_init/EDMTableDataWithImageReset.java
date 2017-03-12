@@ -1,65 +1,6 @@
 package _00_init;
-/*  
-    程式說明：建立表格與設定初始測試資料。
-    表格包括：eMember, eBook, eBookCompany, Orders, OrderItems
-      
-(1) eMember欄位說明:
-    seqNo       : 會員流水號Pri.Key  整數      IDENTITY
-    memberId    : 會員編號           字串      20
-    name        : 姓名               字串      32
-    password    : 密碼               字串      32
-    address     : 地址               字串      64
-    email       : email              字串      64
-    tel         : 電話日             字串      15
-    userType    : 會員類別           字串      10
-    experience  : 使用經驗           整數   
-    register    : 註冊時間           datetime
-    totalAmount : 訂購總金額         money
-    memberImage : 照片               image
-    fileName    : 封面圖檔檔名       字串      20
-    
-(2) eBook欄位說明:
-    bookId      : 書籍代號Pri.Key    整數      IDENTITY
-    title       : 書籍名稱           字串      50
-    author      : 作者               字串      28
-    price       : 價格               money
-    discount    : 折扣               money
-    companyId   : 出版社代號         整數      
-    fileName    : 封面圖檔檔名       字串      20
-    bookNo      : 書號               字串      20
-    CoverImage  : 封面照片           image   
-
-(3) eBookCompany欄位說明:
-    id 		     : PrimaryKey         整數      IDENTITY
-    name         : 出版社名稱         字串      60
-    address      : 出版社地址         字串      60
-    url          : 出版社URL          字串      120
-    
-(4) Orders欄位說明:
-    orderNo        : 訂單編號PrimaryKey 整數      IDENTITY
-    userId         : 客戶編號           字串      20
-    totalAmount    : 總金額             money
-    shippingAddress: 出貨地址           字串      64    
-    BNO            : 統一編號           字串       8
-    invoiceTitle   : 發票抬頭           字串      72
-    orderDate      : 訂單日期           datetime 
-    ShippingDate   : 出貨日期           datetime
-    CancelTag      : 取消               字串       1
-    
-(5) OrderItems欄位說明:
-    seqNo        : PrimaryKey            整數      IDENTITY
-    orderNo      : 訂單編號              整數
-    bookID       : 書籍代號              整數
-    Description  : 說明                  字串      72
-    amount       : 數量                  int
-    unitPrice    : 單價                  money
-    Discount     : 折扣                  money
- 
-*/
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -161,7 +102,7 @@ public class EDMTableDataWithImageReset {
                 encrypedString = GlobalService.encryptString("456");
                 pstmt1.setString(2, GlobalService.getMD5Endocing(encrypedString));  //密碼都是 123
                 pstmt1.setString(3, "MaryChen");
-                pstmt1.setString(4, "z0954653423");
+                pstmt1.setString(4, "0954653423");
                 pstmt1.setString(5, "MaryChen@gmail.com");
                 pstmt1.setString(6, "女");
                 pstmt1.setString(7, "1993-01-01");
