@@ -1,14 +1,19 @@
 package _01_register.util;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.CharArrayWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import _01_register.model.IMemberDAO;
 import _01_register.model.MemberBean;
@@ -43,6 +48,31 @@ public class DBUtils {
 			ex.getMessage();
 		}
 		return b;
+	}
+	public static byte[] urlToBytes(String file_url) throws MalformedURLException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		URL file = new URL(file_url);
+		InputStream is = null;
+		try {
+			is = file.openStream();
+		  byte[] ba = new byte[8192];
+		  int len = 0;
+
+		  while ((len = is.read(ba)) != -1) {
+				baos.write(ba, 0, len);
+			}
+		}catch (IOException e) {
+		  System.err.printf ("讀取失敗 %s: %s", file.toExternalForm(), e.getMessage());
+		  e.printStackTrace ();
+		}finally {
+		  if (is != null)
+			try {
+				is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 		  
+		}
+		return baos.toByteArray();
 	}
 	public static void saveCharsToFile(char[] comment, File file, String encoding) {
 		try (
@@ -84,8 +114,11 @@ public class DBUtils {
 			  String email  = sa[5].trim();
 			  String gender = sa[6].trim();
 			  String birthday = sa[7].trim();
-			  String head_pic = sa[8].trim();
-			  MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday, head_pic);
+			  String file_url = sa[8].trim();
+			  byte[] portrait = DBUtils.urlToBytes(file_url);
+			  boolean creator = Boolean.parseBoolean(sa[9].trim());
+			  boolean admin = Boolean.parseBoolean(sa[10].trim());
+			  MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday, file_url, portrait, creator, admin);
 			  dao.insert(mb);
 
 			}
@@ -95,6 +128,8 @@ public class DBUtils {
 			ex.printStackTrace();
 		}
 	}
+
+
 
 //	public static void displayData(MemberBean mb) {
 //		String saveFolderImg = "D:\\images1221";

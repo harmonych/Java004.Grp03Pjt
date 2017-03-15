@@ -3,9 +3,9 @@
   <!--  請注意，此標籤的寫法不能用於 tomcat 5.x             -->
   <!--                  SQLServer2005, 2008                 -->                  
   <Resource name="jdbc/customer" type="javax.sql.DataSource"
-       username="root" password="password"
+       username="prjmember" password="sVmP2hrvFcv2EKu7"
       driverClassName="com.mysql.jdbc.Driver"
-      url="jdbc:mysql://127.0.0.1:3306/jspdb"
+      url="jdbc:mysql://saudade.myasustor.com:3306/jspdb"
       connectionProperties="useUnicode=yes;characterEncoding=utf8;"
       maxActive="8"
       maxIdle="4"

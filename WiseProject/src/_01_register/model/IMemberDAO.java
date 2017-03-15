@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface IMemberDAO {
 	
-	public int getUser_Id();
+	public int getUser_id();
 	
-	public void setUser_Id(int user_Id);
+	public void setUser_id(int user_id);
 	
 	int insert(MemberBean mb);
 

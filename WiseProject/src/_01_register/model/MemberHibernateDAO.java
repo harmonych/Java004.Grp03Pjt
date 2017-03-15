@@ -19,12 +19,12 @@ import _01_register.util.HibernateUtil;
 
 public class MemberHibernateDAO implements IMemberDAO {
 
-	public int getUser_Id() {
-		return user_Id;
+	public int getUser_id() {
+		return user_id;
 	}
 
-	public void setUser_Id(int key) {
-		this.user_Id = key;
+	public void setUser_id(int key) {
+		this.user_id = key;
 	}
 
 //	public FundsHibernateDAO() {
@@ -107,7 +107,7 @@ public class MemberHibernateDAO implements IMemberDAO {
 	@Override
 	public int delete(int key) {
 		MemberBean mb = new MemberBean();
-		mb.setUser_Id(key);
+		mb.setUser_id(key);
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -173,7 +173,7 @@ public class MemberHibernateDAO implements IMemberDAO {
 		return list;
 	}
 	DataSource ds;
-	int user_Id;
+	int user_id;
 
 
 	

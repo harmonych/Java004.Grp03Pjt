@@ -13,10 +13,4 @@ public class MemberInitMain {
         HibernateUtil.close();
 		
 	}
-
-	
-	
-	
-	
-	
 }

@@ -34,17 +34,17 @@ public class TableDataReset {
 			return;
 		}
 		// 定義刪除UserInfo表格的SQL命令
-		dropString = "DROP Table UserInfo ";
+		dropString = "DROP Table userInfo ";
 		try {
 			// 執行刪除UserInfo表格的SQL命令
 			stmt.executeUpdate(dropString);
 			// 印出執行成功的訊息
-			System.out.println("UserInfo表格刪除成功");
+			System.out.println("User Info表格刪除成功");
 		} catch (SQLException e) {
-			System.err.println("刪除UserInfo表格時發生例外: " + e.getMessage());
+			System.err.println("刪除User Info表格時發生例外: " + e.getMessage());
 		}
 		// 定義新建UserInfo表格的SQL命令
-		createString = "Create Table UserInfo " + " (user_id int Primary Key auto_increment, "
+		createString = "Create Table userInfo " + " (user_id int Primary Key auto_increment, "
 				+ " account varchar(40) NOT NULL, " + " password varchar(32) NOT NULL, "
 				+ " user_name varchar(20) NOT NULL, " + " phonenum varchar(20) NOT NULL, "
 				+ " email varchar(40) NOT NULL, " + " gender char(1), " + " birthday datetime, "
@@ -53,9 +53,9 @@ public class TableDataReset {
 			// 執行新建UserInfo表格的SQL命令
 			stmt.executeUpdate(createString);
 			// 印出執行成功的訊息
-			System.out.println("UserInfo表格產生成功");
+			System.out.println("userInfo表格產生成功");
 			// 對UserInfo表格新增三筆測試用紀錄
-			sql1 = "insert into UserInfo "
+			sql1 = "insert into userInfo "
 					+ " (user_id, account, password, user_name, phonenum, email, gender, birthday, "
 					+ " head_pic) " + " values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt1 = con.prepareStatement(sql1);

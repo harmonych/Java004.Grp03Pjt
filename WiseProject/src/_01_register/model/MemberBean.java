@@ -1,7 +1,6 @@
 ﻿package _01_register.model;
 
 import java.io.*;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +12,7 @@ import javax.persistence.Table;
 @Table(name="userInfo")
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	int user_Id;
+	int user_id;
 	String account;
 	String password;
 	String user_name;
@@ -21,8 +20,30 @@ public class MemberBean implements Serializable {
 	String email;
 	String gender;
 	String birthday;
-	String head_pic;
-//	String file_name;
+	byte[] portrait;
+	boolean creator;
+	String file_name;
+	boolean admin;
+
+
+
+	//含所有屬性的建構子
+	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
+			String gender, String birthday, String file_name, byte[] portrait, boolean creator, boolean admin) {
+		super();
+		this.user_id = user_id;
+		this.account = account;
+		this.password = password;
+		this.user_name = user_name;
+		this.phonenum = phonenum;
+		this.email = email;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.file_name = file_name;
+		this.portrait = portrait;
+		this.creator = creator;
+		this.admin = admin;
+	}
 
 	//為了RegisterServletMP.java而做的建構子
 	public MemberBean(String account, String password, String user_name, String phonenum, String email, String gender,
@@ -37,34 +58,16 @@ public class MemberBean implements Serializable {
 		this.birthday = birthday;
 	}
 	
-
-
-	public MemberBean(int user_Id, String account, String password, String user_name, 
-			String phonenum, String email,  String gender, String birthday, String head_pic) {
-		super();
-		this.user_Id = user_Id;
-		this.account = account;
-		this.password = password;
-		this.user_name = user_name;
-		this.phonenum = phonenum;
-		this.email = email;
-		this.gender = gender;
-		this.birthday = birthday;		
-		this.head_pic = head_pic;
-	}
-	
-
-
 	@Id	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int getUser_Id() {
-	return user_Id;
+	public int getUser_id() {
+	return user_id;
 	}
 	
 	
 	
-	public void setUser_Id(int user_Id) {
-	this.user_Id = user_Id;
+	public void setUser_id(int user_id) {
+	this.user_id = user_id;
 	}
 
 	public String getAccount() {
@@ -122,22 +125,40 @@ public class MemberBean implements Serializable {
 		this.birthday = birthday;
 	}
 
-	@Column(name = "head_pic")
-	public String getHead_pic() {
-		return head_pic;
+	@Column(name = "portrait", columnDefinition="MediumBlob")
+	public byte[] getPortrait() {
+		return portrait;
 	}
-	public void setHead_pic(String head_pic) {
-		this.head_pic = head_pic;
+	public void setPortrait(byte[] portrait) {
+		this.portrait = portrait;
 	}
-//	public String getFile_name() {
-//		return file_name;
-//	}
-//
-//	public void setFile_name(String file_name) {
-//		this.file_name = file_name;
-//	}
-	
-//	public Blob getHead_pic() {
+	public String getFile_name() {
+		return file_name;
+	}
+
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+	//判斷是否為創作者身分	
+	@Column(name = "creator", columnDefinition="TINYINT")
+	public boolean isCreator() {
+		return creator;
+	}
+
+	public void setCreator(boolean creator) {
+		this.creator = creator;
+	}
+	//判斷是否為管理員身分
+	@Column(name = "admin", columnDefinition="TINYINT")
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	//	public Blob getHead_pic() {
 //		return head_pic;
 //	}
 //
