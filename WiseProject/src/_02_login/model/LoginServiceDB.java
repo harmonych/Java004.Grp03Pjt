@@ -20,7 +20,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 		}
 	}
 	public MemberBean checkPassword(String user, String password) throws SQLException {
-		String sql = "SELECT * From UserInfo where account = ? and password = ? ";
+		String sql = "SELECT * From userInfo where account = ? and password = ? ";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -60,7 +60,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 	}
 	public void populateMemberList() throws SQLException {
 		// 由Database讀取會員資料
-		String sql = "SELECT * From UserInfo";
+		String sql = "SELECT * From userInfo";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
