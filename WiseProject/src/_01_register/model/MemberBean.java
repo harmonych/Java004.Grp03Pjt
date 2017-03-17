@@ -21,15 +21,14 @@ public class MemberBean implements Serializable {
 	String gender;
 	String birthday;
 	byte[] portrait;
-	boolean creator;
+	boolean check_tag;
 	String file_name;
-	boolean admin;
 
 
 
 	//含所有屬性的建構子
 	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
-			String gender, String birthday, String file_name, byte[] portrait, boolean creator, boolean admin) {
+			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag) {
 		super();
 		this.user_id = user_id;
 		this.account = account;
@@ -41,8 +40,7 @@ public class MemberBean implements Serializable {
 		this.birthday = birthday;
 		this.file_name = file_name;
 		this.portrait = portrait;
-		this.creator = creator;
-		this.admin = admin;
+		this.check_tag = check_tag;
 	}
 
 	//為了RegisterServletMP.java而做的建構子
@@ -57,15 +55,15 @@ public class MemberBean implements Serializable {
 		this.gender = gender;
 		this.birthday = birthday;
 	}
+	public MemberBean() {
+	}	
 	
 	@Id	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getUser_id() {
 	return user_id;
 	}
-	
-	
-	
+		
 	public void setUser_id(int user_id) {
 	this.user_id = user_id;
 	}
@@ -140,24 +138,14 @@ public class MemberBean implements Serializable {
 		this.file_name = file_name;
 	}
 	//判斷是否為創作者身分	
-	@Column(name = "creator", columnDefinition="TINYINT")
-	public boolean isCreator() {
-		return creator;
+	@Column(name = "check_tag", columnDefinition="TINYINT")
+	public boolean isCheck_tag() {
+		return check_tag;
 	}
 
-	public void setCreator(boolean creator) {
-		this.creator = creator;
+	public void setCheck_tag(boolean check_tag) {
+		this.check_tag = check_tag;
 	}
-	//判斷是否為管理員身分
-	@Column(name = "admin", columnDefinition="TINYINT")
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-
 	//	public Blob getHead_pic() {
 //		return head_pic;
 //	}
@@ -165,9 +153,7 @@ public class MemberBean implements Serializable {
 //	public void setHead_pic(Blob head_pic) {
 //		this.head_pic = head_pic;
 //	}
-	public MemberBean() {
-		super();
-	}	
+
 
 	public String toString() {
 		return "userid=" + account + "   password="+password;

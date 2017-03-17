@@ -1,6 +1,5 @@
 package _01_register.util;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.CharArrayWriter;
@@ -14,7 +13,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import _01_register.model.IMemberDAO;
 import _01_register.model.MemberBean;
 import _01_register.model.MemberHibernateDAO;
@@ -116,9 +114,8 @@ public class DBUtils {
 			  String birthday = sa[7].trim();
 			  String file_url = sa[8].trim();
 			  byte[] portrait = DBUtils.urlToBytes(file_url);
-			  boolean creator = Boolean.parseBoolean(sa[9].trim());
-			  boolean admin = Boolean.parseBoolean(sa[10].trim());
-			  MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday, file_url, portrait, creator, admin);
+			  boolean check_tag = Boolean.parseBoolean(sa[9].trim());
+			  MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday, file_url, portrait, check_tag);
 			  dao.insert(mb);
 
 			}
