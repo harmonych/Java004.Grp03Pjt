@@ -46,7 +46,9 @@
 	margin-bottom: 0;
 	border-radius: 0;
 }
-    
+.label{
+	color: royalblue;
+}  
   /* Add a gray background color and some padding to the footer */
 footer {
 	

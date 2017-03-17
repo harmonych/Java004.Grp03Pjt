@@ -1,10 +1,7 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-</* html lang="zh" */>
 
 <head>
 	<meta charset="UTF-8">
@@ -50,9 +47,13 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 			  <span class="sr-only">Toggle navigation</span>
 				<ul class="nav navbar-nav navbar-right">
+				<li class="username"><span>${userName}</span></li>		
 					
-					<li classe="username"><span>${userName}</span></li>
-					<li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
+					<c:choose>
+						<c:when test="${empty LoginOK}">
+							<li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
+						</c:when>
+					</c:choose>
 					<c:choose>
 						<c:when test="${empty LoginOK}">
 							<li><a href="_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
@@ -75,6 +76,7 @@
 		 
 		<form class="form-inline">
 			<div class="form-group">
+
 				<input class="form-control" type="search" placeholder="搜尋" size="50" required>
 			</div>
 				<button type="submit" class="btn btn-default">search</button>
@@ -99,12 +101,13 @@
 
 		<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
 			<ul class="nav sidebar-nav">
+				
 				<li class="sidebar-brand">
 					<a href="#"> </a>			
 				</li>
-				
+				<li class="username"><span>${userName}</span></li>
 				<li>
-					<a href="Second_frame/Creations.jsp">創作作品</a>
+					<a href="Second_frame/Creations.jsp">創作平台</a>
 				</li>
 				<li>
 					<a href="Third_frame/backer.jsp">募資平台</a>
@@ -112,6 +115,8 @@
 				<li>
 					<a href="#">商城系統</a>
 				</li>
+									
+				
 				<!-- <li>
 					<a href="#">社群交流</a>
 				</li> -->

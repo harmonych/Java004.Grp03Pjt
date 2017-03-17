@@ -1,7 +1,8 @@
 .navbar {
-	background: #DC6A1C;
+	
     margin-bottom: 10px;
     border-radius: 0;
+	background:#ff6f00;
 }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -13,7 +14,13 @@
     background-color: #f1f1f1;
     height: 100%;
 }
-    
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #eee;
+    transition: all .3s ease-in-out;
+    background-color: rgba(255, 0,0 , 0.6) !important;
+}
+ 
+ 
  /* Set black background color, white text and some padding */
 footer {
 /* 	background-color: #FF8C42;
