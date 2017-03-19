@@ -168,8 +168,8 @@ function setFocusToUserId(){
       
       <label class="fontSize" >會員性別：</label>
       <select name="gender" class="fieldWidth" style="width: 60px;">
-　			<option value="男">男</option>
-　			<option value="女">女</option>
+　			<option value="1">男</option>
+　			<option value="2">女</option>
 	  </select>
 	   <br/>
       
@@ -180,12 +180,12 @@ function setFocusToUserId(){
       
       
       <label class="fontSize" >大頭貼照：</label>
-      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="head_pic"><BR>
+      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="portrait"><BR>
       <br/>
         	
       
       <label >註冊為創作者</label>	
-      <input type="checkbox" name="RegisterArtist" value="true"><BR>
+      <input type="checkbox" name="RegisterArtist" value="false"><BR>
       <br/>	
       
       <label class="fontSize" >作者簡介：</label>

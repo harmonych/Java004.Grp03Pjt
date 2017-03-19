@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("ErrorMsgKey", errorMsgMap);
 		// 1. 讀取使用者輸入資料
 		String account = request.getParameter("account");
-		String password = request.getParameter("password");
+		String password = GlobalService.getMD5Endocing(GlobalService.encryptString(request.getParameter("password")));
 		String rm = request.getParameter("rememberMe");
 		String requestURI = (String) session.getAttribute("requestURI");
 		// 2. 進行必要的資料轉換
