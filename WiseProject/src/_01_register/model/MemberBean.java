@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -45,7 +46,7 @@ public class MemberBean implements Serializable {
 
 	//為了RegisterServletMP.java而做的建構子
 	public MemberBean(String account, String password, String user_name, String phonenum, String email, String gender,
-			String birthday) {
+			String birthday, boolean check_tag, String file_name) {
 		super();
 		this.account = account;
 		this.password = password;
@@ -54,6 +55,8 @@ public class MemberBean implements Serializable {
 		this.email = email;
 		this.gender = gender;
 		this.birthday = birthday;
+		this.check_tag = check_tag;
+		this.file_name = file_name;
 	}
 	public MemberBean() {
 	}	
@@ -82,7 +85,7 @@ public class MemberBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 	public String getUser_name() {
 		return user_name;
 	}

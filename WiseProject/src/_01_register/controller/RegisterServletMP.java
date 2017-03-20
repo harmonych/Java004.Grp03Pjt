@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 
 import _00_init.GlobalService;
 import _01_register.model.*;
+import _01_register.util.DBUtils;
 
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
@@ -66,17 +67,19 @@ public class RegisterServletMP extends HttpServlet {
 		String gender = "";
 		String birthday = "";
 		String fileName = "";
-		String RegisterArtist = null;
+		boolean check_tag = false;
 		String Introduction = "";
 		String bank_account = "";
 		String ID = "";
 		String art_name = "";
 		String art_address = "";
 		String art_num = "";
-		String hash_tag = "";
+		String hashtag = "";
+		String intro_pic_name = "";
 
 		long sizeInBytes = 0;
 		InputStream is = null;
+		InputStream ipis = null;
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
 														// request內所有的parts
 		GlobalService.exploreParts(parts, request);
@@ -104,13 +107,13 @@ public class RegisterServletMP extends HttpServlet {
 						gender = value;
 					} else if (fldName.equalsIgnoreCase("birthday")) {
 						birthday = value;
-					} else if (fldName.equalsIgnoreCase("RegisterArtist")) {
-						RegisterArtist = value;
-						if (RegisterArtist != null) {
-							continue;
-						} else {
-							break;
-						}
+					} else if (fldName.equals("registerArtist")) {
+						check_tag = Boolean.parseBoolean(value);
+//						System.out.println(check_tag);
+//						System.out.println(value);
+//						if (check_tag) {
+//							
+//						}						
 					} else if (fldName.equalsIgnoreCase("Introduction")) {
 						Introduction = value;
 					} else if (fldName.equalsIgnoreCase("bank_account")) {
@@ -123,17 +126,30 @@ public class RegisterServletMP extends HttpServlet {
 						art_address = value;
 					} else if (fldName.equalsIgnoreCase("art_num")) {
 						art_num = value;
-					} else if (fldName.equalsIgnoreCase("hash_tag")) {
-						hash_tag = value;
+					} else if (fldName.equalsIgnoreCase("hashtag")) {
+						hashtag = value;
 					}
 				} else {
-					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
-					fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
-					if (fileName != null && fileName.trim().length() > 0) {
-						sizeInBytes = p.getSize();
-						is = p.getInputStream();
+//					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
+//					fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
+//					if (fileName != null && fileName.trim().length() > 0) {
+//						sizeInBytes = p.getSize();
+//						is = p.getInputStream();
+//					}
+					if (fldName.equalsIgnoreCase("portrait")) {
+						fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
+						fileName = "http://saudade.myasustor.com/JPjt/portrait/" + fileName;
+						if (fileName != null && fileName.trim().length() > 0) {
+							is = p.getInputStream();
+						}
+					}else if(fldName.equalsIgnoreCase("intro_pic")){
+						intro_pic_name = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						intro_pic_name = GlobalService.adjustFileName(intro_pic_name, GlobalService.IMAGE_FILENAME_LENGTH);
+						if (intro_pic_name != null && intro_pic_name.trim().length() > 0) {
+							ipis = p.getInputStream();
+						}
 					}
-
 				}
 			}
 			// 2. 進行必要的資料轉換
@@ -171,7 +187,7 @@ public class RegisterServletMP extends HttpServlet {
 				errorMsg.put("errorBirthday", "生日欄資料錯誤");
 			}
 
-			if (RegisterArtist != null) {
+			if (check_tag) {
 				if (ID == null || ID.trim().length() == 0) {
 					errorMsg.put("errorID", "身分證字號欄必須輸入");
 				}
@@ -189,6 +205,7 @@ public class RegisterServletMP extends HttpServlet {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}
 		// 如果有錯誤
+		
 		if (!errorMsg.isEmpty()) {
 			// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
@@ -200,14 +217,25 @@ public class RegisterServletMP extends HttpServlet {
 			// RegisterServiceFile類別的功能：
 			// 1.檢查帳號是否已經存在
 			// 2.儲存會員的資料
-			RegisterServiceDAO rs = new RegisterServiceDAO_JDBC();
-			if (rs.idExists(account)) {
+//			RegisterServiceDAO rs = new RegisterServiceDAO_JDBC();
+			IMemberDAO mb = new MemberHibernateDAO();
+			IArtistDAO ab = new ArtistHibernateDAO();
+			if (mb.idExists(account)) {
 				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
 			} else {
-				MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday);
+				MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday, check_tag, fileName);
 				// 將MemberBean mem立即寫入Database
-				System.out.println("filename:" + fileName);
-				int n = rs.saveMember(mem, is, sizeInBytes, fileName);
+				byte[] portrait = DBUtils.isToBytes(is);
+				mem.setPortrait(portrait);
+				if(check_tag) {
+					ArtistBean art = new ArtistBean(user_name, Introduction, bank_account, ID, art_name, art_address, art_num, hashtag, intro_pic_name);
+					byte[] intro_pic = DBUtils.isToBytes(ipis);
+					System.out.println("作者簡介圖片名稱(intro_pic)：" + intro_pic_name);
+					art.setIntro_pic(intro_pic);
+					ab.insert(art);
+				}
+//				int n = rs.saveMember(mem, is, sizeInBytes, fileName);
+				int n = mb.insert(mem);
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
 					response.sendRedirect("../index.jsp");

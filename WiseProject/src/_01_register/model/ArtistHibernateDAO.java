@@ -18,26 +18,10 @@ import _01_register.util.HibernateUtil;
 
 
 
-public class MemberHibernateDAO implements IMemberDAO {
-	private List<MemberBean> memberList = getAllMember();
-	
-	synchronized public boolean idExists(String account) throws IOException {
-		boolean exist = false; // 檢查id是否已經存在
-		for (MemberBean mb : memberList) {
-			if (mb.getAccount().equals(account.trim())) {
-				exist = true;
-				break;
-			}
-		}
-		return exist;
-	}
-	public int getUser_id() {
-		return user_id;
-	}
+public class ArtistHibernateDAO implements IArtistDAO {
+//	private List<MemberBean> memberList = getAllMember();
 
-	public void setUser_id(int key) {
-		this.user_id = key;
-	}
+	
 
 //	public FundsHibernateDAO() {
 //		try {
@@ -48,15 +32,41 @@ public class MemberHibernateDAO implements IMemberDAO {
 //		}
 //	}
 	
+	
 	@Override
-	public int insert(MemberBean mb) {
+	public int insert(ArtistBean ab) {
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			session.save(mb);
+			session.save(ab);
+			updateCount = 1;
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return updateCount;
+	}
+
+	
+	@Override
+	public int update(ArtistBean ab) {
+		int updateCount = 0;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			session.saveOrUpdate(ab);
+			//session.merge(ab);
+			Hibernate.initialize(ab);
 			updateCount = 1;
 			tx.commit();
 		}catch(Exception e){
@@ -71,38 +81,14 @@ public class MemberHibernateDAO implements IMemberDAO {
 	}
 
 	@Override
-	public int update(MemberBean mb) {
+	public int delete(ArtistBean ab) {
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			session.saveOrUpdate(mb);
-			//session.merge(mb);
-			Hibernate.initialize(mb);
-			updateCount = 1;
-			tx.commit();
-		}catch(Exception e){
-			e.printStackTrace();
-			if(tx!=null){
-				tx.rollback();
-			}
-		}finally{
-			session.close();
-		}
-		return updateCount;
-	}
-
-	@Override
-	public int delete(MemberBean mb) {
-		int updateCount = 0;
-		SessionFactory factory = HibernateUtil.getSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = null;
-		try{
-			tx = session.beginTransaction();
-			session.delete(mb);
+			session.delete(ab);
 			updateCount = 1;
 			tx.commit();
 		}catch(Exception e){
@@ -118,15 +104,15 @@ public class MemberHibernateDAO implements IMemberDAO {
 
 	@Override
 	public int delete(int key) {
-		MemberBean mb = new MemberBean();
-		mb.setUser_id(key);
+		ArtistBean ab = new ArtistBean();
+		ab.setArt_id(key);
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			session.delete(mb);
+			session.delete(ab);
 			updateCount = 1;
 			tx.commit();
 		}catch(Exception e){
@@ -141,14 +127,14 @@ public class MemberHibernateDAO implements IMemberDAO {
 	}
 
 	@Override
-	public MemberBean findByPrimaryKey(int key) {
-		MemberBean fb = null;
+	public ArtistBean findByPrimaryKey(int key) {
+		ArtistBean ab = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			fb=session.get(MemberBean.class,key);
+			ab=session.get(ArtistBean.class,key);
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -158,18 +144,18 @@ public class MemberHibernateDAO implements IMemberDAO {
 		}finally{
 			session.close();
 		}
-		return fb;
+		return ab;
 	}
 
 	@Override
-	public List<MemberBean> getAllMember() {
-		List<MemberBean> list =new ArrayList<>();
+	public List<ArtistBean> getAllArtist() {
+		List<ArtistBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			TypedQuery<MemberBean> query=session.createQuery("from MemberBean");
+			TypedQuery<ArtistBean> query=session.createQuery("from MemberBean");
 			list = query.getResultList();
 			//list =session.createQuery("from MemberBean").getResultList();
 			Hibernate.initialize(list);
@@ -185,7 +171,7 @@ public class MemberHibernateDAO implements IMemberDAO {
 		return list;
 	}
 	DataSource ds;
-	int user_id;
+	int art_id;
 
 
 	

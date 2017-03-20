@@ -181,18 +181,17 @@ function setFocusToUserId(){
       
       <label class="fontSize" >大頭貼照：</label>
       <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="portrait"><BR>
-      <br/>
-        	
+      <br/>        	
       
       <label >註冊為創作者</label>	
-      <input type="checkbox" name="RegisterArtist" value="false"><BR>
+      <input type="checkbox" name="registerArtist" value="true"><BR>
       <br/>	
       
       <label class="fontSize" >作者簡介：</label>
       <textarea name="Introduction" rows="5" cols="20" class="fieldWidth"></textarea><br>
       <font color="red" size="-1">${MsgMap.errorIntroduction}</font>
       <br/>
-      
+
       <label class="fontSize" >簡介圖片：</label>
       <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="intro_pic"><BR>
       <br/>
@@ -223,12 +222,10 @@ function setFocusToUserId(){
       <br/>
       
       <label class="fontSize" >分類標籤：</label>
-          <input type="text"  name="hash_tag" value="${param.hash_tag}"   class="fieldWidth" style="width: 200px;">
+          <input type="text"  name="hashtag" value="${param.hashtag}"   class="fieldWidth" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorHashTag}</font>
       <br/>
-      
-      
-      
+           
         	
       <div id="btnArea" align="center">
          <input type="submit" name="submit" id="submit" value="註冊"/>

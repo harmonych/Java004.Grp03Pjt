@@ -17,9 +17,30 @@ import _01_register.model.IMemberDAO;
 import _01_register.model.MemberBean;
 import _01_register.model.MemberHibernateDAO;
 
-
-
 public class DBUtils {
+
+	public static byte[] isToBytes(InputStream is) {
+		byte[] data = null;
+		// 緩衝
+		byte[] buffer = new byte[8192];
+		// 紀錄讀進來長度
+		int length = 0;
+		// 假如等於-1代表沒有資料了
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();) {
+			while ((length = is.read(buffer)) != -1) {
+				// 從緩衝區讀取buffer裡面0~length-1的位置
+				baos.write(buffer, 0, length);
+			}
+			// ByteArrayOutputStream轉成位元陣列
+			data = baos.toByteArray();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 	public static char[] fileToChars(String filename, String encoding) {
 		try (FileInputStream fis = new FileInputStream(filename);
 				InputStreamReader in = new InputStreamReader(fis, encoding);
@@ -47,76 +68,75 @@ public class DBUtils {
 		}
 		return b;
 	}
+
 	public static byte[] urlToBytes(String file_url) throws MalformedURLException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		URL file = new URL(file_url);
 		InputStream is = null;
 		try {
 			is = file.openStream();
-		  byte[] ba = new byte[8192];
-		  int len = 0;
+			byte[] ba = new byte[8192];
+			int len = 0;
 
-		  while ((len = is.read(ba)) != -1) {
+			while ((len = is.read(ba)) != -1) {
 				baos.write(ba, 0, len);
 			}
-		}catch (IOException e) {
-		  System.err.printf ("讀取失敗 %s: %s", file.toExternalForm(), e.getMessage());
-		  e.printStackTrace ();
-		}finally {
-		  if (is != null)
-			try {
-				is.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 		  
+		} catch (IOException e) {
+			System.err.printf("讀取失敗 %s: %s", file.toExternalForm(), e.getMessage());
+			e.printStackTrace();
+		} finally {
+			if (is != null)
+				try {
+					is.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		}
 		return baos.toByteArray();
 	}
+
 	public static void saveCharsToFile(char[] comment, File file, String encoding) {
-		try (
-		   FileOutputStream fos = new FileOutputStream(file);
-		   OutputStreamWriter osw = new OutputStreamWriter(fos, encoding);
-		   PrintWriter pw = new PrintWriter(osw) ;		
-		) {
+		try (FileOutputStream fos = new FileOutputStream(file);
+				OutputStreamWriter osw = new OutputStreamWriter(fos, encoding);
+				PrintWriter pw = new PrintWriter(osw);) {
 			pw.println(new String(comment));
-		} catch(IOException ex){
+		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 	}
+
 	public static void saveBytesToFile(byte[] picture, File file) {
-		try (
-		   FileOutputStream fos = new FileOutputStream(file);
-		) {
+		try (FileOutputStream fos = new FileOutputStream(file);) {
 			fos.write(picture);
-		} catch(IOException ex){
+		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-		
+
 	}
-	public static void initPlace(String filename, String encoding){
+
+	public static void initUserInfo(String filename, String encoding) {
 		IMemberDAO dao = new MemberHibernateDAO();
-		try (
-			FileInputStream fis = new FileInputStream(filename);
-			InputStreamReader in = new InputStreamReader(fis, encoding);
-			BufferedReader br = new BufferedReader(in);
-		) {
-			
+		try (FileInputStream fis = new FileInputStream(filename);
+				InputStreamReader in = new InputStreamReader(fis, encoding);
+				BufferedReader br = new BufferedReader(in);) {
+
 			String line = "";
 			while ((line = br.readLine()) != null) {
-			  String[] sa = line.split(",");
-			  int userId = Integer.parseInt(sa[0].trim());
-			  String account = sa[1].trim();
-			  String password = sa[2].trim();
-			  String user_name = sa[3].trim();
-			  String phonenum =  sa[4].trim();
-			  String email  = sa[5].trim();
-			  String gender = sa[6].trim();
-			  String birthday = sa[7].trim();
-			  String file_url = sa[8].trim();
-			  byte[] portrait = DBUtils.urlToBytes(file_url);
-			  boolean check_tag = Boolean.parseBoolean(sa[9].trim());
-			  MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday, file_url, portrait, check_tag);
-			  dao.insert(mb);
+				String[] sa = line.split(",");
+				int userId = Integer.parseInt(sa[0].trim());
+				String account = sa[1].trim();
+				String password = sa[2].trim();
+				String user_name = sa[3].trim();
+				String phonenum = sa[4].trim();
+				String email = sa[5].trim();
+				String gender = sa[6].trim();
+				String birthday = sa[7].trim();
+				String file_url = sa[8].trim();
+				byte[] portrait = DBUtils.urlToBytes(file_url);
+				boolean check_tag = Boolean.parseBoolean(sa[9].trim());
+				MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday,
+						file_url, portrait, check_tag);
+				dao.insert(mb);
 
 			}
 			System.out.println("檔案" + filename + "新增完畢");
@@ -126,31 +146,29 @@ public class DBUtils {
 		}
 	}
 
-
-
-//	public static void displayData(MemberBean mb) {
-//		String saveFolderImg = "D:\\images1221";
-//		File dirImg = new File(saveFolderImg);
-//		if (!dirImg.exists())  dirImg.mkdirs();
-//		String filenameImg = fb.getFcname(); 
-//		File fileImg = new File(dirImg, filenameImg);
-//		
-//		
-//		String saveFolderTxt = "D:\\text1221";
-//		File dirTxt = new File(saveFolderTxt);
-//		if (!dirTxt.exists())  dirTxt.mkdirs();
-//		String filenameTxt = "Comment" + fb.getFcid() + ".txt"; 
-//		File fileTxt = new File(dirTxt, filenameTxt);
-//		
-//		System.out.println("Fcid :"  + fb.getFcid());
-//		System.out.println("Artid  :"  + fb.getArtid());
-//		System.out.println("Fcname     :"  + fb.getFcname());
-//		System.out.println("Fcmoney    :"  + fb.getFcmoney());
-//		System.out.println("Nowmoney  :"  + fb.getNowmoney());
-//		System.out.println("Createtime:"  + fb.getCreatetime());
-//		System.out.println("Starttime:"  + fb.getStarttime());
-//		System.out.println("Endtime     :"  + fb.getEndtime());
-//		System.out.println("Updatetime :"  + fb.getUpdatetime());
-//		saveCharsToFile(fb.getFcintroduction(), fileTxt, "BIG5");
-//	}
+	// public static void displayData(MemberBean mb) {
+	// String saveFolderImg = "D:\\images1221";
+	// File dirImg = new File(saveFolderImg);
+	// if (!dirImg.exists()) dirImg.mkdirs();
+	// String filenameImg = fb.getFcname();
+	// File fileImg = new File(dirImg, filenameImg);
+	//
+	//
+	// String saveFolderTxt = "D:\\text1221";
+	// File dirTxt = new File(saveFolderTxt);
+	// if (!dirTxt.exists()) dirTxt.mkdirs();
+	// String filenameTxt = "Comment" + fb.getFcid() + ".txt";
+	// File fileTxt = new File(dirTxt, filenameTxt);
+	//
+	// System.out.println("Fcid :" + fb.getFcid());
+	// System.out.println("Artid :" + fb.getArtid());
+	// System.out.println("Fcname :" + fb.getFcname());
+	// System.out.println("Fcmoney :" + fb.getFcmoney());
+	// System.out.println("Nowmoney :" + fb.getNowmoney());
+	// System.out.println("Createtime:" + fb.getCreatetime());
+	// System.out.println("Starttime:" + fb.getStarttime());
+	// System.out.println("Endtime :" + fb.getEndtime());
+	// System.out.println("Updatetime :" + fb.getUpdatetime());
+	// saveCharsToFile(fb.getFcintroduction(), fileTxt, "BIG5");
+	// }
 }
