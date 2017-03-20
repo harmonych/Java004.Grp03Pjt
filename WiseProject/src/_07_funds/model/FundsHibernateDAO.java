@@ -1,4 +1,4 @@
-package _08_product.model;
+package _07_funds.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.persistence.TypedQuery;
 import javax.sql.DataSource;
 
@@ -16,21 +17,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import _08_product.util.HibernateUtil;
+import _00_init.SystemUtil;
+import _07_funds.util.HibernateUtil;
 
 
 
 
+public class FundsHibernateDAO implements IFundsDAO {
 
-
-public class ProductHibernateDAO implements IProductDAO {
-
-	public int getProId() {
-		return proid;
+	public int getFcId() {
+		return fcid;
 	}
 
-	public void setProId(int proid) {
-		this.proid = proid;
+	public void setFcId(int fcid) {
+		this.fcid = fcid;
 	}
 
 //	public FundsHibernateDAO() {
@@ -43,7 +43,7 @@ public class ProductHibernateDAO implements IProductDAO {
 //	}
 	
 	@Override
-	public int insert(ProductBean pb) {
+	public int insert(FundsBean pb) {
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -65,7 +65,7 @@ public class ProductHibernateDAO implements IProductDAO {
 	}
 
 	@Override
-	public int update(ProductBean pb) {
+	public int update(FundsBean pb) {
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -90,7 +90,7 @@ public class ProductHibernateDAO implements IProductDAO {
 	}
 
 	@Override
-	public int delete(ProductBean pb) {
+	public int delete(FundsBean pb) {
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -113,8 +113,8 @@ public class ProductHibernateDAO implements IProductDAO {
 
 	@Override
 	public int delete(int key) {
-		ProductBean pb = new ProductBean();
-		pb.setProid(key);
+		FundsBean pb = new FundsBean();
+		pb.setFcid(key);
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -136,14 +136,14 @@ public class ProductHibernateDAO implements IProductDAO {
 	}
 
 	@Override
-	public ProductBean findByPrimaryKey(int key) {
-		ProductBean fb = null;
+	public FundsBean findByPrimaryKey(int key) {
+		FundsBean fb = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			fb=session.get(ProductBean.class,key);
+			fb=session.get(FundsBean.class,key);
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -157,14 +157,14 @@ public class ProductHibernateDAO implements IProductDAO {
 	}
 
 	@Override
-	public List<ProductBean> getAllProductJSON() {
-		List<ProductBean> list =new ArrayList<>();
+	public List<FundsBean> getAllFundsJSON() {
+		List<FundsBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			TypedQuery<ProductBean> query=session.createQuery("from ProductBean");
+			TypedQuery<FundsBean> query=session.createQuery("from FundsBean");
 			list = query.getResultList();
 			//list =session.createQuery("from FundsBean").getResultList();
 			Hibernate.initialize(list);
@@ -180,14 +180,14 @@ public class ProductHibernateDAO implements IProductDAO {
 		return list;
 	}
 	@Override
-	public List<ProductBean> getAllProductJSONtag() {
-		List<ProductBean> list =new ArrayList<>();
+	public List<FundsBean> getAllFundsJSONtag() {
+		List<FundsBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			TypedQuery<ProductBean> query=session.createQuery("select tag from ProductBean");
+			TypedQuery<FundsBean> query=session.createQuery("select hastag from FundsBean ");
 			list = query.getResultList();
 			//list =session.createQuery("from FundsBean").getResultList();
 			Hibernate.initialize(list);
@@ -202,8 +202,10 @@ public class ProductHibernateDAO implements IProductDAO {
 		}
 		return list;
 	}
+	
+	
 	DataSource ds;
-	int proid;
+	int fcid;
 
 	
 	

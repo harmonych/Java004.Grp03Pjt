@@ -19,4 +19,6 @@ public interface IProductDAO {
 	ProductBean findByPrimaryKey(int key);
 
 	List<ProductBean> getAllProductJSON();
+
+	List<ProductBean> getAllProductJSONtag();
 }

@@ -1,4 +1,4 @@
-package _08_product.util;
+package _07_funds.util;
 
 import java.io.BufferedReader;
 import java.io.CharArrayWriter;
@@ -9,10 +9,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import _08_product.model.IProductDAO;
-import _08_product.model.ProductBean;
-import _08_product.model.ProductHibernateDAO;
+import _07_funds.model.FundsBean;
+import _07_funds.model.FundsHibernateDAO;
+import _07_funds.model.IFundsDAO;
 
 
 
@@ -66,7 +69,7 @@ public class DBUtils {
 		
 	}
 	public static void initPlace(String filename, String encoding){
-		IProductDAO dao = new ProductHibernateDAO();
+		IFundsDAO dao = new FundsHibernateDAO();
 		try (
 			FileInputStream fis = new FileInputStream(filename);
 			InputStreamReader in = new InputStreamReader(fis, encoding);
@@ -76,19 +79,33 @@ public class DBUtils {
 			String line = "";
 			while ((line = br.readLine()) != null) {
 			  String[] sa = line.split(",");
-			  			  
-			  int proid = Integer.parseInt(sa[0].trim());
-			  String proname  = sa[1].trim();
-			  int price = Integer.parseInt(sa[2].trim());
-		      int amount = Integer.parseInt(sa[3].trim());
-			  String saletime = sa[4].trim();
-			  String prointroduction =sa[5].trim();
-			  //char[] prointroduction = DBUtils.fileToChars("text/" + sa[5].trim(), encoding);
-			  int artid = Integer.parseInt(sa[6].trim());
-			  String hashtag = sa[7].trim();
+			  int fcid = Integer.parseInt(sa[0].trim());
+			  int artid  = Integer.parseInt(sa[1].trim());
+			  String fcname = sa[2].trim();
+			  int fcmoney = Integer.parseInt(sa[3].trim());
+			  int nowmoney = Integer.parseInt(sa[4].trim());
+			  String createtime = sa[5].trim();
+			  String starttime = sa[6].trim();
+			  String endtime =  sa[7].trim();
+			  String updatetime  =sa[8].trim();
 			  
-			  ProductBean pb = new ProductBean(proid,proname,price,amount,saletime,prointroduction,artid,hashtag);
-			  dao.insert(pb);
+			  
+//			  SimpleDateFormat simple = new SimpleDateFormat();
+//			  simple.applyPattern("yyyy/MM/dd");
+//			  try{
+//			  Date createtime = simple.parse(sa[5].trim());
+//			  Date starttime = simple.parse(sa[6].trim());
+//			  Date endtime =  simple.parse(sa[7].trim());
+//			  Date updatetime  =  simple.parse(sa[8].trim());
+//			  }catch(ParseException e){
+//				  e.printStackTrace();
+//			  }
+			  String fcintroduction = sa[9].trim();
+			  //char[] fcintroduction = DBUtils.fileToChars("text/" + sa[9].trim(), encoding);
+			  String hashtag = sa[10].trim();
+			  FundsBean fb = new FundsBean(fcid,artid,fcname,fcmoney,nowmoney,createtime,starttime,endtime,updatetime,fcintroduction,hashtag);
+			  
+			  dao.insert(fb);
 
 			}
 			System.out.println("檔案" + filename + "新增完畢");
@@ -98,29 +115,17 @@ public class DBUtils {
 		}
 	}
 
-//	public static void displayData(ProductBean pb) {
-//		String saveFolderImg = "D:\\images1221";
-//		File dirImg = new File(saveFolderImg);
-//		if (!dirImg.exists())  dirImg.mkdirs();
-//		String filenameImg = pb.getFcname(); 
-//		File fileImg = new File(dirImg, filenameImg);
-//		
-//		
-//		String saveFolderTxt = "D:\\text1221";
-//		File dirTxt = new File(saveFolderTxt);
-//		if (!dirTxt.exists())  dirTxt.mkdirs();
-//		String filenameTxt = "Comment" + fb.getFcid() + ".txt"; 
-//		File fileTxt = new File(dirTxt, filenameTxt);
-//		
-//		System.out.println("Fcid :"  + pb.getFcid());
-//		System.out.println("Artid  :"  + pb.getArtid());
-//		System.out.println("Fcname     :"  + pb.getFcname());
-//		System.out.println("Fcmoney    :"  + pb.getFcmoney());
-//		System.out.println("Nowmoney  :"  + pb.getNowmoney());
-//		System.out.println("Createtime:"  + pb.getCreatetime());
-//		System.out.println("Starttime:"  + pb.getStarttime());
-//		System.out.println("Endtime     :"  + pb.getEndtime());
-//		System.out.println("Updatetime :"  + pb.getUpdatetime());
-//		saveCharsToFile(fb.getFcintroduction(), fileTxt, "BIG5");
-//	}
+	public static void displayData(FundsBean fb) {
+		
+		System.out.println("Fcid :"  + fb.getFcid());
+		System.out.println("Artid  :"  + fb.getArtid());
+		System.out.println("Fcname     :"  + fb.getFcname());
+		System.out.println("Fcmoney    :"  + fb.getFcmoney());
+		System.out.println("Nowmoney  :"  + fb.getNowmoney());
+		System.out.println("Createtime:"  + fb.getCreatetime());
+		System.out.println("Starttime:"  + fb.getStarttime());
+		System.out.println("Endtime     :"  + fb.getEndtime());
+		System.out.println("Updatetime :"  + fb.getUpdatetime());
+		System.out.println("introduction :"+fb.getFcintroduction());
+	}
 }
