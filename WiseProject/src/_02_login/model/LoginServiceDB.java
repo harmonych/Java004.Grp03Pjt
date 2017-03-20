@@ -32,7 +32,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 			pStmt.setString(1,  user);
 			pStmt.setString(2,  password);
 			rs = pStmt.executeQuery();
-			
+					
 			if (rs.next()) {
 				String account = rs.getString("account").trim(); // 必須確定
 																// rs.getString("memberID")
@@ -44,9 +44,9 @@ public class LoginServiceDB implements LoginServiceDAO {
 				String email = rs.getString("email");
 				String gender = rs.getString("gender");
 				String birthday = rs.getString("birthday");
-				mb = new MemberBean(account, pswd, user_name, phonenum, email, gender,
-						birthday);
-				
+				boolean check_tag = rs.getBoolean("check_tag");
+				String file_name = rs.getString("file_name");
+				mb = new MemberBean(account, pswd, user_name, phonenum, email, gender, birthday, check_tag, file_name);
 			}
 		} finally {
 			if (rs != null) {
@@ -79,7 +79,9 @@ public class LoginServiceDB implements LoginServiceDAO {
 				String email = rs.getString("email");
 				String gender = rs.getString("gender");
 				String birthday = rs.getString("birthday");
-				MemberBean mb = new MemberBean(account, pswd, user_name, phonenum, email, gender,birthday);
+				boolean check_tag = rs.getBoolean("check_tag");
+				String file_name = rs.getString("file_name");
+				MemberBean mb = new MemberBean(account, pswd, user_name, phonenum, email, gender,birthday, check_tag, file_name);
 				memberList.add(mb);
 			}
 		} finally {

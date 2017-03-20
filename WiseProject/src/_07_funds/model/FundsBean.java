@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="fundscollection")
+@Table(name="funds_collection")
 public class FundsBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int fcid;
