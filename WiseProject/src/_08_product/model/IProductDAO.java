@@ -20,5 +20,5 @@ public interface IProductDAO {
 
 	List<ProductBean> getAllProductJSON();
 
-	List<ProductBean> getAllProductJSONtag();
+	List<ProductBean> getAllProductJSONtag(String search);
 }

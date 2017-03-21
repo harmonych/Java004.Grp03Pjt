@@ -170,6 +170,31 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		}
 		return list;
 	}
+	@Override
+	public List<ArtistBean> getAllArtisttag(String search) {
+		List<ArtistBean> list =new ArrayList<>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		String hql = " from FundsBean where (art_namelike "+search+" or hashtag like "+search+")";
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			TypedQuery<ArtistBean> query=session.createQuery(hql);
+			list = query.getResultList();
+			//list =session.createQuery("from MemberBean").getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return list;
+	}
+	
 	DataSource ds;
 	int art_id;
 

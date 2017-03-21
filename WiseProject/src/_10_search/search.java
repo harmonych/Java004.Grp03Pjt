@@ -16,15 +16,21 @@ import javax.servlet.http.Part;
 import com.google.gson.Gson;
 
 import _00_init.GlobalService;
+import _01_register.model.ArtistBean;
+import _01_register.model.ArtistHibernateDAO;
+import _01_register.model.IArtistDAO;
 import _07_funds.model.FundsBean;
 import _07_funds.model.FundsHibernateDAO;
 import _07_funds.model.IFundsDAO;
+import _08_product.model.IProductDAO;
+import _08_product.model.ProductBean;
+import _08_product.model.ProductHibernateDAO;
 import _09_sponsor.model.ISponsorDAO;
 import _09_sponsor.model.SponsorBean;
 import _09_sponsor.model.SponsorHBNDAO;
 
 @WebServlet("/_10_search/search.json")
-public class search extends HttpServlet {
+public class Search extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -55,45 +61,48 @@ public class search extends HttpServlet {
 
 					if (checkboxf != (null)) {
 						try {
-							IFundsDAO jdbc = new FundsHibernateDAO();
-							List<FundsBean> list = jdbc.getAllFundsJSONtag();
-							String categoriesJson = new Gson().toJson(list);
-							out.write(categoriesJson);
+							IFundsDAO dao = new FundsHibernateDAO();
+							List<FundsBean> list = dao.getAllFundsJSONtag(hashtag);
+							String fJson = new Gson().toJson(list);
+													
+							out.write(fJson);
 							out.flush();
 						} catch (Exception e) {
 							throw new ServletException("DB error", e);
 						} finally {
-							out.close();
+							//out.close();
 						}
 					}
 					
 					if (checkboxa != (null)) {
 						try {
-							IFundsDAO jdbc = new FundsHibernateDAO();
-							List<FundsBean> list = jdbc.getAllFundsJSONtag();
-							String categoriesJson = new Gson().toJson(list);
-							out.write(categoriesJson);
+							IArtistDAO dao = new ArtistHibernateDAO();
+							List<ArtistBean> list = dao.getAllArtisttag(hashtag);
+							String aJson = new Gson().toJson(list);
+							out.write(aJson);
 							out.flush();
 						} catch (Exception e) {
 							throw new ServletException("DB error", e);
 						} finally {
-							out.close();
+							//out.close();
 						}
 					}
 					
 					if (checkboxp != (null)) {
 						try {
-							IFundsDAO jdbc = new FundsHibernateDAO();
-							List<FundsBean> list = jdbc.getAllFundsJSONtag();
-							String categoriesJson = new Gson().toJson(list);
-							out.write(categoriesJson);
+							IProductDAO dao = new ProductHibernateDAO();
+							List<ProductBean> list = dao.getAllProductJSONtag(hashtag);
+							String pJson = new Gson().toJson(list);
+							out.write(pJson);
 							out.flush();
 						} catch (Exception e) {
 							throw new ServletException("DB error", e);
 						} finally {
-							out.close();
+							//out.close();
 						}
 					}
+					out.flush();
+					out.close();
 				}
 			}
 		}

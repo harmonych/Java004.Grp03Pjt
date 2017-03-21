@@ -15,5 +15,7 @@ public interface IArtistDAO {
 	ArtistBean findByPrimaryKey(int key);
 
 	List<ArtistBean> getAllArtist();
+	
+	List<ArtistBean> getAllArtisttag(String search);
 
 }
