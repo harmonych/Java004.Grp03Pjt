@@ -61,6 +61,7 @@ public class FundsBean implements Serializable {
 		
 	}
 	@Id
+	@Column(name = "fc_id", unique = true, nullable = false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getFcid() {
 		return fcid;
@@ -68,55 +69,66 @@ public class FundsBean implements Serializable {
 	public void setFcid(int fcid) {
 		this.fcid = fcid;
 	}
+	@Column(name = "art_id")
 	public int getArtid() {
 		return artid;
 	}
 	public void setArtid(int artid) {
 		this.artid = artid;
 	}
+	@Column(name = "fc_name")
 	public String getFcname() {
 		return fcname;
 	}
 	public void setFcname(String fcname) {
 		this.fcname = fcname;
 	}
+	@Column(name = "fc_money")
 	public int getFcmoney() {
 		return fcmoney;
 	}
 	public void setFcmoney(int fcmoney) {
 		this.fcmoney = fcmoney;
 	}
+	@Column(name = "now_money")
 	public int getNowmoney() {
 		return nowmoney;
 	}
 	public void setNowmoney(int nowmoney) {
 		this.nowmoney = nowmoney;
 	}
+
+	@Column(name = "create_time")
 	public String getCreatetime() {
 		return createtime;
 	}
 	public void setCreatetime(String createtime) {
 		this.createtime = createtime;
 	}
+
+	@Column(name = "start_time")
 	public String getStarttime() {
 		return starttime;
 	}
 	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
+	@Column(name = "end_time")
 	public String getEndtime() {
 		return endtime;
 	}
 	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
+
+	@Column(name = "update_time")
 	public String getUpdatetime() {
 		return updatetime;
 	}
 	public void setUpdatetime(String updatetime) {
 		this.updatetime = updatetime;
 	}
-	@Column(columnDefinition="LongText")
+	@Column(name = "fc_introduction", columnDefinition="LongText")
 	public String getFcintroduction() {
 		return fcintroduction;
 	}

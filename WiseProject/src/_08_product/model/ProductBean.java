@@ -42,12 +42,15 @@ public class ProductBean implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column( name = "pro_id")
 	public int getProid() {
 		return proid;
 	}
 	public void setProid(int proid) {
 		this.proid = proid;
 	}
+
+	@Column(name = "pro_name")
 	public String getProname() {
 		return proname;
 	}
@@ -66,19 +69,23 @@ public class ProductBean implements Serializable {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+
+	@Column(name = "sale_time")
 	public String getSaletime() {
 		return saletime;
 	}
 	public void setSaletime(String saletime) {
 		this.saletime = saletime;
 	}
-	@Column(columnDefinition="LongText")
+	@Column(name = "pro_introduction", columnDefinition="LongText")
 	public String getProintroduction() {
 		return prointroduction;
 	}
 	public void setProintroduction(String prointroduction) {
 		this.prointroduction = prointroduction;
 	}
+
+	@Column(name = "art_id")
 	public int getArtid() {
 		return artid;
 	}
