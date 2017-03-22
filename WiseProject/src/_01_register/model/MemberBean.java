@@ -10,12 +10,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="userInfo")
+@Table(name="user_info")
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int user_id;
 	String account;
 	String password;
+	@OneToOne(mappedBy = "user_name")
 	String user_name;
 	String phonenum;
 	String email;

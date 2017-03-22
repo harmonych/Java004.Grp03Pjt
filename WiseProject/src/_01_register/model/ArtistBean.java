@@ -20,7 +20,7 @@ import org.hibernate.annotations.Parameter;
 public class ArtistBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int art_id;
-	@OneToOne(mappedBy = "User_name")
+	@OneToOne(mappedBy = "user_name")
 	private String user_name;
 	private String Introduction;
 	private String bank_account;
@@ -73,8 +73,8 @@ public class ArtistBean implements Serializable {
 	@Column(name = "art_id", unique = true, nullable = false)
 //	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@GeneratedValue(generator = "autoGen")
-	@GenericGenerator(name = "autoGen", strategy = "increment",
-	parameters = { @Parameter(name = "property", value = "artist") })
+	@GenericGenerator(name = "autoGen", strategy = "increment")
+//	parameters = { @Parameter(name = "property", value = "artist") })
 	public int getArt_id() {
 		return art_id;
 	}
