@@ -183,7 +183,7 @@ public class FundsHibernateDAO implements IFundsDAO {
 	public List<FundsBean> getAllFundsJSONtag(String search) {
 		List<FundsBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
-		String hql = "from FundsBean where (fc_name like "+search+" or hashtag like "+search+")";
+		String hql = "from FundsBean where (fc_name like \'%"+search+"%\' or hashtag like \'%"+search+"%\')";
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{

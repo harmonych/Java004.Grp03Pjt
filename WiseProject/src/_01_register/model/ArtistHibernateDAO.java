@@ -175,7 +175,7 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		List<ArtistBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-		String hql = " from FundsBean where (art_namelike "+search+" or hashtag like "+search+")";
+		String hql = " from FundsBean where (art_name like  \'%"+search+"%\' or hashtag like  \'%"+search+"%\')";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();

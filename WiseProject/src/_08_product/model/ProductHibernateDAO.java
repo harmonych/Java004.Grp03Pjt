@@ -184,7 +184,7 @@ public class ProductHibernateDAO implements IProductDAO {
 		List<ProductBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-		String hql =" from ProductBean where (pro_name like "+search+" or hashtag like "+search+")";
+		String hql =" from ProductBean where (pro_name like \'%"+search+"%\' or hashtag like \'%"+search+"%\')";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();

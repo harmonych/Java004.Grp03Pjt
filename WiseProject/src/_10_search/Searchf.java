@@ -30,7 +30,7 @@ import _09_sponsor.model.SponsorBean;
 import _09_sponsor.model.SponsorHBNDAO;
 
 @WebServlet("/_10_search/search.json")
-public class Search extends HttpServlet {
+public class Searchf extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -43,23 +43,19 @@ public class Search extends HttpServlet {
 														// request內所有的parts
 		GlobalService.exploreParts(parts, request);
 		String hashtag = "";
-		String checkboxf = "";
-		String checkboxa = "";
-		String checkboxp = "";
+		
 		if (parts != null) { // 如果這是一個上傳資料的表單
 			for (Part p : parts) {
 				String fldName = p.getName();
 				String value = request.getParameter(fldName);
-				checkboxf = request.getParameter("checkboxfund");
-				checkboxa = request.getParameter("checkboxart");
-				checkboxp = request.getParameter("checkboxproduct");
+				
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
 					if (fldName.equals("hashtag")) {
 						hashtag = value;
 					}
 
-					if (checkboxf != (null)) {
+				
 						try {
 							IFundsDAO dao = new FundsHibernateDAO();
 							List<FundsBean> list = dao.getAllFundsJSONtag(hashtag);
@@ -70,39 +66,10 @@ public class Search extends HttpServlet {
 						} catch (Exception e) {
 							throw new ServletException("DB error", e);
 						} finally {
-							//out.close();
+							out.close();
 						}
-					}
 					
-					if (checkboxa != (null)) {
-						try {
-							IArtistDAO dao = new ArtistHibernateDAO();
-							List<ArtistBean> list = dao.getAllArtisttag(hashtag);
-							String aJson = new Gson().toJson(list);
-							out.write(aJson);
-							out.flush();
-						} catch (Exception e) {
-							throw new ServletException("DB error", e);
-						} finally {
-							//out.close();
-						}
-					}
 					
-					if (checkboxp != (null)) {
-						try {
-							IProductDAO dao = new ProductHibernateDAO();
-							List<ProductBean> list = dao.getAllProductJSONtag(hashtag);
-							String pJson = new Gson().toJson(list);
-							out.write(pJson);
-							out.flush();
-						} catch (Exception e) {
-							throw new ServletException("DB error", e);
-						} finally {
-							//out.close();
-						}
-					}
-					out.flush();
-					out.close();
 				}
 			}
 		}
