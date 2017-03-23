@@ -133,43 +133,56 @@ function setFocusToUserId(){
      </TR>
      <TR><TD colspan="3">
   <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='register.do' />"  id="register.do" >
-      <label class="fontSize" >會員帳號：</label>
-      <input type="text" name="account" value="${param.account}" class="fieldWidth" style="width: 200px;">
-      <!-- 
-         注意value屬性的內容以及顯示錯誤訊息的寫法
-      -->
-      <font size="-1" color="#FF0000">${MsgMap.errorAccountEmpty}${MsgMap.errorAccountDup}</font>
+      <Font color="red" size='2' face="verdana" >*為必填欄位</Font><br/>
+      <label class="fontSize" >*會員帳號：</label>
+      <input type="text" name="account" value="${param.account}" class="fieldWidth" maxlength="20" style="width: 200px" >
+  	  <font size="-1" color="#FF0000">${MsgMap.errorAccount}</font>
       <br/>
-      <label class="fontSize" >會員密碼：</label>
-      <input type="password" name="password" value="${param.password}" class="fieldWidth" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorPasswordEmpty}</font>      
-      <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　會員帳號長度最長20字</Font><br/>
       
-      <label class="fontSize" >密碼確認：</label>
-      <input type="password" name="password2" value="${param.password2}"   class="fieldWidth" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorPassword2Empty}</font>            
+      <label class="fontSize" >*會員密碼：</label>
+      <input type="password" name="password" value="${param.password}" class="fieldWidth" maxlength="16" style="width: 200px;">
+      <font color="red" size="-1">${MsgMap.errorPassword}</font>      
       <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　密碼長度須介於6-16字，並包含英文與數字</Font><br/>
       
-      <label class="fontSize" >會員名稱：</label>
-      <input type="text" name="user_name" value="${param.user_name}"  class="fieldWidth" style="width: 200px;">
+      <label class="fontSize" >*密碼確認：</label>
+      <input type="password" name="password2" value="${param.password2}"   class="fieldWidth" maxlength="16" style="width: 200px;">
+      <font color="red" size="-1">${MsgMap.errorPassword2}</font>            
+      <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　必須與會員密碼相同</Font><br/>
+      
+      <label class="fontSize" >*會員名稱：</label>
+      <input type="text" name="user_name" value="${param.user_name}"  class="fieldWidth" maxlength="20" style="width: 200px;">
       <font color="red" size="-1">${MsgMap.errorUserName}</font>
       <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　會員名稱長度最長20字</Font><br/>
       
-      <label class="fontSize" >手機號碼：</label>
-      <input type="text"  name="phonenum" value="${param.phonenum}"    class="fieldWidth" style="width: 200px;">
+      <label class="fontSize" >*手機號碼：</label>
+      <input type="text"  name="phonenum" value="${param.phonenum}"    class="fieldWidth" maxlength="10" style="width: 200px;">
       <font color="red" size="-1">${MsgMap.errorPhonenum}</font>
       <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　須輸入台灣手機號碼格式，ex:09XXXXXXXX</Font><br/>
       
-      <label class="fontSize" >會員信箱：</label>
-          <input type="text"  name="email" value="${param.email}"   class="fieldWidth" style="width: 200px;">
+      <label class="fontSize" >*會員信箱：</label>
+          <input type="text"  name="email" value="${param.email}"   class="fieldWidth" maxlength="50" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorEmail}</font>
       <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　須輸入正規Email格式，ex:123@xxx.xxx</Font><br/>
+      
       
       
       <label class="fontSize" >會員性別：</label>
       <select name="gender" class="fieldWidth" style="width: 60px;">
-　			<option value="1">男</option>
-　			<option value="2">女</option>
+　			<option value="1"></option>
+			<option value="2">男</option>
+　			<option value="3">女</option>
 	  </select>
 	   <br/>
       
@@ -180,7 +193,7 @@ function setFocusToUserId(){
       
       
       <label class="fontSize" >大頭貼照：</label>
-      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="portrait"><BR>
+      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="portrait"><BR>
       <br/>        	
       
       <label >註冊為創作者</label>	
@@ -188,43 +201,50 @@ function setFocusToUserId(){
       <br/>	
       
       <label class="fontSize" >作者簡介：</label>
-      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth"></textarea><br>
+      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth" maxlength="500"></textarea><br>
       <font color="red" size="-1">${MsgMap.errorIntroduction}</font>
       <br/>
 
-      <label class="fontSize" >簡介圖片：</label>
-      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="intro_pic"><BR>
+      <label class="fontSize" >*簡介圖片：</label>
+      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="intro_pic">
+      <font color="red" size="-1">${MsgMap.errorIntroPic}</font>
       <br/>
       
       <label class="fontSize" >銀行帳戶：</label>
-          <input type="text"  name="bank_account" value="${param.bank_account}"   class="fieldWidth" style="width: 200px;">
+          <input type="text"  name="bank_account" value="${param.bank_account}"   class="fieldWidth" maxlength="20" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorBankAccount}</font>
       <br/>
       
-      <label class="fontSize" >身分證字號：</label>
-          <input type="text"  name="ID" value="${param.ID}"   class="fieldWidth" style="width: 200px;">
+      <label class="fontSize" >*身分證字號：</label>
+          <input type="text"  name="ID" value="${param.ID}"   class="fieldWidth" maxlength="10" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorID}</font>
       <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　須輸入合法台灣身分證字號</Font><br/>
       
-      <label class="fontSize" >真實姓名：</label>
-          <input type="text"  name="art_name" value="${param.art_name}"   class="fieldWidth" style="width: 200px;">
+      <label class="fontSize" >*真實姓名：</label>
+          <input type="text"  name="art_name" value="${param.art_name}"   class="fieldWidth" maxlength="20" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorArtName}</font>
       <br/>
       
-      <label class="fontSize" >通訊地址：</label>
-          <input type="text"  name="art_address" value="${param.art_address}"   class="fieldWidth" style="width: 200px;">
+      <label class="fontSize" >*通訊地址：</label>
+          <input type="text"  name="art_address" value="${param.art_address}"   class="fieldWidth" maxlength="100" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorArtAddress}</font>
       <br/>
       
-      <label class="fontSize" >聯絡電話：</label>
-          <input type="text"  name="art_num" value="${param.art_num}"   class="fieldWidth" style="width: 200px;">
+      <label class="fontSize" >*聯絡電話：</label>
+          <input type="text"  name="art_num" value="${param.art_num}"   class="fieldWidth" maxlength="10" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorArtNum}</font>
       <br/>
+      <label></label>
+      <Font color="black" size='1' face="verdana">　須輸入台灣手機號碼格式，ex:09XXXXXXXX</Font><br/>
       
       <label class="fontSize" >分類標籤：</label>
-          <input type="text"  name="hashtag" value="${param.hashtag}"   class="fieldWidth" style="width: 200px;">
+          <input type="text"  name="hashtag" value="${param.hashtag}"   class="fieldWidth" maxlength="50" style="width: 200px;">
           <font color="red" size="-1">${MsgMap.errorHashTag}</font>
       <br/>
+       <label></label>
+      <Font color="black" size='1' face="verdana">　用於分類創作作品，每項標籤請以#開頭，ex: #動物</Font><br/><br/>
            
         	
       <div id="btnArea" align="center">

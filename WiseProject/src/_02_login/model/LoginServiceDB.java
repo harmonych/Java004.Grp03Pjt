@@ -20,7 +20,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 		}
 	}
 	public MemberBean checkPassword(String user, String password) throws SQLException {
-		String sql = "SELECT * From userInfo where account = ? and password = ? ";
+		String sql = "SELECT * From user_info where account = ? and password = ? ";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -60,7 +60,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 	}
 	public void populateMemberList() throws SQLException {
 		// 由Database讀取會員資料
-		String sql = "SELECT * From userInfo";
+		String sql = "SELECT * From user_info";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -98,10 +98,10 @@ public class LoginServiceDB implements LoginServiceDAO {
 		// 檢查userId與password是否正確
 		for (MemberBean mb : memberList) {
 			if (mb.getAccount().trim().equals(account.trim())) {
-				String encrypedString = GlobalService.encryptString(password.trim());
-				String pswd = GlobalService.getMD5Endocing(encrypedString);
+//				String encrypedString = GlobalService.encryptString(password.trim());
+//				String pswd = GlobalService.getMD5Endocing(encrypedString);
 				String mbpswd = mb.getPassword().trim();
-				if (mbpswd.equals(pswd)) {
+				if (mbpswd.equals(password)) {
 					return mb;
 				}
 			}

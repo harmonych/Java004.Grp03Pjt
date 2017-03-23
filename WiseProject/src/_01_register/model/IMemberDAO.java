@@ -9,7 +9,7 @@ public interface IMemberDAO {
 	
 	public void setUser_id(int user_id);
 	
-	public boolean idExists(String id) throws IOException;
+	public boolean checkExists(String id) throws IOException;
 	
 	int insert(MemberBean mb);
 
