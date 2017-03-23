@@ -17,28 +17,45 @@ public class ProductBean implements Serializable {
 	private int proid;
 	private String proname;
 	private int price;
-	private int amount;
+	
 	private String saletime;
+	private int proinv;
+	
 	private String prointroduction;
 	private int artid;
 	private String hashtag;
 	
-	public ProductBean(int proid, String proname, int price, int amount, String saletime,String prointroduction,
+	public ProductBean(int proid, String proname, int price, String saletime,int proinv,String prointroduction,
 			int artid, String hashtag) {
 		super();
 		this.proid = proid;
 		this.proname = proname;
 		this.price = price;
-		this.amount = amount;
+		this.proinv=proinv;
 		this.saletime = saletime;
 		this.prointroduction = prointroduction;
 		this.artid = artid;
 		this.hashtag = hashtag;
 	}
 	
+	
+	
 	public ProductBean() {
 		super();
 	}
+
+	public ProductBean(String proname, int price, String saletime, int proinv, String prointroduction, int artid,
+			String hashtag) {
+		this.proname = proname;
+		this.price = price;
+		this.proinv=proinv;
+		this.saletime = saletime;
+		this.prointroduction = prointroduction;
+		this.artid = artid;
+		this.hashtag = hashtag;
+	}
+
+
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -63,12 +80,7 @@ public class ProductBean implements Serializable {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
+	
 
 	@Column(name = "sale_time")
 	public String getSaletime() {
@@ -77,7 +89,16 @@ public class ProductBean implements Serializable {
 	public void setSaletime(String saletime) {
 		this.saletime = saletime;
 	}
-	@Column(name = "pro_introduction", columnDefinition="LongText")
+	@Column(name = "pro_inv")
+	public int getProinv() {
+		return proinv;
+	}
+
+	public void setProinv(int proinv) {
+		this.proinv = proinv;
+	}
+	
+	@Column(name = "pro_intro", columnDefinition="LongText")
 	public String getProintroduction() {
 		return prointroduction;
 	}
