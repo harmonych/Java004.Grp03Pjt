@@ -13,6 +13,10 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import _01_register.model.ArtistBean;
+import _01_register.model.ArtistHibernateDAO;
+import _01_register.model.IArtistDAO;
 import _01_register.model.IMemberDAO;
 import _01_register.model.MemberBean;
 import _01_register.model.MemberHibernateDAO;
@@ -116,6 +120,7 @@ public class DBUtils {
 
 	public static void initUserInfo(String filename, String encoding) {
 		IMemberDAO dao = new MemberHibernateDAO();
+		IArtistDAO adao = new ArtistHibernateDAO();
 		try (FileInputStream fis = new FileInputStream(filename);
 				InputStreamReader in = new InputStreamReader(fis, encoding);
 				BufferedReader br = new BufferedReader(in);) {
@@ -134,6 +139,19 @@ public class DBUtils {
 				String file_url = sa[8].trim();
 				byte[] portrait = DBUtils.urlToBytes(file_url);
 				boolean check_tag = Boolean.parseBoolean(sa[9].trim());
+				if (check_tag){
+					String intro = sa[10].trim();
+					String picurl = sa[11].trim();
+					byte[] intro_pic = DBUtils.urlToBytes(picurl);
+					String bank_account = sa[12].trim();
+					String ID = sa[13].trim();
+					String real_name = sa[14].trim();
+					String address = sa[15].trim();
+					String altphno =sa[16].trim();
+					String hashtag = sa[17].trim();
+					ArtistBean ab = new ArtistBean(user_name, intro, bank_account, ID, real_name, address, altphno, hashtag, intro_pic);
+					adao.insert(ab);
+				}
 				MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday,
 						file_url, portrait, check_tag);
 				dao.insert(mb);

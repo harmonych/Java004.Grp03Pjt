@@ -71,7 +71,7 @@ public class MemberBean implements Serializable {
 	public void setUser_id(int user_id) {
 	this.user_id = user_id;
 	}
-
+	@Column(nullable = false)
 	public String getAccount() {
 		return account;
 	}
@@ -79,6 +79,7 @@ public class MemberBean implements Serializable {
 		this.account = account;
 	}
 
+	@Column(nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -86,7 +87,8 @@ public class MemberBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	@Column(nullable = false)
 	public String getUser_name() {
 		return user_name;
 	}
@@ -95,6 +97,7 @@ public class MemberBean implements Serializable {
 		this.user_name = user_name;
 	}
 
+	@Column(nullable = false)
 	public String getPhonenum() {
 		return phonenum;
 	}
@@ -102,7 +105,8 @@ public class MemberBean implements Serializable {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	
+
+	@Column(nullable = false)
 	public String getEmail() {
 		return email;
 	}
@@ -142,7 +146,7 @@ public class MemberBean implements Serializable {
 		this.file_name = file_name;
 	}
 	//判斷是否為創作者身分	
-	@Column(name = "check_tag", columnDefinition="TINYINT")
+	@Column(name = "check_tag", columnDefinition="TINYINT", nullable = false)
 	public boolean isCheck_tag() {
 		return check_tag;
 	}
@@ -150,14 +154,6 @@ public class MemberBean implements Serializable {
 	public void setCheck_tag(boolean check_tag) {
 		this.check_tag = check_tag;
 	}
-	//	public Blob getHead_pic() {
-//		return head_pic;
-//	}
-//
-//	public void setHead_pic(Blob head_pic) {
-//		this.head_pic = head_pic;
-//	}
-
 
 	public String toString() {
 		return "userid=" + account + "   password="+password;

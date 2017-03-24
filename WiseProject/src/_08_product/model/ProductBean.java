@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -21,7 +23,9 @@ public class ProductBean implements Serializable {
 	private String saletime;
 	private int proinv;
 	
-	private String prointroduction;
+	private String prointroduction;	
+	@OneToOne(mappedBy = "art_id")
+	@JoinColumn(name = "art_id", nullable = false)
 	private int artid;
 	private String hashtag;
 	
@@ -67,13 +71,14 @@ public class ProductBean implements Serializable {
 		this.proid = proid;
 	}
 
-	@Column(name = "pro_name")
+	@Column(name = "pro_name", nullable = false)
 	public String getProname() {
 		return proname;
 	}
 	public void setProname(String proname) {
 		this.proname = proname;
 	}
+	@Column(nullable = false)
 	public int getPrice() {
 		return price;
 	}
@@ -82,14 +87,14 @@ public class ProductBean implements Serializable {
 	}
 	
 
-	@Column(name = "sale_time")
+	@Column(name = "sale_time", nullable = false)
 	public String getSaletime() {
 		return saletime;
 	}
 	public void setSaletime(String saletime) {
 		this.saletime = saletime;
 	}
-	@Column(name = "pro_inv")
+	@Column(name = "pro_inv", nullable = false)
 	public int getProinv() {
 		return proinv;
 	}
@@ -106,7 +111,6 @@ public class ProductBean implements Serializable {
 		this.prointroduction = prointroduction;
 	}
 
-	@Column(name = "art_id")
 	public int getArtid() {
 		return artid;
 	}

@@ -8,10 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -19,8 +21,10 @@ import org.hibernate.annotations.Parameter;
 @Table(name="artist")
 public class ArtistBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@OneToOne(mappedBy = "artid")
 	int art_id;
 	@OneToOne(mappedBy = "user_name")
+	@PrimaryKeyJoinColumn
 	private String user_name;
 	private String Introduction;
 	private String bank_account;
@@ -48,7 +52,6 @@ public class ArtistBean implements Serializable {
 		this.hashtag = hashtag;
 		this.file_name = file_name;
 	}
-		
 	public ArtistBean(String user_name, String Introduction, String bank_account, String ID, String art_name,
 			String art_address, String art_num, String hashtag, String file_name) {
 		super();
@@ -60,9 +63,21 @@ public class ArtistBean implements Serializable {
 		this.art_address = art_address;
 		this.art_num = art_num;
 		this.hashtag = hashtag;
-		this.file_name = file_name;
 	}
-
+	//init使用的建構子
+	public ArtistBean(String user_name, String introduction, String bank_account, String iD, String art_name,
+			String art_address, String art_num, String hashtag, byte[] intro_pic) {
+		super();
+		this.user_name = user_name;
+		this.Introduction = introduction;
+		this.bank_account = bank_account;
+		this.ID = iD;
+		this.art_name = art_name;
+		this.art_address = art_address;
+		this.art_num = art_num;
+		this.hashtag = hashtag;
+		this.intro_pic = intro_pic;
+	}
 
 	public ArtistBean() {
 	}	
@@ -74,6 +89,7 @@ public class ArtistBean implements Serializable {
 //	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@GeneratedValue(generator = "autoGen")
 	@GenericGenerator(name = "autoGen", strategy = "increment")
+	@PrimaryKeyJoinColumn
 //	parameters = { @Parameter(name = "property", value = "artist") })
 	public int getArt_id() {
 		return art_id;
@@ -98,7 +114,7 @@ public class ArtistBean implements Serializable {
 	public void setBank_account(String bank_account) {
 		this.bank_account = bank_account;
 	}
-
+	@Column(nullable = false)
 	public String getID() {
 		return ID;
 	}
@@ -114,7 +130,7 @@ public class ArtistBean implements Serializable {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-
+	@Column(nullable = false)
 	public String getArt_name() {
 		return art_name;
 	}
@@ -123,6 +139,7 @@ public class ArtistBean implements Serializable {
 		this.art_name = art_name;
 	}
 
+	@Column(nullable = false)
 	public String getArt_address() {
 		return art_address;
 	}
@@ -131,6 +148,7 @@ public class ArtistBean implements Serializable {
 		this.art_address = art_address;
 	}
 
+	@Column(nullable = false)
 	public String getArt_num() {
 		return art_num;
 	}
@@ -146,7 +164,7 @@ public class ArtistBean implements Serializable {
 	public void setHashtag(String hashtag) {
 		this.hashtag = hashtag;
 	}
-	@Column(name = "intro_pic", columnDefinition="MediumBlob")
+	@Column(name = "intro_pic", columnDefinition="MediumBlob", nullable = false)
 	public byte[] getIntro_pic() {
 		return intro_pic;
 	}

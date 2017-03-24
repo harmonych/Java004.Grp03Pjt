@@ -80,14 +80,12 @@ public class DBUtils {
 			  int proid = Integer.parseInt(sa[0].trim());
 			  String proname  = sa[1].trim();
 			  int price = Integer.parseInt(sa[2].trim());
-		      
-			  String saletime = sa[3].trim();
-			  int proinv = Integer.parseInt(sa[4].trim());
+			  int proinv = Integer.parseInt(sa[3].trim());		      
+			  String saletime = sa[4].trim();
 			  String prointroduction =sa[5].trim();
 			  //char[] prointroduction = DBUtils.fileToChars("text/" + sa[5].trim(), encoding);
 			  int artid = Integer.parseInt(sa[6].trim());
-			  String hashtag = sa[7].trim();
-			  
+			  String hashtag = sa[7].trim();			  
 			  ProductBean pb = new ProductBean(proid,proname,price,saletime,proinv,prointroduction,artid,hashtag);
 			  dao.insert(pb);
 
