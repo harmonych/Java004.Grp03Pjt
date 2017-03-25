@@ -9,6 +9,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+<script src='../js/react.js'></script>
+<script src='../js/react-dom.js'></script>
+<script src='../js/babel.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/<version>/react-bootstrap.min.js"></script>
+
+
 <title>登入</title>
 <style type="text/css">
 #main {
@@ -32,6 +40,13 @@ function setFocusToUserId(){
 </script>
 </head>
 <body onLoad="setFocusToUserId()" style="background:#EBFFEB;">
+<div class="" id="test"></div>
+<script type='text/babel'>
+    ReactDOM.render(
+        <div><h1>Hello</h1></div>,
+        document.getElementById('test')
+    );
+</script>
 <!-- 下列敘述設定變數funcName的值為LOG，top.jsp 會用到此變數 -->
 <c:set var="funcName" value="LOG" scope="session"/>
 <c:set var="msg" value="登入" />

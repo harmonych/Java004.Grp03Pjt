@@ -13,9 +13,9 @@
     <!-- SQL方言，設定是MySQL -->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-	<property name="connection.url">jdbc:mysql://localhost:3306/jspdb?useUnicode=true&amp;characterEncoding=utf8</property>
-	<property name="connection.username">root</property>
-	<property name="connection.password">password</property> 
+	<property name="connection.url">jdbc:mysql://saudade.myasustor.com:3306/jspdb?useUnicode=true&amp;characterEncoding=utf8</property>
+	<property name="connection.username">prjmember</property>
+	<property name="connection.password">sVmP2hrvFcv2EKu7</property> 
 <!-- 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
 <!-- 		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
 <!-- 		<property name="connection.url">jdbc:sqlserver://127.0.0.1:1433;DatabaseName=JSPDB</property> -->
@@ -23,7 +23,7 @@
 <!-- 		<property name="connection.password">sa123456</property> -->
     <!-- 2. 其他與資料存取有關的設定 -->
     <!-- 自動產生資料庫的Schema -->
-	<property name="hbm2ddl.auto">create</property>
+<!--  	<property name="hbm2ddl.auto">create</property> -->
 	<!-- 顯示實際操作資料庫時的SQL --> 
     <property name="show_sql">true</property> 
     <!-- 將顯示的SQL排版，方便觀看 -->
@@ -38,6 +38,8 @@
 	
 	<!-- 3. 宣告程式使用的永續類別 -->
 	
-	<mapping class="_07_fund.model.FundBean"/>
+<!-- 	<mapping class="_01_register.model.MemberBean"/> -->
+	<mapping class="_07_funds.model.FundsBean"/>
+<!-- 	<mapping class="_09_sponsor.model.SponsorBean"/> -->
 	</session-factory>
 </hibernate-configuration>
