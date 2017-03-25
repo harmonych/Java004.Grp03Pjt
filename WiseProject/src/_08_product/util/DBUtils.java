@@ -80,14 +80,13 @@ public class DBUtils {
 			  int proid = Integer.parseInt(sa[0].trim());
 			  String proname  = sa[1].trim();
 			  int price = Integer.parseInt(sa[2].trim());
-		      int amount = Integer.parseInt(sa[3].trim());
+			  int proinv = Integer.parseInt(sa[3].trim());		      
 			  String saletime = sa[4].trim();
 			  String prointroduction =sa[5].trim();
 			  //char[] prointroduction = DBUtils.fileToChars("text/" + sa[5].trim(), encoding);
 			  int artid = Integer.parseInt(sa[6].trim());
-			  String hashtag = sa[7].trim();
-			  
-			  ProductBean pb = new ProductBean(proid,proname,price,amount,saletime,prointroduction,artid,hashtag);
+			  String hashtag = sa[7].trim();			  
+			  ProductBean pb = new ProductBean(proid,proname,price,saletime,proinv,prointroduction,artid,hashtag);
 			  dao.insert(pb);
 
 			}
@@ -102,7 +101,7 @@ public class DBUtils {
 //		String saveFolderImg = "D:\\images1221";
 //		File dirImg = new File(saveFolderImg);
 //		if (!dirImg.exists())  dirImg.mkdirs();
-//		String filenameImg = fb.getFcname(); 
+//		String filenameImg = pb.getFcname(); 
 //		File fileImg = new File(dirImg, filenameImg);
 //		
 //		
@@ -112,15 +111,15 @@ public class DBUtils {
 //		String filenameTxt = "Comment" + fb.getFcid() + ".txt"; 
 //		File fileTxt = new File(dirTxt, filenameTxt);
 //		
-//		System.out.println("Fcid :"  + fb.getFcid());
-//		System.out.println("Artid  :"  + fb.getArtid());
-//		System.out.println("Fcname     :"  + fb.getFcname());
-//		System.out.println("Fcmoney    :"  + fb.getFcmoney());
-//		System.out.println("Nowmoney  :"  + fb.getNowmoney());
-//		System.out.println("Createtime:"  + fb.getCreatetime());
-//		System.out.println("Starttime:"  + fb.getStarttime());
-//		System.out.println("Endtime     :"  + fb.getEndtime());
-//		System.out.println("Updatetime :"  + fb.getUpdatetime());
+//		System.out.println("Fcid :"  + pb.getFcid());
+//		System.out.println("Artid  :"  + pb.getArtid());
+//		System.out.println("Fcname     :"  + pb.getFcname());
+//		System.out.println("Fcmoney    :"  + pb.getFcmoney());
+//		System.out.println("Nowmoney  :"  + pb.getNowmoney());
+//		System.out.println("Createtime:"  + pb.getCreatetime());
+//		System.out.println("Starttime:"  + pb.getStarttime());
+//		System.out.println("Endtime     :"  + pb.getEndtime());
+//		System.out.println("Updatetime :"  + pb.getUpdatetime());
 //		saveCharsToFile(fb.getFcintroduction(), fileTxt, "BIG5");
 //	}
 }

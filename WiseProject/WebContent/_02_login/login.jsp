@@ -71,7 +71,7 @@ function setFocusToUserId(){
              <TD width="180" align="right">帳號：　</TD>
              <TD width="180" colspan='2' align="LEFT">
              <input  type="text" name="account" size="10" 
-             value="${sessionScope.user}">
+             value="${sessionScope.account}">
              
              &nbsp;<small><Font color='red' size="-3">${ErrorMsgKey.AccountEmptyError}</Font></small></TD>
          </TR>

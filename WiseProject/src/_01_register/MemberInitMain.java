@@ -9,14 +9,8 @@ public class MemberInitMain {
 		
 	//	IPlaceDAO dao = new PlaceHibernateDAO();
       //  dao.createTables();
-        DBUtils.initPlace("userinfoData.csv", "BIG5");    
+        DBUtils.initUserInfo("userinfoData.csv", "BIG5");    
         HibernateUtil.close();
 		
 	}
-
-	
-	
-	
-	
-	
 }

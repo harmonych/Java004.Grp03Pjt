@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -17,68 +19,98 @@ public class ProductBean implements Serializable {
 	private int proid;
 	private String proname;
 	private int price;
-	private int amount;
+	
 	private String saletime;
-	private String prointroduction;
+	private int proinv;
+	
+	private String prointroduction;	
+	@OneToOne(mappedBy = "art_id")
+	@JoinColumn(name = "art_id", nullable = false)
 	private int artid;
 	private String hashtag;
 	
-	public ProductBean(int proid, String proname, int price, int amount, String saletime, String prointroduction,
+	public ProductBean(int proid, String proname, int price, String saletime,int proinv,String prointroduction,
 			int artid, String hashtag) {
 		super();
 		this.proid = proid;
 		this.proname = proname;
 		this.price = price;
-		this.amount = amount;
+		this.proinv=proinv;
 		this.saletime = saletime;
 		this.prointroduction = prointroduction;
 		this.artid = artid;
 		this.hashtag = hashtag;
 	}
 	
+	
+	
 	public ProductBean() {
 		super();
 	}
 
+	public ProductBean(String proname, int price, String saletime, int proinv, String prointroduction, int artid,
+			String hashtag) {
+		this.proname = proname;
+		this.price = price;
+		this.proinv=proinv;
+		this.saletime = saletime;
+		this.prointroduction = prointroduction;
+		this.artid = artid;
+		this.hashtag = hashtag;
+	}
+
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column( name = "pro_id")
 	public int getProid() {
 		return proid;
 	}
 	public void setProid(int proid) {
 		this.proid = proid;
 	}
+
+	@Column(name = "pro_name", nullable = false)
 	public String getProname() {
 		return proname;
 	}
 	public void setProname(String proname) {
 		this.proname = proname;
 	}
+	@Column(nullable = false)
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
+	
+
+	@Column(name = "sale_time", nullable = false)
 	public String getSaletime() {
 		return saletime;
 	}
 	public void setSaletime(String saletime) {
 		this.saletime = saletime;
 	}
-	@Column(columnDefinition="LongText")
+	@Column(name = "pro_inv", nullable = false)
+	public int getProinv() {
+		return proinv;
+	}
+
+	public void setProinv(int proinv) {
+		this.proinv = proinv;
+	}
+	
+	@Column(name = "pro_intro", columnDefinition="LongText")
 	public String getProintroduction() {
 		return prointroduction;
 	}
 	public void setProintroduction(String prointroduction) {
 		this.prointroduction = prointroduction;
 	}
+
 	public int getArtid() {
 		return artid;
 	}

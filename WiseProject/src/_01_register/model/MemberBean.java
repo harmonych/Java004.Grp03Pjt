@@ -1,32 +1,53 @@
 ﻿package _01_register.model;
 
 import java.io.*;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="userInfo")
+@Table(name="user_info")
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	int user_Id;
+	int user_id;
 	String account;
 	String password;
+	@OneToOne(mappedBy = "user_name")
 	String user_name;
 	String phonenum;
 	String email;
 	String gender;
 	String birthday;
-	String head_pic;
-//	String file_name;
+	byte[] portrait;
+	boolean check_tag;
+	String file_name;
+
+
+
+	//含所有屬性的建構子
+	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
+			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag) {
+		super();
+		this.user_id = user_id;
+		this.account = account;
+		this.password = password;
+		this.user_name = user_name;
+		this.phonenum = phonenum;
+		this.email = email;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.file_name = file_name;
+		this.portrait = portrait;
+		this.check_tag = check_tag;
+	}
 
 	//為了RegisterServletMP.java而做的建構子
 	public MemberBean(String account, String password, String user_name, String phonenum, String email, String gender,
-			String birthday) {
+			String birthday, boolean check_tag, String file_name) {
 		super();
 		this.account = account;
 		this.password = password;
@@ -35,38 +56,22 @@ public class MemberBean implements Serializable {
 		this.email = email;
 		this.gender = gender;
 		this.birthday = birthday;
+		this.check_tag = check_tag;
+		this.file_name = file_name;
 	}
+	public MemberBean() {
+	}	
 	
-
-
-	public MemberBean(int user_Id, String account, String password, String user_name, 
-			String phonenum, String email,  String gender, String birthday, String head_pic) {
-		super();
-		this.user_Id = user_Id;
-		this.account = account;
-		this.password = password;
-		this.user_name = user_name;
-		this.phonenum = phonenum;
-		this.email = email;
-		this.gender = gender;
-		this.birthday = birthday;		
-		this.head_pic = head_pic;
-	}
-	
-
-
 	@Id	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int getUser_Id() {
-	return user_Id;
+	public int getUser_id() {
+	return user_id;
 	}
-	
-	
-	
-	public void setUser_Id(int user_Id) {
-	this.user_Id = user_Id;
+		
+	public void setUser_id(int user_id) {
+	this.user_id = user_id;
 	}
-
+	@Column(nullable = false)
 	public String getAccount() {
 		return account;
 	}
@@ -74,6 +79,7 @@ public class MemberBean implements Serializable {
 		this.account = account;
 	}
 
+	@Column(nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -82,6 +88,7 @@ public class MemberBean implements Serializable {
 		this.password = password;
 	}
 
+	@Column(nullable = false)
 	public String getUser_name() {
 		return user_name;
 	}
@@ -90,6 +97,7 @@ public class MemberBean implements Serializable {
 		this.user_name = user_name;
 	}
 
+	@Column(nullable = false)
 	public String getPhonenum() {
 		return phonenum;
 	}
@@ -97,7 +105,8 @@ public class MemberBean implements Serializable {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	
+
+	@Column(nullable = false)
 	public String getEmail() {
 		return email;
 	}
@@ -122,31 +131,29 @@ public class MemberBean implements Serializable {
 		this.birthday = birthday;
 	}
 
-	@Column(name = "head_pic")
-	public String getHead_pic() {
-		return head_pic;
+	@Column(name = "portrait", columnDefinition="MediumBlob")
+	public byte[] getPortrait() {
+		return portrait;
 	}
-	public void setHead_pic(String head_pic) {
-		this.head_pic = head_pic;
+	public void setPortrait(byte[] portrait) {
+		this.portrait = portrait;
 	}
-//	public String getFile_name() {
-//		return file_name;
-//	}
-//
-//	public void setFile_name(String file_name) {
-//		this.file_name = file_name;
-//	}
-	
-//	public Blob getHead_pic() {
-//		return head_pic;
-//	}
-//
-//	public void setHead_pic(Blob head_pic) {
-//		this.head_pic = head_pic;
-//	}
-	public MemberBean() {
-		super();
-	}	
+	public String getFile_name() {
+		return file_name;
+	}
+
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+	//判斷是否為創作者身分	
+	@Column(name = "check_tag", columnDefinition="TINYINT", nullable = false)
+	public boolean isCheck_tag() {
+		return check_tag;
+	}
+
+	public void setCheck_tag(boolean check_tag) {
+		this.check_tag = check_tag;
+	}
 
 	public String toString() {
 		return "userid=" + account + "   password="+password;

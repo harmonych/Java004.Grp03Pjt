@@ -7,7 +7,7 @@ import _01_register.model.MemberBean;
 
 public interface LoginServiceDAO {
 	public void populateMemberList() throws SQLException ;
-	public MemberBean checkIDPassword(String userId, String password) ;
+	public MemberBean checkIDPassword(String user, String password) ;
 	public List<MemberBean> getMemberList();
 	public void addNewMember(MemberBean mb);
 }

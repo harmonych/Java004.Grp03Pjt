@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Fc_info.css">
+    <title>創作募資平台</title>
+	
+</head>
+
+<body>
+
+    <header class="container-fluid">
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div id="page-content-wrapper">
+                <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+				<span class="hamb-top"></span>
+				<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+			</button>
+            </div>
+
+            <div class="btn-toolbar">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                    <a class="navbar-brand textup" href="#"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <!-- <li><a href="#">購物車</a></li> -->
+                        <li><a href="#">登入</a></li>
+                        <li><a href="#">註冊</a></li>
+                    </ul>
+
+                    
+                </div>
+            </div>
+        </nav>
+     </header>
+
+
+    <section class="container-fluid" id="about">
+        <div id="wrapper">
+            <!-- Sidebar -->
+
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#"> </a>
+                    </li>
+
+                    <li>
+                        <a href="../Second_frame/test0301.html">創作大廳</a>
+                    </li>
+                    <li>
+                        <a href="#">募資大廳</a>
+                    </li>
+                    <li>
+                        <a href="#">作品商城</a>
+                    </li>
+                    <li>
+                        <a href="#">購物車</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">下拉標題</li>
+                            <li><a href="#">副選單一</a></li>
+                            <li><a href="#">副選單二</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+		</div>
+            <!-- #sidebar-->
+            <div class="row">
+			<!-- Modal -->
+		<div class="modal fade bs-java" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+					</div>
+					<div class="modal-body">
+						...
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../asset/js/bootstrap.min.js"></script>
+		<script src="../js/default.js"></script>	
+	</section>
+	
+	<!-- 內容 -->
+	<section class="product_page">
+		<div class="row">
+			<!-- 圖片顯示欄 -->
+			<div class="card01 col-md-4 col-md-offset-2">				
+				<div class="pro_img">
+					<img src="../images/v06.jpg" class="pro_img"> <!-- width="400" height="400" -->
+				</div>
+				<div>
+			    </div>
+			</div>
+				
+				<!-- 商品介紹欄 -->
+		<div class="card02 col-md-4">
+			<div>
+				<form id="form1">
+			
+					<div>
+						<label id="lb">專案名稱</label>
+						<input type="text" name="fc_name" value=" ">
+					</div>			
+					<div>	
+						<label id="lb">專案金額</label>
+						<input type="text" name="fc_money" value=" ">
+					</div>	
+					<div>	
+						<label id="lb">開始時間</label>
+						<input type="text" name="start_time" value=" ">
+					</div>	
+					<div>	
+						<label id="lb">結束時間</label>
+						<input type="text" name="end_time" value=" ">
+					</div>	
+					<div>	
+						<label id="lb">分類標籤</label>
+						<input type="text" name="hash_tag" value=" ">
+					</div>	
+					<div>	
+						<label id="lb">專案簡介</label>
+						<textarea name="fc_Introduction" value=" " class="txa1"> </textarea>
+					</div>	
+				</form>
+				<p>----------------------------------------------------------------------------------</p>
+			</div>
+			<div id="bt">
+				<button type="button" class="btn1 btn-lg btn-block">確認送出</button>
+			</div>
+			<div id="bt">	
+				<button type="button" class="btn2 btn-lg btn-block">清除重填</button>
+			</div>
+		</div>
+	</section>	
+</body>
+
+</html>

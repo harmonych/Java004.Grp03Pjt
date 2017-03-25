@@ -1,17 +1,13 @@
 section {
     padding: 40px 20px 40px;
 }
-
 .username{
-	margin:100px;
+	margin:20px;
 }
-
-
 .body {
     font-family: "Lato", sans-serif;
-	background-color: #111;
+	background-color: #fff;
 }
-
 
 .sidenav {
     height: 100%;
@@ -23,7 +19,7 @@ section {
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 30px;
+    padding-top: 60px;
 }
 
 .sidenav a {
@@ -82,24 +78,19 @@ section {
 }
 
 .navbar {
-
-	
-    margin-bottom: 0;
-    background: #DC6A1C;
+	margin-bottom: 0;
+    background: #ff6f00;
    /*  color: #FEB7B2; */
-
     border: 0;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.5px;
     letter-spacing: 4px;
     border-radius: 0;
-
 }
 
 .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
 	
-
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -122,7 +113,7 @@ section {
 .jumbotron {
     background-color:#99E8D8;
     color: #F94346;
-    padding: 35px 25px;
+    padding: 20px 10px;
     margin:0;
 }
 
@@ -262,7 +253,7 @@ body {
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: royalblue;
+    background: #EAA745;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -463,12 +454,10 @@ body {
     background-color: transparent;
 }
 
-
 .sidebar-nav > .sidebar-brand {
     height: 65px;
     font-size: 20px;
     line-height: 44px;
-
 }
 .sidebar-nav .dropdown-menu {
     position: relative;

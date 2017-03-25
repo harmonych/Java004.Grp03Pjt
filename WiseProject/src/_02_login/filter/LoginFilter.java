@@ -9,13 +9,14 @@ import javax.servlet.http.*;
 
 import _01_register.model.*;
 @WebFilter(
-		urlPatterns = { "/*" }, 
+		urlPatterns = { "/*" }
 		//需要登入的頁面
-		initParams = { 
-				@WebInitParam(name = "mustLogin1", value = "/Second_frame/*"),
-				@WebInitParam(name = "mustLogin2", value = "/Third_frame/*"), 
-				
-		})
+//		initParams = { 
+////				@WebInitParam(name = "mustLogin1", value = "/Second_frame/*"),
+////				@WebInitParam(name = "mustLogin2", value = "/Third_frame/*"), 
+//				
+//		}
+		)
 public class LoginFilter implements Filter {
 	//將需要登入的頁面路徑加入url Collection內
 	Collection<String> url = new ArrayList<String>();

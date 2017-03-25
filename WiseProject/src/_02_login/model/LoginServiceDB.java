@@ -20,7 +20,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 		}
 	}
 	public MemberBean checkPassword(String user, String password) throws SQLException {
-		String sql = "SELECT * From UserInfo where account = ? and password = ? ";
+		String sql = "SELECT * From user_info where account = ? and password = ? ";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -32,7 +32,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 			pStmt.setString(1,  user);
 			pStmt.setString(2,  password);
 			rs = pStmt.executeQuery();
-			
+					
 			if (rs.next()) {
 				String account = rs.getString("account").trim(); // 必須確定
 																// rs.getString("memberID")
@@ -44,9 +44,9 @@ public class LoginServiceDB implements LoginServiceDAO {
 				String email = rs.getString("email");
 				String gender = rs.getString("gender");
 				String birthday = rs.getString("birthday");
-				mb = new MemberBean(account, pswd, user_name, phonenum, email, gender,
-						birthday);
-				
+				boolean check_tag = rs.getBoolean("check_tag");
+				String file_name = rs.getString("file_name");
+				mb = new MemberBean(account, pswd, user_name, phonenum, email, gender, birthday, check_tag, file_name);
 			}
 		} finally {
 			if (rs != null) {
@@ -60,7 +60,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 	}
 	public void populateMemberList() throws SQLException {
 		// 由Database讀取會員資料
-		String sql = "SELECT * From UserInfo";
+		String sql = "SELECT * From user_info";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -79,7 +79,9 @@ public class LoginServiceDB implements LoginServiceDAO {
 				String email = rs.getString("email");
 				String gender = rs.getString("gender");
 				String birthday = rs.getString("birthday");
-				MemberBean mb = new MemberBean(account, pswd, user_name, phonenum, email, gender,birthday);
+				boolean check_tag = rs.getBoolean("check_tag");
+				String file_name = rs.getString("file_name");
+				MemberBean mb = new MemberBean(account, pswd, user_name, phonenum, email, gender,birthday, check_tag, file_name);
 				memberList.add(mb);
 			}
 		} finally {
@@ -96,10 +98,10 @@ public class LoginServiceDB implements LoginServiceDAO {
 		// 檢查userId與password是否正確
 		for (MemberBean mb : memberList) {
 			if (mb.getAccount().trim().equals(account.trim())) {
-				String encrypedString = GlobalService.encryptString(password.trim());
-				String pswd = GlobalService.getMD5Endocing(encrypedString);
+//				String encrypedString = GlobalService.encryptString(password.trim());
+//				String pswd = GlobalService.getMD5Endocing(encrypedString);
 				String mbpswd = mb.getPassword().trim();
-				if (mbpswd.equals(pswd)) {
+				if (mbpswd.equals(password)) {
 					return mb;
 				}
 			}

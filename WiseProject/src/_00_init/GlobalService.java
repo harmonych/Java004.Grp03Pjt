@@ -20,10 +20,10 @@ import javax.xml.bind.DatatypeConverter;
 
 public class GlobalService {
 	public static final int    RECORDS_PER_PAGE = 3;
-	public static final String host = "127.0.0.1";
+	public static final String host = "saudade.myasustor.com:3306";
 	//public static final String host = "192.168.11.22";
-	public static final String USERID = "root";
-	public static final String PASSWORD = "password";
+	public static final String USERID = "prjmember";
+	public static final String PASSWORD = "sVmP2hrvFcv2EKu7";
 	public static final String SYSTEM_NAME = "彙思創作募資平台";
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/customer";
 	public static final int IMAGE_FILENAME_LENGTH = 20;

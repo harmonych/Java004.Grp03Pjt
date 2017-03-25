@@ -2,6 +2,7 @@ package _01_register.controller;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
@@ -9,6 +10,7 @@ import javax.servlet.http.*;
 
 import _00_init.GlobalService;
 import _01_register.model.*;
+import _01_register.util.DBUtils;
 
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
@@ -66,17 +68,20 @@ public class RegisterServletMP extends HttpServlet {
 		String gender = "";
 		String birthday = "";
 		String fileName = "";
-		String RegisterArtist = null;
+		boolean check_tag = false;
 		String Introduction = "";
 		String bank_account = "";
 		String ID = "";
 		String art_name = "";
 		String art_address = "";
 		String art_num = "";
-		String hash_tag = "";
+		String hashtag = "";
+		String intro_pic_name = "";
 
-		long sizeInBytes = 0;
 		InputStream is = null;
+		InputStream ipis = null;
+		IMemberDAO mb = new MemberHibernateDAO();
+		IArtistDAO ab = new ArtistHibernateDAO();
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
 														// request內所有的parts
 		GlobalService.exploreParts(parts, request);
@@ -104,13 +109,12 @@ public class RegisterServletMP extends HttpServlet {
 						gender = value;
 					} else if (fldName.equalsIgnoreCase("birthday")) {
 						birthday = value;
-					} else if (fldName.equalsIgnoreCase("RegisterArtist")) {
-						RegisterArtist = value;
-						if (RegisterArtist != null) {
-							continue;
-						} else {
-							break;
-						}
+					} else if (fldName.equals("registerArtist")) {
+						check_tag = Boolean.parseBoolean(value);
+						System.out.println(check_tag);
+						// System.out.println(value);
+						// if (check_tag) {
+						//
 					} else if (fldName.equalsIgnoreCase("Introduction")) {
 						Introduction = value;
 					} else if (fldName.equalsIgnoreCase("bank_account")) {
@@ -123,58 +127,83 @@ public class RegisterServletMP extends HttpServlet {
 						art_address = value;
 					} else if (fldName.equalsIgnoreCase("art_num")) {
 						art_num = value;
-					} else if (fldName.equalsIgnoreCase("hash_tag")) {
-						hash_tag = value;
+					} else if (fldName.equalsIgnoreCase("hashtag")) {
+						hashtag = value;
 					}
 				} else {
-					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
-					fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
-					if (fileName != null && fileName.trim().length() > 0) {
-						sizeInBytes = p.getSize();
-						is = p.getInputStream();
+					if (fldName.equalsIgnoreCase("portrait")) {
+						fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
+						if (fileName != null && fileName.trim().length() > 0) {
+							is = p.getInputStream();
+						}
+					}else if (fldName.equalsIgnoreCase("intro_pic")) {
+						intro_pic_name = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						intro_pic_name = GlobalService.adjustFileName(intro_pic_name,
+								GlobalService.IMAGE_FILENAME_LENGTH);
+						
+						if (intro_pic_name != null && intro_pic_name.trim().length() > 0) {
+							ipis = p.getInputStream();
+						}
 					}
-
 				}
 			}
 			// 2. 進行必要的資料轉換
 
 			// 3. 檢查使用者輸入資料
 			if (account == null || account.trim().length() == 0) {
-				errorMsg.put("errorAccountEmpty", "會員帳號欄必須輸入");
+				errorMsg.put("errorAccount", "會員帳號欄必須輸入");
+			} else if (mb.checkExists(account)) {
+				errorMsg.put("errorAccount", "此帳號已存在，請換新帳號");
 			}
 			if (password == null || password.trim().length() == 0) {
-				errorMsg.put("errorPasswordEmpty", "會員密碼欄必須輸入");
+				errorMsg.put("errorPassword", "會員密碼欄必須輸入");
+			} else if (!Pattern.matches("^(?=.*[a-zA-Z]+)(?=.*\\d+)[a-zA-Z0-9]{6,16}$", password)) {
+				errorMsg.put("errorPassword", "密碼長度須介於6-16字之間並包含英文、數字");
 			}
 			if (password2 == null || password2.trim().length() == 0) {
-				errorMsg.put("errorPassword2Empty", "會員密碼確認欄必須輸入");
-			}
-			if (password.trim().length() > 0 && password2.trim().length() > 0) {
+				errorMsg.put("errorPassword2", "會員密碼確認欄必須輸入");
+			} else if (password.trim().length() > 0 && password2.trim().length() > 0) {
 				if (!password.trim().equals(password2.trim())) {
-					errorMsg.put("errorPassword2Empty", "密碼欄必須與確認欄一致");
-					errorMsg.put("errorPasswordEmpty", "*");
+					errorMsg.put("errorPassword2", "密碼欄必須與確認欄一致");
+					errorMsg.put("errorPassword", "*");
 				}
 			}
 			if (user_name == null || user_name.trim().length() == 0) {
 				errorMsg.put("errorUserName", "會員名稱欄必須輸入");
+			} else if (mb.checkExists(user_name)) {
+				errorMsg.put("errorUserName", "此會員名稱已被註冊，請更換會員名稱");
 			}
+
 			if (phonenum == null || phonenum.trim().length() == 0) {
 				errorMsg.put("errorPhonenum", "手機號碼欄必須輸入");
+			} else if (!Pattern.matches("^([0][9])\\d{8}", phonenum)) {
+				errorMsg.put("errorPhonenum", "手機號碼格式錯誤");
+			} else if (mb.checkExists(phonenum)) {
+				errorMsg.put("errorPhonenum", "此手機號碼已被註冊，請更換手機號碼");
 			}
+
 			if (email == null || email.trim().length() == 0) {
 				errorMsg.put("errorEmail", "會員信箱欄必須輸入");
+			} else if (!Pattern.matches("^\\w+\\.*\\w+@(\\w+\\.){1,5}[a-zA-Z]{2,3}$", email)) {
+				errorMsg.put("errorEmail", "會員信箱格式錯誤");
+			} else if (mb.checkExists(email)) {
+				errorMsg.put("errorEmail", "此會員信箱已被註冊，請更換會員信箱");
 			}
 
-			if (gender == null || gender.trim().length() == 0) {
-				errorMsg.put("errorGender", "性別欄資料錯誤");
-			}
-			if (birthday == null || birthday.trim().length() == 0) {
-				errorMsg.put("errorBirthday", "生日欄資料錯誤");
-			}
+			if (check_tag) {
+				if (intro_pic_name == null || intro_pic_name.trim().length() == 0) {
+					errorMsg.put("errorIntroPic", "請選擇簡介圖片");
+				}
 
-			if (RegisterArtist != null) {
 				if (ID == null || ID.trim().length() == 0) {
 					errorMsg.put("errorID", "身分證字號欄必須輸入");
+				} else if (!Pattern.matches("[ABCDEFGHJKLMNPQRSTUVXYWZIO][12]\\d{8}", ID)) {
+					errorMsg.put("errorID", "身分證字號格式錯誤");
+				}else if (mb.checkExists(ID)) {
+					errorMsg.put("errorID", "此身分證字號已被註冊，請更換手機號碼");
 				}
+
 				if (art_name == null || art_name.trim().length() == 0) {
 					errorMsg.put("errorArtName", "真實姓名欄必須輸入");
 				}
@@ -182,13 +211,18 @@ public class RegisterServletMP extends HttpServlet {
 					errorMsg.put("errorArtAddress", "通訊地址欄必須輸入");
 				}
 				if (art_num == null || art_num.trim().length() == 0) {
-					errorMsg.put("errorArt_Num", "聯絡電話欄必須輸入");
+					errorMsg.put("errorArtNum", "聯絡電話欄必須輸入");
+				} else if (!Pattern.matches("^([0][9])\\d{8}", art_num)) {
+					errorMsg.put("errorArtNum", "聯絡電話格式錯誤");
 				}
+				
+
 			}
 		} else {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}
 		// 如果有錯誤
+
 		if (!errorMsg.isEmpty()) {
 			// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
@@ -197,25 +231,34 @@ public class RegisterServletMP extends HttpServlet {
 		}
 		try {
 			// 4. 進行Business Logic運算
-			// RegisterServiceFile類別的功能：
-			// 1.檢查帳號是否已經存在
-			// 2.儲存會員的資料
-			RegisterServiceDAO rs = new RegisterServiceDAO_JDBC();
-			if (rs.idExists(account)) {
-				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
-			} else {
-				MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday);
-				// 將MemberBean mem立即寫入Database
-				System.out.println("filename:" + fileName);
-				int n = rs.saveMember(mem, is, sizeInBytes, fileName);
-				if (n == 1) {
-					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("../index.jsp");
-					return;
-				} else {
-					errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
-				}
+			// 儲存會員的資料
+
+			MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday, check_tag,
+					fileName);
+			// 將MemberBean mem立即寫入Database
+			if (is != null) {
+				byte[] portrait = DBUtils.isToBytes(is);
+				mem.setPortrait(portrait);
 			}
+			int n = mb.insert(mem);
+			if (check_tag) {
+				ArtistBean art = new ArtistBean(user_name, Introduction, bank_account, ID, art_name, art_address,
+						art_num, hashtag, intro_pic_name);
+				if (ipis != null) {
+					byte[] intro_pic = DBUtils.isToBytes(ipis);
+					art.setIntro_pic(intro_pic);
+				}
+				ab.insert(art);
+			}
+
+			if (n == 1) {
+				msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
+				response.sendRedirect("../index.jsp");
+				return;
+			} else {
+				errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
+			}
+
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			if (!errorMsg.isEmpty()) {
 				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息

@@ -18,7 +18,7 @@ import _02_login.model.LoginServiceDB;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+		HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		// 準備存放錯誤訊息的Map物件
@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("ErrorMsgKey", errorMsgMap);
 		// 1. 讀取使用者輸入資料
 		String account = request.getParameter("account");
+//		String password = GlobalService.getMD5Endocing(GlobalService.encryptString(request.getParameter("password")));
 		String password = request.getParameter("password");
 		String rm = request.getParameter("rememberMe");
 		String requestURI = (String) session.getAttribute("requestURI");
@@ -51,8 +52,9 @@ public class LoginServlet extends HttpServlet {
 			cookieUser = new Cookie("account", account);
 			cookieUser.setMaxAge(30*60*60);
 			cookieUser.setPath(request.getContextPath());
-			String encodePassword = GlobalService.encryptString(password);
-			cookiePassword = new Cookie("password", encodePassword);
+//			String encodePassword = GlobalService.encryptString(password);
+//			cookiePassword = new Cookie("password", encodePassword);
+			cookiePassword = new Cookie("password", password);
 			cookiePassword.setMaxAge(30*60*60);
 			cookiePassword.setPath(request.getContextPath());
 			cookieRememberMe = new Cookie("rm", "true");
@@ -63,8 +65,9 @@ public class LoginServlet extends HttpServlet {
 			cookieUser.setMaxAge(0);   // MaxAge==0 表示要請瀏覽器刪除此Cookie
 			cookieUser.setPath(request.getContextPath());
 			//String encodePassword = DatatypeConverter.printBase64Binary(password.getBytes());
-			String encodePassword = GlobalService.encryptString(password);
-			cookiePassword = new Cookie("password", encodePassword);
+//			String encodePassword = GlobalService.encryptString(password);
+//			cookiePassword = new Cookie("password", encodePassword);
+			cookiePassword = new Cookie("password", password);
 			cookiePassword.setMaxAge(0);
 			cookiePassword.setPath(request.getContextPath());
 			cookieRememberMe = new Cookie("rm", "false");
@@ -89,10 +92,13 @@ public class LoginServlet extends HttpServlet {
 			// 呼叫 ms物件的 checkIDPassword()，要記得傳入userid與password兩個參數
 			
 			//MemberBean mb = lsdb.checkIDPassword(userId, password);
-			password = GlobalService.getMD5Endocing(
-					      GlobalService.encryptString(password));
-		    System.out.println("password=" + password);
+//			password = GlobalService.getMD5Endocing(
+//					      GlobalService.encryptString(password));
+			System.out.println("account=" + account);
+			System.out.println("password=" + password);
+		    
 			MemberBean mb = lsdb.checkPassword(account, password);
+			
 			
 			if (mb != null) {
 				// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
