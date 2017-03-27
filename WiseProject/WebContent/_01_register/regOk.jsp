@@ -22,7 +22,7 @@
 
 <%
 	int n =5;
-	response.setHeader("Refresh", n + ";URL=http://saudade.myasustor.com:8080/ajax17/index.jsp");
+	response.setHeader("Refresh", n + ";URL=http://saudade.myasustor.com:8080/WiseProject//index.jsp");
 %>
 <div id='content' width='500px' style="border-width:2; background:#E0E0E0; 
     border-style:inset; border-color:#EF02A4; display: table-cell;
