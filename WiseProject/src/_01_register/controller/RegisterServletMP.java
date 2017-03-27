@@ -1,15 +1,29 @@
 package _01_register.controller;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import _00_init.GlobalService;
-import _01_register.model.*;
+import _01_register.model.ArtistBean;
+import _01_register.model.ArtistHibernateDAO;
+import _01_register.model.IArtistDAO;
+import _01_register.model.IMemberDAO;
+import _01_register.model.MemberBean;
+import _01_register.model.MemberHibernateDAO;
 import _01_register.util.DBUtils;
 
 /*
@@ -250,10 +264,13 @@ public class RegisterServletMP extends HttpServlet {
 				}
 				ab.insert(art);
 			}
+			
+			int userId = mem.getUser_id();
+			System.out.println(userId);
 
 			if (n == 1) {
-				msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-				response.sendRedirect("../index.jsp");
+				JavaMailMain.sandRegMail(email, userId);
+				response.sendRedirect("regOk.jsp");
 				return;
 			} else {
 				errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");

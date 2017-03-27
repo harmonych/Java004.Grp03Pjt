@@ -100,9 +100,17 @@ public class LoginServlet extends HttpServlet {
 			MemberBean mb = lsdb.checkPassword(account, password);
 			
 			
+			
+			
+			
 			if (mb != null) {
-				// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
-				session.setAttribute("LoginOK", mb);
+				if(mb.isCheck_tag()){
+					// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
+					session.setAttribute("LoginOK", mb);
+				}else{
+					// NG, 
+					errorMsgMap.put("LoginError", "該帳號未完成Email驗證，請至註冊信箱收取驗證信以完成Email驗證");
+				}
 			} else {
 				// NG, userid與密碼的組合錯誤，放一個錯誤訊息到 errorMsgMap 之內
 				errorMsgMap.put("LoginError", "該帳號不存在或密碼錯誤");
