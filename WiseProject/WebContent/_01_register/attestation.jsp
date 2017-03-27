@@ -25,7 +25,7 @@
 		int ui = Integer.parseInt(request.getParameter("id"));
 		int n = 5;
 		Attestation.attEmail(ui);
-		response.setHeader("Refresh", n + ";URL=http://localhost:8080/ajax17/index.jsp");
+		response.setHeader("Refresh", n + ";URL=http://saudade.myasustor.com:8080/ajax17/index.jsp");
 	%>
 
 	<Form action="<c:url value='login.do' />" method="POST"
