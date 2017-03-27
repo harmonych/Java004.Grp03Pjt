@@ -60,31 +60,31 @@ import javax.persistence.Table;
 			this.user_id = userid;
 		}
 		@Column(name = "spon_money")
-		public int getSponmoney() {
+		public int getSpon_money() {
 			return spon_money;
 		}
-		public void setSponmoney(int sponmoney) {
+		public void setSpon_money(int sponmoney) {
 			this.spon_money = sponmoney;
 		}
 		@Column(name = "spon_time")
-		public String getSpontime() {
+		public String getSpon_time() {
 			return spon_time;
 		}
-		public void setSpontime(String spontime) {
+		public void setSpon_time(String spontime) {
 			this.spon_time = spontime;
 		}
 		@Column(name = "spon_mode")
-		public String getSponmode() {
+		public String getSpon_mode() {
 			return spon_mode;
 		}
-		public void setSponmode(String sponmode) {
+		public void setSpon_mode(String sponmode) {
 			this.spon_mode = sponmode;
 		}
 		@Column(name = "spon_account")
-		public String getSponaccount() {
+		public String getSpon_account() {
 			return spon_account;
 		}
-		public void setSponaccount(String sponaccount) {
+		public void setSpon_account(String sponaccount) {
 			this.spon_account = sponaccount;
 		}
 }
