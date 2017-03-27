@@ -25,12 +25,12 @@ import _08_product.util.HibernateUtil;
 
 public class ProductHibernateDAO implements IProductDAO {
 
-	public int getProId() {
-		return proid;
+	public int getPro_Id() {
+		return pro_id;
 	}
 
-	public void setProId(int proid) {
-		this.proid = proid;
+	public void setPro_Id(int proid) {
+		this.pro_id = proid;
 	}
 
 //	public FundsHibernateDAO() {
@@ -114,7 +114,7 @@ public class ProductHibernateDAO implements IProductDAO {
 	@Override
 	public int delete(int key) {
 		ProductBean pb = new ProductBean();
-		pb.setProid(key);
+		pb.setPro_id(key);
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -204,7 +204,7 @@ public class ProductHibernateDAO implements IProductDAO {
 		return list;
 	}
 	DataSource ds;
-	int proid;
+	int pro_id;
 
 	
 	

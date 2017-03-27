@@ -42,7 +42,7 @@ public class SponsorJsonServlet extends HttpServlet {
 		fcid = Integer.parseInt(request.getParameter("fcid").trim());
 		try {
 			ISponsorDAO dao = new SponsorHBNDAO();
-			dao.setFcid(fcid);
+			dao.setFc_id(fcid);
 			List<SponsorBean> list = dao.getAllbyfcJSON(fcid);
 //			for (FundsBean temp : list) {
 //				System.out.println(temp.getArtid());

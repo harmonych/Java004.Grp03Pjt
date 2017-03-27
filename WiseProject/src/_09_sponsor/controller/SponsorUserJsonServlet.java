@@ -42,7 +42,7 @@ public class SponsorUserJsonServlet extends HttpServlet {
 	    PrintWriter out = response.getWriter();
 		try {
 			ISponsorDAO dao = new SponsorHBNDAO();
-			dao.setUserid(userid);
+			dao.setUser_id(userid);
 			SponsorBean sb = dao.sponsorquery(userid);
 
 			String categoriesJson = new Gson().toJson(sb); 

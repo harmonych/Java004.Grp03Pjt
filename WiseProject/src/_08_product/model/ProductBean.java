@@ -16,29 +16,29 @@ import javax.persistence.Table;
 @Table(name="product")
 public class ProductBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int proid;
-	private String proname;
+	private int pro_id;
+	private String pro_name;
 	private int price;
 	
-	private String saletime;
-	private int proinv;
+	private String sale_time;
+	private int pro_inv;
 	
-	private String prointroduction;	
+	private String pro_introduction;	
 	@OneToOne(mappedBy = "art_id")
 	@JoinColumn(name = "art_id", nullable = false)
-	private int artid;
+	private int art_id;
 	private String hashtag;
 	
 	public ProductBean(int proid, String proname, int price, String saletime,int proinv,String prointroduction,
 			int artid, String hashtag) {
 		super();
-		this.proid = proid;
-		this.proname = proname;
+		this.pro_id = proid;
+		this.pro_name = proname;
 		this.price = price;
-		this.proinv=proinv;
-		this.saletime = saletime;
-		this.prointroduction = prointroduction;
-		this.artid = artid;
+		this.pro_inv=proinv;
+		this.sale_time = saletime;
+		this.pro_introduction = prointroduction;
+		this.art_id = artid;
 		this.hashtag = hashtag;
 	}
 	
@@ -50,12 +50,12 @@ public class ProductBean implements Serializable {
 
 	public ProductBean(String proname, int price, String saletime, int proinv, String prointroduction, int artid,
 			String hashtag) {
-		this.proname = proname;
+		this.pro_name = proname;
 		this.price = price;
-		this.proinv=proinv;
-		this.saletime = saletime;
-		this.prointroduction = prointroduction;
-		this.artid = artid;
+		this.pro_inv=proinv;
+		this.sale_time = saletime;
+		this.pro_introduction = prointroduction;
+		this.art_id = artid;
 		this.hashtag = hashtag;
 	}
 
@@ -64,19 +64,19 @@ public class ProductBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column( name = "pro_id")
-	public int getProid() {
-		return proid;
+	public int getPro_id() {
+		return pro_id;
 	}
-	public void setProid(int proid) {
-		this.proid = proid;
+	public void setPro_id(int proid) {
+		this.pro_id = proid;
 	}
 
 	@Column(name = "pro_name", nullable = false)
-	public String getProname() {
-		return proname;
+	public String getPro_name() {
+		return pro_name;
 	}
-	public void setProname(String proname) {
-		this.proname = proname;
+	public void setPro_name(String proname) {
+		this.pro_name = proname;
 	}
 	@Column(nullable = false)
 	public int getPrice() {
@@ -88,34 +88,34 @@ public class ProductBean implements Serializable {
 	
 
 	@Column(name = "sale_time", nullable = false)
-	public String getSaletime() {
-		return saletime;
+	public String getSale_time() {
+		return sale_time;
 	}
-	public void setSaletime(String saletime) {
-		this.saletime = saletime;
+	public void setSale_time(String saletime) {
+		this.sale_time = saletime;
 	}
 	@Column(name = "pro_inv", nullable = false)
-	public int getProinv() {
-		return proinv;
+	public int getPro_inv() {
+		return pro_inv;
 	}
 
-	public void setProinv(int proinv) {
-		this.proinv = proinv;
+	public void setPro_inv(int proinv) {
+		this.pro_inv = proinv;
 	}
 	
 	@Column(name = "pro_intro", columnDefinition="LongText")
-	public String getProintroduction() {
-		return prointroduction;
+	public String getPro_introduction() {
+		return pro_introduction;
 	}
-	public void setProintroduction(String prointroduction) {
-		this.prointroduction = prointroduction;
+	public void setPro_introduction(String prointroduction) {
+		this.pro_introduction = prointroduction;
 	}
 
-	public int getArtid() {
-		return artid;
+	public int getArt_id() {
+		return art_id;
 	}
-	public void setArtid(int artid) {
-		this.artid = artid;
+	public void setArt_id(int artid) {
+		this.art_id = artid;
 	}
 	public String getHashtag() {
 		return hashtag;

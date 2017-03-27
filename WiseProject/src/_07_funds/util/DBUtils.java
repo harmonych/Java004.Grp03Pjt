@@ -117,15 +117,15 @@ public class DBUtils {
 
 	public static void displayData(FundsBean fb) {
 		
-		System.out.println("Fcid :"  + fb.getFcid());
-		System.out.println("Artid  :"  + fb.getArtid());
-		System.out.println("Fcname     :"  + fb.getFcname());
-		System.out.println("Fcmoney    :"  + fb.getFcmoney());
-		System.out.println("Nowmoney  :"  + fb.getNowmoney());
-		System.out.println("Createtime:"  + fb.getCreatetime());
-		System.out.println("Starttime:"  + fb.getStarttime());
-		System.out.println("Endtime     :"  + fb.getEndtime());
-		System.out.println("Updatetime :"  + fb.getUpdatetime());
-		System.out.println("introduction :"+fb.getFcintroduction());
+		System.out.println("Fcid :"  + fb.getFc_id());
+		System.out.println("Artid  :"  + fb.getArt_id());
+		System.out.println("Fcname     :"  + fb.getFc_name());
+		System.out.println("Fcmoney    :"  + fb.getFc_money());
+		System.out.println("Nowmoney  :"  + fb.getNow_money());
+		System.out.println("Createtime:"  + fb.getCreate_time());
+		System.out.println("Starttime:"  + fb.getStart_time());
+		System.out.println("Endtime     :"  + fb.getEnd_time());
+		System.out.println("Updatetime :"  + fb.getUpdate_time());
+		System.out.println("introduction :"+fb.getFc_introduction());
 	}
 }

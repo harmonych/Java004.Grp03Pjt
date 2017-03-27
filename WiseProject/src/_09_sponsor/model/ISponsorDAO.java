@@ -9,10 +9,10 @@ public interface ISponsorDAO {
 	
 	public int cancel(int sponid);
 	
-	public int getUserid();
-	public void setUserid(int userid);
-	public int getFcid() ;
-	public void setFcid(int fcid) ;
+	public int getUser_id();
+	public void setUser_id(int userid);
+	public int getFc_id() ;
+	public void setFc_id(int fcid) ;
 	
 	public List<SponsorBean> getAllbyfcJSON(int fcid);
 }

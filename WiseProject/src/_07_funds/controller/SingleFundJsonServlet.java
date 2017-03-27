@@ -47,7 +47,7 @@ public class SingleFundJsonServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		try {
 			IFundsDAO jdbc = new FundsHibernateDAO();
-			jdbc.setFcId(fcid);
+			jdbc.setFc_id(fcid);
 			FundsBean fb = jdbc.findByPrimaryKey(fcid);
 
 			

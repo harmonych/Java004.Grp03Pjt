@@ -8,17 +8,17 @@
 <script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
 <script>
 			var xhr = new XMLHttpRequest();
-			xhr.open("GET", '../ch07/allfunds.json', true);
+			xhr.open("GET", '../_07_funds/allfunds.json', true);
 			xhr.send();
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					var content = "<table border='1'>";
 					var funds = JSON.parse(xhr.responseText);
 					for(var i=0; i < funds.length; i++){
-						content += "<tr><td>" + funds[i].fcid + "</td>" + 
-						               "<td>" + funds[i].artid + "</td>" +
-						               "<td>" + funds[i].fcname + "</td>" +
-						               "<td>" + funds[i].fcmoney + "</td>" ;
+						content += "<tr><td>" + funds[i].fc_id + "</td>" + 
+						               "<td>" + funds[i].art_id + "</td>" +
+						               "<td>" + funds[i].fc_name + "</td>" +
+						               "<td>" + funds[i].fc_money + "</td>" ;
 						             
 
 						           "</tr>";    

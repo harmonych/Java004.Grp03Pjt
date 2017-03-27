@@ -25,12 +25,12 @@ import _07_funds.util.HibernateUtil;
 
 public class FundsHibernateDAO implements IFundsDAO {
 
-	public int getFcId() {
-		return fcid;
+	public int getFc_id() {
+		return fc_id;
 	}
 
-	public void setFcId(int fcid) {
-		this.fcid = fcid;
+	public void setFc_id(int fcid) {
+		this.fc_id = fcid;
 	}
 
 //	public FundsHibernateDAO() {
@@ -114,7 +114,7 @@ public class FundsHibernateDAO implements IFundsDAO {
 	@Override
 	public int delete(int key) {
 		FundsBean pb = new FundsBean();
-		pb.setFcid(key);
+		pb.setFc_id(key);
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -206,7 +206,7 @@ public class FundsHibernateDAO implements IFundsDAO {
 	
 	
 	DataSource ds;
-	int fcid;
+	int fc_id;
 
 	
 	

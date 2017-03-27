@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface IProductDAO {
 	
-	public int getProId();
+	public int getPro_Id();
 	
-	public void setProId(int proid);
+	public void setPro_Id(int proid);
 	
 	int insert(ProductBean pb);
 

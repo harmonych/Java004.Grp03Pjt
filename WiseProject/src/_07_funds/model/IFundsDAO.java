@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface IFundsDAO {
 	
-	public int getFcId();
+	public int getFc_id();
 	
-	public void setFcId(int fcid);
+	public void setFc_id(int fcid);
 	
 	int insert(FundsBean pb);
 

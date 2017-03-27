@@ -88,7 +88,7 @@ public class SponsorHBNDAO implements ISponsorDAO {
 	@Override
 	public int cancel(int sponid) {
 		SponsorBean sb = new SponsorBean();
-		sb.setSponid(sponid);
+		sb.setSpon_id(sponid);
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -109,22 +109,22 @@ public class SponsorHBNDAO implements ISponsorDAO {
 		return updateCount;
 	}
 	
-	int userid;
-	public int getUserid(){
+	int user_id;
+	public int getUser_id(){
 	
-		return userid;	
+		return user_id;	
 	
 	}
-	public void setUserid(int userid){
+	public void setUser_id(int userid){
 	 
-		this.userid=userid;
+		this.user_id=userid;
 		
 	};
-	int fcid;
-	public int getFcid() {
-		return fcid;
+	int fc_id;
+	public int getFc_id() {
+		return fc_id;
 	}
-	public void setFcid(int fcid) {
-		this.fcid = fcid;
+	public void setFc_id(int fcid) {
+		this.fc_id = fcid;
 	}
 }
