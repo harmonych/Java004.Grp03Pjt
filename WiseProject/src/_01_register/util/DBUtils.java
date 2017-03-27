@@ -139,6 +139,7 @@ public class DBUtils {
 				String file_url = sa[8].trim();
 				byte[] portrait = DBUtils.urlToBytes(file_url);
 				boolean check_tag = Boolean.parseBoolean(sa[9].trim());
+				boolean authenticate = Boolean.parseBoolean(sa[10].trim());
 				if (check_tag){
 					String intro = sa[10].trim();
 					String picurl = sa[11].trim();
@@ -153,7 +154,7 @@ public class DBUtils {
 					adao.insert(ab);
 				}
 				MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday,
-						file_url, portrait, check_tag);
+						file_url, portrait, check_tag, authenticate);
 				dao.insert(mb);
 
 			}

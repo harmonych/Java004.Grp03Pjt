@@ -16,7 +16,7 @@ public class Attestation {
 
 		IMemberDAO attEmail = new MemberHibernateDAO();
 		MemberBean mb = attEmail.findByPrimaryKey(ui);
-		mb.setCheck_tag(true);
+		mb.setAuthenticate(true);
 		attEmail.update(mb);
 		
 	}

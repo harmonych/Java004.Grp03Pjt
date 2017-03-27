@@ -25,12 +25,13 @@ public class MemberBean implements Serializable {
 	byte[] portrait;
 	boolean check_tag;
 	String file_name;
+	boolean authenticate;
 
 
 
 	//含所有屬性的建構子
 	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
-			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag) {
+			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag, boolean authenticate) {
 		super();
 		this.user_id = user_id;
 		this.account = account;
@@ -43,11 +44,12 @@ public class MemberBean implements Serializable {
 		this.file_name = file_name;
 		this.portrait = portrait;
 		this.check_tag = check_tag;
+		this.authenticate = authenticate;
 	}
 
 	//為了RegisterServletMP.java而做的建構子
 	public MemberBean(String account, String password, String user_name, String phonenum, String email, String gender,
-			String birthday, boolean check_tag, String file_name) {
+			String birthday, boolean check_tag, String file_name, boolean authenticate) {
 		super();
 		this.account = account;
 		this.password = password;
@@ -58,6 +60,7 @@ public class MemberBean implements Serializable {
 		this.birthday = birthday;
 		this.check_tag = check_tag;
 		this.file_name = file_name;
+		this.authenticate = authenticate;
 	}
 	public MemberBean() {
 	}	
@@ -141,6 +144,16 @@ public class MemberBean implements Serializable {
 	public String getFile_name() {
 		return file_name;
 	}
+	
+	public void setAuthenticate(boolean authenticate){
+		this.authenticate = authenticate;
+	}
+	
+	@Column(name = "authenticate", columnDefinition="TINYINT", nullable = false)
+	public boolean isAuthenticate(){
+		return authenticate;
+	}
+	
 
 	public void setFile_name(String file_name) {
 		this.file_name = file_name;
