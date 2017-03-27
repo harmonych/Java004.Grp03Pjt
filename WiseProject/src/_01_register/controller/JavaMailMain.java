@@ -10,7 +10,7 @@ import _01_register.util.JavaMailUtil;
 
 public class JavaMailMain {
 
-	public static void sandRegMail(String address, int ui) {
+	public static void sendRegMail(String address, int ui) {
 //		
 //		String contextPath = req.getContextPath();
 		String from = "wisejava004@gmail.com";

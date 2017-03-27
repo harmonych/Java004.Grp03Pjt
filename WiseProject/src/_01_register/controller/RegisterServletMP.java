@@ -83,6 +83,7 @@ public class RegisterServletMP extends HttpServlet {
 		String birthday = "";
 		String fileName = "";
 		boolean check_tag = false;
+		boolean authenticate = false;
 		String Introduction = "";
 		String bank_account = "";
 		String ID = "";
@@ -248,7 +249,7 @@ public class RegisterServletMP extends HttpServlet {
 			// 儲存會員的資料
 
 			MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday, check_tag,
-					fileName);
+					fileName,authenticate);
 			// 將MemberBean mem立即寫入Database
 			if (is != null) {
 				byte[] portrait = DBUtils.isToBytes(is);
@@ -266,10 +267,9 @@ public class RegisterServletMP extends HttpServlet {
 			}
 			
 			int userId = mem.getUser_id();
-			System.out.println(userId);
 
 			if (n == 1) {
-				JavaMailMain.sandRegMail(email, userId);
+				JavaMailMain.sendRegMail(email, userId);
 				response.sendRedirect("regOk.jsp");
 				return;
 			} else {

@@ -104,7 +104,7 @@ public class LoginServlet extends HttpServlet {
 			
 			
 			if (mb != null) {
-				if(mb.isCheck_tag()){
+				if(mb.isAuthenticate()){
 					// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
 					session.setAttribute("LoginOK", mb);
 				}else{
