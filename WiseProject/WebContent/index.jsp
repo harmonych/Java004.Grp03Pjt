@@ -108,10 +108,10 @@
 				</li>
 				<li class="username"><span>${userName}</span></li>
 				<li>
-					<a href="Second_frame/Creations.jsp">創作平台</a>
+					<a href="_05_CreationsFrame/Creations.jsp">創作平台</a>
 				</li>
 				<li>
-					<a href="Third_frame/backer.jsp">募資平台</a>
+					<a href="_06_fundsFrame/funds.jsp">募資平台</a>
 				</li>
 				<li>
 					<a href="#">商城系統</a>
