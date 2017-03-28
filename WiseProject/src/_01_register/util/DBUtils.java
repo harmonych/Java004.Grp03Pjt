@@ -141,17 +141,19 @@ public class DBUtils {
 				boolean check_tag = Boolean.parseBoolean(sa[9].trim());
 				boolean authenticate = Boolean.parseBoolean(sa[10].trim());
 				if (check_tag){
-					String intro = sa[10].trim();
-					String picurl = sa[11].trim();
+					String intro = sa[11].trim();
+					String picurl = sa[12].trim();
 					byte[] intro_pic = DBUtils.urlToBytes(picurl);
-					String bank_account = sa[12].trim();
-					String ID = sa[13].trim();
-					String real_name = sa[14].trim();
-					String address = sa[15].trim();
-					String altphno =sa[16].trim();
-					String hashtag = sa[17].trim();
+					String bank_account = sa[13].trim();
+					String ID = sa[14].trim();
+					String real_name = sa[15].trim();
+					String address = sa[16].trim();
+					String altphno =sa[17].trim();
+					String hashtag = sa[18].trim();
 					ArtistBean ab = new ArtistBean(user_name, intro, bank_account, ID, real_name, address, altphno, hashtag, intro_pic);
 					adao.insert(ab);
+				}else{
+					check_tag= false;
 				}
 				MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday,
 						file_url, portrait, check_tag, authenticate);

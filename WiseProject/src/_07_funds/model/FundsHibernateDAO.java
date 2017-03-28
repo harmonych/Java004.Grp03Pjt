@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.sql.DataSource;
 
@@ -203,39 +202,6 @@ public class FundsHibernateDAO implements IFundsDAO {
 			session.close();
 		}
 		return list;
-	}
-	
-	@Override
-	public int updateSponsor(int fcid,int sponmoney) {
-		int updateCount = 0;
-		
-		SessionFactory factory = HibernateUtil.getSessionFactory();
-		Session session = factory.openSession();
-		
-		
-		Transaction tx = null;
-		try{
-			tx = session.beginTransaction();
-			FundsBean fb = fb=session.get(FundsBean.class,fcid);
-			int fcmoney=fb.getFcmoney();
-			
-			fcmoney+=sponmoney;
-			String hql ="update fcmoney set fcmoney="+fcmoney+" where fcid="+fcid;
-			Query query=session.createQuery(hql);
-			//session.saveOrUpdate(pb);
-			//session.merge(pb);
-			query.executeUpdate();
-			updateCount = 1;
-			tx.commit();
-		}catch(Exception e){
-			e.printStackTrace();
-			if(tx!=null){
-				tx.rollback();
-			}
-		}finally{
-			session.close();
-		}
-		return updateCount;
 	}
 	
 	
