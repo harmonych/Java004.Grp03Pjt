@@ -9,21 +9,21 @@ $(window).scroll(function () {
       // append elements to container
       $grid.append($items)
         // add and lay out newly appended elements
-        .isotope('appended', $items);
+        .isotope('appended', $items).isotope('layout');
     }
   }
 });
 //------------ add element-item
-$('.append-button').on('click', function () {
-  // create new item elements
-  for (var n = 1; n <= 12; n++) {
-    var $items = getItemElement(n);
-    // append elements to container
-    $grid.append($items)
-      // add and lay out newly appended elements
-      .isotope('appended', $items);
-  }
-});
+// $('.append-button').on('click', function () {
+//   // create new item elements
+//   for (var n = 1; n <= 12; n++) {
+//     var $items = getItemElement(n);
+//     // append elements to container
+//     $grid.append($items)
+//       // add and lay out newly appended elements
+//       .isotope('appended', $items);
+//   }
+// });
 //---------set item then push to grid 
 // make <div class="element-item element-item--width# element-item--height#" />
 function getItemElement(n,category) {
