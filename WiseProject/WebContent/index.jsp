@@ -114,10 +114,7 @@
 					<a href="Third_frame/backer.jsp">募資平台</a>
 				</li>
 				<li>
-					<a href="AdminLTE-master\index.html">商城系統</a>
-				</li>
-				<li>
-					<a href="ImgSearch\img-search-page.html">搜尋系統</a>
+					<a href="#">商城系統</a>
 				</li>
 									
 				
