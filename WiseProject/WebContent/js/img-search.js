@@ -9,7 +9,7 @@ $(window).scroll(function () {
       // append elements to container
       $grid.append($items)
         // add and lay out newly appended elements
-        .isotope('appended', $items);
+        .isotope('appended', $items).isotope('layout');
     }
   }
 });
