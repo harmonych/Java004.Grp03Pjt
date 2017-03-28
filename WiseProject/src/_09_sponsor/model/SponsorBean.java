@@ -37,6 +37,15 @@ import javax.persistence.Table;
 			
 		}
 		
+		public SponsorBean(int fcid, int userid, int sponmoney, String spontime, String sponmode,
+				String sponaccount) {
+			this.fcid = fcid;
+			this.userid = userid;
+			this.sponmoney = sponmoney;
+			this.spontime = spontime;
+			this.sponmode = sponmode;
+			this.sponaccount = sponaccount;
+		}
 		@Id
 		@Column(name = "spon_id")
 		public int getSpon_id() {

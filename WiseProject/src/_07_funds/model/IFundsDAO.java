@@ -21,4 +21,6 @@ public interface IFundsDAO {
 	List<FundsBean> getAllFundsJSON();
 
 	List<FundsBean> getAllFundsJSONtag(String search);
+
+	int updateSponsor(int fcid, int sponmoney);
 }
