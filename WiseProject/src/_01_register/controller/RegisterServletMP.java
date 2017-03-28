@@ -216,7 +216,7 @@ public class RegisterServletMP extends HttpServlet {
 				} else if (!Pattern.matches("[ABCDEFGHJKLMNPQRSTUVXYWZIO][12]\\d{8}", ID)) {
 					errorMsg.put("errorID", "身分證字號格式錯誤");
 				}else if (mb.checkExists(ID)) {
-					errorMsg.put("errorID", "此身分證字號已被註冊，請更換手機號碼");
+					errorMsg.put("errorID", "此身分證字號已被註冊，請更換身分證字號");
 				}
 
 				if (art_name == null || art_name.trim().length() == 0) {
