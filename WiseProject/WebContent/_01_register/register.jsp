@@ -1,261 +1,375 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>加入會員</title>
-<style type="text/css">
-<!--
-body {
-	background-attachment: fixed;
-	background-color: #EBFFEB;
-	background-repeat: no-repeat;
-	background-position: 20px 50px;
-}
-.myBorder {
-	color:#FFFF99;
-	border: thin dotted #FFFFFF;
-}
-h1 {
-	font-family: "標楷體", "新細明體", sans-serif;
-	font-size: 24px;
-}
-.formBkgnd {
-	color: #FFFFFF;
-	background-color: #666666;
-}
-label {
-	float:left;
-	width:8em;
-	font-weight:bold;
-	color:#000000;
-	margin-top:10px;
-	margin-bottom:2px;
-	margin-right:10px;
-	text-align: right;
-}
+	<!DOCTYPE html>
+	<html lang="en">
 
-br {
-	clear:both;
-}
-.fieldWidth {
-    margin-top:10px;
-	margin-bottom: 2px;
-	width: 200px;
-	background:#F6E497;
-	font-size:1.1em;
-}
-/* 設定字體大小 */
-.fontSize {
-	font-size:1.1em;
-}
+	<head>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="X-UA-Compatible" content="ie=edge">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<!--<link rel="stylesheet" href="../asset/css/bootstrap.min.css">-->
+			<!--<link rel="stylesheet" href="../asset/css/bootstrap-theme.min.css">-->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<style>
+				/*
+/* Created by Filipe Pina
+ * Specific styles of signin, register, component
+ */
+				/*
+ * General styles
+ */
+				
+				#playground-container {
+					height: 500px;
+					overflow: hidden !important;
+					-webkit-overflow-scrolling: touch;
+				}
+				
+				body,
+				html {
+					height: 100%;
+					background-repeat: no-repeat;
+					/*background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);*/
+					font-family: 'Oxygen', sans-serif;
+					background-size: cover;
+				}
+				
+				.main {
+					margin: 50px 15px;
+				}
+				
+				h1.title {
+					font-size: 50px;
+					font-family: 'Passion One', cursive;
+					font-weight: 400;
+				}
+				
+				hr {
+					width: 10%;
+					color: #fff;
+				}
+				
+				.form-group {
+					margin-bottom: 15px;
+				}
+				
+				label {
+					margin-bottom: 15px;
+				}
+				
+				input,
+				input::-webkit-input-placeholder {
+					font-size: 11px;
+					padding-top: 3px;
+				}
+				
+				.main-login {
+					background-color: #fff;
+					/* shadows and rounded borders */
+					-moz-border-radius: 2px;
+					-webkit-border-radius: 2px;
+					border-radius: 2px;
+					-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+					-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+					box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+				}
+				
+				.form-control {
+					height: auto!important;
+					padding: 8px 12px !important;
+				}
+				
+				.input-group {
+					-webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.21)!important;
+					-moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.21)!important;
+					box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.21)!important;
+				}
+				
+				#button {
+					border: 1px solid #ccc;
+					margin-top: 28px;
+					padding: 6px 12px;
+					color: #666;
+					text-shadow: 0 1px #fff;
+					cursor: pointer;
+					-moz-border-radius: 3px 3px;
+					-webkit-border-radius: 3px 3px;
+					border-radius: 3px 3px;
+					-moz-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+					-webkit-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+					box-shadow: 0 1px #fff inset, 0 1px #ddd;
+					background: #f5f5f5;
+					background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
+					background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+					background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+					background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+					background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+					filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
+				}
+				
+				.addon-facebook {
+					background-color: #345387;
+					border: none;
+					border-radius: 2px 0px 0px 2px;
+					color: #fff;
+				}
+				
+				.btn-facebook,
+				.btn-facebook:hover {
+					background-color: #4b6ea9;
+					color: #fff;
+					border-radius: 0px 2px 2px 0px;
+					font-size: 15px;
+					width: 270px;
+				}
+				
+				.main-center {
+					margin-top: 30px;
+					margin: 0 auto;
+					max-width: 400px;
+					padding: 10px 40px;
+					background: #fff;
+					/*background: #009edf;*/
+					color: dodgerblue;
+					text-shadow: none;
+					-webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+					-moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+					box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+				}
+				
+				span.input-group-addon i {
+					color: #009edf;
+					font-size: 17px;
+				}
+				
+				.login-button {
+					margin-top: 5px;
+				}
+				
+				.login-register {
+					font-size: 11px;
+					text-align: center;
+				}
+				.input-group .form-control{
+					width: 270px;	
+				}
+				.input-group-addon:first-child{
+					width: 50px;
+				}
+			</style>
+			<title>Login</title>
+	</head>
 
-#main {
-    position:relative;
-	left:70px;
-	width:600px;
-	height:543px;	
-	top: 0px;
-	z-index:2;
-	font-size:0.9em; 
-}
-/* 主要內容的區塊 */
-#content {
-  width: 700px ;
-  margin-left: auto ;
-  margin-right: auto ;
-}
-/* 設定傳送鈕的樣式 */
-#submit {
-	width:64px;
-	height:30px;
-	font-size:1.2em
-	color:#FFFFFF;
-	margin-right:1.5em;
-	border-width:2px;
-	border-color: #FFEDAF #B2A268 #B2A268 #FFEDAF;
-	background:#A9A9A9;
-}
-/* 設定取消鈕的樣式 */
-#cancel {
-	width:64px;
-	height:30px;
-	font-size:1.2em
-	color:#ffffff;
-	border-width:2px;
-	border-color: #FFEDAF #B2A268 #B2A268 #FFEDAF;
-	background:#a9a9a9;
-}
+	<body>
+		<c:set var="funcName" value="REG" scope="session" />
 
-#errorMsg {
-    position:relative;
-    top:0px; 
-    left:0px;    
-	color:#FF0000;
-	font-size:0.8em;
-}
--->
-</style>
-<script type="text/javascript">
-//由<body>的onLoad事件處理函數觸發此函數
-function setFocusToUserId(){   
-	 document.forms[0].mid.focus();   // 將游標放在mid欄位內
-}
-</script>
-</head>
-<body onLoad="setFocusToUserId()" >
-<c:set var="funcName" value="REG" scope="session"/>
-  <div id="content"> 
-  <Table width="700" border='2' cellspacing="0" bgColor='#E7CDFF'>
-     <TR height="60" >
-         <TD>
-         <TABLE cellspacing="1" >
-         <TR>
-             <TD width="680" colspan='3' align="center" >
-                 <Font color="#006600" size='5' face="標楷體">${AppName}</Font>
-             </TD>
-         </TD>
-         </TR>
-         <TR>
-             <TD width="240" ></TD>
-             <TD width="200"  align="center">
-                 <Font color="#006600" size='4' face="標楷體">加入會員</Font>
-             </TD>
-         <!-- 此區塊顯示程式執行後的訊息 -->
-             <TD width="240" aligh="left"><font size="-1" color="#FF0000">
-                 ${MsgMap.InsertNG}${MsgMap.errorSaveData}</font>
-             </TD>
-         </TR>         
-         </TABLE>
-         </TD>
-     </TR>
-     <TR><TD colspan="3">
-  <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='register.do' />"  id="register.do" >
-      <Font color="red" size='2' face="verdana" >*為必填欄位</Font><br/>
-      <label class="fontSize" >*會員帳號：</label>
-      <input type="text" name="account" value="${param.account}" class="fieldWidth" maxlength="20" style="width: 200px" >
-  	  <font size="-1" color="#FF0000">${MsgMap.errorAccount}</font>
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　會員帳號長度最長20字</Font><br/>
-      
-      <label class="fontSize" >*會員密碼：</label>
-      <input type="password" name="password" value="${param.password}" class="fieldWidth" maxlength="16" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorPassword}</font>      
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　密碼長度須介於6-16字，並包含英文與數字</Font><br/>
-      
-      <label class="fontSize" >*密碼確認：</label>
-      <input type="password" name="password2" value="${param.password2}"   class="fieldWidth" maxlength="16" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorPassword2}</font>            
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　必須與會員密碼相同</Font><br/>
-      
-      <label class="fontSize" >*會員名稱：</label>
-      <input type="text" name="user_name" value="${param.user_name}"  class="fieldWidth" maxlength="20" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorUserName}</font>
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　會員名稱長度最長20字</Font><br/>
-      
-      <label class="fontSize" >*手機號碼：</label>
-      <input type="text"  name="phonenum" value="${param.phonenum}"    class="fieldWidth" maxlength="10" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorPhonenum}</font>
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　須輸入台灣手機號碼格式，ex:09XXXXXXXX</Font><br/>
-      
-      <label class="fontSize" >*會員信箱：</label>
-          <input type="text"  name="email" value="${param.email}"   class="fieldWidth" maxlength="50" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorEmail}</font>
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　須輸入正規Email格式，ex:123@xxx.xxx</Font><br/>
-      
-      
-      
-      <label class="fontSize" >會員性別：</label>
-      <select name="gender" class="fieldWidth" style="width: 60px;">
-　			<option value="1"></option>
-			<option value="2">男</option>
-　			<option value="3">女</option>
-	  </select>
-	   <br/>
-      
-      <label class="fontSize" >會員生日：</label>
-          <input type="date"  name="birthday"  value="${param.birthday}"   class="fieldWidth" style="width: 150px;">
-          <font color="red" size="-1">${MsgMap.errorBirthday}</font> 
-      <br/>
-      
-      
-      <label class="fontSize" >大頭貼照：</label>
-      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="portrait"><BR>
-      <br/>        	
-      
-      <label >註冊為創作者</label>	
-      <input type="checkbox" name="registerArtist" value="true"><BR>
-      <br/>	
-      
-      <label class="fontSize" >作者簡介：</label>
-      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth" maxlength="500"></textarea><br>
-      <font color="red" size="-1">${MsgMap.errorIntroduction}</font>
-      <br/>
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+					<p class="text-center">Already have an account? <a href="../_02_login/login.jsp">Sign in here</a></p>
+					<h5 class="text-center">能被欣賞的創作，才是有價值的，快加入證明你的天才作品吧</h5>
 
-      <label class="fontSize" >*簡介圖片：</label>
-      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="intro_pic">
-      <font color="red" size="-1">${MsgMap.errorIntroPic}</font>
-      <br/>
-      
-      <label class="fontSize" >銀行帳戶：</label>
-          <input type="text"  name="bank_account" value="${param.bank_account}"   class="fieldWidth" maxlength="20" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorBankAccount}</font>
-      <br/>
-      
-      <label class="fontSize" >*身分證字號：</label>
-          <input type="text"  name="ID" value="${param.ID}"   class="fieldWidth" maxlength="10" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorID}</font>
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　須輸入合法台灣身分證字號</Font><br/>
-      
-      <label class="fontSize" >*真實姓名：</label>
-          <input type="text"  name="art_name" value="${param.art_name}"   class="fieldWidth" maxlength="20" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorArtName}</font>
-      <br/>
-      
-      <label class="fontSize" >*通訊地址：</label>
-          <input type="text"  name="art_address" value="${param.art_address}"   class="fieldWidth" maxlength="100" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorArtAddress}</font>
-      <br/>
-      
-      <label class="fontSize" >*聯絡電話：</label>
-          <input type="text"  name="art_num" value="${param.art_num}"   class="fieldWidth" maxlength="10" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorArtNum}</font>
-      <br/>
-      <label></label>
-      <Font color="black" size='1' face="verdana">　須輸入台灣手機號碼格式，ex:09XXXXXXXX</Font><br/>
-      
-      <label class="fontSize" >分類標籤：</label>
-          <input type="text"  name="hashtag" value="${param.hashtag}"   class="fieldWidth" maxlength="50" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorHashTag}</font>
-      <br/>
-       <label></label>
-      <Font color="black" size='1' face="verdana">　用於分類創作作品，每項標籤請以#開頭，ex: #動物</Font><br/><br/>
-           
-        	
-      <div id="btnArea" align="center">
-         <input type="submit" name="submit" id="submit" value="註冊"/>
-         <input type="reset" name="cancel" id="cancel" value="重填">
-      </div>
-      <br/>
-</form>
-</TD>
-</TR>
-</Table>
-</div>
-</body>
-</html>
+					<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='register.do' />" id="register.do">
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#normal">一般會員</a></li>
+							<li><a data-toggle="tab" href="#creator">創作者</a></li>
+						</ul>
+
+						<div class="tab-content">
+							<div id="normal" class="tab-pane fade in active">
+								<div class="form-group">
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon addon-facebook">
+									<i class="fa fa-fw fa-2x fa-facebook fa-fw" ></i>
+								</span>
+											<a class="btn btn-lg btn-block btn-facebook" href="#"> Register with Facebook</a>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="username" class="cols-sm-2 control-label">帳戶名稱：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-user-circle-o"   aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="account" value="${param.account}" id="username" placeholder="會員帳號長度最長20字" />
+											<font size="-1" color="#FF0000">${MsgMap.errorAccount}</font>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="password" class="cols-sm-2 control-label">密碼：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-lock fa-lg"  aria-hidden="true" ></i></span>
+											<input type="password" class="form-control" name="password" value="${param.password}" id="password" placeholder="密碼長度須介於6-16字，並包含英文與數字"
+											/>
+											<font color="red" size="-1">${MsgMap.errorPassword}</font>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="confirm" class="cols-sm-2 control-label">確認密碼：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-lock fa-lg"   aria-hidden="true"></i></span>
+											<input type="password" class="form-control" name="password2" value="${param.password2}" id="confirm" placeholder="與會員密碼相同"
+											/>
+											<font color="red" size="-1">${MsgMap.errorPassword2}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="cols-sm-2 control-label">暱稱：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-vcard fa"   aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="user_name" value="${param.user_name}" id="name" placeholder="長度最長20字" />
+											<font color="red" size="-1">${MsgMap.errorUserName}</font>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">手機：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-mobile"   aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="phonenum" value="${param.phonenum}" id="phone" placeholder="Ex:09XXXXXXXX"
+											/>
+											<font color="red" size="-1">${MsgMap.errorPhonenum}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">Email：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-envelope fa"   aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="email" value="${param.email}" id="email" placeholder="須輸入正規Email格式，ex:123@xxx.xxx"
+											/>
+											<font color="red" size="-1">${MsgMap.errorEmail}</font>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="creator" class="tab-pane fade">
+								<label>註冊為創作者</label>
+								<input type="checkbox" name="registerArtist" value="true">
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">大頭貼照：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-address-book-o"   aria-hidden="true"></i></span>
+											<input type="file" size="40"  class="form-control" name="portrait" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">真實姓名：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="art_name" value="${param.art_name}" id="email" placeholder="輸入合法台灣身分證字號" />
+											<font color="red" size="-1">${MsgMap.errorArtName}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">身分證字號：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="ID" value="${param.ID}" id="email" placeholder="輸入合法台灣身分證字號" />
+											<font color="red" size="-1">${MsgMap.errorID}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">生日：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="birthday" value="${param.birthday}" id="email" placeholder="輸入合法台灣身分證字號" />
+											<font color="red" size="-1">${MsgMap.errorBirthday}</font>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">銀行帳戶：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-bank"  aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="bank_account" value="${param.bank_account}" id="email" placeholder="輸入合法台灣身分證字號"
+											/>
+											<font color="red" size="-1">${MsgMap.errorArtNum}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">通訊地址：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="art_address" value="${param.art_address}" id="email" placeholder="輸入合法台灣身分證字號"
+											/>
+											<font color="red" size="-1">${MsgMap.errorArtAddress}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">作者簡介：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
+											<textarea name="Introduction" rows="5" cols="20" class="form-control" maxlength="500" placeholder="寫篇吸引人的介紹"></textarea><br>
+											<font color="red" size="-1">${MsgMap.errorIntroduction}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">簡介圖片：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
+											<input Type="file" size="40" class="form-control"  name="intro_pic">
+											<font color="red" size="-1">${MsgMap.errorIntroPic}</font>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">分類標籤：</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="hashtag" value="${param.hashtag}" id="email" placeholder="用於分類創作作品，每項標籤請以#開頭，ex: #動物"
+											/>
+											<font color="red" size="-1">${MsgMap.errorHashTag}</font>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<input class="btn btn-primary btn-lg btn-block login-button" type="submit" name="submit" id="submit" value="註冊" />
+
+						</div>
+						<p class="text-center">You agree to the <strong>Terms & Conditions</strong>.</p>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	</html>

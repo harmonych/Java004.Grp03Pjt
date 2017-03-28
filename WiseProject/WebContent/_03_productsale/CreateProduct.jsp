@@ -1,181 +1,552 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>建立商品</title>
-<style type="text/css">
-<!--
-body {
-	background-attachment: fixed;
-	background-color: #EBFFEB;
-	background-repeat: no-repeat;
-	background-position: 20px 50px;
-}
-.myBorder {
-	color:#FFFF99;
-	border: thin dotted #FFFFFF;
-}
-h1 {
-	font-family: "標楷體", "新細明體", sans-serif;
-	font-size: 24px;
-}
-.formBkgnd {
-	color: #FFFFFF;
-	background-color: #666666;
-}
-label {
-	float:left;
-	width:8em;
-	font-weight:bold;
-	color:#000000;
-	margin-top:10px;
-	margin-bottom:2px;
-	margin-right:10px;
-	text-align: right;
-}
-
-br {
-	clear:both;
-}
-.fieldWidth {
-    margin-top:10px;
-	margin-bottom: 2px;
-	width: 200px;
-	background:#F6E497;
-	font-size:1.1em;
-}
-/* 設定字體大小 */
-.fontSize {
-	font-size:1.1em;
-}
-
-#main {
-    position:relative;
-	left:70px;
-	width:600px;
-	height:543px;	
-	top: 0px;
-	z-index:2;
-	font-size:0.9em; 
-}
-/* 主要內容的區塊 */
-#content {
-  width: 700px ;
-  margin-left: auto ;
-  margin-right: auto ;
-}
-/* 設定傳送鈕的樣式 */
-#submit {
-	width:64px;
-	height:30px;
-	font-size:1.2em
-	color:#FFFFFF;
-	margin-right:1.5em;
-	border-width:2px;
-	border-color: #FFEDAF #B2A268 #B2A268 #FFEDAF;
-	background:#A9A9A9;
-}
-/* 設定取消鈕的樣式 */
-#cancel {
-	width:64px;
-	height:30px;
-	font-size:1.2em
-	color:#ffffff;
-	border-width:2px;
-	border-color: #FFEDAF #B2A268 #B2A268 #FFEDAF;
-	background:#a9a9a9;
-}
-
-#errorMsg {
-    position:relative;
-    top:0px; 
-    left:0px;    
-	color:#FF0000;
-	font-size:0.8em;
-}
--->
-</style>
-<script type="text/javascript">
-//由<body>的onLoad事件處理函數觸發此函數
-// function setFocusToUserId(){   
-// 	 document.forms[0].mid.focus();   // 將游標放在mid欄位內
-// }
-</script>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <title>Product - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+    <style type="text/css">
+        .Product_Button {
+            padding: 20px;
+            border: 1px solid #fff;
+        }
+        
+        .margin50 {
+            margin-top: 50px
+        }
+        
+        .productbtn:after {
+            font-family: "Glyphicons Halflings";
+            content: "\e114";
+            float: right;
+            margin-left: 15px;
+        }
+        /* Icon when the collapsible content is hidden */
+        
+        .productbtn.collapsed:after {
+            content: "\e080";
+        }
+        
+        .width450 {
+            width: 450px
+        }
+        
+        .margin50 {
+            margin-top: 50px;
+        }
+        
+        input[type=radio],
+        input[type=checkbox] {
+            margin: 4px !important;
+        }
+        
+        .dimentions-width,
+        .dimentions-height {
+            width: 90%;
+            display: initial;
+        }
+    </style>
+    <!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
+    <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript">
+        window.alert = function () { };
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css) {
+            if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $(document).ready(function () {
+            var iframe_height = parseInt($('html').height());
+            window.parent.postMessage(iframe_height, 'http://bootsnipp.com');
+        });
+    </script>
+    <script type="text/javascript">
+        try {
+            var AG_onLoad = function (func) { if (document.readyState === "complete" || document.readyState === "interactive") func(); else if (document.addEventListener) document.addEventListener("DOMContentLoaded", func); else if (document.attachEvent) document.attachEvent("DOMContentLoaded", func) };
+            var AG_removeElementById = function (id) { var element = document.getElementById(id); if (element && element.parentNode) { element.parentNode.removeChild(element); } };
+            var AG_removeElementBySelector = function (selector) { if (!document.querySelectorAll) { return; } var nodes = document.querySelectorAll(selector); if (nodes) { for (var i = 0; i < nodes.length; i++) { if (nodes[i] && nodes[i].parentNode) { nodes[i].parentNode.removeChild(nodes[i]); } } } };
+            var AG_each = function (selector, fn) { if (!document.querySelectorAll) return; var elements = document.querySelectorAll(selector); for (var i = 0; i < elements.length; i++) { fn(elements[i]); }; };
+            var AG_removeParent = function (el, fn) { while (el && el.parentNode) { if (fn(el)) { el.parentNode.removeChild(el); return; } el = el.parentNode; } };
+            navigator.getBattery = undefined;
+            (function () { window.Ya = window.Ya || {}; window.Ya.Metrika = function () { var noop = function () { }; this.addFileExtension = noop; this.extLink = noop; this.file = noop; this.hit = noop; this.notBounce = noop; this.params = noop; this.reachGoal = noop; this.replacePhones = noop; this.clickmap = noop; this.trackLinks = noop; }; })();
+            var _gaq = []; var _gat = { _getTracker: function () { return { _initData: function () { }, _trackPageview: function () { }, _trackEvent: function () { }, _setAllowLinker: function () { }, _setCustomVar: function () { } } }, _createTracker: function () { return this._getTracker(); }, _anonymizeIp: function () { } };
+            function urchinTracker() { };
+            var addthis = { init: function () { }, addEventListener: function () { }, button: function () { }, counter: function () { }, update: function () { }, toolbox: function () { }, layers: function () { } };
+            window.uabInject = function () { };
+        } catch (ex) { console.error('Error executing AG js: ' + ex); }
+    </script>
+    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap-theme.min.css"> 
 </head>
+<!--<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap-theme.min.css">
+    <style>
+        .Product_Button
+{
+    padding:20px;
+    border:1px solid #fff;
+}
+.margin50{
+    margin-top:50px
+}
+.productbtn:after {
+    font-family: "Glyphicons Halflings";
+    content: "\e114";
+    float: right;
+    margin-left: 15px;
+  }
+  /* Icon when the collapsible content is hidden */
+  .productbtn.collapsed:after {
+    content: "\e080";
+  }
+  .width450
+  {
+      width:450px
+  }
+  .margin50 {
+    margin-top:50px;   
+}
+input[type=radio], input[type=checkbox]
+{
+    margin:4px !important;
+}
+.dimentions-width, .dimentions-height
+{
+    width:90%;
+    display:initial;
+}
+    </style>
+    <title>Document</title>
+</head>-->
+
 <body>
-<c:set var="funcName" value="REG" scope="session"/>
-<!-- 引入共同的頁首 -->
-<jsp:include page="/fragment/top.jsp" />
-  <div id="content"> 
-  <Table width="700" border='2' cellspacing="0" bgColor='#E7CDFF'>
-     <TR height="60" >
-         <TD>
-         <TABLE cellspacing="1" >
-         <TR>
-             <TD width="680" colspan='3' align="center" >
-                 <Font color="#006600" size='5' face="標楷體">${AppName}</Font>
-             </TD>
-         </TD>
-         </TR>
-         <TR>
-             <TD width="240" ></TD>
-             <TD width="200"  align="center">
-                 <Font color="#006600" size='4' face="標楷體">建立商品</Font>
-             </TD>
-         <!-- 此區塊顯示程式執行後的訊息 -->
-             <TD width="240" aligh="left"><font size="-1" color="#FF0000">
-                 ${MsgMap.InsertNG}${MsgMap.errorSaveData}</font>
-             </TD>
-         </TR>         
-         </TABLE>
-         </TD>
-     </TR>
-     <TR><TD colspan="3">
-  <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='../_09_product/ProductCreate.do' />"  id="ProductCreate.do" > 
-	  <label class="fontSize" >商品名稱：</label>
-      <input type="text" name="proname" value="${param.proname}" class="fieldWidth" style="width: 200px;">
-      <!-- 
-         注意value屬性的內容以及顯示錯誤訊息的寫法
-      -->
-      <font size="-1" color="#FF0000">${MsgMap.errorpronameEmpty}</font>
-      <br/>
-      <label class="fontSize" >商品金額：</label>
-      <input type="text" name="prices" value="${param.prices}" class="fieldWidth" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorpricesEmpty}</font>      
-      <br/>
-      
-      <label class="fontSize" >上架日期：</label>
-      <input type="date" name="saletime" value="${param.saletime}"   class="fieldWidth" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorsaletimeEmpty}</font>            
-      <br/>
-      
-      <label class="fontSize" >庫存個數：</label>
-      <input type="number" min="0" name="proinvs" value="${param.proinvs}"  class="fieldWidth" style="width: 200px;">
-      <font color="red" size="-1">${MsgMap.errorproinvsEmpty}</font>
-      <br/>
-      
-      <label class="fontSize" >商品簡介：</label>
-      <textarea name="prointroduction" rows="5" cols="20" class="fieldWidth"></textarea><br>
-      <font color="red" size="-1">${MsgMap.errorprointroduction}</font>
-      <br/>
-      
-      <label class="fontSize" >標籤：</label>
-          <input type="text"  name="hashtag" value="${param.hashtag}"   class="fieldWidth" style="width: 200px;">
-          <font color="red" size="-1">${MsgMap.errorhashtagEmpty}</font>
-      <br/>
-            
-     <div id="btnArea" align="center">
-         <input type="submit" name="submit" id="submit" value="建立"/>
-         <input type="reset" name="cancel" id="cancel" value="重填">
-      </div>
-      <br/>
-</form>
-</TD>
-</TR>
-</Table>
-</div>
+    <div class="container">
+        <div>
+            <div class="Product_Button col-lg-offset-6">
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>MANAGE VARIANTS</strong></a>
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>CLOSE</strong></a>
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>SAVE AND CLOSE</strong></a>
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>SAVE</strong></a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div>
+                <ul class="nav nav-tabs col-lg-12" role="tablist">
+                    <li class="active"><a href="#Product_main" role="tab" data-toggle="tab">Main</a></li>
+                    <li class=""><a href="#Product_Images" role="tab" data-toggle="tab">Images</a></li>
+                    <li class=""><a href="#Product_Summary" role="tab" data-toggle="tab">Summary</a></li>
+                    <li class=""><a href="#Product_Desc" role="tab" data-toggle="tab">Description</a></li>
+                    <li class=""><a href="#Product_Mappings" role="tab" data-toggle="tab">Mappings</a></li>
+                    <li class=""><a href="#Product_StoreMapping" role="tab" data-toggle="tab">Store Mapping</a></li>
+                    <li class=""><a href="#Product_Options" role="tab" data-toggle="tab">Options</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="Product_Content tab-content">
+                <div id="Product_main" class="tab-pane active">
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <div class="col-lg-12 form-group margin50">
+                                <label class="col-lg-2" for="Name">Name</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="name" name="Name" placeholder="" class="form-control name">
+                                </div>
+                            </div>
+
+                            <div class=" col-lg-12 form-group">
+                                <label class="col-lg-2" for="ProductType">Product Type</label>
+                                <div class="col-lg-4">
+                                    <select id="productType" name="ProductType" class="form-control product-type">
+            <option value="0">-Select-</option>
+        </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Manufacturer">Manufacturer</label>
+                                <div class="col-lg-4">
+                                    <select id="manufacturer" name="Manufacturer" class="form-control manufacturer">
+            <option value="0">-Select-</option>
+        </select>
+                                    <p class="help-block"><a>Manufacturer Quick Add</a></p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Distributor">Distributor</label>
+                                <div class="col-lg-4">
+                                    <select id="distributor" name="Distributor" class="form-control distributor">
+            <option value="0">-Select-</option>
+        </select>
+                                    <p class="help-block"><a>Distributor Quick Add</a></p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="SKU">SKU</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="sku" name="SKU" placeholder="" class="form-control sku">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="ManufacturerPart">Manufacturer Part</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="manufacturerPart" name="ManufacturerPart" placeholder="" class="form-control manufacturer-part">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Published">Published</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="Published" class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="Published" checked class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Featured">Featured</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="Featured" class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="Featured" checked class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="PageDisplay">Page Display</label>
+                                <div class="col-lg-4">
+                                    <select id="pageDisplay" name="PageDisplay" class="form-control page-display">
+            <option value="0">-Select-</option>
+        </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="ColumnWidth">Column Width</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="columnWidth" name="ColumnWidth" placeholder="" class="form-control column-width">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="TaxClass">Tax Class</label>
+                                <div class="col-lg-4">
+                                    <select id="taxClass" name="TaxClass" class="form-control tax-class">
+            <option value="0">-Select-</option>
+        </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="QuantityDiscountTable">Quantity Discount Table</label>
+                                <div class="col-lg-4">
+                                    <select id="quantityDiscount" name="QuantityDiscountTable" class="form-control quantity-discount">
+            <option value="0">-Select-</option>
+        </select>
+                                    <p class="help-block"><a>Quantity Discount Quick Add</a></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="ShowBuyButton">Show Buy Button</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="ShowBuyButton" class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="ShowBuyButton" checked class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="RequiresRegistrationToView">Requires Registration To View</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="RequiresRegistrationToView" checked class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="RequiresRegistrationToView" class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="CallToOrder">Is Call To Order</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="CallToOrder" checked class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="CallToOrder" class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="HidePriceUntilCart">Hide Price Until Cart</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="HidePriceUntilCart" checked class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="HidePriceUntilCart" class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="ProductFeeds">Exclude From Product Feeds</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="ProductFeeds" checked class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="ProductFeeds" class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Kit">Is a Kit</label>
+                                <div class="col-lg-2">
+                                    <input type="radio" name="Kit" checked class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="Kit" class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Inventory">Track Inventory By Size and Color</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="Inventory" checked class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="Inventory" class="input-xlarge"><span>Yes</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="ColorOptionPrompt">Color Option Prompt</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="colorOptionPrompt" name="ColorOptionPrompt" placeholder="" class="form-control color-option-prompt">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="SizeOptionPrompt">Size Option Prompt</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="sizeOptionPrompt" name="SizeOptionPrompt" placeholder="" class="form-control size-option-prompt">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="RequiresTextField">Requires Text Field</label>
+                                <div class="col-lg-4">
+                                    <input type="radio" name="RequiresTextField" checked class="input-xlarge"><span>No</span>
+                                    <input type="radio" name="RequiresTextField" class="input-xlarge"><span>Yes</span>
+                                    <p class="help-block">
+                                        <span>Field Prompt </span><input type="text" id="fieldPrompt" name="FieldPrompt"
+                                            placeholder="" class="form-control field-prompt">
+                                    </p>
+                                    <p class="help-block">
+                                        <span>Max Length </span><input type="text" id="maxLength" name="MaxLength" placeholder=""
+                                            class="form-control max-length">
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3>Default Variant Information</h3>
+
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Price">Price</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="price" name="Price" placeholder="" class="form-control price">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="SalePrice">Sale Price</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="saleprice" name="SalePrice" placeholder="" class="form-control sale-price">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Weight">Weight</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="weight" name="Weight" placeholder="" class="form-control weight">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Dimentions">Dimentions(Width x Height X Depth)</label>
+                                <div class="col-lg-10">
+                                    <div class="col-lg-3"><input type="text" id="dimentionsWidth" name="DimentionsWidth" placeholder="" class="form-control dimentions-width">  X</div>
+                                    <div class="col-lg-3"><input type="text" id="dimentionsHeight" name="DimentionsHeight" placeholder="" class="form-control dimentions-height">  X</div>
+                                    <div class="col-lg-3"><input type="text" id="dimentionsDepth" name="DimentionsDepth" placeholder="" class="form-control dimentions-depth"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="CurrentInventory">Current Inventory</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="currentInventory" name="CurrentInventory" placeholder="" class="form-control current-inventory">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Colors">Colors</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="colors" name="Colors" placeholder="" class="form-control colors">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="ColorSKUModifier">Color SKU Modifiers</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="colorModifier" name="ColorSKUModifier" placeholder="" class="form-control color-modifier">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="Sizes">Sizes</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="sizes" name="Sizes" placeholder="" class="form-control sizes">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="col-lg-2" for="SizeSKUModifier">Size SKU Modifiers</label>
+                                <div class="col-lg-4">
+                                    <input type="text" id="sizeModifier" name="SizeSKUModifier" placeholder="" class="form-control size-modifier">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div id="Product_Images" class="tab-pane">
+                    <div class="col-lg-12 form-group margin50">
+                        <label class="col-sm-2" for="FilenameOverride">Image Filename Override</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" id="filenameOverride" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 form-group">
+                        <label class="col-sm-2" for="exampleInputFile">Small</label>
+                        <div class="col-sm-4">
+                            <input type="file" id="small">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 form-group">
+                        <label class="col-sm-2" for="exampleInputFile">Medium</label>
+                        <div class="col-sm-4">
+                            <input type="file" id="medium">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 form-group">
+                        <label class="col-sm-2" for="exampleInputFile">Large</label>
+                        <div class="col-sm-4">
+                            <input type="file" id="large">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div id="Product_Summary" class="tab-pane">
+                    <div class="col-lg-12 form-group margin50">
+                        <label class="col-sm-2" for="Summary">Summary</label>
+                        <div class="col-sm-4">
+                            <textarea class="form-control summary" id="summary" name="Summary"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div id="Product_Desc" class="tab-pane">
+                    <div class="col-lg-12 form-group margin50">
+                        <label class="col-sm-2" for="Description">Description</label>
+                        <div class="col-sm-4">
+                            <textarea class="form-control description" id="description" name="Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div id="Product_Mappings" class="tab-pane">
+                    <h4>Mappings</h4>
+                </div>
+                <div id="Product_StoreMapping" class="tab-pane">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Store</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="col-sm-10">
+                                <label>
+                        <input type="checkbox" class="retail">Retail 
+                    </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="col-sm-10">
+                                <label>
+                        <input type="checkbox" class="professional">Professionals 
+                    </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Product_Options" class="tab-pane">
+                    <div class="col-lg-12 form-group margin50">
+                        <div class="col-lg-6">
+                            <label class="col-sm-4" for="RelatedProducts">Related Products</label>
+                            <div class="col-sm-8">
+                                <input class="form-control related-products" type="text" id="relatedProducts" name="RelatedProducts">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="container">
+                                <button type="button" class="btn productbtn collapsed width450" data-toggle="collapse" data-target="#related">Related Products Helper</button>
+                                <div id="related" class="collapse">
+                                    Related Products Information
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 form-group">
+                        <div class="col-lg-6">
+                            <label class="col-sm-4" for="UpsellProducts">Upsell Products</label>
+                            <div class="col-sm-8">
+                                <input class="form-control upsell-products" type="text" id="upsellProducts" name="UpsellProducts">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="container">
+                                <button type="button" class="btn productbtn collapsed width450" data-toggle="collapse" data-target="#upsell">Upsell Products Helper</button>
+                                <div id="upsell" class="collapse">
+                                    Upsell Products Information
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 form-group">
+                        <div class="col-lg-6">
+                            <label class="col-sm-4" for="RequiredProducts">Required Products</label>
+                            <div class="col-sm-8">
+                                <input class="form-control required-products" type="text" id="requiredProducts" name="RequiredProducts">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="container">
+                                <button type="button" class="btn productbtn collapsed width450" data-toggle="collapse" data-target="#required">Required Products Helper</button>
+                                <div id="required" class="collapse">
+                                    Required Products Information
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 form-group">
+                        <div class="col-lg-6">
+                            <label class="col-sm-4" for="UpsellProductDiscount">Upsell Product Discount Percent</label>
+                            <div class="col-sm-8">
+                                <input class="form-control upsell-product-discount" type="text" id="upsellProductDiscount" name="UpsellProductDiscount">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 form-group">
+                        <div class="col-lg-6">
+                            <label class="col-sm-4" for="SalePrompt">'On Sale' Prompt</label>
+                            <div class="col-sm-8">
+                                <select class="form-control sale-prompt">
+          
+      </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="Product_Button col-lg-offset-6">
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>MANAGE VARIANTS</strong></a>
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>CLOSE</strong></a>
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>SAVE AND CLOSE</strong></a>
+                <a href="#" class="btn btn-primary"><i class=""></i><strong>SAVE</strong></a>
+            </div>
+        </div>
+    </div>
+    <script src="../asset/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
 </body>
+
 </html>
