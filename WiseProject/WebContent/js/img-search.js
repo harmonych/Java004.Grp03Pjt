@@ -1,15 +1,14 @@
-
 //-------------- window scrolling bottom get item 
 $(window).scroll(function () {
   // test Json Text to set
   var jsonText = { "category": "creatter", "name": "alex" };
   if ($(document).height() - $(window).height() - $(document).scrollTop() < 250) {
-    for (var n = 1; n <= 12; n++) {
+    for (var n = 1; n <= 4; n++) {
       var $items = getItemElement(n, jsonText["category"]);
       // append elements to container
-      $grid.append($items)
+      $grid.append($items).isotope('layout')
         // add and lay out newly appended elements
-        .isotope('appended', $items).isotope('layout');
+        .isotope('appended', $items);
     }
   }
 });

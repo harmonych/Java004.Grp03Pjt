@@ -259,11 +259,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
-
-							<div id="creator" class="tab-pane fade">
-								<label>註冊為創作者</label>
-								<input type="checkbox" name="registerArtist" value="true">
 								<div class="form-group">
 									<label for="email" class="cols-sm-2 control-label">大頭貼照：</label>
 									<div class="cols-sm-10">
@@ -273,6 +268,11 @@
 										</div>
 									</div>
 								</div>
+							</div>
+
+							<div id="creator" class="tab-pane fade">
+								<label>註冊為創作者</label>
+								<input type="checkbox" name="registerArtist" value="true">
 								<div class="form-group">
 									<label for="email" class="cols-sm-2 control-label">真實姓名：</label>
 									<div class="cols-sm-10">

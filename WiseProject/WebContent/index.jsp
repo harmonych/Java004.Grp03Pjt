@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
   <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
     <!DOCTYPE html>
     <!--
 This is a starter template page. Use this page to start your new project from
@@ -27,7 +26,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
-      <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+      <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
+      <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,6 +35,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+      <style>
+        .logo img {
+          width: 50px;
+          height: 35px;
+        }
+        
+        .carousel-inner .item img {
+          max-height: 600px;
+        }
+        .navbar-form{
+          display: inline-flex;
+        }
+      </style>
     </head>
     <!--
 BODY TAG OPTIONS:
@@ -57,7 +70,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-    <body class="hold-transition skin-green sidebar-mini">
+    <body class="hold-transition skin-yellow-light sidebar-mini ">
       <c:set var="userName" value="${LoginOK.user_name}" />
       <div class="wrapper">
 
@@ -67,9 +80,9 @@ desired effect
           <!-- Logo -->
           <a href="index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><img src="image/logo-tw-1.png" alt="minilogo"></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><img src="image/logo-tw.png" alt="nomallogo"></span>
           </a>
 
           <!-- Header Navbar -->
@@ -78,6 +91,17 @@ desired effect
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
               <span class="sr-only">Toggle navigation</span>
             </a>
+            <!-- search form (Optional) -->
+            <form action="#" method="get" class="navbar-form">
+              <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+              </div>
+            </form>
+            <!-- /.search form -->
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
@@ -181,11 +205,7 @@ desired effect
                 </li>
                 <!-- User Account Menu -->
 
-                <c:choose>
-                  <c:when test="${empty LoginOK}">
-                    <li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
-                  </c:when>
-                </c:choose>
+
                 <c:choose>
                   <c:when test="${empty LoginOK}">
                     <li><a href="_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
@@ -237,7 +257,11 @@ desired effect
                     </li>
                   </c:when>
                 </c:choose>
-
+                <c:choose>
+                  <c:when test="${empty LoginOK}">
+                    <li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
+                  </c:when>
+                </c:choose>
                 <!-- User Account Menu -->
 
                 <!-- Control Sidebar Toggle Button -->
@@ -266,24 +290,14 @@ desired effect
               </div>
             </div>
 
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="sidebar-form">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-              </div>
-            </form>
-            <!-- /.search form -->
+
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
               <li class="header">HEADER</li>
               <!-- Optionally, you can add icons to the links -->
-              <li class="active"><a href="Second_frame/Creations.jsp"><i class="fa fa-link"></i> <span>創作平台</span></a></li>
-              <li><a href="Third_frame/backer.jsp"><i class="fa fa-link"></i> <span>募資平台</span></a></li>
+              <li class="active"><a href="_05_CreationsFrame/Creations.jsp"><i class="fa fa-link"></i> <span>創作平台</span></a></li>
+              <li><a href="_06_fundsFrame/funds.jsp"><i class="fa fa-link"></i> <span>募資平台</span></a></li>
               <li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>搜尋系統</span>
             <span class="pull-right-container">
@@ -291,9 +305,9 @@ desired effect
             </span>
           </a>
                 <ul class="treeview-menu">
-                  <li><a href="ImgSearch\img-search-page.html">創作者</a></li>
-                  <li><a href="ImgSearch\img-search-page.html">商城作品</a></li>
-                  <li><a href="ImgSearch\img-search-page.html">募集作品</a></li>
+                  <li><a href="_08_ImgSearch\img-search-page.html">創作者</a></li>
+                  <li><a href="_08_ImgSearch\img-search-page.html">商城作品</a></li>
+                  <li><a href="_08_ImgSearch\img-search-page.html">募集作品</a></li>
                 </ul>
               </li>
             </ul>
@@ -307,53 +321,53 @@ desired effect
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <div class="col-md-12">
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">最新創作品</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="item">
-                    <img src="images/demo01.jpg" alt="First slide">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">最新創作品</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="item">
+                        <img src="http://pic52.nipic.com/file/20141105/18592292_142907683517_2.jpg" alt="First slide">
 
-                    <div class="carousel-caption">
-                      First Slide
-                    </div>
-                  </div>
-                  <div class="item active">
-                    <img src="images/demo02.jpg" alt="Second slide">
+                        <div class="carousel-caption">
+                          First Slide
+                        </div>
+                      </div>
+                      <div class="item active">
+                        <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="Second slide">
 
-                    <div class="carousel-caption">
-                      Second Slide
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="images/demo03.jpg" alt="Third slide">
+                        <div class="carousel-caption">
+                          Second Slide
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide">
 
-                    <div class="carousel-caption">
-                      Third Slide
+                        <div class="carousel-caption">
+                          Third Slide
+                        </div>
+                      </div>
                     </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                      <span class="fa fa-angle-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                      <span class="fa fa-angle-right"></span>
+                    </a>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                  <span class="fa fa-angle-left"></span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                  <span class="fa fa-angle-right"></span>
-                </a>
+                <!-- /.box-body -->
               </div>
+              <!-- /.box -->
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
               <li class="active">Here</li>
@@ -475,225 +489,3 @@ desired effect
     </body>
 
     </html>
-=======
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="asset/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/page.css">
-	<title>創作募資平台</title>
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-
-    <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
-</head>
-
-<body>
-<c:set var="userName" value="${LoginOK.user_name}" />
-
-<header class="container-fluid">
-
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div id="page-content-wrapper">
-			<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-				<span class="hamb-top"></span>
-				<span class="hamb-middle"></span>
-				<span class="hamb-bottom"></span>
-			</button>
-		</div>
-
-		<div class="btn-toolbar">
-
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand textup" href="#"></a>
-			</div>
-			
-			<div class="collapse navbar-collapse" id="myNavbar">
-			  <span class="sr-only">Toggle navigation</span>
-				<ul class="nav navbar-nav navbar-right">
-				<li class="username"><span>${userName}</span></li>		
-					
-					<c:choose>
-						<c:when test="${empty LoginOK}">
-							<li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
-						</c:when>
-					</c:choose>
-					<c:choose>
-						<c:when test="${empty LoginOK}">
-							<li><a href="_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
-						</c:when>
-						<c:when test="${!empty LoginOK}">
-							<li><a href="_02_login/logout.jsp"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
-						</c:when>
-					</c:choose>
-					<!-- <li><a href="#">搜尋</a></li>
-					<li><a href="#">購物車</a></li> -->
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-
-
-		
-	<div class="jumbotron text-center">
-		 
-		<form class="form-inline">
-			<div class="form-group">
-
-				<input class="form-control" type="search" placeholder="搜尋" size="50" required>
-			</div>
-				<button type="submit" class="btn btn-default">search</button>
-				<p>
-			<div class="checkbox">
-    			<label><input type="checkbox" checked>創作者</label>
-  			</div>
-  			<div class="checkbox">
-    			<label><input type="checkbox" checked>商城作品</label>
-  			</div>
-  			<div class="checkbox">
-    			<label><input type="checkbox" checked>募集作品</label>
-  			</div>
-		</form>
-	</div>
-</header>
-
-
-<section class="container-fluid" id="about">
-	<div id="wrapper">
-		<!-- Sidebar -->
-
-		<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-			<ul class="nav sidebar-nav">
-				
-				<li class="sidebar-brand">
-					<a href="#"> </a>			
-				</li>
-				<li class="username"><span>${userName}</span></li>
-				<li>
-					<a href="_05_CreationsFrame/Creations.jsp">創作平台</a>
-				</li>
-				<li>
-					<a href="_06_fundsFrame/funds.jsp">募資平台</a>
-				</li>
-				<li>
-					<a href="#">商城系統</a>
-				</li>
-				<li>
-					<a href="index2.html">會員中心</a>
-				</li>
-				<li>
-					<a href="ImgSearch\img-search-page.html">搜尋系統</a>
-				</li>
-									
-				
-				<!-- <li>
-					<a href="#">社群交流</a>
-				</li> -->
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li class="dropdown-header">下拉標題</li>
-						<li><a href="#">副選單一</a></li>
-						<li><a href="#">副選單二</a></li>
-					</ul>
-				</li>
-
-			</ul>
-		</nav>
-	
-		<!-- #sidebar-->
-	<div class="row">
-		<!-- Modal -->
-		<div class="modal fade bs-java" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-					</div>
-					<div class="modal-body">
-						...
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-			<!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-			</ol>
-
-			<!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<h4 ><br><span style="font-style:normal;">
-					<img src="images/picture.png" class="img-rounded" width="50" height="60">
-					新作品分享圖</span></h4>
-				</div>
-				<div class="item">
-					<h4> <br><span style="font-style:normal;">
-					<img src="images/photocamera1.png" class="img-circle" width="60" height="60" >
-					募資新資訊</span></h4>
-				</div>
-				<div class="item">
-					<h4> <br><span style="font-style:normal;">
-					<img src="images/teddybear.png" class="img-thumbnail" width="30" height="30">
-					新加入創作者</span></h4>
-				</div>
-			
-			</div>
-
-			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-	</div>
-	<div class="row">
-		<div class="card _card01 col-sm-4 col-md-4 col-md-4" data-toggle="modal">最新主題</div>
-		<div class="card _card02 col-sm-4 col-md-4 col-md-4" data-toggle="modal">最新募資</div>
-		<div class="card _card03 col-sm-4 col-md-4 col-md-4" data-toggle="modal">社群系統</div>
-		
-</div>
-		
-</div>
-
-</section>
-
-<footer class="container-fluid text-center">
-	<p>
-	</p>
-	
-</footer>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="asset/js/bootstrap.min.js"></script>
-<script src="js/default.js"></script>
-
-
-</body>
-</html>
->>>>>>> 5522254d3344653853d74bafb2460ee930eaed05
