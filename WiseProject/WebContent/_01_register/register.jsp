@@ -172,7 +172,7 @@
 			<div class="row main">
 				<div class="main-login main-center">
 					<p class="text-center">Already have an account? <a href="../_02_login/login.jsp">Sign in here</a></p>
-					<h5 class="text-center">能被欣賞的創作，才是有價值的，快加入證明你的天才作品吧</h5>
+					<h5 class="text-center" id="demo2">能被欣賞的創作，才是有價值的，快加入證明你的天才作品吧</h5>
 
 					<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='register.do' />" id="register.do">
 						<ul class="nav nav-tabs">
@@ -278,7 +278,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="art_name" value="${param.art_name}" id="email" placeholder="輸入合法台灣身分證字號" />
+											<input type="text" class="form-control" name="art_name" value="${param.art_name}" id="art_name" placeholder="輸入您的真實姓名" />
 											<font color="red" size="-1">${MsgMap.errorArtName}</font>
 										</div>
 									</div>
@@ -288,7 +288,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="ID" value="${param.ID}" id="email" placeholder="輸入合法台灣身分證字號" />
+											<input type="text" class="form-control" name="ID" value="${param.ID}" id="ID" placeholder="輸入合法台灣身分證字號" />
 											<font color="red" size="-1">${MsgMap.errorID}</font>
 										</div>
 									</div>
@@ -298,7 +298,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="birthday" value="${param.birthday}" id="email" placeholder="輸入合法台灣身分證字號" />
+											<input type="text" class="form-control" name="birthday" value="${param.birthday}" id="birthday" placeholder="輸入您的生日 e.g.1990-01-01" />
 											<font color="red" size="-1">${MsgMap.errorBirthday}</font>
 										</div>
 									</div>
@@ -309,7 +309,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-bank"  aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="bank_account" value="${param.bank_account}" id="email" placeholder="輸入合法台灣身分證字號"
+											<input type="text" class="form-control" name="bank_account" value="${param.bank_account}" placeholder="輸入您的收款帳號"
 											/>
 											<font color="red" size="-1">${MsgMap.errorArtNum}</font>
 										</div>
@@ -320,7 +320,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="art_address" value="${param.art_address}" id="email" placeholder="輸入合法台灣身分證字號"
+											<input type="text" class="form-control" name="art_address" value="${param.art_address}" placeholder="輸入您的通訊地址"
 											/>
 											<font color="red" size="-1">${MsgMap.errorArtAddress}</font>
 										</div>
@@ -351,7 +351,7 @@
 									<div class="cols-sm-10">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-id-card"  aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="hashtag" value="${param.hashtag}" id="email" placeholder="用於分類創作作品，每項標籤請以#開頭，ex: #動物"
+											<input type="text" class="form-control" name="hashtag" value="${param.hashtag}" placeholder="用於分類創作作品，每項標籤請以#開頭，ex: #動物"
 											/>
 											<font color="red" size="-1">${MsgMap.errorHashTag}</font>
 										</div>
@@ -364,12 +364,59 @@
 							<input class="btn btn-primary btn-lg btn-block login-button" type="submit" name="submit" id="submit" value="註冊" />
 
 						</div>
-						<p class="text-center">You agree to the <strong>Terms & Conditions</strong>.</p>
-
+						<p class="text-center" id="demo">You agree to the <strong>Terms & Conditions</strong>.</p>
 					</form>
 				</div>
 			</div>
 		</div>
 	</body>
+	<script>
+    $(function() {
+
+        $("#demo").click(function() {
+        	//若會員輸入區塊有空格則填滿。
+        	if($('input[name="account"]').val() === "")	$('input[name="account"]').val("test02");            	 
+            console.log($('input[name="account"]').val());
+            if($('input[name="password"]').val() === "")	$('input[name="password"]').val("123qwe");            	 
+            console.log($('input[name="password"]').val());
+            if($('input[name="password2"]').val() === "")	$('input[name="password2"]').val("123qwe");
+            console.log($('input[name="password2"]').val());
+            if($('input[name="user_name"]').val() === "")	$('input[name="user_name"]').val("測試一號");        
+            console.log($('input[name="user_name"]').val());
+            if($('input[name="phonenum"]').val() === "")	$('input[name="phonenum"]').val("0919123456");            	 
+            console.log($('input[name="phonenum"]').val());
+            if($('input[name="email"]').val() === "")	$('input[name="email"]').val("wisejava004@gmail.com");            	 
+            console.log($('input[name="email"]').val());      
+        });
+        
+        $("#demo2").click(function() {
+        	//若創作者輸入區塊有空格則填滿。
+        	if($('input[name="account"]').val() === "")	$('input[name="account"]').val("test03");            	 
+            if($('input[name="password"]').val() === "")	$('input[name="password"]').val("123qwe");            	 
+            console.log($('input[name="password"]').val());
+            if($('input[name="password2"]').val() === "")	$('input[name="password2"]').val("123qwe");
+            console.log($('input[name="password2"]').val());
+            if($('input[name="user_name"]').val() === "")	$('input[name="user_name"]').val("測試二號");        
+            console.log($('input[name="user_name"]').val());
+            if($('input[name="phonenum"]').val() === "")	$('input[name="phonenum"]').val("0919123457");            	 
+            console.log($('input[name="phonenum"]').val());
+            if($('input[name="email"]').val() === "")	$('input[name="email"]').val("wisejava004@gmail.com");            	 
+            console.log($('input[name="email"]').val()); 
+        	$('input[name="registerArtist"]').prop("checked",true);
+	        if($('input[name="art_name"]').val() === "")	$('input[name="art_name"]').val("張君雅");            	 
+	        console.log($('input[name="art_name"]').val());
+	        if($('input[name="ID"]').val() === "")	$('input[name="ID"]').val("A123456789");            	 
+	        console.log($('input[name="ID"]').val());
+	        if($('input[name="birthday"]').val() === "")	$('input[name="birthday"]').val("1990-01-01");            	 
+	        console.log($('input[name="birthday"]').val());
+	        if($('input[name="bank_account"]').val() === "")	$('input[name="bank_account"]').val("01234567891234");            	 
+	        if($('input[name="art_address"]').val() === "")	$('input[name="art_address"]').val("台北市凱達格蘭大道一號");            	 
+	        if($('textarea[name="Introduction"]').val() === "")	$('textarea[name="Introduction"]').val("認真上進的好青年");  
+            console.log($('textarea[name="Introduction"]').val());
+	        if($('input[name="hashtag"]').val() === "")	$('input[name="hashtag"]').val("#認真 #上進 #好青年");            	 
+        });
+    });
+	
+	</script>
 
 	</html>
