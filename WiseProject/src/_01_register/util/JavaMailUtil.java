@@ -212,7 +212,7 @@ public class JavaMailUtil {
 	 * 設定信件主旨
 	 */
 	public void setSubject() throws MessagingException {
-		message.setSubject(subject);
+		message.setSubject(subject, "UTF-8");
 	}
 
 	/*
