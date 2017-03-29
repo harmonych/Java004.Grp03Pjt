@@ -139,7 +139,8 @@ public class FundCreateServletMP extends HttpServlet {
 				System.out.println("123");// 如果有錯誤
 				if (!errorMsg.isEmpty()) {
 					// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+//					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create.jsp");
 					rd.forward(request, response);
 					return;
 				}
@@ -171,14 +172,16 @@ public class FundCreateServletMP extends HttpServlet {
 					// 5.依照 Business Logic 運算結果來挑選適當的畫面
 					if (!errorMsg.isEmpty()) {
 						// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-						RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+//						RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+						RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create.jsp");
 						rd.forward(request, response);
 						return;
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 					errorMsg.put("errorAccountDup", e.getMessage());
-					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+//					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create.jsp");
 					rd.forward(request, response);
 				}
 			
