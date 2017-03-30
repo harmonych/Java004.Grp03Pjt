@@ -11,6 +11,9 @@ import javax.servlet.http.*;
 import javax.xml.bind.DatatypeConverter;
 
 import _00_init.GlobalService;
+import _01_register.model.ArtistBean;
+import _01_register.model.ArtistHibernateDAO;
+import _01_register.model.IArtistDAO;
 import _01_register.model.MemberBean;
 import _02_login.model.LoginServiceDB;
 
@@ -103,10 +106,14 @@ public class LoginServlet extends HttpServlet {
 			
 			
 			
+			
 			if (mb != null) {
+				// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
+				session.setAttribute("LoginOK", mb);
 				if(mb.isAuthenticate()){
-					// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
-					session.setAttribute("LoginOK", mb);
+					ArtistBean ab = mb.getArtistbean();
+					// OK, 將ab物件放入Session範圍內，識別字串為"IsArtist"
+					session.setAttribute("IsArtist", ab);
 				}else{
 					// NG, 
 					errorMsgMap.put("LoginError", "該帳號未完成Email驗證，請至註冊信箱收取驗證信以完成Email驗證");

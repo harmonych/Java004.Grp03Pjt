@@ -140,6 +140,9 @@ public class DBUtils {
 				byte[] portrait = DBUtils.urlToBytes(file_url);
 				boolean check_tag = Boolean.parseBoolean(sa[9].trim());
 				boolean authenticate = Boolean.parseBoolean(sa[10].trim());
+				MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday,
+						file_url, portrait, check_tag, authenticate);
+				
 				if (check_tag){
 					String intro = sa[11].trim();
 					String picurl = sa[12].trim();
@@ -148,16 +151,15 @@ public class DBUtils {
 					String ID = sa[14].trim();
 					String real_name = sa[15].trim();
 					String address = sa[16].trim();
-					String altphno =sa[17].trim();
-					String hashtag = sa[18].trim();
-					ArtistBean ab = new ArtistBean(user_name, intro, bank_account, ID, real_name, address, altphno, hashtag, intro_pic);
-					adao.insert(ab);
+					String hashtag = sa[17].trim();
+					ArtistBean ab = new ArtistBean(user_name, intro, bank_account, ID, real_name, address, hashtag, picurl, intro_pic);
+					adao.insert(mb, ab);
 				}else{
 					check_tag= false;
+					dao.insert(mb);
 				}
-				MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday,
-						file_url, portrait, check_tag, authenticate);
-				dao.insert(mb);
+				
+				
 
 			}
 			System.out.println("檔案" + filename + "新增完畢");

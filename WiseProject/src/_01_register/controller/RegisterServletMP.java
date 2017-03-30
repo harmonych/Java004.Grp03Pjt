@@ -89,7 +89,6 @@ public class RegisterServletMP extends HttpServlet {
 		String ID = "";
 		String art_name = "";
 		String art_address = "";
-		String art_num = "";
 		String hashtag = "";
 		String intro_pic_name = "";
 
@@ -140,8 +139,6 @@ public class RegisterServletMP extends HttpServlet {
 						art_name = value;
 					} else if (fldName.equalsIgnoreCase("art_address")) {
 						art_address = value;
-					} else if (fldName.equalsIgnoreCase("art_num")) {
-						art_num = value;
 					} else if (fldName.equalsIgnoreCase("hashtag")) {
 						hashtag = value;
 					}
@@ -225,13 +222,7 @@ public class RegisterServletMP extends HttpServlet {
 				if (art_address == null || art_address.trim().length() == 0) {
 					errorMsg.put("errorArtAddress", "通訊地址欄必須輸入");
 				}
-				if (art_num == null || art_num.trim().length() == 0) {
-					errorMsg.put("errorArtNum", "聯絡電話欄必須輸入");
-				} else if (!Pattern.matches("^([0][9])\\d{8}", art_num)) {
-					errorMsg.put("errorArtNum", "聯絡電話格式錯誤");
-				}
-				
-
+			
 			}
 		} else {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
@@ -250,20 +241,25 @@ public class RegisterServletMP extends HttpServlet {
 
 			MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday, check_tag,
 					fileName,authenticate);
-			// 將MemberBean mem立即寫入Database
+			
+			int n = 0;
 			if (is != null) {
 				byte[] portrait = DBUtils.isToBytes(is);
 				mem.setPortrait(portrait);
 			}
-			int n = mb.insert(mem);
-			if (check_tag) {
+			// 如果註冊一般會員，僅將MemberBean mem寫入Database
+			if (!check_tag) {
+				n = mb.insert(mem);
+			}else{
 				ArtistBean art = new ArtistBean(user_name, Introduction, bank_account, ID, art_name, art_address,
-						art_num, hashtag, intro_pic_name);
+						hashtag, intro_pic_name);
 				if (ipis != null) {
 					byte[] intro_pic = DBUtils.isToBytes(ipis);
 					art.setIntro_pic(intro_pic);
 				}
-				ab.insert(art);
+				// 如果註冊創作者會員，會將MemberBean mem及ArtistBean art寫入Database
+				n = ab.insert(mem, art);
+				
 			}
 			
 			int userId = mem.getUser_id();

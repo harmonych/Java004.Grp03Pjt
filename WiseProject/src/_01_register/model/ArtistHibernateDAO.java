@@ -32,6 +32,31 @@ public class ArtistHibernateDAO implements IArtistDAO {
 //		}
 //	}
 	
+	@Override
+	public int insert(MemberBean mb, ArtistBean ab) {
+		int updateCount = 0;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			mb.setArtistbean(ab);
+			ab.setMemberbean(mb);
+			
+			session.save(mb);
+			session.save(ab);
+			updateCount = 1;
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return updateCount;
+	}
 	
 	@Override
 	public int insert(ArtistBean ab) {
@@ -134,7 +159,7 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			ab=session.get(ArtistBean.class,key);
+			ab=session.get(ArtistBean.class, key);
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();

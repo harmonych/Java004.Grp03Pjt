@@ -1,19 +1,14 @@
 package _01_register.model;
 
 import java.io.*;
-import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -21,61 +16,56 @@ import org.hibernate.annotations.Parameter;
 @Table(name="artist")
 public class ArtistBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@OneToOne(mappedBy = "artid")
-	int art_id;
-	@OneToOne(mappedBy = "user_name")
-	@PrimaryKeyJoinColumn
+	private int art_id;
 	private String user_name;
-	private String Introduction;
+	private String introduction;
 	private String bank_account;
 	private String ID;
 	private String art_name;
 	private String art_address;
-	private String art_num;
 	private String hashtag;
 	private byte[] intro_pic;
 	private String file_name;
-//	private MemberBean memberbean;
+	private MemberBean memberbean;
 	
 	//含所有屬性的建構子
 	public ArtistBean(int art_id, String user_name, String introduction, String bank_account, String ID, String art_name, String art_address,
-			String art_num, String hashtag, String file_name) {
+			String hashtag, String file_name) {
 		super();
 		this.art_id = art_id;
 		this.user_name = user_name;
-		this.Introduction = introduction;
+		this.introduction = introduction;
 		this.bank_account = bank_account;
 		this.ID = ID;
 		this.art_name = art_name;
 		this.art_address = art_address;
-		this.art_num = art_num;
 		this.hashtag = hashtag;
 		this.file_name = file_name;
 	}
-	public ArtistBean(String user_name, String Introduction, String bank_account, String ID, String art_name,
-			String art_address, String art_num, String hashtag, String file_name) {
+	public ArtistBean(String user_name, String introduction, String bank_account, String ID, String art_name,
+			String art_address, String hashtag, String file_name) {
 		super();
 		this.user_name = user_name;
-		this.Introduction = Introduction;
+		this.introduction = introduction;
 		this.bank_account = bank_account;
 		this.ID = ID;
 		this.art_name = art_name;
 		this.art_address = art_address;
-		this.art_num = art_num;
+		this.file_name = file_name;
 		this.hashtag = hashtag;
 	}
 	//init使用的建構子
-	public ArtistBean(String user_name, String introduction, String bank_account, String iD, String art_name,
-			String art_address, String art_num, String hashtag, byte[] intro_pic) {
+	public ArtistBean(String user_name, String introduction, String bank_account, String ID, String art_name,
+			String art_address, String hashtag, String file_name, byte[] intro_pic) {
 		super();
 		this.user_name = user_name;
-		this.Introduction = introduction;
+		this.introduction = introduction;
 		this.bank_account = bank_account;
-		this.ID = iD;
+		this.ID = ID;
 		this.art_name = art_name;
 		this.art_address = art_address;
-		this.art_num = art_num;
 		this.hashtag = hashtag;
+		this.file_name = file_name;
 		this.intro_pic = intro_pic;
 	}
 
@@ -85,12 +75,9 @@ public class ArtistBean implements Serializable {
 	
 
 	@Id
-	@Column(name = "art_id", unique = true, nullable = false)
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@GeneratedValue(generator = "autoGen")
-	@GenericGenerator(name = "autoGen", strategy = "increment")
-	@PrimaryKeyJoinColumn
-//	parameters = { @Parameter(name = "property", value = "artist") })
+	@GeneratedValue(generator = "gen") 	
+	@GenericGenerator(name = "gen", strategy = "identity", 
+	parameters = { @Parameter(name = "property", value = "memberbean") })
 	public int getArt_id() {
 		return art_id;
 	}
@@ -99,12 +86,20 @@ public class ArtistBean implements Serializable {
 		this.art_id = art_id;
 	}
 	
+	@OneToOne
+	@PrimaryKeyJoinColumn 
+	public MemberBean getMemberbean() {
+		return memberbean;
+	}
+	public void setMemberbean(MemberBean memberbean) {
+		this.memberbean = memberbean;
+	}
 	public String getIntroduction() {
-		return Introduction;
+		return introduction;
 	}
 
 	public void setIntroduction(String introduction) {
-		this.Introduction = introduction;
+		this.introduction = introduction;
 	}
 
 	public String getBank_account() {
@@ -146,15 +141,6 @@ public class ArtistBean implements Serializable {
 
 	public void setArt_address(String art_address) {
 		this.art_address = art_address;
-	}
-
-	@Column(nullable = false)
-	public String getArt_num() {
-		return art_num;
-	}
-
-	public void setArt_num(String art_num) {
-		this.art_num = art_num;
 	}
 
 	public String getHashtag() {

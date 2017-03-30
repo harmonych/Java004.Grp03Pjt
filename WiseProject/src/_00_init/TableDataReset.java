@@ -108,7 +108,7 @@ public class TableDataReset {
 		dropString = "DROP TABLE IF EXISTS artist ";
 		createString = "Create Table artist" + "(artid int  auto_increment  primary  key ," + " Introduction text,"
 				+ " intro_pic MediumBlob, " + " bank_account varchar(20), " + "ID 		char(10), "
-				+ "art_name varchar(20), " + "art_address varchar(100), " + "art_num varchar(10), " + "hash_tag varchar(100)"
+				+ "art_name varchar(20), " + "art_address varchar(100), " + "hash_tag varchar(100)"
 				+ " ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;  ";
 		try {
 			// 執行刪除artist表格的SQL命令
@@ -119,7 +119,7 @@ public class TableDataReset {
 			// 印出執行成功的訊息
 			System.out.println("artist表格產生成功");
 			sql1 = "insert into artist " + " (artid, Introduction, intro_pic, bank_account, "
-					+ "ID, art_name, art_address, " + " art_num, hash_tag) " + " values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "ID, art_name, art_address, " +  "hash_tag) " + " values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt1 = con.prepareStatement(sql1);
 			// Statement pstmt2 = con.createStatement();
 			pstmt1.setString(1, "大家好，我是Andy");

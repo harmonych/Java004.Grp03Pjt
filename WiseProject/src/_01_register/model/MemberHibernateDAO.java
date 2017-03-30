@@ -49,6 +49,8 @@ public class MemberHibernateDAO implements IMemberDAO {
 	// }
 	// }
 
+	
+	
 	@Override
 	public int insert(MemberBean mb) {
 		int updateCount = 0;

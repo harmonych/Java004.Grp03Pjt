@@ -5,6 +5,8 @@ import java.util.List;
 public interface IArtistDAO {
 
 	int insert(ArtistBean ab);
+	
+	int insert(MemberBean mb, ArtistBean ab);
 
 	int update(ArtistBean ab);
 

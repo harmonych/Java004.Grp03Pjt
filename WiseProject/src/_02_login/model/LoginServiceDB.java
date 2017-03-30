@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.*;
+import javax.persistence.TypedQuery;
 import javax.sql.*;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
 import _00_init.*;
+import _01_register.model.ArtistBean;
 import _01_register.model.MemberBean;
+import _01_register.util.HibernateUtil;
 public class LoginServiceDB implements LoginServiceDAO {
 	static private List<MemberBean> memberList = new ArrayList<MemberBean>();
 	private DataSource ds = null;
@@ -20,81 +28,54 @@ public class LoginServiceDB implements LoginServiceDAO {
 		}
 	}
 	public MemberBean checkPassword(String user, String password) throws SQLException {
-		String sql = "SELECT * From user_info where account = ? and password = ? ";
-		Connection connection = null;
-		PreparedStatement pStmt = null;
-		ResultSet rs = null;
-		MemberBean mb = null;
-		try {
-			connection = ds.getConnection();
-			System.out.println("sql=" + sql);
-			pStmt = connection.prepareStatement(sql);
-			pStmt.setString(1,  user);
-			pStmt.setString(2,  password);
-			rs = pStmt.executeQuery();
-					
-			if (rs.next()) {
-				String account = rs.getString("account").trim(); // 必須確定
-																// rs.getString("memberID")
-																// 不是null才能
-																// .trim()
-				String pswd = rs.getString("password").trim();
-				String user_name = rs.getString("user_name");
-				String phonenum = rs.getString("phonenum");
-				String email = rs.getString("email");
-				String gender = rs.getString("gender");
-				String birthday = rs.getString("birthday");
-				boolean check_tag = rs.getBoolean("check_tag");
-				boolean authenticate = rs.getBoolean("authenticate");
-				String file_name = rs.getString("file_name");
-				
-				mb = new MemberBean(account, pswd, user_name, phonenum, email, gender, birthday, check_tag, file_name, authenticate);
-			}
-		} finally {
-			if (rs != null) {
-				rs.close();
-			}
-			if (connection != null) {
-				connection.close();
-			}
+	SessionFactory factory = HibernateUtil.getSessionFactory();
+	Session session = factory.openSession();
+	Transaction tx = null;
+	MemberBean rmb = null;
+	try {
+	tx = session.beginTransaction();
+	String hql = "FROM MemberBean mb WHERE mb.account= ? and " 
+				+ "mb.password= ?" ;
+	TypedQuery<MemberBean> query = session.createQuery(hql);
+	query.setParameter(0, user);
+	query.setParameter(1, password);
+	List<MemberBean> list = query.getResultList();
+	Hibernate.initialize(list);
+	tx.commit();
+	for(MemberBean mb:list){
+		rmb = mb;
+	}
+	} catch (Exception e) {
+		e.printStackTrace();
+		if (tx != null) {
+			tx.rollback();
 		}
-			return mb;
+	} finally {
+		session.close();
+	}
+
+	return rmb;
+	
 	}
 	public void populateMemberList() throws SQLException {
-		// 由Database讀取會員資料
-		String sql = "SELECT * From user_info";
-		Connection connection = null;
-		PreparedStatement pStmt = null;
-		ResultSet rs = null;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
 		try {
-			connection = ds.getConnection();
-			pStmt = connection.prepareStatement(sql);
-			rs = pStmt.executeQuery();
-			while (rs.next()) {
-				String account = rs.getString("account").trim(); // 必須確定
-				// rs.getString("memberID")
-				// 不是null才能
-				// .trim()
-				String pswd = rs.getString("password").trim();
-				String user_name = rs.getString("user_name");
-				String phonenum = rs.getString("phonenum");
-				String email = rs.getString("email");
-				String gender = rs.getString("gender");
-				String birthday = rs.getString("birthday");
-				boolean check_tag = rs.getBoolean("check_tag");
-				boolean authenticate = rs.getBoolean("authenticate");
-				String file_name = rs.getString("file_name");
-				MemberBean mb = new MemberBean(account, pswd, user_name, phonenum, email, gender,birthday, check_tag, file_name, authenticate);
-				memberList.add(mb);
+		tx = session.beginTransaction();
+		String hql = "FROM MemberBean" ;
+		TypedQuery<MemberBean> query = session.createQuery(hql);
+		List<MemberBean> list = query.getResultList();
+		Hibernate.initialize(list);
+		tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
 			}
 		} finally {
-			if (rs != null) {
-				rs.close();
-			}
-			if (connection != null) {
-				connection.close();
-			}
-		}
+			session.close();
+		}	
 	}
 
 	public MemberBean checkIDPassword(String account, String password) {

@@ -1,6 +1,8 @@
 ﻿package _01_register.model;
 
 import java.io.*;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,19 +15,20 @@ import javax.persistence.Table;
 @Table(name="user_info")
 public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	int user_id;
-	String account;
-	String password;
-	@OneToOne(mappedBy = "user_name")
-	String user_name;
-	String phonenum;
-	String email;
-	String gender;
-	String birthday;
-	byte[] portrait;
-	boolean check_tag;
-	String file_name;
-	boolean authenticate;
+	private int user_id;
+	private String account;
+	private String password;
+	private String user_name;
+	private String phonenum;
+	private String email;
+	private String gender;
+	private String birthday;
+	private byte[] portrait;
+	private boolean check_tag;
+	private String file_name;
+	private boolean authenticate;
+	private ArtistBean artistbean;
+	
 
 
 
@@ -65,8 +68,9 @@ public class MemberBean implements Serializable {
 	public MemberBean() {
 	}	
 	
-	@Id	
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	public int getUser_id() {
 	return user_id;
 	}
@@ -74,6 +78,17 @@ public class MemberBean implements Serializable {
 	public void setUser_id(int user_id) {
 	this.user_id = user_id;
 	}
+	
+	
+	@OneToOne(mappedBy="memberbean", cascade=CascadeType.ALL)
+	public ArtistBean getArtistbean() {
+		return artistbean;
+	}
+
+	public void setArtistbean(ArtistBean artistbean) {
+		this.artistbean = artistbean;
+	}
+
 	@Column(nullable = false)
 	public String getAccount() {
 		return account;
