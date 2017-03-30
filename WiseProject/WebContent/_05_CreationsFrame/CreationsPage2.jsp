@@ -53,10 +53,10 @@ pageEncoding="UTF-8"%>
                             <a href="#"> </a>
                         </li>
                         <li>
-                            <a href="CreationsPage3.jsp">作品頁面</a>
+                            <a href="../index.jsp">Home</a>
                         </li>
                         <li>
-                            <a href="../_06_fundsFrame/funds.jsp">募資大廳</a>
+                            <a href="../_07_fundsFrame/funds.jsp">募資大廳</a>
                         </li>
                         <li>
                             <a href="#">商城系統</a>
@@ -83,7 +83,8 @@ pageEncoding="UTF-8"%>
                                         <div class="row">
                                             <h2>作品</h2>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=90% height=50% title=""> </div>
+                                            <a href="CreationsPage3.jsp">
+                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=90% height=50% title=""></a> </div>
 <!--                                             <p> <a href="CreationsPage3.jsp"><h5>作品1</h5></a> -->
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>

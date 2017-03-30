@@ -54,10 +54,10 @@
                             <a href="#"> </a>
                         </li>
                         <li>
-                            <a href="CreationsPage3.jsp">作品</a>
+                            <a href="../index.jsp">Home</a>
                         </li>
                         <li>
-                            <a href="../_06_fundsFrame/funds.jsp">募資大廳</a>
+                            <a href="../_07_fundsFrame/funds.jsp">募資大廳</a>
                         </li>
                         <li>
                             <a href="#">商城系統</a>
@@ -93,8 +93,9 @@
 			
 			<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal">
 				<a href="#">
+				<a href="CreationsPage2.jsp">
 				<img src="../images/smallPic/snoopy.jpg" class="img-thumbnail" width="130" height="130"> 
-				<a href="CreationsPage2.jsp">MuMu</a></a>
+				MuMu</a></a>
 				</div>
 				<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal">
 				<a href="#">

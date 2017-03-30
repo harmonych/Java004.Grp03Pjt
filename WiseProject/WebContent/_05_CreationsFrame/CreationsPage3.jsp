@@ -89,7 +89,7 @@
                         <a href="CreationsPage2.jsp">創作者</a>
                     </li>
                     <li>
-                      <a href="../_06_fundsFrame/funds.jsp">募資平台</a>
+                      <a href="../_07_fundsFrame/funds.jsp">募資平台</a>
                     </li>
                     <li>
                         <a href="#">作品商城</a>
