@@ -2,10 +2,6 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
-    <!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
     <html>
 
     <head>
@@ -72,6 +68,7 @@ desired effect
 
     <body class="hold-transition skin-yellow-light sidebar-mini ">
       <c:set var="userName" value="${LoginOK.user_name}" />
+      <c:set var="file_name" value="${LoginOK.file_name}" />
       <div class="wrapper">
 
         <!-- Main Header -->
@@ -122,6 +119,7 @@ desired effect
                           <a href="#">
                             <div class="pull-left">
                               <!-- User Image -->
+                              <!-- 留言系統代入留言者頭像及資料 -->                      
                               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                             </div>
                             <!-- Message title and timestamp -->
@@ -215,31 +213,30 @@ desired effect
                       <!-- Menu Toggle Button -->
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="${file_name}" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">${userName}</span>
                       </a>
                       <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                          <img src="${file_name}" class="img-circle" alt="User Image">
 
                           <p>
-                            ${userName} - Web Developer
-                            <small>Member since Nov. 2012</small>
+                            ${userName} 
                           </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
                           <div class="row">
                             <div class="col-xs-4 text-center">
-                              <a href="#">Followers</a>
+                              <a href="#">追蹤名單</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="#">Sales</a>
+                              <a href="#">投資計畫</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="#">Friends</a>
+                              <a href="#">訂購清單</a>
                             </div>
                           </div>
                           <!-- /.row -->
@@ -247,10 +244,10 @@ desired effect
                         <!-- Menu Footer-->
                         <li class="user-footer">
                           <div class="pull-left">
-                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            <a href="#" class="btn btn-default btn-flat">個人資料</a>
                           </div>
                           <div class="pull-right">
-                            <a href="_02_login/logout.jsp" class="btn btn-default btn-flat">Sign out</a>
+                            <a href="_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>
                           </div>
                         </li>
                       </ul>
@@ -281,12 +278,12 @@ desired effect
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
               <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="${file_name}" class="img-circle" alt="User Image">
               </div>
               <div class="pull-left info">
                 <p>${userName}</p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> 在線</a>
               </div>
             </div>
 
