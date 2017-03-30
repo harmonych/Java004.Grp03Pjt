@@ -79,15 +79,11 @@ desired effect
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><img src="image/logo-tw-1.png" alt="minilogo"></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><img src="image/logo-tw.png" alt="nomallogo"></span>
+            <span class="logo-lg"><img src="image/logo-tw.png" alt="normallogo"></span>
           </a>
 
           <!-- Header Navbar -->
           <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-              <span class="sr-only">Toggle navigation</span>
-            </a>
             <!-- search form (Optional) -->
             <form action="#" method="get" class="navbar-form">
               <div class="input-group">
@@ -99,6 +95,10 @@ desired effect
               </div>
             </form>
             <!-- /.search form -->
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+              <span class="sr-only">Toggle navigation</span>
+            </a>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
@@ -276,37 +276,43 @@ desired effect
           <section class="sidebar">
 
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel">
-              <div class="pull-left image">
-                <img src="${file_name}" class="img-circle" alt="User Image">
-              </div>
-              <div class="pull-left info">
-                <p>${userName}</p>
-                <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> 在線</a>
-              </div>
-            </div>
-
+            <c:choose>
+            	<c:when test="${empty LoginOK}">
+                </c:when>
+                <c:when test="${!empty LoginOK}">
+		            <div class="user-panel">
+		              <div class="pull-left image">
+		                <img src="${file_name}" class="img-circle" alt="User Image">
+		              </div>
+		              <div class="pull-left info">
+		                <p>${userName}</p>
+		                <!-- Status -->
+		                <a href="#"><i class="fa fa-circle text-success"></i> 在線</a>
+		              </div>
+		            </div>
+				</c:when>
+			</c:choose>
 
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
               <li class="header">HEADER</li>
               <!-- Optionally, you can add icons to the links -->
-              <li class="active"><a href="_05_CreationsFrame/Creations.jsp"><i class="fa fa-link"></i> <span>創作平台</span></a></li>
-              <li><a href="_06_fundsFrame/funds.jsp"><i class="fa fa-link"></i> <span>募資平台</span></a></li>
               <li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>搜尋系統</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
+		            <span class="pull-right-container">
+		              <i class="fa fa-angle-left pull-right"></i>
+		            </span>
+         		 </a>
                 <ul class="treeview-menu">
                   <li><a href="_08_ImgSearch\img-search-page.html">創作者</a></li>
                   <li><a href="_08_ImgSearch\img-search-page.html">商城作品</a></li>
                   <li><a href="_08_ImgSearch\img-search-page.html">募集作品</a></li>
                 </ul>
               </li>
+              <li class="active"><a href="_05_CreationsFrame/Creations.jsp"><i class="fa fa-link"></i> <span>創作平台</span></a></li>
+              <li><a href="_06_fundsFrame/funds.jsp"><i class="fa fa-link"></i> <span>募資平台</span></a></li>
+
             </ul>
             <!-- /.sidebar-menu -->
           </section>

@@ -25,7 +25,7 @@
 		int ui = Integer.parseInt(request.getParameter("id"));
 		int n = 5;
 		Attestation.attEmail(ui);
-		response.setHeader("Refresh", n + ";URL=http://saudade.myasustor.com:8080/WiseProject//index.jsp");
+		response.setHeader("Refresh", n + ";URL=http://saudade.myasustor.com:8080/WiseProject/index.jsp");
 	%>
 
 	<Form action="<c:url value='login.do' />" method="POST"
@@ -33,7 +33,6 @@
 		<div id='content' width='500px'
 			style="border-width: 2; background: #E0E0E0; border-style: inset; border-color: #EF02A4; display: table-cell; vertical-align: middle;">
 			<h3 style="text-align: center; margin: 50px">信箱認證成功!</h3>
-			<div style="text-align: center;">請記得至您的信箱收取驗證信</div>
 			<div style="text-align: center;">網頁將在5秒後自動導向首頁</div>
 		</div>
 	</Form>
