@@ -159,11 +159,11 @@
 					<div id="ipt1">	
 						<label id="lb">開始時間</label>
 						<input type="date" name="starttime" value="${param.starttime}" class="tx1"><br>
-						<font color="red" size="-1">${MsgMap.errorfcmoneysEmpty}</font>
+						<font color="red" size="-1">${MsgMap.errorstarttimeEmpty}</font>
 					</div>	
 					<div id="ipt1">	
 						<label id="lb">結束時間</label>
-						<input type="date" name="endtime" value="${param.starttime}" class="tx1"><br>
+						<input type="date" name="endtime" value="${param.endtime}" class="tx1"><br>
 						<font color="red" size="-1">${MsgMap.errorendtimeEmpty}</font>
 					</div>	
 					<div id="ipt1">	

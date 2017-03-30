@@ -28,7 +28,7 @@ import _08_product.model.ProductHibernateDAO;
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
-@WebServlet("/_08_product/ProductCreate.do")
+@WebServlet("/_09_product/ProductCreate.do")
 public class ProCreateServletMP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -110,8 +110,8 @@ public class ProCreateServletMP extends HttpServlet {
 				System.out.println("123");// 如果有錯誤
 				if (!errorMsg.isEmpty()) {
 					// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-					//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProduct.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create");
+					//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProductA.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create.jsp");
 					rd.forward(request, response);
 					return;
 				}
@@ -143,16 +143,16 @@ public class ProCreateServletMP extends HttpServlet {
 					// 5.依照 Business Logic 運算結果來挑選適當的畫面
 					if (!errorMsg.isEmpty()) {
 						// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-						//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProduct.jsp");
-						RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create");
+						//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProductA.jsp");
+						RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create.jsp");
 						rd.forward(request, response);
 						return;
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 					errorMsg.put("errorAccountDup", e.getMessage());
-					//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProduct.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create");
+					//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProductA.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create.jsp");
 					rd.forward(request, response);
 				}
 			

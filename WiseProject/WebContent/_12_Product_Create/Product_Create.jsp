@@ -139,7 +139,7 @@
 				
 				<!-- 商品輸入欄 -->
 			<div class="card02 col-md-4">
-				<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='../_08_product/ProductCreate.do' />"  id="ProductCreate.do" >
+				<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='../_09_product/ProductCreate.do' />"  id="ProductCreate.do" >
 					<div>	
 						<div id="ipt1">
 							<label id="lb">商品名稱</label>
