@@ -23,7 +23,7 @@ public class MemberBean implements Serializable {
 	private String email;
 	private String gender;
 	private String birthday;
-	private byte[] portrait;
+//	private byte[] portrait;
 	private boolean check_tag;
 	private String file_name;
 	private boolean authenticate;
@@ -34,7 +34,7 @@ public class MemberBean implements Serializable {
 
 	//含所有屬性的建構子
 	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
-			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag, boolean authenticate) {
+			String gender, String birthday, String file_name, boolean check_tag, boolean authenticate) {
 		super();
 		this.user_id = user_id;
 		this.account = account;
@@ -44,11 +44,26 @@ public class MemberBean implements Serializable {
 		this.email = email;
 		this.gender = gender;
 		this.birthday = birthday;
-		this.file_name = file_name;
-		this.portrait = portrait;
 		this.check_tag = check_tag;
+		this.file_name = file_name;
 		this.authenticate = authenticate;
 	}
+//	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
+//			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag, boolean authenticate) {
+//		super();
+//		this.user_id = user_id;
+//		this.account = account;
+//		this.password = password;
+//		this.user_name = user_name;
+//		this.phonenum = phonenum;
+//		this.email = email;
+//		this.gender = gender;
+//		this.birthday = birthday;
+//		this.file_name = file_name;
+//		this.portrait = portrait;
+//		this.check_tag = check_tag;
+//		this.authenticate = authenticate;
+//	}
 
 	//為了RegisterServletMP.java而做的建構子
 	public MemberBean(String account, String password, String user_name, String phonenum, String email, String gender,
@@ -65,6 +80,7 @@ public class MemberBean implements Serializable {
 		this.file_name = file_name;
 		this.authenticate = authenticate;
 	}
+
 	public MemberBean() {
 	}	
 	
@@ -149,13 +165,13 @@ public class MemberBean implements Serializable {
 		this.birthday = birthday;
 	}
 
-	@Column(name = "portrait", columnDefinition="MediumBlob")
-	public byte[] getPortrait() {
-		return portrait;
-	}
-	public void setPortrait(byte[] portrait) {
-		this.portrait = portrait;
-	}
+//	@Column(name = "portrait", columnDefinition="MediumBlob")
+//	public byte[] getPortrait() {
+//		return portrait;
+//	}
+//	public void setPortrait(byte[] portrait) {
+//		this.portrait = portrait;
+//	}
 	public String getFile_name() {
 		return file_name;
 	}
@@ -174,7 +190,7 @@ public class MemberBean implements Serializable {
 		this.file_name = file_name;
 	}
 	//判斷是否為創作者身分	
-	@Column(name = "check_tag", columnDefinition="TINYINT", nullable = false)
+	@Column(name = "check_tag", columnDefinition="boolean", nullable = false)
 	public boolean isCheck_tag() {
 		return check_tag;
 	}

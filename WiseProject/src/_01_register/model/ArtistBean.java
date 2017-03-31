@@ -24,7 +24,7 @@ public class ArtistBean implements Serializable {
 	private String art_name;
 	private String art_address;
 	private String hashtag;
-	private byte[] intro_pic;
+//	private byte[] intro_pic;
 	private String file_name;
 	private MemberBean memberbean;
 	
@@ -55,19 +55,19 @@ public class ArtistBean implements Serializable {
 		this.hashtag = hashtag;
 	}
 	//init使用的建構子
-	public ArtistBean(String user_name, String introduction, String bank_account, String ID, String art_name,
-			String art_address, String hashtag, String file_name, byte[] intro_pic) {
-		super();
-		this.user_name = user_name;
-		this.introduction = introduction;
-		this.bank_account = bank_account;
-		this.ID = ID;
-		this.art_name = art_name;
-		this.art_address = art_address;
-		this.hashtag = hashtag;
-		this.file_name = file_name;
-		this.intro_pic = intro_pic;
-	}
+//	public ArtistBean(String user_name, String introduction, String bank_account, String ID, String art_name,
+//			String art_address, String hashtag, String file_name, byte[] intro_pic) {
+//		super();
+//		this.user_name = user_name;
+//		this.introduction = introduction;
+//		this.bank_account = bank_account;
+//		this.ID = ID;
+//		this.art_name = art_name;
+//		this.art_address = art_address;
+//		this.hashtag = hashtag;
+//		this.file_name = file_name;
+//		this.intro_pic = intro_pic;
+//	}
 
 	public ArtistBean() {
 	}	
@@ -150,14 +150,14 @@ public class ArtistBean implements Serializable {
 	public void setHashtag(String hashtag) {
 		this.hashtag = hashtag;
 	}
-	@Column(name = "intro_pic", columnDefinition="MediumBlob", nullable = false)
-	public byte[] getIntro_pic() {
-		return intro_pic;
-	}
-
-	public void setIntro_pic(byte[] intro_pic) {
-		this.intro_pic = intro_pic;
-	}
+//	@Column(name = "intro_pic", columnDefinition="MediumBlob", nullable = false)
+//	public byte[] getIntro_pic() {
+//		return intro_pic;
+//	}
+//
+//	public void setIntro_pic(byte[] intro_pic) {
+//		this.intro_pic = intro_pic;
+//	}
 
 	public String getFile_name() {
 		return file_name;

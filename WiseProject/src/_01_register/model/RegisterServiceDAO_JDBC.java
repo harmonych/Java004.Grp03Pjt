@@ -42,8 +42,8 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		try {
 			String sql1 = "insert into userInfo " +
 					" (account, password, user_name, phonenum, email, gender, birthday, " +
-	      	  		" portrait, file_name, check_tag) " +
-	      	  		" values (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+	      	  		"file_name, check_tag) " +
+	      	  		" values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt1 = conn.prepareStatement(sql1);
 			pstmt1.setString(1, mb.getAccount());
@@ -56,9 +56,8 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 			pstmt1.setString(7, mb.getBirthday());
 			// 設定Image欄位
 			// pstmt1.setBlob(11, is, size); // 此方法目前未支援
-			pstmt1.setBinaryStream(8, is, size);
-			pstmt1.setString(9, filename);
-			pstmt1.setBoolean(10, mb.isCheck_tag());
+			pstmt1.setString(8, filename);
+			pstmt1.setBoolean(9, mb.isCheck_tag());
 			r = pstmt1.executeUpdate();
 			if (r == 1) {
 				// 寫入成功，應該將MemberBean mem立即加入LoginService的memberList內

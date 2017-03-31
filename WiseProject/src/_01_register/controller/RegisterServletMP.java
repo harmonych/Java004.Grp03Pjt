@@ -119,7 +119,7 @@ public class RegisterServletMP extends HttpServlet {
 						phonenum = value;
 					} else if (fldName.equalsIgnoreCase("email")) {
 						email = value;
-					} else if (fldName.equalsIgnoreCase("gender")) { //未於register.jsp使用，確認後決定是否廢棄。
+                    } else if (fldName.equalsIgnoreCase("gender")) { //未於register.jsp使用，確認後決定是否廢棄。
 						gender = value;
 					} else if (fldName.equalsIgnoreCase("birthday")) {
 						birthday = value;
@@ -238,25 +238,27 @@ public class RegisterServletMP extends HttpServlet {
 		try {
 			// 4. 進行Business Logic運算
 			// 儲存會員的資料
-			
-//			String gender = ID.charAt(1);		利用ID判定男女
+    
+//          String gender = ID.charAt(1);        利用ID判定男女
 			MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday, check_tag,
-					fileName,authenticate);
+					"http://saudade.myasustor.com/JPjt/portrait/"+fileName,authenticate);
 			
 			int n = 0;
 			if (is != null) {
-				byte[] portrait = DBUtils.isToBytes(is);
-				mem.setPortrait(portrait);
+				String dirPortrait = getServletContext().getInitParameter("upload.location.portrait");
+				DBUtils.isToFiles(is, fileName, dirPortrait);
+//				mem.setPortrait(portrait);
 			}
 			// 如果註冊一般會員，僅將MemberBean mem寫入Database
 			if (!check_tag) {
 				n = mb.insert(mem);
 			}else{
 				ArtistBean art = new ArtistBean(user_name, Introduction, bank_account, ID, art_name, art_address,
-						hashtag, intro_pic_name);
+						hashtag, "http://saudade.myasustor.com/JPjt/intro_pic/" + intro_pic_name);
 				if (ipis != null) {
-					byte[] intro_pic = DBUtils.isToBytes(ipis);
-					art.setIntro_pic(intro_pic);
+					String dirIntro = getServletContext().getInitParameter("upload.location.intro"); 
+					DBUtils.isToFiles(ipis, intro_pic_name, dirIntro);
+//					art.setIntro_pic(intro_pic);
 				}
 				// 如果註冊創作者會員，會將MemberBean mem及ArtistBean art寫入Database
 				n = ab.insert(mem, art);

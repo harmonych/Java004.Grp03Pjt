@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 
 import _01_register.model.ArtistBean;
 import _01_register.model.ArtistHibernateDAO;
@@ -36,13 +37,29 @@ public class DBUtils {
 				baos.write(buffer, 0, length);
 			}
 			// ByteArrayOutputStream轉成位元陣列
-			data = baos.toByteArray();
-			
+			data = baos.toByteArray();			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return data;
+	}
+	public static void isToFiles(InputStream is, String filename, String dir) {
+		//由前ServletContext方式獲得路徑
+		File dirImg = new File(dir+filename);
+//		if (!dirImg.exists()) dirImg.mkdirs();
+		byte[] buffer = new byte[8192];
+		int length = 0;
+		try (
+			FileOutputStream fos = new FileOutputStream(dirImg);
+		) {
+			while ((length = is.read(buffer)) != -1) {
+				fos.write(buffer, 0, length);
+			}
+			is.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static char[] fileToChars(String filename, String encoding) {
@@ -121,9 +138,11 @@ public class DBUtils {
 	public static void initUserInfo(String filename, String encoding) {
 		IMemberDAO dao = new MemberHibernateDAO();
 		IArtistDAO adao = new ArtistHibernateDAO();
-		try (FileInputStream fis = new FileInputStream(filename);
-				InputStreamReader in = new InputStreamReader(fis, encoding);
-				BufferedReader br = new BufferedReader(in);) {
+		try (
+			FileInputStream fis = new FileInputStream(filename);
+			InputStreamReader in = new InputStreamReader(fis, encoding);
+			BufferedReader br = new BufferedReader(in);
+		) {
 
 			String line = "";
 			while ((line = br.readLine()) != null) {
@@ -137,30 +156,26 @@ public class DBUtils {
 				String gender = sa[6].trim();
 				String birthday = sa[7].trim();
 				String file_url = sa[8].trim();
-				byte[] portrait = DBUtils.urlToBytes(file_url);
+//				byte[] portrait = DBUtils.urlToBytes(file_url);
 				boolean check_tag = Boolean.parseBoolean(sa[9].trim());
 				boolean authenticate = Boolean.parseBoolean(sa[10].trim());
-				MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday,
-						file_url, portrait, check_tag, authenticate);
-				
+                MemberBean mb = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday, 
+                		file_url, check_tag, authenticate);
 				if (check_tag){
 					String intro = sa[11].trim();
 					String picurl = sa[12].trim();
-					byte[] intro_pic = DBUtils.urlToBytes(picurl);
+//					byte[] intro_pic = DBUtils.urlToBytes(picurl);
 					String bank_account = sa[13].trim();
 					String ID = sa[14].trim();
 					String real_name = sa[15].trim();
 					String address = sa[16].trim();
 					String hashtag = sa[17].trim();
-					ArtistBean ab = new ArtistBean(user_name, intro, bank_account, ID, real_name, address, hashtag, picurl, intro_pic);
-					adao.insert(mb, ab);
+                    ArtistBean ab = new ArtistBean(user_name, intro, bank_account, ID, real_name, address, hashtag, picurl);
+                    adao.insert(mb, ab);
 				}else{
 					check_tag= false;
 					dao.insert(mb);
 				}
-				
-				
-
 			}
 			System.out.println("檔案" + filename + "新增完畢");
 		} catch (IOException ex) {

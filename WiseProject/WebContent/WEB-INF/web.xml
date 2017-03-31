@@ -9,4 +9,20 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+    <context-param>
+	    <param-name>upload.location.portrait</param-name>
+	    <param-value>/volume1/Web/JPjt/portrait/</param-value>
+    </context-param>
+    <context-param>
+	    <param-name>upload.location.intro</param-name>
+	    <param-value>/volume1/Web/JPjt/intro_pic/</param-value>
+    </context-param>
+        <context-param>
+	    <param-name>upload.location.fc</param-name>
+	    <param-value>/volume1/Web/JPjt/fc_pic_address/</param-value>
+    </context-param>
+        <context-param>
+	    <param-name>upload.location.pro</param-name>
+	    <param-value>/volume1/Web/JPjt/pro_pic_address/</param-value>
+    </context-param>
 </web-app>
