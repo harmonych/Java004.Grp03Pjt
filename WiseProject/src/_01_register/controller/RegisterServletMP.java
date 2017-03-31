@@ -119,7 +119,7 @@ public class RegisterServletMP extends HttpServlet {
 						phonenum = value;
 					} else if (fldName.equalsIgnoreCase("email")) {
 						email = value;
-					} else if (fldName.equalsIgnoreCase("gender")) {
+					} else if (fldName.equalsIgnoreCase("gender")) { //未於register.jsp使用，確認後決定是否廢棄。
 						gender = value;
 					} else if (fldName.equalsIgnoreCase("birthday")) {
 						birthday = value;
@@ -238,7 +238,8 @@ public class RegisterServletMP extends HttpServlet {
 		try {
 			// 4. 進行Business Logic運算
 			// 儲存會員的資料
-
+			
+//			String gender = ID.charAt(1);		利用ID判定男女
 			MemberBean mem = new MemberBean(account, password, user_name, phonenum, email, gender, birthday, check_tag,
 					fileName,authenticate);
 			
