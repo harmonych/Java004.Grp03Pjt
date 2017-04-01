@@ -153,14 +153,14 @@ public class ModifyUserInfo extends HttpServlet {
 						hashtag = value;
 					}
 				} else {
-					if (fldName.equalsIgnoreCase("portrait") && value!=null) {
+					if (fldName.equalsIgnoreCase("portrait")) {
 						fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
 						fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
 						if (fileName != null && fileName.trim().length() > 0) {
 							is = p.getInputStream();
 						}
 					}				
-					if (fldName.equalsIgnoreCase("intro_pic") && value!=null) {
+					if (fldName.equalsIgnoreCase("intro_pic")) {
 						intro_pic_name = GlobalService.getFileName(p); // 此為圖片檔的檔名
 						intro_pic_name = GlobalService.adjustFileName(intro_pic_name,
 								GlobalService.IMAGE_FILENAME_LENGTH);
@@ -291,7 +291,7 @@ public class ModifyUserInfo extends HttpServlet {
 				response.sendRedirect("ModUserInfoOk.jsp");
 				return;
 			} else {
-				errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
+				errorMsg.put("errorAccountDup", "新增此筆資料有誤(ModifyUserInfo)");
 			}
 
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面

@@ -121,7 +121,7 @@ public class ArtistBean implements Serializable {
 	public void setBank_account(String bank_account) {
 		this.bank_account = bank_account;
 	}
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	public String getID() {
 		return ID;
 	}

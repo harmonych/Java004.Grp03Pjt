@@ -119,7 +119,7 @@ public class MemberBean implements Serializable {
 		this.artistbean = artistbean;
 	}
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique=true )
 	public String getAccount() {
 		return account;
 	}
@@ -136,7 +136,7 @@ public class MemberBean implements Serializable {
 		this.password = password;
 	}
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique=true )
 	public String getUser_name() {
 		return user_name;
 	}
@@ -154,7 +154,7 @@ public class MemberBean implements Serializable {
 		this.phonenum = phonenum;
 	}
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique=true)
 	public String getEmail() {
 		return email;
 	}
@@ -185,11 +185,13 @@ public class MemberBean implements Serializable {
 //	}
 //	public void setPortrait(byte[] portrait) {
 //		this.portrait = portrait;
-//	}
+//	} 
 	public String getFile_name() {
 		return file_name;
 	}
-	
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
 	public void setAuthenticate(boolean authenticate){
 		this.authenticate = authenticate;
 	}
@@ -197,11 +199,6 @@ public class MemberBean implements Serializable {
 	@Column(name = "authenticate", columnDefinition="TINYINT", nullable = false)
 	public boolean isAuthenticate(){
 		return authenticate;
-	}
-	
-
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
 	}
 	//判斷是否為創作者身分	
 	@Column(name = "check_tag", columnDefinition="boolean", nullable = false)

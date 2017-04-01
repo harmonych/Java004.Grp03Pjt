@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -190,7 +189,7 @@ span.input-group-addon i {
 							<div class="form-group">
 								<div class="cols-sm-10"></div>
 							</div>
-							<Font color="red" size='2' face="verdana">*為必填欄位</Font><br /> <input
+							<Font color="red" size='2' face="verdana"><i class="fa fa-fw fa-exclamation-triangle"></i>為必填欄位</Font><br /> <input
 								type="hidden" name="user_id" value="${LoginOK.user_id}"
 								class="fieldWidth">
 								<input
@@ -212,12 +211,11 @@ span.input-group-addon i {
 							</div>
 
 							<div class="form-group">
-								<label for="old_password" class="cols-sm-2 control-label">*原註冊密碼：</label>
+								<label for="old_password" class="cols-sm-2 control-label"><font color = "red"><i class="fa fa-fw fa-exclamation-triangle" ></i></font>原註冊密碼：</label>
 								<div class="cols-sm-10">
 									<div class="input-group">
-										<span class="input-group-addon"><i
-											class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-											type="password" name="old_password"
+										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span> 
+										<input type="password" name="old_password"
 											value="${param.old_password}" class="form-control"
 											maxlength="16" placeholder="欲更改會員資料必須輸入原註冊密碼" /> <font
 											color="red" size="-1">${MsgMap.errorOldPassword}</font>
@@ -293,15 +291,15 @@ span.input-group-addon i {
 							<div class="form-group">
 								<label class="fontSize">性別：</label><br> <select
 									name="gender" class="fieldWidth" style="width: 60px;" >
-									<option value="1" ></option>
-									<option value="2">男</option>
-									<option value="3">女</option>
+									<option value=""></option>
+									<option value="1">男</option>
+									<option value="2">女</option>
 									<c:choose>
 										<c:when test="${LoginOK.gender=='1'}">
-											<option value="4" SELECTED style="display: none">男</option>
+											<option value="1" SELECTED style="display: none">男</option>
 										</c:when>
 										<c:when test="${LoginOK.gender=='2'}">
-											<option value="4" SELECTED style="display: none">女</option>
+											<option value="2" SELECTED style="display: none">女</option>
 										</c:when>
 									</c:choose>
 								</select>
@@ -452,22 +450,16 @@ span.input-group-addon i {
 			//若會員輸入區塊有空格則填滿。
 			if ($('input[name="account"]').val() === "")
 				$('input[name="account"]').val("test02");
-			console.log($('input[name="account"]').val());
 			if ($('input[name="password"]').val() === "")
 				$('input[name="password"]').val("123qwe");
-			console.log($('input[name="password"]').val());
 			if ($('input[name="password2"]').val() === "")
 				$('input[name="password2"]').val("123qwe");
-			console.log($('input[name="password2"]').val());
 			if ($('input[name="user_name"]').val() === "")
 				$('input[name="user_name"]').val("測試一號");
-			console.log($('input[name="user_name"]').val());
 			if ($('input[name="phonenum"]').val() === "")
 				$('input[name="phonenum"]').val("0919123456");
-			console.log($('input[name="phonenum"]').val());
 			if ($('input[name="email"]').val() === "")
 				$('input[name="email"]').val("wisejava004@gmail.com");
-			console.log($('input[name="email"]').val());
 		});
 
 		$("#demo2").click(function() {
@@ -476,36 +468,27 @@ span.input-group-addon i {
 				$('input[name="account"]').val("test03");
 			if ($('input[name="password"]').val() === "")
 				$('input[name="password"]').val("123qwe");
-			console.log($('input[name="password"]').val());
 			if ($('input[name="password2"]').val() === "")
 				$('input[name="password2"]').val("123qwe");
-			console.log($('input[name="password2"]').val());
 			if ($('input[name="user_name"]').val() === "")
 				$('input[name="user_name"]').val("測試二號");
-			console.log($('input[name="user_name"]').val());
 			if ($('input[name="phonenum"]').val() === "")
 				$('input[name="phonenum"]').val("0919123457");
-			console.log($('input[name="phonenum"]').val());
 			if ($('input[name="email"]').val() === "")
 				$('input[name="email"]').val("wisejava004@gmail.com");
-			console.log($('input[name="email"]').val());
 			$('input[name="registerArtist"]').prop("checked", true);
 			if ($('input[name="art_name"]').val() === "")
 				$('input[name="art_name"]').val("張君雅");
-			console.log($('input[name="art_name"]').val());
 			if ($('input[name="ID"]').val() === "")
 				$('input[name="ID"]').val("A123456789");
-			console.log($('input[name="ID"]').val());
 			if ($('input[name="birthday"]').val() === "")
 				$('input[name="birthday"]').val("1990-01-01");
-			console.log($('input[name="birthday"]').val());
 			if ($('input[name="bank_account"]').val() === "")
 				$('input[name="bank_account"]').val("01234567891234");
 			if ($('input[name="art_address"]').val() === "")
 				$('input[name="art_address"]').val("台北市凱達格蘭大道一號");
 			if ($('textarea[name="Introduction"]').val() === "")
 				$('textarea[name="Introduction"]').val("認真上進的好青年");
-			console.log($('textarea[name="Introduction"]').val());
 			if ($('input[name="hashtag"]').val() === "")
 				$('input[name="hashtag"]').val("#認真 #上進 #好青年");
 		});
