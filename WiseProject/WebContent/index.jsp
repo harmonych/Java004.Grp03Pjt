@@ -244,7 +244,7 @@ desired effect
                         <!-- Menu Footer-->
                         <li class="user-footer">
                           <div class="pull-left">
-                            <a href="#" class="btn btn-default btn-flat">個人資料</a>
+                            <a href="_14_UserData/ModifyUserInfo.jsp" class="btn btn-default btn-flat">個人資料</a>
                           </div>
                           <div class="pull-right">
                             <a href="_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>

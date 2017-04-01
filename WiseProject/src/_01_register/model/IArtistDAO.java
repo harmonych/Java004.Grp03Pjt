@@ -20,4 +20,6 @@ public interface IArtistDAO {
 	
 	List<ArtistBean> getAllArtisttag(String search);
 
+	int update(MemberBean mb, ArtistBean ab);
+
 }

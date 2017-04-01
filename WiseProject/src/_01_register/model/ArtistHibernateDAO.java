@@ -104,6 +104,33 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		}
 		return updateCount;
 	}
+	
+	@Override
+	public int update(MemberBean mb, ArtistBean ab) {
+		int updateCount = 0;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			session.saveOrUpdate(mb);
+			session.saveOrUpdate(ab);
+			//session.merge(ab);
+			Hibernate.initialize(mb);
+			Hibernate.initialize(ab);
+			updateCount = 1;
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return updateCount;
+	}
+
 
 	@Override
 	public int delete(ArtistBean ab) {

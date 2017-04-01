@@ -48,6 +48,20 @@ public class MemberBean implements Serializable {
 		this.file_name = file_name;
 		this.authenticate = authenticate;
 	}
+	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
+			String gender, String birthday, boolean check_tag, boolean authenticate) {
+		super();
+		this.user_id = user_id;
+		this.account = account;
+		this.password = password;
+		this.user_name = user_name;
+		this.phonenum = phonenum;
+		this.email = email;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.check_tag = check_tag;
+		this.authenticate = authenticate;
+	}
 //	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
 //			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag, boolean authenticate) {
 //		super();
