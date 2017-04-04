@@ -40,8 +40,8 @@ public class SingleFundJsonServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int fcid = 0;
-		fcid = Integer.parseInt(request.getParameter("fcid").trim());
+		int fcid = 1;
+		//fcid = Integer.parseInt(request.getParameter("fcid").trim());
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
