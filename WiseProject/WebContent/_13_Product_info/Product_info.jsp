@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" href="../css/Product_info.css">
-<title>建立專案</title>
+<title>商品內容頁</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -70,6 +70,69 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
+
+<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
+<script>
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", '/_08_product/singleproduct.json', true);
+	xhr.send();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			//var content = "";
+			var pro_name = "";
+			var art_id = "";
+			var sale_time = "";
+			var price = "";
+			var pro_inv = "";
+			var pro_introduction = "";
+						
+			var funds = JSON.parse(xhr.responseText);
+			//content ="<div class='pro_name'><h1>募資名稱"+funds.fc_name+"</h1></div>" +
+			//			"<div class='art_id'><h3>創作者編號"+funds.art_id+"</h3></div>" +
+			//			"<div class='sale_time'>開始時間"+funds.start_time+"</div>" +
+			//			"<div class='end_time'>結束時間"+funds.end_time+"</div>" +
+			//			"<div class='fc_money'>募資金額"+funds.fc_money+"</div>" +
+			//			"<div class='now_money'>目前金額"+funds.now_money+"</div>" +
+			//			"<div class='fc_introduction'>募資簡介"+funds.fc_introduction+"</div>" ;
+			
+			pro_name ="<h1><b>" +funds.pro_name+"</b></h1>" ;
+			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
+			sale_time = "<b>上架時間 : </b>" +funds.sale_time ;
+			price = "<b>單價 : </b>" +funds.price ;
+			pro_inv = "<b>剩餘數量  : </b>" +funds.pro_inv ;
+			pro_introduction = "<b>商品簡介 : </b><br>" +funds.pro_introduction ;			
+	
+		}
+		//content += "";
+		//var divs = document.getElementById("somedivS");
+		//divs.innerHTML = content;
+		
+		pro_name += "";
+		var divs = document.getElementById("pro_name");
+		divs.innerHTML = pro_name;
+		
+		art_id += "";
+		var divs = document.getElementById("art_id");
+		divs.innerHTML = art_id;
+		
+		sale_time += "";
+		var divs = document.getElementById("sale_time");
+		divs.innerHTML = sale_time;
+		
+		price += "";
+		var divs = document.getElementById("price");
+		divs.innerHTML = price;
+		
+		pro_inv += "";
+		var divs = document.getElementById("pro_inv");
+		divs.innerHTML = pro_inv;
+		
+		pro_introduction += "";
+		var divs = document.getElementById("pro_introduction");
+		divs.innerHTML = pro_introduction;
+	}
+</script>
+
 
 <body class="hold-transition skin-yellow-light sidebar-mini ">
 	<c:set var="userName" value="${LoginOK.user_name}" />
@@ -324,86 +387,84 @@ desired effect
 			<section class="content">
 				<!-- Your Page Content Here -->
 				<div class="row">
-				<!-- 圖片顯示欄 -->
-				<div class="card_card01 col-md-4 col-md-offset-2">
-					<div class="pro_img">
-						<img src="../images/v06.jpg" class="pro_img"> <!-- width="400" height="400" -->
+					<!-- 圖片顯示欄 -->
+					<div class="card_card01 col-md-4 col-md-offset-2">
+						<div id="img_area">
+							<img src="../images/v06.jpg" id="pro_img"> 
+							<!-- width="400" height="400" -->
+						</div>
 					</div>
-				</div>
 				
-				<!-- 商品介紹欄 -->
-				<div class="card_card02 col-md-4">
-					<header id="pro_info">
-							<div class="pro_name" id="pro_info">
-								<h1>pro_name 商品名稱</h1>
-							</div>
+					<!-- 商品介紹欄 -->
+					<div class="card_card02 col-md-4">
+						<header id="info_area">
 							
-							<div class="pro_name" id="pro_info">
-								<h3>art_id 創作者編號</h3>
-							</div>
+								<div id="pro_name">
+									<h1>pro_name 商品名稱</h1>
+								</div>
 							
-							<div class="sale_time" id="pro_info">
-								sale_time 上架時間
-							</div>
+								<div id="art_id">
+									<h3>art_id 創作者編號</h3>
+								</div>
 							
-							<div class="price" id="pro_info">
-								price 單價
-							</div>
-							<div class="price" id="pro_info">
-								quantity 剩餘數量
-							</div>
-					</header>
-					<p>-------------------------------------------------------------------</p>
-					<div class="introduce">
-						<h3>商品簡介</h3>
-						<p>
-							pro_Introduction 商品簡介<br>
-							我是商品介紹!!<br>
-							我是商品介紹!!<br>
-							我是商品介紹!!<br>
-							我是商品介紹!!<br>
-							我是商品介紹!!<br>
-						</p>
-					</div>
-					<p>-------------------------------------------------------------------</p>
+								<div id="sale_time">
+									sale_time 上架時間
+								</div>
+							
+								<div id="price">
+									price 單價
+								</div>
+								<div id="pro_inv">
+									pro_inv 剩餘數量
+								</div>
 						
-					<div class="buy_area">
-						<form id="form1">
-							<div id="quantity">
-								<div>
-									<label>購買數量</label>
-								</div>
-								<div>
-									<select class="form-control">
-										<option value="1">1</option>
-									  	<option value="2">2</option>
-									  	<option value="3">3</option>
-									  	<option value="4">4</option>
-									  	<option value="5">5</option>
-									  	<option value="6">6</option>
-									  	<option value="7">7</option>
-									  	<option value="8">8</option>
-									  	<option value="9">9</option>
-									  	<option value="10">10</option>
-									</select>
-  								</div>
+							<div id="line"></div>
+					
+							<div id="pro_introduction">
+								<label id="lb">募資簡介 : </label><br>
+								<p>
+									pro_Introduction 商品簡介<br>
+								</p>
 							</div>
+						</header>
+						
+						<div id="line"></div>
+					
+						<div id="buy_area">
+							<form id="form1">
+								<div id="quantity">
+									<div>
+										<label>購買數量</label>
+									</div>
+									<div>
+										<select class="form-control">
+											<option value="1">1</option>
+										  	<option value="2">2</option>
+										  	<option value="3">3</option>
+										  	<option value="4">4</option>
+										  	<option value="5">5</option>
+										  	<option value="6">6</option>
+										  	<option value="7">7</option>
+										  	<option value="8">8</option>
+										  	<option value="9">9</option>
+										  	<option value="10">10</option>
+										</select>
+  									</div>
+								</div>
 							
-							<div class="bt_area">
-								<div>
-									<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="立即購買">
-								</div>	
-								<div>
-									<input type="submit" name="submit" class="btn2 btn-lg btn-block" value="加入購物車">
+								<div id="bt_area">
+										<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="立即購買">
+									
+										<input type="submit" name="submit" class="btn2 btn-lg btn-block" value="加入購物車">
 								</div>
-							</div>
-						</form>		
+							</form>		
+						</div>
 					</div>
 				</div>
-			</div>
 
 			</section>
 			<!-- /.content -->
+			
 			
 			<!-- 留言欄位 -->
           <section class="content">
