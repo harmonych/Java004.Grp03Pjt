@@ -1,7 +1,13 @@
-/* 標題列&漢堡列 */
+/* 標題&漢堡欄 */
 
 section {
-    padding: 40px 0px 40px;
+    padding: 20px 0px 20px 0px;
+	margin:20px 0px 20px 0px;;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+	background-color: #fff;
 }
 
 @media screen and (max-height: 450px) {
@@ -22,18 +28,19 @@ section {
 }
 
 .navbar {
-	margin-bottom: 0;
+	margin-bottom: 20px;
    /*  background:#3d9be9; */
 	background:#f78e05;
 	height:50px;
     font-size: 16px;
-    line-height: 50px;
+    /* line-height: 50px; */
     letter-spacing: 4px;
     border-radius: 0;
 }
 
 .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
+	
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -45,6 +52,7 @@ section {
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
     color: royalblue;
     background-color: #fff;
+
 }
 
 .navbar-default .navbar-toggle {
@@ -52,31 +60,17 @@ section {
     color: #fff !important;
 }
 
+
 .logo {
     color: royalblue;
     font-size: 80px;
 }
 
-/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
-@keyframes slide {
-    0% {
-        opacity: 0;
-        transform: translateY(70%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-}
-@-webkit-keyframes slide {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-    }
-    100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-    }
+
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 2;
+    color: #000;
 }
 
 
@@ -116,8 +110,6 @@ section {
 #sidebar-wrapper::-webkit-scrollbar {
     display: none;
 }
-
-
 /*Sidebar hamburger CSS*/
 .hamburger {
     position: fixed;
@@ -230,7 +222,6 @@ section {
     -webkit-transition: all .35s ease-in-out;
 }
 
-
 /* Sidebar nav styles */
 .sidebar-nav {
     position: absolute;
@@ -326,8 +317,7 @@ section {
     box-shadow: none;
 }
 
-
-/* 內容 */
+/* 內容畫面 */
 
 .card01{
 	padding:0px 0px 0px 0px;
@@ -344,27 +334,45 @@ section {
 	border:solid, 1px, black;
 }
 
-#fc_introduction{
+#ipt1{
+	margin:10px 10px 10px 10px;
+}
+
+#lb{
+	font-weight:normal;
+	margin-right:20px;
+}
+
+.tx1{
 	width:300px;
-	height:200px;
+	
+	margin-right:20px;
+	border:solid 1px black;
+	background:#ffff96;
 }
 
-#sponsor_area{
-	width:300px;
-	height:50px;
+.txa1{
+	width:400px;
+	height:300px;
+	border:solid 1px black;
+	background:#ffff96;
 }
 
-#sponsor_money{
-	margin:20px 0px 20px 0px;
-}
-
-#bt_area{
+#bt{
 	width:300px;
 	height:50px;
 	margin:20px 0px 20px 0px;
 	color:#fff;
 }
 
-.bt1{
+.btn1{
 	background:#f78e05;
+}	
+
+.btn2{
+	background:#969696;
+}
+
+font{
+	margin-left: 85px;
 }

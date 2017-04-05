@@ -1,12 +1,68 @@
-/* 標題列&漢堡列 */
-
 section {
-    padding: 40px 0px 40px;
+    padding: 40px 20px 40px;
+}
+.username{
+	margin:20px;
+}
+.body {
+    font-family: "Lato", sans-serif;
+	background-color: #fff;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+#main {
+    transition: margin-left .5s;
+    padding: 30px;
 }
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: dodgerblue;
+}
+
+.carousel-indicators li {
+    border-color: royalblue;
+}
+
+.carousel-indicators li.active {
+    background-color: #17C09D;
 }
 
 .item h4 {
@@ -23,28 +79,30 @@ section {
 
 .navbar {
 	margin-bottom: 0;
-   /*  background:#3d9be9; */
-	background:#f78e05;
-	height:50px;
+    background: #ff6f00;
+   /*  color: #FEB7B2; */
+    border: 0;
     font-size: 16px;
-    line-height: 50px;
+    line-height: 1.5px;
     letter-spacing: 4px;
     border-radius: 0;
 }
 
 .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
+	
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
     color: royalblue;
     transition: all .3s ease-in-out;
-    background-color: rgba(150, 150, 150, 0.5) !important;
+    background-color: rgba(255, 0,0 , 0.6) !important;
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
     color: royalblue;
     background-color: #fff;
+
 }
 
 .navbar-default .navbar-toggle {
@@ -52,9 +110,102 @@ section {
     color: #fff !important;
 }
 
+.jumbotron {
+    background-color:#99E8D8;
+    color: #F94346;
+    padding: 20px 10px;
+    margin:0;
+}
+
+.container-fluid {
+    padding: 50px 40px;
+}
+
+
+.card {
+	font-size:70px;
+	font-weight:bolder;
+	color:#e9ee22;
+    text-align:center; 
+	line-height:500px;
+    height: 500px;
+    background: rgba(0, 0, 0 , 0.4);
+    background-size: cover;
+    background-position: center;
+    border: solid 1px #fff;
+    box-sizing: border-box;
+    transition: all .3s ease-in-out;
+}
+
+.card:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+._card01 {
+   
+   	background-image:url("../images/image1.jpg");
+    margin: 1px 0;
+
+}
+
+._card02 {
+    color:#31a718;
+    background-image:url("../images/image2.jpg");
+    margin: 1px 0;
+}
+
+._card03 {
+    background-image:url("../images/image1.jpg");
+    margin: 1px 0;
+}
+
+
 .logo {
     color: royalblue;
     font-size: 80px;
+}
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+#portfolio {
+    background-color: #eee;
+}
+
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 2;
+    color: #7923e2;
+}
+
+.jumbotron {
+    font-family: Montserrat, sans-serif;
+}
+
+.navbar {
+    font-family: Montserrat, sans-serif;
+}
+
+.slideanim {visibility:hidden;}
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    /* The duration of the animation */
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible;
 }
 
 /* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
@@ -79,7 +230,6 @@ section {
     }
 }
 
-
 /* Sidebar CSS*/
 #wrapper {
     padding-left: 0;
@@ -103,11 +253,8 @@ section {
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-	/* background:#66b0ed; */
-    /* background: #EAA745; */
-	background: rgba(234, 167, 69, 0.8);
-	/* background: rgba(100, 100, 100, 0.8); */
-	-webkit-transition: all 0.5s ease;
+    background: #EAA745;
+    -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
@@ -116,8 +263,6 @@ section {
 #sidebar-wrapper::-webkit-scrollbar {
     display: none;
 }
-
-
 /*Sidebar hamburger CSS*/
 .hamburger {
     position: fixed;
@@ -230,7 +375,6 @@ section {
     -webkit-transition: all .35s ease-in-out;
 }
 
-
 /* Sidebar nav styles */
 .sidebar-nav {
     position: absolute;
@@ -265,22 +409,22 @@ section {
 }
 .sidebar-nav li:first-child a {
     color: #fff;
-    background-color: rgba(150,150,150,0.5);
+    background-color: #1a1a1a;
 }
 .sidebar-nav li:nth-child(2):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: #ec1b4a;
 }
 .sidebar-nav li:nth-child(3):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: #275336;
 }
 .sidebar-nav li:nth-child(4):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: #7d4d81;
 }
 .sidebar-nav li:nth-child(5):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: #ead21c;
 }
 .sidebar-nav li:nth-child(6):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: #2d2365;
 }
 .sidebar-nav li:hover:before,
 .sidebar-nav li.open:hover:before {
@@ -324,47 +468,4 @@ section {
     border: none;
     background-color: #222;
     box-shadow: none;
-}
-
-
-/* 內容 */
-
-.card01{
-	padding:0px 0px 0px 0px;
-}
-
-.card02{
-	color:#000;	
-}
-
-.pro_img{
-	float: right;
-	height:500px;
-	width:450px;
-	border:solid, 1px, black;
-}
-
-#fc_introduction{
-	width:300px;
-	height:200px;
-}
-
-#sponsor_area{
-	width:300px;
-	height:50px;
-}
-
-#sponsor_money{
-	margin:20px 0px 20px 0px;
-}
-
-#bt_area{
-	width:300px;
-	height:50px;
-	margin:20px 0px 20px 0px;
-	color:#fff;
-}
-
-.bt1{
-	background:#f78e05;
 }

@@ -2,12 +2,12 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
-<html>
+    <html>
 
-<head>
+    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="../css/Fc_info2.css">
+      <link rel="stylesheet" href="../css/Fc_Create2.css">
 	  <title>建立專案</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -44,7 +44,7 @@
           display: inline-flex;
         }
       </style>
-</head>
+    </head>
     <!--
 BODY TAG OPTIONS:
 =================
@@ -66,76 +66,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
-<script>
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", '../_07_funds/singlefund.json', true);
-	xhr.send();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			var content = "";
-			var fc_name = "";
-			var art_id = "";
-			var start_time = "";
-			var end_time = "";
-			var fc_money = "";
-			var now_money = "";
-			var fc_introduction = "";
-			
-			var funds = JSON.parse(xhr.responseText);
-			//content ="<div class='pro_name'><h1>募資名稱"+funds.fc_name+"</h1></div>" +
-			//			"<div class='art_id'><h3>創作者編號"+funds.art_id+"</h3></div>" +
-			//			"<div class='sale_time'>開始時間"+funds.start_time+"</div>" +
-			//			"<div class='end_time'>結束時間"+funds.end_time+"</div>" +
-			//			"<div class='fc_money'>募資金額"+funds.fc_money+"</div>" +
-			//			"<div class='now_money'>目前金額"+funds.now_money+"</div>" +
-			//			"<div class='fc_introduction'>募資簡介"+funds.fc_introduction+"</div>" ;
-			
-			fc_name ="<h1><b>" +funds.fc_name+"</b></h1>" ;
-			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
-			start_time = "<b>開始時間 : </b>" +funds.start_time ;
-			end_time = "<b>結束時間 : </b>" +funds.end_time ;
-			fc_money = "<b>募資金額 : </b>" +funds.fc_money ;
-			now_money = "<b>目前金額  : </b>" +funds.now_money ;
-			fc_introduction = "<b>募資簡介 : </b><br>" +funds.fc_introduction ;			
-	
-		}
-		//content += "";
-		//var divs = document.getElementById("somedivS");
-		//divs.innerHTML = content;
-		
-		fc_name += "";
-		var divs = document.getElementById("fc_name");
-		divs.innerHTML = fc_name;
-		
-		art_id += "";
-		var divs = document.getElementById("art_id");
-		divs.innerHTML = art_id;
-		
-		start_time += "";
-		var divs = document.getElementById("start_time");
-		divs.innerHTML = start_time;
-		
-		end_time += "";
-		var divs = document.getElementById("end_time");
-		divs.innerHTML = end_time;
-		
-		fc_money += "";
-		var divs = document.getElementById("fc_money");
-		divs.innerHTML = fc_money;
-		
-		now_money += "";
-		var divs = document.getElementById("now_money");
-		divs.innerHTML = now_money;
-		
-		fc_introduction += "";
-		var divs = document.getElementById("fc_introduction");
-		divs.innerHTML = fc_introduction;
-	}
-</script>
-
-
-<body class="hold-transition skin-yellow-light sidebar-mini ">
+    <body class="hold-transition skin-yellow-light sidebar-mini ">
       <c:set var="userName" value="${LoginOK.user_name}" />
       <c:set var="file_name" value="${LoginOK.file_name}" />
       <div class="wrapper">
@@ -392,95 +323,76 @@ desired effect
           <!-- /.sidebar -->
         </aside>
 
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
           <!-- Content Header (Page header) -->
           <section class="content-header">
           </section>
 
-
-
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
-          	<div class="row">
-			
+			<div class="row">
 				<!-- 圖片顯示欄 -->
-				<div class="card_card01 col-md-4 col-md-offset-2">
-					<div id="img_area">
-						<img src="../images/v06.jpg" class="pro_img">
-						<!-- width="400" height="400" -->
+				<div class="card01 col-md-4 col-md-offset-2">				
+					<div class="pro_img">
+						<img src="../images/v06.jpg" class="pro_img"> <!-- width="400" height="400" -->
 					</div>
 				</div>
-
-
-				<!-- 募資介紹欄 -->
-				<div class="card_card02 col-md-4">
-					<div id="info_area">
-						
-						<div id="fc_name">
-							<h1>fc_name 募資名稱</h1>
-						</div>
-						<div id="art_id">	
-							<label id='lb'>創作者編號:</label>
-						</div>
-						<div id="start_time" >
-							<label id="lb">start_time 開始時間</label>
-						</div>
-						<div id="end_time" >
-							<label id="lb">end_time 結束時間</label>
-						</div>
-						<div id="fc_money" >
-							<label id="lb">fc_money 募資金額</label>
-						</div>	
-						<div id="now_money" >
-							<label id="lb">now_money 目前金額</label>
+				
+				<!-- 募資輸入欄 -->
+				<div class="card02 col-md-4">
+					<form  ENCTYPE="multipart/form-data" method="POST" action="<c:url value='../_07_funds/FundCreate.do' />"  id="FundCreate.do">
+						<div>
+							<div id="info1">
+								<label id="lb">專案名稱</label><br>
+								<input type="text" name="fcname" value="${param.fcname}" class="tx1"><br>
+								<font size="-1" color="#FF0000">${MsgMap.errorfcnameEmpty}${MsgMap.errorfcnameDup}</font>
+							</div>			
+							<div id="info1">	
+								<label id="lb">專案金額</label><br>
+								<input type="text" name="fcmoneys" value="${param.fcmoneys}" class="tx1"><br>
+								<font color="red" size="-1">${MsgMap.errorfcmoneysEmpty}</font>
+							</div>	
+							<div id="info1">	
+								<label id="lb">開始時間</label><br>
+								<input type="date" name="starttime" value="${param.starttime}" class="tx1"><br>
+								<font color="red" size="-1">${MsgMap.errorstarttimeEmpty}</font>
+							</div>	
+							<div id="info1">	
+								<label id="lb">結束時間</label><br>
+								<input type="date" name="endtime" value="${param.endtime}" class="tx1"><br>
+								<font color="red" size="-1">${MsgMap.errorendtimeEmpty}</font>
+							</div>	
+							<div id="info1">	
+								<label id="lb">分類標籤</label><br>
+								<input type="text" name="hashtag" value="${param.hashtag}" class="tx1"><br>
+								<font color="red" size="-1">${MsgMap.errorhashtagEmpty}</font>
+							</div>	
+							<div id="info2">	
+								<label id="lb">專案簡介</label><br>
+								<textarea name="fcintroduction" class="txa1"></textarea><br>
+								<font color="red" size="-1">${MsgMap.errorfcintroduction}</font>
+							</div>	
+				
+						<p>----------------------------------------------------------------------------------</p>
 						</div>
 					
-						<div id="line"></div><br>
-					
-						<div id="fc_introduction">
-							<label id="lb">募資簡介</label><br>
-						
-							<p>
-								fc_Introduction<br> 
-							</p>
-						</div>
-					</div>	
-					<div id="line"></div>
-					
-					<div id="sponsor_area">
-						<form id="form1">
-							<div id="sponsor_money">
-								<div>
-									<label>贊助金額</label>
-								</div>
-									<div>
-										<select class="form-control">
-											<option value="1">NT $500</option>
-											<option value="2">NT $1,000</option>
-											<option value="3">NT $2,000</option>
-											<option value="4">NT $3,000</option>
-											<option value="5">NT $5,000</option>
-											<option value="6">NT $10,000</option>
-											<option value="7">NT $20,000</option>
-											<option value="8">NT $30,000</option>
-											<option value="8">NT $50,000</option>
-										</select>
-									</div>
+						<div id="bt_area">
+							<div id="bt">
+								<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="確認送出">
 							</div>
-
-							<div id="bt_area">
-								<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
+							<div id="bt">	
+								<input type="reset" name="cancel" class="btn2 btn-lg btn-block" value="清除重填">
 							</div>
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
-			</div>		
-	    </section>
-         <!-- /.content -->
-      </div>
-      <!-- /.content-wrapper -->
+			</div>
+          </section>    
+   		</div>
+        <!-- /.content-wrapper -->
 
 
         <!-- Main Footer -->
@@ -572,6 +484,7 @@ desired effect
       </div>
       <!-- ./wrapper -->
 
+      
       <!-- REQUIRED JS SCRIPTS -->
 
       <!-- jQuery 2.2.3 -->
@@ -586,5 +499,4 @@ desired effect
      user experience. Slimscroll is required when using the
      fixed layout. -->
 </body>
-
 </html>

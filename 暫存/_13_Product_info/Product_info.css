@@ -1,7 +1,54 @@
-/* 標題列&漢堡列 */
-
 section {
     padding: 40px 0px 40px;
+}
+
+.card_card01{
+	padding:0px 0px 0px 0px;
+}
+
+.card_card02{
+	color:#000;	
+	
+}
+
+.pro_img{
+	float: right;
+	height:400px;
+	width:400px;
+	border:solid, 1px, black;
+}
+
+#pro_info{
+	margin:20px 0px 20px 0px;
+	
+}
+
+#form1{
+	margin-bottom:20px;
+}
+
+#quantity{
+	margin:20px 0px 20px 0px;
+}
+.form-control{
+	width:300px;
+	height:40px;	
+}
+
+.buy{
+	width:300px;
+	height:40px;
+}
+
+.btn{
+	/* background:#3d9be9; */
+	background:#f78e05;
+	color:#fff;
+}
+
+.body {
+    font-family: "Lato", sans-serif;
+	background-color: #fff;
 }
 
 @media screen and (max-height: 450px) {
@@ -34,6 +81,7 @@ section {
 
 .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
+	
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -45,6 +93,7 @@ section {
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
     color: royalblue;
     background-color: #fff;
+
 }
 
 .navbar-default .navbar-toggle {
@@ -52,9 +101,32 @@ section {
     color: #fff !important;
 }
 
+
 .logo {
     color: royalblue;
     font-size: 80px;
+}
+
+
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 2;
+    color: #000;
+}
+
+.slideanim {
+	visibility:hidden;
+}
+
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    /* The duration of the animation */
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible;
 }
 
 /* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
@@ -78,7 +150,6 @@ section {
         -webkit-transform: translateY(0%);
     }
 }
-
 
 /* Sidebar CSS*/
 #wrapper {
@@ -116,8 +187,6 @@ section {
 #sidebar-wrapper::-webkit-scrollbar {
     display: none;
 }
-
-
 /*Sidebar hamburger CSS*/
 .hamburger {
     position: fixed;
@@ -230,7 +299,6 @@ section {
     -webkit-transition: all .35s ease-in-out;
 }
 
-
 /* Sidebar nav styles */
 .sidebar-nav {
     position: absolute;
@@ -324,47 +392,4 @@ section {
     border: none;
     background-color: #222;
     box-shadow: none;
-}
-
-
-/* 內容 */
-
-.card01{
-	padding:0px 0px 0px 0px;
-}
-
-.card02{
-	color:#000;	
-}
-
-.pro_img{
-	float: right;
-	height:500px;
-	width:450px;
-	border:solid, 1px, black;
-}
-
-#fc_introduction{
-	width:300px;
-	height:200px;
-}
-
-#sponsor_area{
-	width:300px;
-	height:50px;
-}
-
-#sponsor_money{
-	margin:20px 0px 20px 0px;
-}
-
-#bt_area{
-	width:300px;
-	height:50px;
-	margin:20px 0px 20px 0px;
-	color:#fff;
-}
-
-.bt1{
-	background:#f78e05;
 }

@@ -1,12 +1,21 @@
-/* 標題列&漢堡列 */
+/* 標題&漢堡欄 */
 
 section {
     padding: 40px 0px 40px;
 }
 
+.body {
+    font-family: "Lato", sans-serif;
+    background-color: #fff;
+}
+
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
 
 .item h4 {
@@ -22,34 +31,40 @@ section {
 }
 
 .navbar {
-	margin-bottom: 0;
-   /*  background:#3d9be9; */
-	background:#f78e05;
-	height:50px;
+    margin-bottom: 0;
+    /*  background:#3d9be9; */
+    background: #f78e05;
+    height: 50px;
     font-size: 16px;
     line-height: 50px;
     letter-spacing: 4px;
     border-radius: 0;
 }
 
-.navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
+
+/*標頭右側顯示文字及背景顏色顯示*/
+
+.navbar li a,
+.navbar .navbar-brand {
+    color: #2d5f72 !important;
 }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
     color: royalblue;
     transition: all .3s ease-in-out;
-    background-color: rgba(150, 150, 150, 0.5) !important;
+    background-color: rgba(255, 204, 152, 0.5) !important;
 }
 
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
     color: royalblue;
-    background-color: #fff;
+    background-color: #ffff98;
 }
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
-    color: #fff !important;
+    color: #ff0 !important;
 }
 
 .logo {
@@ -57,30 +72,16 @@ section {
     font-size: 80px;
 }
 
-/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
-@keyframes slide {
-    0% {
-        opacity: 0;
-        transform: translateY(70%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 2;
+    color: #000;
 }
-@-webkit-keyframes slide {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-    }
-    100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-    }
-}
+
 
 
 /* Sidebar CSS*/
+
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -92,9 +93,11 @@ section {
 #wrapper.toggled {
     padding-left: 220px;
 }
+
 #wrapper.toggled #sidebar-wrapper {
     width: 220px;
 }
+
 #sidebar-wrapper {
     z-index: 1000;
     left: 220px;
@@ -103,11 +106,11 @@ section {
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-	/* background:#66b0ed; */
+    /* background:#66b0ed; */
     /* background: #EAA745; */
-	background: rgba(234, 167, 69, 0.8);
-	/* background: rgba(100, 100, 100, 0.8); */
-	-webkit-transition: all 0.5s ease;
+    background: rgba(234, 167, 69, 0.8);
+    /* background: rgba(100, 100, 100, 0.8); */
+    -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
@@ -119,6 +122,7 @@ section {
 
 
 /*Sidebar hamburger CSS*/
+
 .hamburger {
     position: fixed;
     top: 20px;
@@ -130,11 +134,13 @@ section {
     background: transparent;
     border: none;
 }
+
 .hamburger:hover,
 .hamburger:focus,
 .hamburger:active {
     outline: none;
 }
+
 .hamburger.is-closed:before {
     content: '';
     display: block;
@@ -144,13 +150,14 @@ section {
     line-height: 32px;
     text-align: center;
     opacity: 0;
-    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0, 0, 0);
     -webkit-transition: all .35s ease-in-out;
 }
+
 .hamburger.is-closed:hover:before {
     opacity: 1;
     display: block;
-    -webkit-transform: translate3d(-100px,0,0);
+    -webkit-transform: translate3d(-100px, 0, 0);
     -webkit-transition: all .35s ease-in-out;
 }
 
@@ -161,24 +168,28 @@ section {
 .hamburger.is-open .hamb-middle,
 .hamburger.is-open .hamb-bottom {
     position: absolute;
-    top:-5px;
+    top: -5px;
     left: 0px;
     height: 2px;
     width: 100%;
 }
+
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
     background-color: #1a1a1a;
 }
+
 .hamburger.is-closed .hamb-top {
     top: 5px;
     -webkit-transition: all .35s ease-in-out;
 }
+
 .hamburger.is-closed .hamb-middle {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-closed .hamb-bottom {
     bottom: 5px;
     -webkit-transition: all .35s ease-in-out;
@@ -188,29 +199,38 @@ section {
     top: 0;
     -webkit-transition: all .35s ease-in-out;
 }
+
 .hamburger.is-closed:hover .hamb-bottom {
     bottom: 0;
     -webkit-transition: all .35s ease-in-out;
 }
+
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-middle,
 .hamburger.is-open .hamb-bottom {
     background-color: #1a1a1a;
 }
+
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-open .hamb-top {
     -webkit-transform: rotate(45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
-.hamburger.is-open .hamb-middle { display: none; }
+
+.hamburger.is-open .hamb-middle {
+    display: none;
+}
+
 .hamburger.is-open .hamb-bottom {
     -webkit-transform: rotate(-45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
+
 .hamburger.is-open:before {
     content: '';
     display: block;
@@ -220,18 +240,20 @@ section {
     line-height: 32px;
     text-align: center;
     opacity: 0;
-    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0, 0, 0);
     -webkit-transition: all .35s ease-in-out;
 }
+
 .hamburger.is-open:hover:before {
     opacity: 1;
     display: block;
-    -webkit-transform: translate3d(-100px,0,0);
+    -webkit-transform: translate3d(-100px, 0, 0);
     -webkit-transition: all .35s ease-in-out;
 }
 
 
 /* Sidebar nav styles */
+
 .sidebar-nav {
     position: absolute;
     top: 0;
@@ -258,38 +280,43 @@ section {
     width: 3px;
     background-color: royalblue;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
-
 }
+
 .sidebar-nav li:first-child a {
     color: #fff;
-    background-color: rgba(150,150,150,0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
+
 .sidebar-nav li:nth-child(2):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
+
 .sidebar-nav li:nth-child(3):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
+
 .sidebar-nav li:nth-child(4):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
+
 .sidebar-nav li:nth-child(5):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
+
 .sidebar-nav li:nth-child(6):before {
-    background-color: rgba(150,150,150,0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
+
 .sidebar-nav li:hover:before,
 .sidebar-nav li.open:hover:before {
     width: 100%;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
-
 }
 
 .sidebar-nav li a {
@@ -304,17 +331,18 @@ section {
 .sidebar-nav li a:focus,
 .sidebar-nav li.open a:hover,
 .sidebar-nav li.open a:active,
-.sidebar-nav li.open a:focus{
+.sidebar-nav li.open a:focus {
     color: #fff;
     text-decoration: none;
     background-color: transparent;
 }
 
-.sidebar-nav > .sidebar-brand {
+.sidebar-nav>.sidebar-brand {
     height: 65px;
     font-size: 20px;
     line-height: 44px;
 }
+
 .sidebar-nav .dropdown-menu {
     position: relative;
     width: 100%;
@@ -327,44 +355,20 @@ section {
 }
 
 
-/* 內容 */
+/* 內容畫面 */
 
-.card01{
-	padding:0px 0px 0px 0px;
-}
-
-.card02{
-	color:#000;	
-}
-
-.pro_img{
-	float: right;
-	height:500px;
-	width:450px;
-	border:solid, 1px, black;
-}
-
-#fc_introduction{
-	width:300px;
-	height:200px;
-}
-
-#sponsor_area{
-	width:300px;
-	height:50px;
-}
-
-#sponsor_money{
-	margin:20px 0px 20px 0px;
-}
-
-#bt_area{
-	width:300px;
-	height:50px;
-	margin:20px 0px 20px 0px;
-	color:#fff;
-}
-
-.bt1{
-	background:#f78e05;
+.card {
+    font-size: 50px;
+    font-weight: bolder;
+    color: #FFA58A;
+    text-align: center;
+    line-height: 150px;
+    height: 150px;
+    background: #ddc;
+    /* rgba(255, 0, 0 , 0.4); */
+    background-size: cover;
+    background-position: center;
+    border: solid 1px #ccc;
+    box-sizing: border-box;
+    transition: all .3s ease-in-out;
 }
