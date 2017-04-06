@@ -27,7 +27,7 @@ public class ProPicBean implements Serializable {
 	public ProPicBean() {
 		super();
 	}
-
+	@Id
 	public int getPic_id() {
 		return pic_id;
 	}

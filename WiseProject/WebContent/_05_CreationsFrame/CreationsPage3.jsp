@@ -1,116 +1,113 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<!DOCTYPE html>
 <html lang="zh">
+	<c:set var="context" value="${pageContext.request.contextPath}" />
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+	    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+	    <link rel="stylesheet" href="${context}/asset/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="${context}/css/Creations_page3.css">
+	    <!--換圖片-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	    <script>
+	        $(function() {
+	
+	            $("#selections").find('img').bind("click", function() {
+	                var src = $(this).attr("src");
+	                // 把src抓到的當前url值帶入
+	                $(this).attr("src", src);
+	                //把當前的元素砍掉
+	                $(".showbox").children('img').remove();
+	                //增加新url在showbox這class下面
+	                $(".showbox").append('<img src="' + $(this).attr('src') + '">');
+	            });
+	
+	        });
+	    </script>
+	    <!--換圖片結束-->
+	    <title>創作作品</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/Creations_page3.css">
-    <!--換圖片-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>
-        $(function() {
-
-            $("#selections").find('img').bind("click", function() {
-                var src = $(this).attr("src");
-                // 把src抓到的當前url值帶入
-                $(this).attr("src", src);
-                //把當前的元素砍掉
-                $(".showbox").children('img').remove();
-                //增加新url在showbox這class下面
-                $(".showbox").append('<img src="' + $(this).attr('src') + '">');
-            });
-
-        });
-    </script>
-    <!--換圖片結束-->
-    <title>創作作品</title>
-
-</head>
+	</head>
 
 
 <body>
     <!-- 標題列 -->
-    <header class="container-fluid">
+<!--     <header class="container-fluid"> -->
 
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div id="page-content-wrapper">
-                <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-				<span class="hamb-top"></span>
-				<span class="hamb-middle"></span>
-				<span class="hamb-bottom"></span>
-			</button>
-            </div>
+<!--         <nav class="navbar navbar-default navbar-fixed-top"> -->
+<!--             <div id="page-content-wrapper"> -->
+<!--                 <button type="button" class="hamburger is-closed" data-toggle="offcanvas"> -->
+<!-- 				<span class="hamb-top"></span> -->
+<!-- 				<span class="hamb-middle"></span> -->
+<!-- 				<span class="hamb-bottom"></span> -->
+<!-- 			</button> -->
+<!--             </div> -->
 
-            <div class="btn-toolbar">
+<!--             <div class="btn-toolbar"> -->
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+<!--                 <div class="navbar-header"> -->
+<!--                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> -->
 					
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-                    <a class="navbar-brand textup" href="#"></a>
-                </div>
+<!-- 					<span class="icon-bar"></span> -->
+<!-- 					<span class="icon-bar"></span> -->
+<!-- 					<span class="icon-bar"></span> -->
+<!-- 				</button> -->
+<!--                     <a class="navbar-brand textup" href="#"></a> -->
+<!--                 </div> -->
 
-                <div class="collapse navbar-collapse" id="myNavbar">
+<!--                 <div class="collapse navbar-collapse" id="myNavbar"> -->
 
-                    <ul class="nav navbar-nav navbar-right">
+<!--                     <ul class="nav navbar-nav navbar-right"> -->
 
-                       <li class="username"><span>${userName}</span></li>
-                        <li><a href="#">登入</a></li>
-                        <li><a href="#">註冊</a></li>
-                    </ul>
+<%--                        <li class="username"><span>${userName}</span></li> --%>
+<!--                         <li><a href="#">登入</a></li> -->
+<!--                         <li><a href="#">註冊</a></li> -->
+<!--                     </ul> -->
 
 
-                </div>
-            </div>
-        </nav>
-    </header>
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </nav> -->
+<!--     </header> -->
     <section class="container-fluid" id="about">
-        <div id="wrapper">
+<!--         <div id="wrapper"> -->
             <!-- Sidebar -->
 
-            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-                <ul class="nav sidebar-nav">
-                    <li class="sidebar-brand">
-                        <a href="#"> </a>
-                    </li>
+<!--             <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation"> -->
+<!--                 <ul class="nav sidebar-nav"> -->
+<!--                     <li class="sidebar-brand"> -->
+<!--                         <a href="#"> </a> -->
+<!--                     </li> -->
 
-                    <li>
-                        <a href="CreationsPage2.jsp">創作者</a>
-                    </li>
-                    <li>
-                      <a href="../_07_fundsFrame/funds.jsp">募資平台</a>
-                    </li>
-                    <li>
-                        <a href="#">作品商城</a>
-                    </li>
-                    <li>
-                        <a href="#">購物車</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="dropdown-header">下拉標題</li>
-                            <li><a href="#">副選單一</a></li>
-                            <li><a href="#">副選單二</a></li>
-                        </ul>
-                    </li>
+<!--                     <li> -->
+<!--                         <a href="CreationsPage2.jsp">創作者</a> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!--                       <a href="../_07_fundsFrame/funds.jsp">募資平台</a> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!--                         <a href="#">作品商城</a> -->
+<!--                     </li> -->
+<!--                     <li> -->
+<!--                         <a href="#">購物車</a> -->
+<!--                     </li> -->
+<!--                     <li class="dropdown"> -->
+<!--                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a> -->
+<!--                         <ul class="dropdown-menu" role="menu"> -->
+<!--                             <li class="dropdown-header">下拉標題</li> -->
+<!--                             <li><a href="#">副選單一</a></li> -->
+<!--                             <li><a href="#">副選單二</a></li> -->
+<!--                         </ul> -->
+<!--                     </li> -->
 
-                </ul>
-            </nav>
-
+<!--                 </ul> -->
+<!--             </nav> -->
             <!-- #sidebar-->
-            <div class="row">
+<!--             <div class="row"> -->
                 <!-- Modal -->
                 <div class="container-fluid">
                     <div class="row content">
@@ -187,7 +184,7 @@
 									      <font color="red" size="-1">${MsgMap.errorIntroPic}</font>
                                     </div>
                                 </li>
-                                <li><a href="#section3">訪客留言</a></li>
+                                <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
                                 <input type="text" name="intro_pic" value=" ">
                                 <li><a href="#section3">相關...</a></li>
                                 <!--Facebook-->
@@ -206,8 +203,8 @@
                 </div>
 
 
-	<script src="../asset/js/bootstrap.min.js"></script>
-	<script src="../js/default.js"></script>
+<!-- 	<script src="../asset/js/bootstrap.min.js"></script> -->
+	<script src="${context}/js/default.js"></script>
     </section>
 </body>
 

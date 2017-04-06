@@ -1,43 +1,48 @@
 $(document).ready(function () {
-	 /*Sidebar code */
-    var trigger = $('.hamburger'),
-        isClosed = false;
-
-    trigger.click(function () {
-        hamburger_cross();
-    });
-
-    function hamburger_cross() {
-
-        if (isClosed === true) {
-            trigger.removeClass('is-open');
-            trigger.addClass('is-closed');
-            isClosed = false;
-        } else {
-            trigger.removeClass('is-closed');
-            trigger.addClass('is-open');
-            isClosed = true;
-        }
-    }
-    $('[data-toggle="offcanvas"]').click(function () {
-        $('#wrapper').toggleClass('toggled');
-    });
-    /* end of sidebar code*/
+	 /*置換內頁 */
+	$("#sp_artist_id").click(function(){
+		$.ajax({
+			url:"\_05_CreationsFrame\\CreationsPage2.jsp",
+			context: document.body,
+			success: function(response){
+				$('#mainframe').html(response);
+				}
+  	    });
+  	  })
+  	  $("#sp_pro_id").click(function(){
+  		  $.ajax({
+  			  url:"\_05_CreationsFrame\\CreationsPage3.jsp",
+  			  context: document.body,
+  			  success: function(response){
+  				  $('#mainframe').html(response);
+  			  }
+  		  });
+  	  });
+	  $("#sp_fc_details").click(function(){
+  		  $.ajax({
+  			  url:"\_11_Fc_info\\Fc_Info.jsp",
+  			  context: document.body,
+  			  success: function(response){
+  				  $('#mainframe').html(response);
+  			  }
+  		  });
+  	  });
+    /* 置換內頁結束 */
    
 
-   $(".navbar a").on('click', function (event) {
-        console.log(this.hash)
-        if(this.hash !== '') {
-            event.preventDefault();
-            var hash = this.hash;
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top - 40
-            }, 900, function () {
-                window.location.hash = hash;
-            })
-        }
-
-    })
+//   $(".navbar a").on('click', function (event) {
+//        console.log(this.hash)
+//        if(this.hash !== '') {
+//            event.preventDefault();
+//            var hash = this.hash;
+//            $('html, body').animate({
+//                scrollTop: $(hash).offset().top - 40
+//            }, 900, function () {
+//                window.location.hash = hash;
+//            })
+//        }
+//
+//    })
 });
 
 $(window).scroll(function() {

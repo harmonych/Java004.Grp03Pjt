@@ -1,11 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
     <html>
 
     <head>
-      <meta charset="utf-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Wise彙思創作募資</title>
       <!-- Tell the browser to be responsive to screen width -->
@@ -18,10 +17,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
       <!-- Theme style -->
       <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-      <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect.
-  -->
+
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
       <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
@@ -66,10 +62,12 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-    <body class="hold-transition skin-yellow-light sidebar-mini ">
-      <c:set var="userName" value="${LoginOK.user_name}" />
-      <c:set var="file_name" value="${LoginOK.file_name}" />
-      <div class="wrapper">
+  <body class="hold-transition skin-yellow-light sidebar-mini ">
+    
+	<c:set var="context" value="${pageContext.request.contextPath}" />
+    <c:set var="userName" value="${LoginOK.user_name}" />
+    <c:set var="file_name" value="${LoginOK.file_name}" />
+    <div class="wrapper">
 
         <!-- Main Header -->
         <header class="main-header">
@@ -103,6 +101,8 @@ desired effect
             <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
+               <c:choose>
+              	<c:when test="${!empty LoginOK}">
                 <li class="dropdown messages-menu">
                   <!-- Menu toggle button -->
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -139,8 +139,12 @@ desired effect
                   </ul>
                 </li>
                 <!-- /.messages-menu -->
+                </c:when>
+               </c:choose>
 
                 <!-- Notifications Menu -->
+             <c:choose>
+              	<c:when test="${!empty LoginOK}">
                 <li class="dropdown notifications-menu">
                   <!-- Menu toggle button -->
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -164,7 +168,11 @@ desired effect
                     <li class="footer"><a href="#">View all</a></li>
                   </ul>
                 </li>
+              </c:when>
+            </c:choose>
                 <!-- Tasks Menu -->
+                <c:choose>
+              	<c:when test="${!empty LoginOK}">
                 <li class="dropdown tasks-menu">
                   <!-- Menu Toggle Button -->
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -201,6 +209,8 @@ desired effect
                     </li>
                   </ul>
                 </li>
+                </c:when>
+              </c:choose>
                 <!-- User Account Menu -->
 
 
@@ -244,10 +254,10 @@ desired effect
                         <!-- Menu Footer-->
                         <li class="user-footer">
                           <div class="pull-left">
-                            <a href="_14_UserData/ModifyUserInfo.jsp" class="btn btn-default btn-flat">個人資料</a>
+                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" class="btn btn-default btn-flat">個人資料</a>
                           </div>
                           <div class="pull-right">
-                            <a href="_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>
+                            <a href="${context}/_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>
                           </div>
                         </li>
                       </ul>
@@ -296,10 +306,10 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-              <li class="header">HEADER</li>
+              <li class="header"></li> <!-- HEADER -->
               <!-- Optionally, you can add icons to the links -->
               <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>搜尋系統</span>
+                <a href="#"><i class="fa fa-fw fa-search"></i><span>搜尋系統</span>
 		            <span class="pull-right-container">
 		              <i class="fa fa-angle-left pull-right"></i>
 		            </span>
@@ -310,9 +320,10 @@ desired effect
                   <li><a href="_08_ImgSearch\img-search-page.html">募集作品</a></li>
                 </ul>
               </li>
-              <li class="active"><a href="_05_CreationsFrame/Creations.jsp"><i class="fa fa-link"></i> <span>創作平台</span></a></li>
-              <li><a href="_06_fundsFrame/funds.jsp"><i class="fa fa-link"></i> <span>募資平台</span></a></li>
-
+              <li id = "sp-artist"><a href="#sp-artist"><i class="fa fa-fw fa-paint-brush"></i><span>創作平台</span></a></li>
+              <li id = "sp-funds"><a href="#sp-funds"><i class="fa fa-fw fa-group"></i><span>作品募資</span></a></li>
+              <li id = "sp-product"><a href="#sp-product"><i class="fa fa-fw fa-gift"></i><span>文創商城</span></a></li>
+				
             </ul>
             <!-- /.sidebar-menu -->
           </section>
@@ -320,7 +331,7 @@ desired effect
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" id = "mainframe">
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <div class="col-md-12">
@@ -394,7 +405,7 @@ desired effect
             Anything you want
           </div>
           <!-- Default to the left -->
-          <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+          <strong>Copyright &copy; 2017 <a href="mailto:wisejava004@gmail.com">彙思</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
@@ -474,21 +485,59 @@ desired effect
        immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
       </div>
-      <!-- ./wrapper -->
+    <!-- ./wrapper -->
 
-      <!-- REQUIRED JS SCRIPTS -->
+    <!-- REQUIRED JS SCRIPTS -->
 
-      <!-- jQuery 2.2.3 -->
-      <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-      <!-- Bootstrap 3.3.6 -->
-      <script src="bootstrap/js/bootstrap.min.js"></script>
-      <!-- AdminLTE App -->
-      <script src="dist/js/app.min.js"></script>
+    <!-- jQuery 2.2.3 -->
+    <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js"></script>
+    
+      <!-- Bootstrap 3.3.7 as Backup -->
+<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+      <script type="text/javascript">
+      $(document).ready(function(){
+    	  $("#sp-artist").click(function(){
+      	    $.ajax({
+  				url:"\_05_CreationsFrame\\Creations.jsp",
+  				context: document.body,
+  				success: function(response){
+  					$('#mainframe').html(response);
+//       	    	  $('.content-wrapper').append('<section class =".content-header"></section>');
+      	      }
+      	    });
+      	  })
+    	  
+    	  $("#sp-funds").click(function(){
+      	    $.ajax({
+  				url:"\_07_fundsFrame\\funds.jsp",
+  				context: document.body,
+  				success: function(response){
+  					$('#mainframe').html(response);
+      	      }
+      	    });
+      	  });
+          
+	      $("#sp-product").click(function(){
+	    	    $.ajax({
+					url:"\_13_Product_info\\Product_info.jsp",
+					context: document.body,
+					success: function(response){
+						$('#mainframe').html(response);
+	    	      }
+	    	    });
+	    	  });
+		});
+      </script>
+
 
       <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-    </body>
+   </body>
 
-    </html>
+</html>

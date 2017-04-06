@@ -189,7 +189,7 @@ span.input-group-addon i {
 							<div class="form-group">
 								<div class="cols-sm-10"></div>
 							</div>
-							<Font color="red" size='2' face="verdana"><i class="fa fa-fw fa-exclamation-triangle"></i>為必填欄位</Font><br /> <input
+								<input
 								type="hidden" name="user_id" value="${LoginOK.user_id}"
 								class="fieldWidth">
 								<input

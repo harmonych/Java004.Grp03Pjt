@@ -39,5 +39,6 @@
 	<!-- 3. 宣告程式使用的永續類別 -->
 	
 	<mapping class="_07_funds.model.FundsBean"/>
+	<mapping class="_07_funds.model.FcPicBean"/>
 	</session-factory>
 </hibernate-configuration>

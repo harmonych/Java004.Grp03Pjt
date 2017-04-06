@@ -27,7 +27,7 @@ public class FcPicBean implements Serializable {
 	public FcPicBean() {
 		// TODO Auto-generated constructor stub
 	}
-
+	@Id
 	public int getPic_id() {
 		return pic_id;
 	}
@@ -40,6 +40,7 @@ public class FcPicBean implements Serializable {
 	public void setFc_id(int fc_id) {
 		this.fc_id = fc_id;
 	}
+	@Column(name = "pic_address")
 	public String getFc_adress() {
 		return fc_adress;
 	}
