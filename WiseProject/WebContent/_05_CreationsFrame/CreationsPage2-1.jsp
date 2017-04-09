@@ -9,7 +9,7 @@
 <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 <!--         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-        <link rel="stylesheet" href="${context}/css/Creations_page2.css">
+        <link rel="stylesheet" href="${context}/css/Creations_page2.css" >
         <title>創作者大廳</title>
     </head>
 
@@ -70,16 +70,17 @@
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                         </div>
-<!--                                         <div class="row"> -->
-                                        <div id ="funds">
+                                         <div id ="funds">
                                          	<h2>募資</h2>
+<!--                                         <div class="row"> -->
+<!--                                              -->
 <!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
 <!--                                             <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" width=50% title=""></div> -->
 <!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
 <!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
 <!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
-                                         </div>
-
+<!--                                          </div> -->
+										</div>
                                     </div>
                                 </div>
                             </div>
@@ -88,10 +89,12 @@
                                 <ul class="nav nav-pills nav-stacked">
                                     <li class="active"><a href="Creations.jsp">創作平台</a></li>
                                     <li>
-                                        <a href="pic_address 簡介圖片位址">
-                                            <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a>
+                                    
+                                        <a href="pic_address 作者簡介圖片位址">
+<%--                                             <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a> --%>
+                                          <img src="http://saudade.myasustor.com/JPjt/intro_pic/10.jpg" class="img-circle" width="150" height="150" alt="User Image"></a> 
                                         <ul class="MSG-mydata1">
-<!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> -->
+                                            <li>帳號：<span class="r_user_id ">創作者編號</span></li>
                                             <li>暱稱：<span class="user_name ">會員名稱</span></li>
                                         </ul>
                                     </li>
@@ -137,7 +140,25 @@
  					console.log(content);
 				}
 			}
- </script>
+
+// 			var xhr = new XMLHttpRequest();
+// 			xhr.open("GET", '\_07_funds\\singlefcpic.json', true);
+//  				xhr.send();
+//  				xhr.onreadystatechange = function() {
+//  					if (xhr.readyState == 4 && xhr.status == 200) {
+//  						var funds = JSON.parse(xhr.responseText);
+// 						var content = '<div>' + funds[0].fc_id +'</div>';
+// 	 					content +=  '<div>'+ funds[i].pic_address +'</div>';
+//  	 					content +=  "<img src='"+ funds[0].fc_adress +"'/>";
+//  					    console.log(funds);
+						
+//  					}
+//  					var divs = document.getElementById("funds");
+//  					divs.innerHTML = content;
+//  				}
+
+
+</script>
 <!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 <!--                     <script src="asset/js/bootstrap.min.js"></script> -->
                     <script src="${context}/js/default.js"></script>

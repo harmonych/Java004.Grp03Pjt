@@ -80,7 +80,7 @@
                     </div>
                 </div>
  <!-- Content Wrapper. Contains page content -->
-        <div id ="main">
+        <div id ="main2">
 <!--                 <div class="container-fluid bg-3 text-center"> -->
 <!--                     <h3></h3><br> -->
 <!--                     <p id="demo"></p> -->
@@ -155,7 +155,7 @@
                        <div class="w3-bar">
                             <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
                             <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-                            <a href="fundspage2.jsp" class="w3-bar-item w3-button w3-hover-black">2</a>
+                            <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
                             <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
                            
                             <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
@@ -212,13 +212,13 @@
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					var funds = JSON.parse(xhr.responseText);
 					var content = "<table border='1'>";
-					var k = 0;
+					var k = 6;
 					for(var j =0  ; j <2 ; j++){
 						content += '<div class="container-fluid bg-3 text-center"> <div class="row">';
 						for(var i=0; i < 3; i++){
 							content += '<div class="col-sm-4">';
 							content += '<div>' + funds[k].fc_name +'</div>';
-// 							content += '<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">';
+							content += '<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">';
 							content +=  "<img src='"+ funds[k].pic_address +"'/>";
 							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + funds[i].art_id + ' </a></div><span class="crowd-total"> </span></div></div>';    
 							k++;
@@ -228,7 +228,7 @@
 					}
 					content +='</table>';
 					console.log(k);
-					var divs = document.getElementById("main");
+					var divs = document.getElementById("main2");
 					divs.innerHTML = content;
 					console.log(content);
 				}

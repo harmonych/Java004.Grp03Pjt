@@ -2,13 +2,13 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
-<html>
+    <html>
 
-<head>
+    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="../css/Fc_info2.css">
-	  <title>募資內容頁</title>
+      <link rel="stylesheet" href="../css/ShoppingCart_List.css">
+	  <title>購物車清單</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
@@ -44,7 +44,7 @@
           display: inline-flex;
         }
       </style>
-</head>
+    </head>
     <!--
 BODY TAG OPTIONS:
 =================
@@ -66,89 +66,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
-<script>
-
-$(document).ready (function () {
-	var xhr1 = new XMLHttpRequest();
-	xhr1.open("GET", '..\\_07_funds\\singlefcpic.json', true);
-	xhr1.send();
-	xhr1.onreadystatechange = function() {
-		if (xhr1.readyState == 4 && xhr1.status == 200) {
-			var picj = JSON.parse(xhr1.responseText);
-			
-			var pic_address = "<img src ="+ picj[0].fc_adress + " width = '400px' >" ;
-			
-			var divp = document.getElementById("img_area");
-			divp.innerHTML = pic_address;
-			console.log(picj);
-			console.log(pic_address);
-		}
-	};
-
-		
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", '..\\_07_funds\\singlefund.json', true);
-	xhr.send();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-//			var content = "";
-			var fc_name = "";
-			var art_id = "";
-			var start_time = "";
-			var end_time = "";
-			var fc_money = "";
-			var now_money = "";
-			var fc_introduction = "";
-			
-			var funds = JSON.parse(xhr.responseText);
-			fc_name ="<h1><b>" +funds.fc_name+"</b></h1>" ;
-			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
-			start_time = "<b>開始時間 : </b>" +funds.start_time ;
-			end_time = "<b>結束時間 : </b>" +funds.end_time ;
-			fc_money = "<b>募資金額 : </b>" +funds.fc_money ;
-			now_money = "<b>目前金額  : </b>" +funds.now_money ;
-			fc_introduction = "<b>募資簡介 : </b><br>" +funds.fc_introduction ;			
-	
-		}
-		//content += "";
-		//var divs = document.getElementById("somedivS");
-		//divs.innerHTML = content;
-		
-		fc_name += "";
-		var divs = document.getElementById("fc_name");
-		divs.innerHTML = fc_name;
-		
-		art_id += "";
-		var divs = document.getElementById("art_id");
-		divs.innerHTML = art_id;
-		
-		start_time += "";
-		var divs = document.getElementById("start_time");
-		divs.innerHTML = start_time;
-		
-		end_time += "";
-		var divs = document.getElementById("end_time");
-		divs.innerHTML = end_time;
-		
-		fc_money += "";
-		var divs = document.getElementById("fc_money");
-		divs.innerHTML = fc_money;
-		
-		now_money += "";
-		var divs = document.getElementById("now_money");
-		divs.innerHTML = now_money;
-		
-		fc_introduction += "";
-		var divs = document.getElementById("fc_introduction");
-		divs.innerHTML = fc_introduction;
-	};
-});
-
-</script>
-
-
-<body class="hold-transition skin-yellow-light sidebar-mini ">
+    <body class="hold-transition skin-yellow-light sidebar-mini ">
       <c:set var="userName" value="${LoginOK.user_name}" />
       <c:set var="file_name" value="${LoginOK.file_name}" />
       <div class="wrapper">
@@ -411,91 +329,160 @@ $(document).ready (function () {
           <section class="content-header">
           </section>
 
-
-
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
-          	<div class="row">
-			
-				<!-- 圖片顯示欄 -->
-				<div class="card_card01 col-md-4 col-md-offset-2">
-					<div id="img_area">
-						<img id="pro_img" >  
-						<!-- src="../images/v06.jpg" -->
-						<!-- width="400" height="400" -->
-					</div>
-				</div>
-
-
-				<!-- 募資介紹欄 -->
-				<div class="card_card02 col-md-4">
-					<div id="info_area">
-						
-						<div id="fc_name">
-							<h1>fc_name 募資名稱</h1>
-						</div>
-						<div id="art_id">	
-							<label id='lb'>創作者編號:</label>
-						</div>
-						<div id="start_time" >
-							<label id="lb">start_time 開始時間</label>
-						</div>
-						<div id="end_time" >
-							<label id="lb">end_time 結束時間</label>
-						</div>
-						<div id="fc_money" >
-							<label id="lb">fc_money 募資金額</label>
-						</div>	
-						<div id="now_money" >
-							<label id="lb">now_money 目前金額</label>
-						</div>
-					
-						<div id="line"></div><br>
-					
-						<div id="fc_introduction">
-							<label id="lb">募資簡介</label><br>
-						
-							<p>
-								fc_Introduction<br> 
-							</p>
-						</div>
-					</div>	
-					<div id="line"></div>
-					
-					<div id="sponsor_area">
-						<form id="form1">
-							<div id="sponsor_money">
-								<div>
-									<label>贊助金額</label>
-								</div>
-									<div>
-										<select class="form-control">
-											<option value="1">NT $500</option>
-											<option value="2">NT $1,000</option>
-											<option value="3">NT $2,000</option>
-											<option value="4">NT $3,000</option>
-											<option value="5">NT $5,000</option>
-											<option value="6">NT $10,000</option>
-											<option value="7">NT $20,000</option>
-											<option value="8">NT $30,000</option>
-											<option value="8">NT $50,000</option>
-										</select>
-									</div>
-							</div>
-
-							<div id="bt_area">
-								<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>		
-	    </section>
-         <!-- /.content -->
-      </div>
-      <!-- /.content-wrapper -->
-
+		  	<div class="card1 col-md-8 col-md-offset-2">
+	          <div class="box box-primary">
+	            <div class="box-header with-border">
+	              <h3 class="box-title"><b>購物車清單</b></h3>
+		        </div>
+	            
+	            <!-- /.box-header -->
+	            <div class="box-body no-padding">
+	              <div class="mailbox-controls">
+	                <!-- Check all button -->
+<!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
+<!-- 	                </button> -->
+	                <div class="btn-group">
+	                		                	
+ 	                	<button type="button" href="../_13_Product_info/Product_info.jsp" class="btn btn-block btn-warning">回上頁
+ 	                		
+ 	                	</button>
+<!-- 	            	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button> -->
+<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button> -->
+<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
+	                </div>
+	              </div>
+	              <div class="table-responsive mailbox-messages">
+	                <table class="table table-hover table-striped">
+<%-- 	                <colgroup> --%>
+<%-- 	                	<col width="3%"> --%>
+<%-- 	                	<col width="16%"> --%>
+<%-- 	                	<col width="65%"> --%>
+<%-- 	                	<col width="16%"> --%>
+<%-- 	                </colgroup> --%>
+	                  <thead id="title">
+	                  	<tr>
+	                    	<th class="mailbox-name">創作者名稱</th>
+	                    	<th class="mailbox-name">購物車內商品數</th>
+	                    	<th class="mailbox-star">檢視購物車</th>
+	                    	<th class="mailbox-star">刪除購物車</th>            
+	                  	</tr>
+					</thead>
+	                  
+	                <tbody>
+	                  <tr>
+<!-- 	                <td><input type="checkbox"></td> -->
+	                    <td class="mailbox-name"><a href="http://localhost:8080/ajax17/index.jsp#artist_id">Alexander Pierce Trying to find a solution to this problem...</a>
+	                    </td>
+	                    <td class="mailbox-name">購物車內共...筆商品
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<a href="../_13_Product_info/Product_info.jsp"><button type="button" class="btn btn-default btn-sm checkbox-toggle">
+	                		<i class="fa fa-fw fa-shopping-cart"></i>
+	                		</button></a>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm">
+	                    	<i class="fa fa-trash-o" ></i>
+	                    	</button>
+	                    </td>
+	                  </tr>
+	                  
+	                  <tr>
+<!-- 	                <td><input type="checkbox"></td> -->
+	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
+	                		<i class="fa fa-fw fa-shopping-cart"></i>
+	                	</button>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm">
+	                    	<i class="fa fa-trash-o"></i>
+	                    	</button>
+	                    </td>
+	                  </tr>
+	                  
+	                  <tr>
+<!-- 	                <td><input type="checkbox"></td> -->
+	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
+	                		<i class="fa fa-fw fa-shopping-cart"></i>
+	                	</button>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm">
+	                    	<i class="fa fa-trash-o"></i>
+	                    	</button>
+	                    </td>
+	                  </tr>
+	                  
+	                  <tr>
+<!-- 	                <td><input type="checkbox"></td> -->
+	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
+	                		<i class="fa fa-fw fa-shopping-cart"></i>
+	                	</button>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm">
+	                    	<i class="fa fa-trash-o"></i>
+	                    	</button>
+	                    </td>
+	                  </tr>
+	                  
+	                  <tr>
+<!-- 	                <td><input type="checkbox"></td> -->
+	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
+	                		<i class="fa fa-fw fa-shopping-cart"></i>
+	                	</button>
+	                    </td>
+	                    <td class="mailbox-star">
+	                    	<button type="button" class="btn btn-default btn-sm">
+	                    	<i class="fa fa-trash-o"></i>
+	                    	</button>
+	                    </td>
+	                  </tr>
+	                 </tbody>
+	                </table>
+	                <!-- /.table -->
+	              </div>
+	              <!-- /.mail-box-messages -->
+	            </div>
+	            
+	            <!-- /.box-body -->
+	            <div class="box-footer no-padding">
+	              <div class="mailbox-controls">
+	              	<div class="btn-group">
+	                	<a type="" href="../_13_Product_info/Product_info.jsp" class="">回上頁</a>
+<!-- 	            	
+	                </div>
+	                <!-- /.btn-group -->
+	                
+	              </div>
+	            </div>
+	          </div>
+	          <!-- /. box -->
+	        </div>
+			</div>
+          </section>
+          <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
 
         <!-- Main Footer -->
         <footer class="main-footer">

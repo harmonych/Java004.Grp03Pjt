@@ -29,6 +29,8 @@
 	        });
 	    </script>
 	    <!--換圖片結束-->
+	    
+	    
 	    <title>創作作品</title>
 
 	</head>
@@ -119,7 +121,7 @@
                                     <!--Card Light-->
                                     <div class="card">
 
-                                        <div class="showbox"><img id="show-image" src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" style="opacity: 1;"></div>
+                                        <div class="showbox" style="width:500px height:200px"><img id="show-image" src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" style="opacity: 1;"></div>
 										<a>
 											<div class="pic_address" id ="selections">
 												<img src="http://saudade.myasustor.com/JPjt/pro_pic_address/2.jpg" title="">
@@ -160,33 +162,43 @@
                                 </div>
                             </div>
                         </div>
+                      
                         <div class="col-md-3 col-xs-3">
                             <h4>創作者 Blog</h4>
                             <ul class="nav nav-pills nav-stacked">
                                 <li class="active"><a href="Creations.jsp">Home</a></li>
                                 <li><a href="#section2">作者資訊</a>
-                                <ul class="MSG-mydata1">
-<!-- 			                                <label class="fontSize" >大頭貼照：</label> -->
-<!-- 			      							<Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="portrait"><BR> -->
-                                            <li>帳號：<span class="r_user_id ">創作者編號</span></li>
-                                            <input type="text" name="account" value="${param.account}" class="fieldWidth" maxlength="20" style="width: 200px" >
-                                            <li>暱稱：<span class="user_name ">會員名稱</span></li>
-                                            <input type="text" name="user_name" value="${param.user_name}"  class="fieldWidth" maxlength="20" style="width: 200px;">
-                                        </ul>
+                                <div id ="main">
+<!--                                 <ul class="MSG-mydata1"> -->
+<!-- <!-- 			                                <label class="fontSize" >大頭貼照：</label> --> 
+<!-- <!-- 			      							<Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="portrait"><BR> 
+<!-- <!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> --> 
+<%-- <%--                                             <input type="text" name="account" value="${param.account}" class="fieldWidth" maxlength="20" style="width: 200px" > --%> 
+<!-- <!--                                             <li>暱稱：<span class="user_name ">會員名稱</span></li> --> 
+<%-- <%--                                             <input type="text" name="user_name" value="${param.user_name}"  class="fieldWidth" maxlength="20" style="width: 200px;"> --%> 
+                                        
+<!--                                           <a href="pic_address 簡介圖片位址"> -->
+<%--                                             <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a> --%>
+<!--                                         <ul class="MSG-mydata1"> -->
+<!-- <!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> -->
+                                            <li>暱稱：<span class="user_name ">${LoginOK.user_name}</span></li>
+<!--                                         </ul> -->
+<!--                                         </ul> -->
                                     
                                     <div>
-                                    	  <label class="fontSize" >作者簡介：</label><br>
-									      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth" maxlength="500"></textarea>
-									      <br/>
-									
-									      <label class="fontSize" >*簡介圖片：</label>
-									      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="intro_pic">
+<!--                                     	  <label class="fontSize" >作者簡介：</label><br> -->
+<!-- 									      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth" maxlength="500"></textarea> -->
+<!-- 									      <br/> -->
+									 
+<!-- 									      <label class="fontSize" >*簡介圖片：</label> -->
+<!-- 									      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="intro_pic"> -->
 									      <font color="red" size="-1">${MsgMap.errorIntroPic}</font>
                                     </div>
                                 </li>
-                                <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
-                                <input type="text" name="intro_pic" value=" ">
-                                <li><a href="#section3">相關...</a></li>
+<!--                                 <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li> -->
+<!--                                 <input type="text" name="intro_pic" value=" "> -->
+                                
+                                <li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li>
                                 <!--Facebook-->
                                 <button type="button" class="btn btn-fb"><i class="fa fa-facebook left"></i> Facebook</button>
                                 <!--Twitter-->
@@ -201,8 +213,29 @@
 
                     </div>
                 </div>
+<script>
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET",  '.json', true);
+				xhr.send();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						var funds = JSON.parse(xhr.responseText);
+						var content = '<div>' + Artist[0].user_name+'</div>';
+// 						content +='<li>'暱稱：'<span class="user_name ">${LoginOK.user_name}</span></li>
+ 	 					content +=  '<div>'+ Artist[0].introduction   +'</div>';
+	 					content +=  "<img src='"+ Artist[0].fc_address +"'/>";
+					    console.log(funds);
+						
+					}
+					var divs = document.getElementById("main");
+					divs.innerHTML = content;
+				}	
+			
+			
+			
+			
 
-
+</script>
 <!-- 	<script src="../asset/js/bootstrap.min.js"></script> -->
 	<script src="${context}/js/default.js"></script>
     </section>

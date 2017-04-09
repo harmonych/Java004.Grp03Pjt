@@ -123,8 +123,9 @@
 
 /* 內容畫面 */
 .showbox {
-	width: 92%;
-	margin:0 auto;
+	 width: 90%;
+	 margin: 0 auto;
+	 border-style:solid;
 }
 
 .showbox img{
@@ -141,9 +142,9 @@
 	margin-right: 10px;
 } */
 .pic_address img {
-	width: 20%;
-	height: 20%;
-	vertical-align: middle;
+	width: 80px;
+    height: 80px;
+    vertical-align: middle;
 }
 /* .service-p1-text{
 	width:92%;

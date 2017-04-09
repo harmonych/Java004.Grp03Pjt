@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+
+#table_text{
+	font-size: 110%;
+}
+
+#delete{
+	text-align: center;
+}
+
+
+#red{
+	color: #F00;
+	font-weight: bold;
+}
+
+#price_area{
+	height:80px;
+	background:rgba(243, 156, 18, 0.2);
+	font-weight: bold;
+	font-size: 110%;
+}
+
+#total{
+	padding-top:30px;
+	vertical-align:middle;
+	font-weight: bold;
+}
+
+#price{
+	color: #F00;
+}
