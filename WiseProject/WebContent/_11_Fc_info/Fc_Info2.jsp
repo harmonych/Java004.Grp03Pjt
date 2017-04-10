@@ -7,7 +7,7 @@
 <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="../css/Fc_info2.css">
+      <link rel="stylesheet" href="../css/Fc_info.css">
 	  <title>募資內容頁</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -412,7 +412,6 @@ $(document).ready (function () {
           </section>
 
 
-
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
@@ -492,7 +491,74 @@ $(document).ready (function () {
 				</div>
 			</div>		
 	    </section>
-         <!-- /.content -->
+         	<!-- /.content -->
+         
+         <!-- 留言填寫欄位 -->
+          <section class="content">
+          	<div class="row">
+          		<div class="card03 col-md-8 col-md-offset-2">
+          			<div class="box box-primary">
+            			<div class="box-header with-border">
+              				<h3 class="box-title">我要留言</h3>
+            			</div>
+            			
+            		<!-- /.box-header -->
+            		<div class="box-body">
+              			<div class="form-group">
+                			<input class="form-control" placeholder="留言標題">
+              			</div>
+              			              	
+              			<div class="form-group">
+                    		<textarea id="compose-textarea" class="form-control" placeholder="在此輸入內容" style="height: 300px"></textarea>
+              			</div>
+              	
+              	   <!-- <div class="form-group">
+                			<div class="btn btn-default btn-file">
+                  				<i class="fa fa-paperclip"></i> Attachment
+                  				<input type="file" name="attachment">
+                			</div>
+                	    </div> -->
+            		</div> 
+            		
+            		<!-- /.box-body -->
+            		<div class="box-footer">
+              			<div class="pull-right">
+                			<button type="submit" id="btn3" class="btn btn-primary">送出留言 </button> 
+                			<!--<i class="fa fa-envelope-o"></i> Send  -->
+              			</div>
+              			
+            		</div>
+           			<!-- /.box-footer -->
+          			</div>
+          		<!-- /. box -->
+        		</div>
+        	</div>
+       
+       
+      	</section>
+        <!-- /.content -->
+        <!-- 留言串列 -->
+        <section>
+        	<div class="row">
+          		<div class="card03 col-md-8 col-md-offset-2">
+			        <div class="box box-default">
+			          <div class="box-header with-border">
+			            <div>
+			            	<h4 class="box-title">留言標題</h4>
+			            </div>
+			            <br>
+			            <div>
+			            	<div class="mes_by">留言人</div>
+			            </div>
+			          </div>
+			          <div class="box-body">
+			          		<div class="message">留言內容</div>
+			          </div>
+			          <!-- /.box-body -->
+			        </div>
+			   </div>     
+			</div>	        
+        </section>
       </div>
       <!-- /.content-wrapper -->
 

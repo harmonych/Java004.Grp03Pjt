@@ -431,31 +431,11 @@ desired effect
 						<div id="line"></div>
 					
 						<div id="buy_area">
-							<form id="form1">
-								<div id="quantity">
-									<div>
-										<label>購買數量</label>
-									</div>
-									<div>
-										<select class="form-control">
-											<option value="1">1</option>
-										  	<option value="2">2</option>
-										  	<option value="3">3</option>
-										  	<option value="4">4</option>
-										  	<option value="5">5</option>
-										  	<option value="6">6</option>
-										  	<option value="7">7</option>
-										  	<option value="8">8</option>
-										  	<option value="9">9</option>
-										  	<option value="10">10</option>
-										</select>
-  									</div>
-								</div>
-							
+							<form id="form1">													
 								<div id="bt_area">
-										<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="立即購買">
+									<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="立即購買">
 									
-										<input type="submit" name="submit" class="btn2 btn-lg btn-block" value="加入購物車">
+									<input type="submit" name="submit" class="btn2 btn-lg btn-block" value="加入購物車">
 								</div>
 							</form>		
 						</div>
@@ -466,13 +446,13 @@ desired effect
 			<!-- /.content -->
 			
 			
-			<!-- 留言欄位 -->
+		  <!-- 留言填寫欄位 -->
           <section class="content">
           	<div class="row">
           		<div class="card03 col-md-8 col-md-offset-2">
           			<div class="box box-primary">
             			<div class="box-header with-border">
-              				<h3 class="box-title">留言</h3>
+              				<h3 class="box-title">我要留言</h3>
             			</div>
             			
             		<!-- /.box-header -->
@@ -496,7 +476,7 @@ desired effect
             		<!-- /.box-body -->
             		<div class="box-footer">
               			<div class="pull-right">
-                			<button type="submit" class="btn btn-primary">送出留言 </button> 
+                			<button type="submit" id="btn3" class="btn btn-primary">送出留言 </button> 
                 			<!--<i class="fa fa-envelope-o"></i> Send  -->
               			</div>
               			
@@ -509,6 +489,28 @@ desired effect
        
       	</section>
         <!-- /.content -->
+        <!-- 留言串列 -->
+        <section>
+        	<div class="row">
+          		<div class="card03 col-md-8 col-md-offset-2">
+			        <div class="box box-default">
+			          <div class="box-header with-border">
+			            <div>
+			            	<h4 class="box-title">留言標題</h4>
+			            </div>
+			            <br>
+			            <div>
+			            	<div class="mes_by">留言人</div>
+			            </div>
+			          </div>
+			          <div class="box-body">
+			          		<div class="message">留言內容</div>
+			          </div>
+			          <!-- /.box-body -->
+			        </div>
+			   </div>     
+			</div>	        
+        </section>
 		</div>
 		<!-- /.content-wrapper -->
 

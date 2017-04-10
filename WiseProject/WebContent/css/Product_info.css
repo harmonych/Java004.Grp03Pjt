@@ -63,3 +63,17 @@
 	margin:20px 0px 20px 0px;
 	background:#969696;
 }
+
+.box-title{
+	font-weight: bold;
+}
+
+.mes_by{
+	font-weight: bold;
+	color: #0080ff
+}
+
+#btn3{
+	background:#f78e05;
+	border:  1px solid #CCC; 
+}

@@ -379,7 +379,7 @@ desired effect
 	                    <td class="mailbox-name">購物車內共...筆商品
 	                    </td>
 	                    <td class="mailbox-star">
-	                    	<a href="../_13_Product_info/Product_info.jsp"><button type="button" class="btn btn-default btn-sm checkbox-toggle">
+	                    	<a href="ShoppingCart_Order.jsp"><button type="button" class="btn btn-default btn-sm checkbox-toggle">
 	                		<i class="fa fa-fw fa-shopping-cart"></i>
 	                		</button></a>
 	                    </td>
