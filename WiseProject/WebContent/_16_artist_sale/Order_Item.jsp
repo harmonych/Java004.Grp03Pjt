@@ -7,8 +7,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="stylesheet" href="../css/Product_info.css">
-<title>商品內容頁</title>
+<link rel="stylesheet" href="../css/Order_Item.css">
+<title>購物車明細</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -70,69 +70,6 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-
-<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
-<script>
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", '/_08_product/singleproduct.json', true);
-	xhr.send();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			//var content = "";
-			var pro_name = "";
-			var art_id = "";
-			var sale_time = "";
-			var price = "";
-			var pro_inv = "";
-			var pro_introduction = "";
-						
-			var funds = JSON.parse(xhr.responseText);
-			//content ="<div class='pro_name'><h1>募資名稱"+funds.fc_name+"</h1></div>" +
-			//			"<div class='art_id'><h3>創作者編號"+funds.art_id+"</h3></div>" +
-			//			"<div class='sale_time'>開始時間"+funds.start_time+"</div>" +
-			//			"<div class='end_time'>結束時間"+funds.end_time+"</div>" +
-			//			"<div class='fc_money'>募資金額"+funds.fc_money+"</div>" +
-			//			"<div class='now_money'>目前金額"+funds.now_money+"</div>" +
-			//			"<div class='fc_introduction'>募資簡介"+funds.fc_introduction+"</div>" ;
-			
-			pro_name ="<h1><b>" +funds.pro_name+"</b></h1>" ;
-			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
-			sale_time = "<b>上架時間 : </b>" +funds.sale_time ;
-			price = "<b>單價 : </b>" +funds.price ;
-			pro_inv = "<b>剩餘數量  : </b>" +funds.pro_inv ;
-			pro_introduction = "<b>商品簡介 : </b><br>" +funds.pro_introduction ;			
-	
-		}
-		//content += "";
-		//var divs = document.getElementById("somedivS");
-		//divs.innerHTML = content;
-		
-		pro_name += "";
-		var divs = document.getElementById("pro_name");
-		divs.innerHTML = pro_name;
-		
-		art_id += "";
-		var divs = document.getElementById("art_id");
-		divs.innerHTML = art_id;
-		
-		sale_time += "";
-		var divs = document.getElementById("sale_time");
-		divs.innerHTML = sale_time;
-		
-		price += "";
-		var divs = document.getElementById("price");
-		divs.innerHTML = price;
-		
-		pro_inv += "";
-		var divs = document.getElementById("pro_inv");
-		divs.innerHTML = pro_inv;
-		
-		pro_introduction += "";
-		var divs = document.getElementById("pro_introduction");
-		divs.innerHTML = pro_introduction;
-	}
-</script>
-
 
 <body class="hold-transition skin-yellow-light sidebar-mini ">
 	<c:set var="userName" value="${LoginOK.user_name}" />
@@ -378,6 +315,8 @@ desired effect
 		</aside>
 
 
+
+
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -387,132 +326,195 @@ desired effect
 			<section class="content">
 				<!-- Your Page Content Here -->
 				<div class="row">
-					<!-- 圖片顯示欄 -->
-					<div class="card_card01 col-md-4 col-md-offset-2">
-						<div id="img_area">
-							<img src="../images/v06.jpg" id="pro_img"> 
-							<!-- width="400" height="400" -->
-						</div>
-					</div>
-				
-					<!-- 商品介紹欄 -->
-					<div class="card_card02 col-md-4">
-						<header id="info_area">
-							
-								<div id="pro_name">
-									<h1>pro_name 商品名稱</h1>
-								</div>
-							
-								<div id="art_id">
-									<h3>art_id 創作者編號</h3>
-								</div>
-							
-								<div id="sale_time">
-									sale_time 上架時間
-								</div>
-							
-								<div id="price">
-									price 單價
-								</div>
-								<div id="pro_inv">
-									pro_inv 剩餘數量
-								</div>
-						
-							<div id="line"></div>
-					
-							<div id="pro_introduction">
-								<label id="lb">募資簡介 : </label><br>
-								<p>
-									pro_Introduction 商品簡介<br>
-								</p>
+				<div class="card1 col-md-8 col-md-offset-2">
+					<div class="order_body">
+						<div class="box box-warning">
+							<div class="box-header with-border">
+								<h3 class="box-title">
+									<b>XXX會員訂購明細</b>
+								</h3>
 							</div>
-						</header>
-						
-						<div id="line"></div>
+
+<!-- 							<div class="table-responsive mailbox-messages"> -->
+								<table class="table table-hover table-striped">
+									<thead id="title_area">
+										<tr>
+											<th class="mailbox-name">商品圖片</th>
+											<th class="mailbox-name">商品名稱</th>
+											<th class="mailbox-name">單價</th>
+											<th class="mailbox-star">數量</th>
+											<th class="mailbox-star">小記</th>
+											<th class="mailbox-star">刪除商品</th>
+										</tr>
+									</thead>
+
+									<tbody id="table_text">
+										<tr>
+											<td>
+												<div id="order_img">
+													<img src="../images/bigPic/bookxb001.jpg" id="pro_img"
+														width="100px" height="100px">
+												</div>
+											</td>
+											<td class="mailbox-name">
+												<div id="pro_name">
+													<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+												</div>
+											</td>
+
+											<td id="red" class="mailbox-star">$599</td>
+
+											<td class="mailbox-star">
+												<select class="form-control">
+									            	<option> 1</option>
+									                <option> 2</option>
+									                <option> 3</option>
+									                <option> 4</option>
+									                <option> 5</option>
+									                <option> 6</option>
+									                <option> 7</option>
+									                <option> 8</option>
+									                <option> 9</option>
+									                <option> 10</option>
+									            </select>
+											</td>
+
+											<td id="red" class="mailbox-star">$599</td>
+
+											<td class="mailbox-star">
+												<div id="delete">
+												<button type="button" class="btn btn-default btn-sm">
+													<i class="fa fa-trash-o"></i>
+												</button>
+												</div>
+											</td>
+										</tr>
+
+										<tr>
+											<td>
+												<div id="order_img">
+													<img src="../images/bigPic/bookxb002.jpg" id="pro_img"
+														width="100px" height="100px">
+												</div>
+											</td>
+											<td class="mailbox-name">
+												<div id="pro_name">
+													<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+												</div>
+											</td>
+
+											<td id="red" class="mailbox-star">$599</td>
+
+											<td class="mailbox-star">
+												<select class="form-control">
+									            	<option> 1</option>
+									                <option> 2</option>
+									                <option> 3</option>
+									                <option> 4</option>
+									                <option> 5</option>
+									                <option> 6</option>
+									                <option> 7</option>
+									                <option> 8</option>
+									                <option> 9</option>
+									                <option> 10</option>
+									            </select>
+											</td>
+
+											<td id="red" class="mailbox-star">$599</td>
+
+											<td class="mailbox-star">
+												<div id="delete">
+												<button type="button" class="btn btn-default btn-sm">
+													<i class="fa fa-trash-o"></i>
+												</button>
+												</div>
+											</td>
+										</tr>								
+
+									</tbody>
+								</table>
+								<!-- /.table -->
+								<footer id="price_area">									
+										<div id="total">
+											<span class="">總金額</span>
+											<span id="price" class="">$779</span>
+										</div>									
+								</footer>
+							</div>
+						</div>
 					
-						<div id="buy_area">
-							<form id="form1">													
-								<div id="bt_area">
-									<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="立即購買">
-									
-									<input type="submit" name="submit" class="btn2 btn-lg btn-block" value="加入購物車">
+					<!-- /.mail-box-messages -->
+					<!-- general form elements -->
+					<div class="check_body">
+						<div class="box box-warning">
+							<div class="box-header with-border">
+								<h3 class="box-title">
+									<b>訂購及寄送方式</b>
+								</h3>
+							</div>
+							<!-- /.box-header -->
+							<!-- form start -->
+
+							<form role="form">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="exampleInputEmail1">收件人</label> 
+										<div >real_name
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">寄送地址</label> 
+										<div >address
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">連絡電話</label> 
+										<div >phonenum
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="">付款方式</label><br /> 
+										<div >1轉帳
+										</div>
+
+									</div>
+									<div class="form-group2">
+										<label for="">出貨方式</label><br /> 
+										<div >1貨運
+										</div>
+									</div>
+									<div class="form-group2">
+										<label for="">訂單狀態</label><br /> 
+										<div> 
+											<select id="status" class="form-control">
+												<option value="0"></option>
+												<option value="1">作者確認</option>
+												<option value="2">出貨中</option>
+												<option value="3">雙方確認完成</option>									
+											</select>
+										</div>
+									</div>
 								</div>
-							</form>		
+								<!-- /.box-body -->
+
+								<div class="box-footer">
+									<a href="../_16_artist_sale/Sale_List.jsp">
+										<button type="button" class="btn btn-warning">確認</button>
+									</a>
+								</div>
+							</form>
 						</div>
 					</div>
+					<!-- /.box -->
+				</div>	
+				
 				</div>
-
 			</section>
 			<!-- /.content -->
-			
-			
-		  <!-- 留言填寫欄位 -->
-          <section class="content">
-          	<div class="row">
-          		<div class="card03 col-md-8 col-md-offset-2">
-          			<div class="box box-warning">
-            			<div class="box-header with-border">
-              				<h3 class="box-title">我要留言</h3>
-            			</div>
-            			
-            		<!-- /.box-header -->
-            		<div class="box-body">
-              			<div class="form-group">
-                			<input class="form-control" placeholder="留言標題">
-              			</div>
-              			              	
-              			<div class="form-group">
-                    		<textarea id="compose-textarea" class="form-control" placeholder="在此輸入內容" style="height: 300px"></textarea>
-              			</div>
-              	
-              	   <!-- <div class="form-group">
-                			<div class="btn btn-default btn-file">
-                  				<i class="fa fa-paperclip"></i> Attachment
-                  				<input type="file" name="attachment">
-                			</div>
-                	    </div> -->
-            		</div> 
-            		
-            		<!-- /.box-body -->
-            		<div class="box-footer">
-              			<div class="pull-right">
-                			<button type="submit" id="btn3" class="btn btn-primary">送出留言 </button> 
-                			<!--<i class="fa fa-envelope-o"></i> Send  -->
-              			</div>
-              			
-            		</div>
-           			<!-- /.box-footer -->
-          			</div>
-          		<!-- /. box -->
-        		</div>
-        	</div>
-       
-      	</section>
-        <!-- /.content -->
-        <!-- 留言串列 -->
-        <section>
-        	<div class="row">
-          		<div class="card03 col-md-8 col-md-offset-2">
-			        <div class="box box-warning ">
-			          <div class="box-header with-border">
-			            <div>
-			            	<h4 class="box-title">留言標題</h4>
-			            </div>
-			            <br>
-			            <div>
-			            	<div class="mes_by">留言人</div>
-			            </div>
-			          </div>
-			          <div class="box-body">
-			          		<div class="message">留言內容</div>
-			          </div>
-			          <!-- /.box-body -->
-			        </div>
-			   </div>     
-			</div>	        
-        </section>
 		</div>
 		<!-- /.content-wrapper -->
+
+
 
 
 
@@ -556,7 +558,8 @@ desired effect
 					<ul class="control-sidebar-menu">
 						<li><a href="javascript:;">
 								<h4 class="control-sidebar-subheading">
-									Custom Template Design <span class="pull-right-container">
+									Custom Template Design 
+									<span class="pull-right-container">
 										<span class="label label-danger pull-right">70%</span>
 									</span>
 								</h4>

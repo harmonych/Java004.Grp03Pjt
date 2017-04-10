@@ -7,8 +7,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="stylesheet" href="../css/Product_info.css">
-<title>商品內容頁</title>
+<link rel="stylesheet" href="../css/Fc_Create2.css">
+<title>建立專案</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -70,69 +70,6 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-
-<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
-<script>
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", '/_08_product/singleproduct.json', true);
-	xhr.send();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			//var content = "";
-			var pro_name = "";
-			var art_id = "";
-			var sale_time = "";
-			var price = "";
-			var pro_inv = "";
-			var pro_introduction = "";
-						
-			var funds = JSON.parse(xhr.responseText);
-			//content ="<div class='pro_name'><h1>募資名稱"+funds.fc_name+"</h1></div>" +
-			//			"<div class='art_id'><h3>創作者編號"+funds.art_id+"</h3></div>" +
-			//			"<div class='sale_time'>開始時間"+funds.start_time+"</div>" +
-			//			"<div class='end_time'>結束時間"+funds.end_time+"</div>" +
-			//			"<div class='fc_money'>募資金額"+funds.fc_money+"</div>" +
-			//			"<div class='now_money'>目前金額"+funds.now_money+"</div>" +
-			//			"<div class='fc_introduction'>募資簡介"+funds.fc_introduction+"</div>" ;
-			
-			pro_name ="<h1><b>" +funds.pro_name+"</b></h1>" ;
-			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
-			sale_time = "<b>上架時間 : </b>" +funds.sale_time ;
-			price = "<b>單價 : </b>" +funds.price ;
-			pro_inv = "<b>剩餘數量  : </b>" +funds.pro_inv ;
-			pro_introduction = "<b>商品簡介 : </b><br>" +funds.pro_introduction ;			
-	
-		}
-		//content += "";
-		//var divs = document.getElementById("somedivS");
-		//divs.innerHTML = content;
-		
-		pro_name += "";
-		var divs = document.getElementById("pro_name");
-		divs.innerHTML = pro_name;
-		
-		art_id += "";
-		var divs = document.getElementById("art_id");
-		divs.innerHTML = art_id;
-		
-		sale_time += "";
-		var divs = document.getElementById("sale_time");
-		divs.innerHTML = sale_time;
-		
-		price += "";
-		var divs = document.getElementById("price");
-		divs.innerHTML = price;
-		
-		pro_inv += "";
-		var divs = document.getElementById("pro_inv");
-		divs.innerHTML = pro_inv;
-		
-		pro_introduction += "";
-		var divs = document.getElementById("pro_introduction");
-		divs.innerHTML = pro_introduction;
-	}
-</script>
-
 
 <body class="hold-transition skin-yellow-light sidebar-mini ">
 	<c:set var="userName" value="${LoginOK.user_name}" />
@@ -377,7 +314,6 @@ desired effect
 			<!-- /.sidebar -->
 		</aside>
 
-
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -386,135 +322,237 @@ desired effect
 			<!-- Main content -->
 			<section class="content">
 				<!-- Your Page Content Here -->
-				<div class="row">
-					<!-- 圖片顯示欄 -->
-					<div class="card_card01 col-md-4 col-md-offset-2">
-						<div id="img_area">
-							<img src="../images/v06.jpg" id="pro_img"> 
-							<!-- width="400" height="400" -->
+				<div id="example1_wrapper"
+					class="dataTables_wrapper form-inline dt-bootstrap">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="dataTables_length" id="example1_length">
+								<label>Show <select name="example1_length"
+									aria-controls="example1" class="form-control input-sm"><option
+											value="10">10</option>
+										<option value="25">25</option>
+										<option value="50">50</option>
+										<option value="100">100</option></select> entries
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div id="example1_filter" class="dataTables_filter">
+								<label>Search:<input type="search"
+									class="form-control input-sm" placeholder=""
+									aria-controls="example1"></label>
+							</div>
 						</div>
 					</div>
-				
-					<!-- 商品介紹欄 -->
-					<div class="card_card02 col-md-4">
-						<header id="info_area">
-							
-								<div id="pro_name">
-									<h1>pro_name 商品名稱</h1>
-								</div>
-							
-								<div id="art_id">
-									<h3>art_id 創作者編號</h3>
-								</div>
-							
-								<div id="sale_time">
-									sale_time 上架時間
-								</div>
-							
-								<div id="price">
-									price 單價
-								</div>
-								<div id="pro_inv">
-									pro_inv 剩餘數量
-								</div>
-						
-							<div id="line"></div>
-					
-							<div id="pro_introduction">
-								<label id="lb">募資簡介 : </label><br>
-								<p>
-									pro_Introduction 商品簡介<br>
-								</p>
+					<div class="row">
+						<div class="col-sm-12">
+							<table id="example1"
+								class="table table-bordered table-striped dataTable" role="grid"
+								aria-describedby="example1_info">
+								<thead>
+									<tr role="row">
+										<th class="sorting_asc" tabindex="0" aria-controls="example1"
+											rowspan="1" colspan="1" aria-sort="ascending"
+											aria-label="Rendering engine: activate to sort column descending"
+											style="width: 216.4px;">Rendering engine</th>
+										<th class="sorting" tabindex="0" aria-controls="example1"
+											rowspan="1" colspan="1"
+											aria-label="Browser: activate to sort column ascending"
+											style="width: 266.4px;">Browser</th>
+										<th class="sorting" tabindex="0" aria-controls="example1"
+											rowspan="1" colspan="1"
+											aria-label="Platform(s): activate to sort column ascending"
+											style="width: 237.4px;">Platform(s)</th>
+										<th class="sorting" tabindex="0" aria-controls="example1"
+											rowspan="1" colspan="1"
+											aria-label="Engine version: activate to sort column ascending"
+											style="width: 186.4px;">Engine version</th>
+										<th class="sorting" tabindex="0" aria-controls="example1"
+											rowspan="1" colspan="1"
+											aria-label="CSS grade: activate to sort column ascending"
+											style="width: 135.2px;">CSS grade</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+									<tr role="row" class="odd">
+										<td class="sorting_1">Gecko</td>
+										<td>Firefox 1.0</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.7</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="even">
+										<td class="sorting_1">Gecko</td>
+										<td>Firefox 1.5</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.8</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="odd">
+										<td class="sorting_1">Gecko</td>
+										<td>Firefox 2.0</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.8</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="even">
+										<td class="sorting_1">Gecko</td>
+										<td>Firefox 3.0</td>
+										<td>Win 2k+ / OSX.3+</td>
+										<td>1.9</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="odd">
+										<td class="sorting_1">Gecko</td>
+										<td>Camino 1.0</td>
+										<td>OSX.2+</td>
+										<td>1.8</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="even">
+										<td class="sorting_1">Gecko</td>
+										<td>Camino 1.5</td>
+										<td>OSX.3+</td>
+										<td>1.8</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="odd">
+										<td class="sorting_1">Gecko</td>
+										<td>Netscape 7.2</td>
+										<td>Win 95+ / Mac OS 8.6-9.2</td>
+										<td>1.7</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="even">
+										<td class="sorting_1">Gecko</td>
+										<td>Netscape Browser 8</td>
+										<td>Win 98SE+</td>
+										<td>1.7</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="odd">
+										<td class="sorting_1">Gecko</td>
+										<td>Netscape Navigator 9</td>
+										<td>Win 98+ / OSX.2+</td>
+										<td>1.8</td>
+										<td>A</td>
+									</tr>
+									<tr role="row" class="even">
+										<td class="sorting_1">Gecko</td>
+										<td>Mozilla 1.0</td>
+										<td>Win 95+ / OSX.1+</td>
+										<td>1</td>
+										<td>A</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th rowspan="1" colspan="1">Rendering engine</th>
+										<th rowspan="1" colspan="1">Browser</th>
+										<th rowspan="1" colspan="1">Platform(s)</th>
+										<th rowspan="1" colspan="1">Engine version</th>
+										<th rowspan="1" colspan="1">CSS grade</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-5">
+							<div class="dataTables_info" id="example1_info" role="status"
+								aria-live="polite">Showing 1 to 10 of 57 entries</div>
+						</div>
+						<div class="col-sm-7">
+							<div class="dataTables_paginate paging_simple_numbers"
+								id="example1_paginate">
+								<ul class="pagination">
+									<li class="paginate_button previous disabled"
+										id="example1_previous"><a href="#"
+										aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
+									<li class="paginate_button active"><a href="#"
+										aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li>
+									<li class="paginate_button "><a href="#"
+										aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li>
+									<li class="paginate_button "><a href="#"
+										aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li>
+									<li class="paginate_button "><a href="#"
+										aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li>
+									<li class="paginate_button "><a href="#"
+										aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li>
+									<li class="paginate_button "><a href="#"
+										aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li>
+									<li class="paginate_button next" id="example1_next"><a
+										href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li>
+								</ul>
 							</div>
-						</header>
-						
-						<div id="line"></div>
-					
-						<div id="buy_area">
-							<form id="form1">													
-								<div id="bt_area">
-									<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="立即購買">
-									
-									<input type="submit" name="submit" class="btn2 btn-lg btn-block" value="加入購物車">
-								</div>
-							</form>		
 						</div>
 					</div>
 				</div>
 
+
+
+
 			</section>
 			<!-- /.content -->
-			
-			
-		  <!-- 留言填寫欄位 -->
-          <section class="content">
-          	<div class="row">
-          		<div class="card03 col-md-8 col-md-offset-2">
-          			<div class="box box-warning">
-            			<div class="box-header with-border">
-              				<h3 class="box-title">我要留言</h3>
-            			</div>
-            			
-            		<!-- /.box-header -->
-            		<div class="box-body">
-              			<div class="form-group">
-                			<input class="form-control" placeholder="留言標題">
-              			</div>
-              			              	
-              			<div class="form-group">
-                    		<textarea id="compose-textarea" class="form-control" placeholder="在此輸入內容" style="height: 300px"></textarea>
-              			</div>
-              	
-              	   <!-- <div class="form-group">
-                			<div class="btn btn-default btn-file">
-                  				<i class="fa fa-paperclip"></i> Attachment
-                  				<input type="file" name="attachment">
-                			</div>
-                	    </div> -->
-            		</div> 
-            		
-            		<!-- /.box-body -->
-            		<div class="box-footer">
-              			<div class="pull-right">
-                			<button type="submit" id="btn3" class="btn btn-primary">送出留言 </button> 
-                			<!--<i class="fa fa-envelope-o"></i> Send  -->
-              			</div>
-              			
-            		</div>
-           			<!-- /.box-footer -->
-          			</div>
-          		<!-- /. box -->
-        		</div>
-        	</div>
-       
-      	</section>
-        <!-- /.content -->
-        <!-- 留言串列 -->
-        <section>
-        	<div class="row">
-          		<div class="card03 col-md-8 col-md-offset-2">
-			        <div class="box box-warning ">
-			          <div class="box-header with-border">
-			            <div>
-			            	<h4 class="box-title">留言標題</h4>
-			            </div>
-			            <br>
-			            <div>
-			            	<div class="mes_by">留言人</div>
-			            </div>
-			          </div>
-			          <div class="box-body">
-			          		<div class="message">留言內容</div>
-			          </div>
-			          <!-- /.box-body -->
-			        </div>
-			   </div>     
-			</div>	        
-        </section>
 		</div>
 		<!-- /.content-wrapper -->
-
-
 
 		<!-- Main Footer -->
 		<footer class="main-footer">
@@ -608,6 +646,33 @@ desired effect
 	<script src="../bootstrap/js/bootstrap.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="../dist/js/app.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<!-- DataTables -->
+	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+	<!-- SlimScroll -->
+	<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="../plugins/fastclick/fastclick.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="../dist/js/demo.js"></script>
+	<!-- page script -->
+	<script>
+		$(function() {
+			$("#example1").DataTable();
+			$('#example2').DataTable({
+				"paging" : true,
+				"lengthChange" : false,
+				"searching" : false,
+				"ordering" : true,
+				"info" : true,
+				"autoWidth" : false
+			});
+		});
+	</script>
+
+
+
 
 	<!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
