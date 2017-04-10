@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<c:set var="context" value="${pageContext.request.contextPath}" />
+
     <head>
     	<title>募資平台</title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -204,56 +205,67 @@
                 </footer>
 		
 		<script	>
-		
-		var xhr = new XMLHttpRequest();
+		$(document).ready(function(){
+			var xhr = new XMLHttpRequest();
+			var k = 0;
+			var pica = "";
+			var fcan = '';
 			xhr.open("GET", '\_07_funds\\allfunds.json', true);
 			xhr.send();
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					var funds = JSON.parse(xhr.responseText);
 					var content = "<table border='1'>";
-					var k = 0;
 					for(var j =0  ; j <2 ; j++){
 						content += '<div class="container-fluid bg-3 text-center"> <div class="row">';
 						for(var i=0; i < 3; i++){
 							content += '<div class="col-sm-4">';
-							content += '<div>' + funds[k].fc_name +'</div>';
-// 							content += '<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">';
-							content +=  "<img src='"+ funds[k].pic_address +"'/>";
-							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + funds[i].art_id + ' </a></div><span class="crowd-total"> </span></div></div>';    
+							content += '<div id="fc_img_url' + k + '"></div>';
+							$.ajax({
+									  url: "\_07_funds\\singlefcpic.json",
+									  type: "get", //send it through get method
+									  async: false,
+									  data: { 
+									    "fc_id": k+1, 
+									  },
+									  success: function(response) {
+										  pica = response[0].fc_adress;
+										  console.log(response);
+									  },
+									  error: function(xhr1) {
+									    xhr1.abort();
+									  }
+							});	
+							content +=  '<img src="'+ pica +'" class="img-responsive" style="width:100%" alt="Image"/>';
+							$.ajax({
+								  url: "\_07_funds\\singlefcpican.json",
+								  type: "get", //send it through get method
+								  async: false,
+								  data: { 
+								    "fc_id": k+1, 
+								  },
+								  success: function(response) {
+									  fcan = response[0].user_name;
+									  console.log(response);
+								  },
+								  error: function(xhr2) {
+								    xhr2.abort();
+								  }
+						});	
+							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + fcan + ' </a></div><span class="crowd-total"> </span></div></div>';    
 							k++;
 						}
 					
 						content += '</div></div>';
 					}
 					content +='</table>';
-					console.log(k);
+					
 					var divs = document.getElementById("main");
 					divs.innerHTML = content;
 					console.log(content);
-				}
-			}
-
-// 				var xhr = new XMLHttpRequest();
-// 				xhr.open("GET", '\_07_funds\\singlefcpic.json', true);
-// 				xhr.send();
-// 				xhr.onreadystatechange = function() {
-// 					if (xhr.readyState == 4 && xhr.status == 200) {
-// 						var funds = JSON.parse(xhr.responseText);
-// 						var content = '<div>' + funds[0].fc_id +'</div>';
-// //  	 					content +=  '<div>'+ funds[i].pic_address +'</div>';
-// 	 					content +=  "<img src='"+ funds[0].fc_adress +"'/>";
-// 					    console.log(funds);
-						
-// 					}
-// 					var divs = document.getElementById("main");
-// 					divs.innerHTML = content;
-// 				}	
-			
-			
-			
-			
-
+				}		
+		};
+})
 </script>
     <script src="${context}/js/default.js"></script>
 
