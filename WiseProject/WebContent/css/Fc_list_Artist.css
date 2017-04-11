@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+
+
+#title{
+	border-bottom: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	background: rgba(243, 156, 18, 0.2);
+}
+
+.mailbox-star{
+	text-align:center;
+	
+}
+
+.mailbox-name{
+	text-align:center;
+}
+
+#status{
+	color: #F00;
+}
+
+#btn_area{
+	font-weight: bold;
+}
+
+#btn1{
+	margin-right: 10px;
+	
+}
+
+#btn2{
+	margin-right: 10px;
+}
