@@ -502,7 +502,7 @@ desired effect
       $(document).ready(function(){
     	  $("#sp-artist").click(function(){
       	    $.ajax({
-  				url:"\_05_CreationsFrame\\Creations.jsp",
+  				url:"\_05_CreationsFrame\\Creations_All.jsp",
   				context: document.body,
   				success: function(response){
   					$('#mainframe').html(response);

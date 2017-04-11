@@ -374,7 +374,7 @@ desired effect
 	                <tbody>
 	                  <tr>
 <!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name"><a href="http://localhost:8080/ajax17/index.jsp#artist_id">Alexander Pierce Trying to find a solution to this problem...</a>
+	                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
 	                    </td>
 	                    <td class="mailbox-name">購物車內共...筆商品
 	                    </td>
