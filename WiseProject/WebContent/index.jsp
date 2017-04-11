@@ -39,6 +39,17 @@
         .navbar-form{
           display: inline-flex;
         }
+/*      側邊欄判斷螢幕視窗,變動選項欄位 */
+		@media screen and (max-width: 766px) {
+	  		.skin-yellow-light .sidebar-menu>li.header {
+		   		 padding: 40px;
+			    }
+			.user-panel{
+				 padding-top: 80px;
+			
+				}
+		}
+		        
       </style>
     </head>
     <!--
@@ -82,7 +93,7 @@ desired effect
 
           <!-- Header Navbar -->
           <nav class="navbar navbar-static-top" role="navigation">
-            <!-- search form (Optional) -->
+           <!-- search form (Optional) -->
             <form action="#" method="get" class="navbar-form">
               <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -246,7 +257,7 @@ desired effect
                               <a href="#">投資計畫</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="_15_ShoppingCart/ShoppingCart_List.jsp">訂購清單</a>
+                              <a href="#">訂購清單</a>
                             </div>
                           </div>
                           <!-- /.row -->
@@ -302,7 +313,6 @@ desired effect
 		            </div>
 				</c:when>
 			</c:choose>
-
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
