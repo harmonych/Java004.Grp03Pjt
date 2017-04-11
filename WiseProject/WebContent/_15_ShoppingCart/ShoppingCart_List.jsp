@@ -333,7 +333,7 @@ desired effect
           <section class="content">
           <!-- Your Page Content Here -->
 		  	<div class="card1 col-md-8 col-md-offset-2">
-	          <div class="box box-primary">
+	          <div class="box box-warning">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"><b>購物車清單</b></h3>
 		        </div>

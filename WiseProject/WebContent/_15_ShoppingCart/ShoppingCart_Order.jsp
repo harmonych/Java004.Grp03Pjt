@@ -328,7 +328,7 @@ desired effect
 				<div class="row">
 				<div class="card1 col-md-8 col-md-offset-2">
 					<div class="order_body">
-						<div class="box box-primary">
+						<div class="box box-warning">
 							<div class="box-header with-border">
 								<h3 class="box-title">
 									<b>T.C.STAR官方旗艦店訂購明細</b>
@@ -487,7 +487,7 @@ desired effect
 					<!-- /.mail-box-messages -->
 					<!-- general form elements -->
 					<div class="check_body">
-						<div class="box box-primary">
+						<div class="box box-warning">
 							<div class="box-header with-border">
 								<h3 class="box-title">
 									<b>訂購及寄送方式</b>
@@ -528,7 +528,7 @@ desired effect
 								<!-- /.box-body -->
 
 								<div class="box-footer">
-									<button type="submit" class="btn btn-primary">確認訂購</button>
+									<button type="submit" class="btn btn-warning">確認訂購</button>
 								</div>
 							</form>
 						</div>

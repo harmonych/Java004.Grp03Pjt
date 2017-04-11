@@ -433,9 +433,12 @@ desired effect
 						<div id="buy_area">
 							<form id="form1">													
 								<div id="bt_area">
-									<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="立即購買">
-									
-									<input type="submit" name="submit" class="btn2 btn-lg btn-block" value="加入購物車">
+									<a href="../_15_ShoppingCart/ShoppingCart_Order.jsp">
+										<input type="button" class="btn1 btn-lg btn-block" value="立即購買">
+									</a>
+									<a href="../_15_ShoppingCart/ShoppingCart_List.jsp">
+										<input type="button" class="btn2 btn-lg btn-block" value="加入購物車">
+									</a>
 								</div>
 							</form>		
 						</div>
@@ -476,7 +479,7 @@ desired effect
             		<!-- /.box-body -->
             		<div class="box-footer">
               			<div class="pull-right">
-                			<button type="submit" id="btn3" class="btn btn-primary">送出留言 </button> 
+                			<button type="submit" id="btn3" class="btn btn-warning">送出留言 </button> 
                 			<!--<i class="fa fa-envelope-o"></i> Send  -->
               			</div>
               			
