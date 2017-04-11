@@ -41,6 +41,8 @@
 	<mapping class="_01_register.model.MemberBean"/>
 	<mapping class="_01_register.model.ArtistBean"/>
 	<mapping class="_08_product.model.ProductBean"/>
-	<mapping class="_08_product.model.ProPicBean"/>
+	<mapping class="_08_product.model.ProPicBean"/>	
+	<mapping class="_07_funds.model.FundsBean"/>
+	<mapping class="_07_funds.model.FcPicBean"/>
 	</session-factory>
 </hibernate-configuration>

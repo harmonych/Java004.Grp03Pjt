@@ -9,6 +9,7 @@ $(document).ready(function () {
 				}
   	    });
   	  })
+  	  
   	  $("#sp_pro_id").click(function(){
   		  $.ajax({
   			  url:"\_05_CreationsFrame\\CreationsPage3.jsp",
@@ -21,6 +22,16 @@ $(document).ready(function () {
 	  $("#sp_fc_details").click(function(){
   		  $.ajax({
   			  url:"\_11_Fc_info\\Fc_Info.jsp",
+  			  context: document.body,
+  			  success: function(response){
+  				  $('#mainframe').html(response);
+  			  }
+  		  });
+  	  });
+
+	  $("#sp_fc_info").click(function(){
+  		  $.ajax({
+  			  url:"\_11_Fc_info\\Fc_Info2.jsp",
   			  context: document.body,
   			  success: function(response){
   				  $('#mainframe').html(response);
@@ -44,6 +55,15 @@ $(document).ready(function () {
 //
 //    })
 });
+$(document).on('click', "#sp_artist_id" , function(){
+	  $.ajax({
+		  url:"\_05_CreationsFrame\\CreationsPage2.jsp",
+		  context: document.body,
+		  success: function(response){
+			  $('#mainframe').html(response);
+		  }
+	  });
+  });
 
 $(window).scroll(function() {
     $(".slideanim").each(function(){

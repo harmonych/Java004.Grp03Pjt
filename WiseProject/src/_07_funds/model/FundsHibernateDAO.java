@@ -18,6 +18,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import _00_init.SystemUtil;
+import _01_register.model.ArtistBean;
+import _01_register.model.MemberBean;
 import _07_funds.util.HibernateUtil;
 
 
@@ -154,6 +156,32 @@ public class FundsHibernateDAO implements IFundsDAO {
 			session.close();
 		}
 		return fb;
+	}
+	@Override
+	public String findArtNameByFcId(int fc_id) {
+		FundsBean fb = null;
+		ArtistBean ab = null;
+		String user_name = "";
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			fb=session.get(FundsBean.class, fc_id);
+			ab = session.get(ArtistBean.class, fb.getArt_id());
+//			System.out.println("-------------------------------------------");
+//			System.out.println(ab.getArt_id());
+			user_name = ab.getMemberbean().getUser_name();
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return user_name;
 	}
 
 	@Override

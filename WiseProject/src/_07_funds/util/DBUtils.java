@@ -13,8 +13,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import _07_funds.model.FcPicBean;
+import _07_funds.model.FcPicHBNDAO;
 import _07_funds.model.FundsBean;
 import _07_funds.model.FundsHibernateDAO;
+import _07_funds.model.IFcPicDAO;
 import _07_funds.model.IFundsDAO;
 
 
@@ -106,6 +109,31 @@ public class DBUtils {
 			  FundsBean fb = new FundsBean(fcid,artid,fcname,fcmoney,nowmoney,createtime,starttime,endtime,updatetime,fcintroduction,hashtag);
 			  
 			  dao.insert(fb);
+
+			}
+			System.out.println("檔案" + filename + "新增完畢");
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage() + "==>" + filename);
+			ex.printStackTrace();
+		}
+	}
+	
+	public static void initFcPic(String filename, String encoding){
+		IFcPicDAO dao = new FcPicHBNDAO();
+		try (
+			FileInputStream fis = new FileInputStream(filename);
+			InputStreamReader in = new InputStreamReader(fis, encoding);
+			BufferedReader br = new BufferedReader(in);
+		) {
+			
+			String line = "";
+			while ((line = br.readLine()) != null) {
+			  String[] sa = line.split(",");
+			  int pic_id = Integer.parseInt(sa[0].trim());
+			  int fc_id  = Integer.parseInt(sa[1].trim());
+			  String pic_address = sa[2].trim();
+			  FcPicBean fpb = new FcPicBean(pic_id, fc_id, pic_address);
+			  dao.insert(fpb);
 
 			}
 			System.out.println("檔案" + filename + "新增完畢");

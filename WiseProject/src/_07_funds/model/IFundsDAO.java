@@ -17,8 +17,12 @@ public interface IFundsDAO {
 	int delete(int key);
 
 	FundsBean findByPrimaryKey(int key);
+	
+	String findArtNameByFcId(int fc_id);
 
 	List<FundsBean> getAllFundsJSON();
 
 	List<FundsBean> getAllFundsJSONtag(String search);
+
+	
 }

@@ -11,37 +11,7 @@
 </head>
 
 <body>
-      <!-- 標題列 -->
-<!--         <header class="container-fluid"> -->
-<!--             <nav class="navbar navbar-default navbar-fixed-top"> -->
-<!--                 <div id="page-content-wrapper"> -->
-<!-- 	                <button type="button" class="hamburger is-closed" data-toggle="offcanvas"> -->
-<!-- 			            <span class="hamb-top"></span> -->
-<!-- 			            <span class="hamb-middle"></span> -->
-<!-- 			            <span class="hamb-bottom"></span> -->
-<!-- 		            </button> -->
-<!--                 </div> -->
-<!--               <div class="btn-toolbar"> -->
-<!--                     <div class="navbar-header"> -->
-<!--                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> -->
-<!-- 	                <span class="icon-bar"></span> -->
-<!-- 	                <span class="icon-bar"></span> -->
-<!-- 	                <span class="icon-bar"></span> -->
-<!-- 	                </button> -->
-<!--                         <a class="navbar-brand textup" href="#"></a> -->
-<!--                     </div> -->
-<!--                     <div class="collapse navbar-collapse" id="myNavbar"> -->
-<!--                         <ul class="nav navbar-nav navbar-right"> -->
-<%--                             <li class="username"><span>${userName}</span></li> --%>
-<!--                        		<li><a href="#"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li> -->
-<!--                             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li> -->
 
-				
-<!--                         </ul> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--             </nav> -->
-<!--         </header> -->
         <section class="container-fluid" id="about">
             <div id="wrapper">
 <!--                 Sidebar -->
@@ -83,42 +53,91 @@
 			<div class="box-header with-border">
 	        	<h3 class="box-title">創作者一覽</h3>
 	       	</div>
-		  <div class="container">
+		  <div class="container" id ="main">
 			<div class="row">
 			
 			<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" id ="sp_artist_id">
 				<a href="#artist_id">
-				<img src="${context}/images/smallPic/snoopy.jpg" class="img-thumbnail" width="130" height="130"> 
-				MuMu</a>
-				</div>
-				<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal">
+				<img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> 
+				</a>
+			</div>
+			<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal">
 				<a href="#">
-				<img src="${context}/images/smallPic/kitty.jpg" class="img-thumbnail" width="130" height="130"> 喵窩</a>
-				</div>
-				<div class="card col-md-4 col-xs-12" >3</div>
+				<img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </a>
+			</div>
+			<div class="card col-md-4 col-xs-12" ><img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </div>
 				
 			</div>
 			<div class="row">
-				<div class="card col-md-4 col-xs-12" >5</div>
-				<div class="card col-md-4 col-xs-12" >6</div>
-				<div class="card col-md-4 col-xs-12" >7</div>
+				<div class="card col-md-4 col-xs-12" ><img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </div>
+				<div class="card col-md-4 col-xs-12" ><img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </div>
+				<div class="card col-md-4 col-xs-12" ><img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </div>
 			</div>
 			<div class="row">
-				<div class="card col-md-4 col-xs-12" >4</div>
-				<div class="card col-md-4 col-xs-12" >8</div>
-				<div class="card col-md-4 col-xs-12" >9</div>
+				<div class="card col-md-4 col-xs-12" ><img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </div>
+				<div class="card col-md-4 col-xs-12" ><img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </div>
+				<div class="card col-md-4 col-xs-12" ><img src="${context}/images/ajaxloader1.gif" class="img-thumbnail" width="130" height="130"> </div>
 			</div>
 		  </div>
 		  
 		</div>
 	
 	  </div>
-<!-- 	</div> -->
-
-<footer class="container-fluid text-center">
-  <p> </p>
-</footer>
- <script src="${context}/js/default.js"></script>
-</section>
-</body>
+	</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var xhr = new XMLHttpRequest();
+		var k = 0;
+		var an = '';
+		xhr.open("GET", '\_01_register\\allartist.json', true);
+// 		xhr.open("GET", '\_07_funds\\allfunds.json', true);
+		xhr.send();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				var artist = JSON.parse(xhr.responseText);
+				var content = '';
+				console.log("this is artist");
+				console.log(artist);	
+				for(var j =0  ; j <4 ; j++){
+					content += '<div class="row">';
+					for(var i=0; i < 3; i++){
+						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" >';
+// 						content += '<a href="#' + artist[k].art_id + '">';
+						content += '<a href="#" id ="sp_artist_id">';
+						content += '<img src="'+ artist[k].file_name +'" class="img-thumbnail" width="130" height="130">';
+						$.ajax({
+							  url: "\_01_register\\singleartusername.json",
+							  type: "get", //send it through get method
+							  async: false,
+							  data: { 
+							    "art_id":k+1, 
+							  },
+							  success: function(response1) {
+								 an = response1;
+								 console.log(response1);
+								 console.log(k);
+							  },
+							  error: function(xhr2) {
+							    xhr2.abort();
+							  }
+						});	
+// 						content += '<span>' + an + '</span></a></div>';
+						content += an + '</a></div>';    
+						k++;
+						if (k === artist.length) break;
+					}
+				
+					content += '</div>';
+				}
+				
+				var divs = document.getElementById("main");
+				divs.innerHTML = content;
+				console.log(content);
+			}		
+		};
+	})
+	</script>
+	<script src="${context}/js/default.js"></script>
+	</section>
+	</body>
 </html>

@@ -45,14 +45,12 @@ public class SingleUserNameFcPicJsonServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int fc_id = 0;
-		fc_id = Integer.parseInt(request.getParameter("fc_id").trim());
+		int fc_id = Integer.parseInt(request.getParameter("fc_id").trim());
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		try {
 			IFundsDAO fdao = new FundsHibernateDAO();
-			fdao.findArtNameByFcId(fc_id);
 			String singleFundsJson = new Gson().toJson(fdao.findArtNameByFcId(fc_id)); 			
             out.write(singleFundsJson);
 		} catch (Exception e) {

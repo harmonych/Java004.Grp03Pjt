@@ -9,23 +9,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name="artist")
 public class ArtistBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int art_id;
-	private String user_name;
-	private String introduction;
-	private String bank_account;
-	private String ID;
-	private String art_name;
-	private String art_address;
-	private String hashtag;
+@Expose	private int art_id;
+@Expose	private String user_name;
+@Expose	private String introduction;
+@Expose	private String bank_account;
+@Expose	private String ID;
+@Expose	private String art_name;
+@Expose	private String art_address;
+@Expose	private String hashtag;
 //	private byte[] intro_pic;
-	private String file_name;
+@Expose	private String file_name;
 	private MemberBean memberbean;
 	
 	//含所有屬性的建構子
@@ -129,7 +133,7 @@ public class ArtistBean implements Serializable {
 	public void setID(String ID) {
 		this.ID = ID;
 	}
-
+	@Transient
 	public String getUser_name() {
 		return user_name;
 	}

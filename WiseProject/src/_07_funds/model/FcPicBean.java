@@ -18,6 +18,13 @@ public class FcPicBean implements Serializable {
 	private int fc_id;
 	private String fc_adress;
 	
+	public FcPicBean(int pic_id, int fc_id, String fc_adress) {
+		super();
+		this.pic_id = pic_id;
+		this.fc_id = fc_id;
+		this.fc_adress = fc_adress;
+	}
+
 	public FcPicBean(int fc_id, String fc_adress) {
 		super();
 		this.fc_id = fc_id;

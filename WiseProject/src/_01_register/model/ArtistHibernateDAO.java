@@ -12,25 +12,19 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import _01_register.util.HibernateUtil;
-
-
-
-
+import _07_funds.model.FundsBean;
 
 public class ArtistHibernateDAO implements IArtistDAO {
+	DataSource ds;
+	int art_id;
 //	private List<MemberBean> memberList = getAllMember();
+	public int getArt_id() {
+		return art_id;
+	}
 
-	
-
-//	public FundsHibernateDAO() {
-//		try {
-//			Context context = new InitialContext();
-//			ds = (DataSource) context.lookup(SystemUtil.JNDI);
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		}
-//	}
-	
+	public void setArt_id(int art_id) {
+		this.art_id = art_id;
+	}
 	@Override
 	public int insert(MemberBean mb, ArtistBean ab) {
 		int updateCount = 0;
@@ -206,9 +200,8 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			TypedQuery<ArtistBean> query=session.createQuery("from MemberBean");
+			TypedQuery<ArtistBean> query = session.createQuery("from ArtistBean");
 			list = query.getResultList();
-			//list =session.createQuery("from MemberBean").getResultList();
 			Hibernate.initialize(list);
 			tx.commit();
 		}catch(Exception e){
@@ -226,7 +219,7 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		List<ArtistBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-		String hql = " from FundsBean where (art_name like  \'%"+search+"%\' or hashtag like  \'%"+search+"%\')";
+		String hql = " from ArtistBean where (art_name like  \'%"+search+"%\' or hashtag like  \'%"+search+"%\')";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
@@ -245,9 +238,33 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		}
 		return list;
 	}
+
+	@Override
+	public String findArtNameByArtId(int art_id) {
+		ArtistBean ab = null;
+		String user_name = "";
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			ab = session.get(ArtistBean.class, art_id);
+			System.out.println("-------------------------------------------");
+			System.out.println(ab.getArt_id());
+			user_name = ab.getMemberbean().getUser_name();
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return user_name;
+	}
 	
-	DataSource ds;
-	int art_id;
+
 
 
 	

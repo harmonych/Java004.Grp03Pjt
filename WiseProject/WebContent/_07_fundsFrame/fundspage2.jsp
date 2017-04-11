@@ -233,7 +233,15 @@
 					console.log(content);
 				}
 			}
-
+			  $("#sp_fc_info").click(function(){
+		  		  $.ajax({
+		  			  url:"\_11_Fc_info\\Fc_Info2.jsp",
+		  			  context: document.body,
+		  			  success: function(response){
+		  				  $('#mainframe').html(response);
+		  			  }
+		  		  });
+		  	  });
 // 				var xhr = new XMLHttpRequest();
 // 				xhr.open("GET", '\_07_funds\\singlefcpic.json', true);
 // 				xhr.send();

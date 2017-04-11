@@ -152,15 +152,15 @@
 
 						
 <!--                     </div> -->
-                </div><br><br>
-                       <div class="w3-bar">
-                            <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-                            <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-                            <a href="fundspage2.jsp" class="w3-bar-item w3-button w3-hover-black">2</a>
-                            <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+<!--                 </div><br><br> -->
+<!--                        <div class="w3-bar"> -->
+<!--                             <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a> -->
+<!--                             <a href="#" class="w3-bar-item w3-black w3-button">1</a> -->
+<!--                             <a href="fundspage2.jsp" class="w3-bar-item w3-button w3-hover-black">2</a> -->
+<!--                             <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a> -->
                            
-                            <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-                        </div>
+<!--                             <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a> -->
+<!--                         </div> -->
 <!--                 <div id="paging"> -->
 <!-- 							以下為控制第一頁、前一頁、下一頁、最末頁 等超連結 -->
 <!-- 							<table border="1"> -->
@@ -216,10 +216,10 @@
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					var funds = JSON.parse(xhr.responseText);
 					var content = "<table border='1'>";
-					for(var j =0  ; j <2 ; j++){
+					for(var j =0  ; j <4 ; j++){
 						content += '<div class="container-fluid bg-3 text-center"> <div class="row">';
 						for(var i=0; i < 3; i++){
-							content += '<div class="col-sm-4">';
+							content += '<div class="col-sm-4" id="sp_fc_info">';
 							content += '<div id="fc_img_url' + k + '"></div>';
 							$.ajax({
 									  url: "\_07_funds\\singlefcpic.json",
@@ -242,18 +242,20 @@
 								  type: "get", //send it through get method
 								  async: false,
 								  data: { 
-								    "fc_id": k+1, 
+								    "fc_id":k+1, 
 								  },
-								  success: function(response) {
-									  fcan = response[0].user_name;
-									  console.log(response);
+								  success: function(response1) {
+									  fcan = response1;
+									  console.log(response1);
+									  console.log(k);
 								  },
 								  error: function(xhr2) {
 								    xhr2.abort();
 								  }
-						});	
+							});	
 							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + fcan + ' </a></div><span class="crowd-total"> </span></div></div>';    
 							k++;
+							if (k === funds.length) break;
 						}
 					
 						content += '</div></div>';
@@ -264,9 +266,18 @@
 					divs.innerHTML = content;
 					console.log(content);
 				}		
-		};
-})
-</script>
+			};
+			  $(document).on('click', "#sp_fc_info" , function(){
+		  		  $.ajax({
+		  			  url:"\_11_Fc_info\\Fc_Info2.jsp",
+		  			  context: document.body,
+		  			  success: function(response){
+		  				  $('#mainframe').html(response);
+		  			  }
+		  		  });
+		  	  });
+		})
+	</script>
     <script src="${context}/js/default.js"></script>
 
     </body>
