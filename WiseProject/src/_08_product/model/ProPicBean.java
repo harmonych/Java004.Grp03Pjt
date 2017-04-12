@@ -18,13 +18,6 @@ public class ProPicBean implements Serializable {
 	private int pro_id;
 	private String pic_adress;
 	
-	public ProPicBean(int pic_id, int pro_id, String pic_adress) {
-		super();
-		this.pic_id = pic_id;
-		this.pro_id = pro_id;
-		this.pic_adress = pic_adress;
-	}
-
 	public ProPicBean(int pro_id, String pic_adress) {
 		super();
 		this.pro_id = pro_id;

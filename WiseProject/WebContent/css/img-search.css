@@ -80,8 +80,8 @@ body {
 .element-item {
   position: relative;
   float: left;
-  
-   
+  /*width: 100px;
+  height: 100px;*/
   margin: 5px;
   padding: 0px;
   background: #888;
@@ -125,9 +125,6 @@ body {
   top: 76px;
   font-size: 12px;
 }
-.element-item img{
-	width:236px;
-	}
 
 .element-item.alkali          { background: #F00; background: hsl(   0, 100%, 50%); }
 .element-item.alkaline-earth  { background: #F80; background: hsl(  36, 100%, 50%); }

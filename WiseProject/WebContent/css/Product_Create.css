@@ -21,13 +21,11 @@
 }
 
 #lb{
-	font-weight:normal;
 	margin-right:20px;
 }
 
 .tx1{
 	width:300px;
-	
 	margin-right:20px;
 	border:solid 1px black;
 	background:#ffff96;
@@ -40,22 +38,24 @@
 	background:#ffff96;
 }
 
-#bt{
-	width:300px;
-	height:50px;
+#bt_area{
+/* 	width:300px; */
+/* 	height:50px; */
 	margin:20px 0px 20px 0px;
-	color:#fff;
+	text-align:center;
 }
 
+
 .btn1{
+	font-weight:bold;
 	background:#f78e05;
 	color:#fff;
 }	
 
-.btn2{
-	background:#969696;
-	color:#fff;
-}
+/* .btn2{ */
+/* 	background:#969696; */
+/* 	color:#fff; */
+/* } */
 
 font{
 	margin-right:20px;

@@ -10,10 +10,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-import _08_product.model.IProPicDAO;
 import _08_product.model.IProductDAO;
-import _08_product.model.ProPicBean;
-import _08_product.model.ProPicHBNDAO;
 import _08_product.model.ProductBean;
 import _08_product.model.ProductHibernateDAO;
 
@@ -91,31 +88,6 @@ public class DBUtils {
 			  String hashtag = sa[7].trim();			  
 			  ProductBean pb = new ProductBean(proid,proname,price,saletime,proinv,prointroduction,artid,hashtag);
 			  dao.insert(pb);
-
-			}
-			System.out.println("檔案" + filename + "新增完畢");
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage() + "==>" + filename);
-			ex.printStackTrace();
-		}
-	}
-
-		public static void initProPic(String filename, String encoding){
-		IProPicDAO dao = new ProPicHBNDAO();
-		try (
-			FileInputStream fis = new FileInputStream(filename);
-			InputStreamReader in = new InputStreamReader(fis, encoding);
-			BufferedReader br = new BufferedReader(in);
-		) {
-			
-			String line = "";
-			while ((line = br.readLine()) != null) {
-			  String[] sa = line.split(",");
-			  int pic_id = Integer.parseInt(sa[0].trim());
-			  int pro_id  = Integer.parseInt(sa[1].trim());
-			  String pic_address = sa[2].trim();
-			  ProPicBean ppb = new ProPicBean(pic_id, pro_id, pic_address);
-			  dao.insert(ppb);
 
 			}
 			System.out.println("檔案" + filename + "新增完畢");

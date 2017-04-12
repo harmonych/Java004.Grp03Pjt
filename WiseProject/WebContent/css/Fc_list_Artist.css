@@ -16,12 +16,15 @@
 	text-align:center;
 }
 
-#status{
-	color: #F00;
-}
 
 #btn_area{
-	font-weight: bold;
+	height: 30px;
+}
+#status{
+	color: #F00;
+	width: 130px;
+	height: 30px;
+	display: inline;
 }
 
 #btn1{
@@ -31,4 +34,9 @@
 
 #btn2{
 	margin-right: 10px;
+}
+
+#btn3{
+	height: 30px;
+	vertical-align:top;
 }

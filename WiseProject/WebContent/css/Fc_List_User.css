@@ -16,6 +16,19 @@
 	text-align:center;
 }
 
-#status{
+#red{
 	color: #F00;
+}
+
+#btn_area{
+	font-weight: bold;
+}
+
+#btn1{
+	margin-right: 10px;
+	
+}
+
+#btn2{
+	margin-right: 10px;
 }

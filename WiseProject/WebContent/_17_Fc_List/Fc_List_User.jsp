@@ -7,8 +7,8 @@
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="../Fc_List_User.css">
-	  <title>商品販售列表</title>
+      <link rel="stylesheet" href="../css/Fc_List_User.css">
+	  <title>贊助清單</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
@@ -335,7 +335,7 @@ desired effect
 		  	<div class="card1 col-md-8 col-md-offset-2">
 	          <div class="box box-warning">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"><b>會員訂單</b></h3>
+	              <h3 class="box-title"><b>贊助者清單</b></h3>
 		        </div>
 	            
 	            <!-- /.box-header -->
@@ -344,30 +344,25 @@ desired effect
 	                <!-- Check all button -->
 <!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
 <!-- 	                </button> -->
-	                <div class="btn-group">
-	                		                	
- 	                	<button type="button" href="../_13_Product_info/Product_info.jsp" class="btn btn-block btn-warning">回上頁
- 	                		
- 	                	</button>
-<!-- 	            	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
-	                </div>
+	                <div id="btn_area">
+	                	<a href="../_11_Fc_info/Fc_Info.jsp">	              		
+		              		<input type="button" class="btn btn-warning" id="btn1" value="回上頁">
+		              	</a>
+<!-- 		                	<input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
+	              	</div>
+	              	<!-- /.btn-group -->
+	              
 	              </div>
 	              <div class="table-responsive mailbox-messages">
 	                <table class="table table-hover table-striped">
-<%-- 	                <colgroup> --%>
-<%-- 	                	<col width="3%"> --%>
-<%-- 	                	<col width="16%"> --%>
-<%-- 	                	<col width="65%"> --%>
-<%-- 	                	<col width="16%"> --%>
-<%-- 	                </colgroup> --%>
+	                
 	                  <thead id="title">
 	                  	<tr>
-	                    	<th class="mailbox-name">訂單編號</th>
-	                    	<th class="mailbox-name">訂購會員</th>
-	                    	<th class="mailbox-name">商品名稱</th>
-	                    	<th class="mailbox-star">訂單狀態</th>
+	                    	<th class="mailbox-name">募資名稱</th>
+	                    	<th class="mailbox-name">作者名稱</th>
+	                    	<th class="mailbox-name">贊助方式</th>
+	                    	<th class="mailbox-name">贊助金額</th>
+	                    	<th class="mailbox-star">募資狀態</th>
 	                    	       
 	                  	</tr>
 					</thead>
@@ -375,48 +370,73 @@ desired effect
 	                <tbody>
 	                  <tr>
 <!-- 	                <td><input type="checkbox"></td> -->
+	                   	<td hidden="">
+	                   	
+	                   	</td>
 	                    <td class="mailbox-name">
-	                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
+	                    	<a href="../_11_Fc_info\Fc_Info.jsp">募資名稱fc_name</a>
 	                    </td>
 	                    <td class="mailbox-name">
-	                    	XXX
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+	                    	<a href="../_05_CreationsFrame/CreationsPage2.jsp">作者名稱artist_id</a>
 	                    </td> 
 	                    <td class="mailbox-name">
-	                    	<div id="status">1作者確認中</div>
+	                    	1轉帳
+	                    </td>
+	                    <td class="mailbox-name">
+	                    	$1000
+	                    </td>                   
+	                    <td class="mailbox-name">	                    
+	                    	<div id="red">
+	                    		1作者確認中
+	                    	</div>
 	                    </td>                    
 	                  </tr>
 	                  
 	                  <tr>
 <!-- 	                <td><input type="checkbox"></td> -->
+	                   	<td hidden="">
+	                   	
+	                   	</td>
 	                    <td class="mailbox-name">
-	                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
+	                    	<a href="../_11_Fc_info\Fc_Info.jsp">募資名稱fc_name</a>
 	                    </td>
 	                    <td class="mailbox-name">
-	                    	XXX
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+	                    	<a href="../_05_CreationsFrame/CreationsPage2.jsp">作者名稱artist_id</a>
 	                    </td> 
 	                    <td class="mailbox-name">
-	                    	<div id="status">2出貨中</div>
+	                    	2匯款
+	                    </td>
+	                    <td class="mailbox-name">
+	                    	$1000
+	                    </td>                   
+	                    <td class="mailbox-name">	                    
+	                    	<div id="red">
+	                    		3贊助完成
+	                    	</div>
 	                    </td>                    
 	                  </tr>
+	                  
 	                  <tr>
 <!-- 	                <td><input type="checkbox"></td> -->
+	                   	<td hidden="">
+	                   	
+	                   	</td>
 	                    <td class="mailbox-name">
-	                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
+	                    	<a href="../_11_Fc_info\Fc_Info.jsp">募資名稱fc_name</a>
 	                    </td>
 	                    <td class="mailbox-name">
-	                    	XXX
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+	                    	<a href="../_05_CreationsFrame/CreationsPage2.jsp">作者名稱artist_id</a>
 	                    </td> 
 	                    <td class="mailbox-name">
-	                    	<div id="status">3雙方確認完成</div>
+	                    	1轉帳
+	                    </td>
+	                    <td class="mailbox-name">
+	                    	$1000
+	                    </td>                   
+	                    <td class="mailbox-name">	                    
+	                    	<div id="red">
+	                    		2款項交易中
+	                    	</div>
 	                    </td>                    
 	                  </tr>
 	                                   
@@ -430,13 +450,14 @@ desired effect
 	            <!-- /.box-body -->
 	            <div class="box-footer no-padding">
 	              <div class="mailbox-controls">
-	              	<div class="btn-group">
-	                	<a type="" href="../_13_Product_info/Product_info.jsp" class="">回上頁</a>
-<!-- 	            	
-	                </div>
-	                <!-- /.btn-group -->
-	                
-	              </div>
+	              	<div id="btn_area">	              		
+		              	<a href="../_11_Fc_info/Fc_Info.jsp">	              		
+		              		<input type="button" class="btn btn-warning" id="btn1" value="回上頁">
+		              	</a>
+		              	
+<!-- 		                	<input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
+	              	</div>
+	              	<!-- /.btn-group -->
 	            </div>
 	          </div>
 	          <!-- /. box -->
@@ -446,6 +467,8 @@ desired effect
           <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+
+
 
         <!-- Main Footer -->
         <footer class="main-footer">

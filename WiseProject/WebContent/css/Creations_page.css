@@ -424,16 +424,16 @@ footer {
     background-color: #555
 } */
 .card {
-	font-size:24px;
+	font-size:50px;
 	font-weight:bolder;
 	color:#FFA58A;
     text-align:center; 
-	line-height:20px;
-    height:220px;
-/*     background: #f0d9c4;rgba(255, 0, 0 , 0.4); */
+	line-height:150px;
+    height: 150px;
+    background: #ddc;/* rgba(255, 0, 0 , 0.4); */
     background-size: cover;
     background-position: center;
-    border: solid 1px #eee;
+    border: solid 1px #ccc;
     box-sizing: border-box;
     transition: all .3s ease-in-out;
 }

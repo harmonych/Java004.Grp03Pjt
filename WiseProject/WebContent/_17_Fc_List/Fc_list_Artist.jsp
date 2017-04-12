@@ -8,7 +8,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <link rel="stylesheet" href="../css/Fc_list_Artist.css">
-	  <title>商品販售列表</title>
+	  <title>贊助者清單列表</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
@@ -332,7 +332,7 @@ desired effect
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
-		  	<div class="card1 col-md-8 col-md-offset-2">
+		  	<div class="card1 col-md-10 col-md-offset-1">
 	          <div class="box box-warning">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"><b>贊助者清單</b></h3>
@@ -348,7 +348,7 @@ desired effect
 		              		<input type="button" href="../_13_Product_info/Product_info.jsp" 
 		              			   class="btn btn-warning" id="btn1" value="回上頁">
 		              	
-		                	<input type="submit" class="btn btn-danger" id="btn2" value="確認修改">    
+<!-- 		                <input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
 	              	</div>
 	              	<!-- /.btn-group -->
 	              
@@ -387,14 +387,17 @@ desired effect
 	                    	$1000
 	                    </td>                   
 	                    <td class="mailbox-name">	                    
-	                    	<div> 
-								<select id="status" class="form-control">
-									<option value="1" selected="selected">作者確認中</option>
-									<option value="2">款項交易中</option>
-									<option value="3">雙方確認完成</option>									
-								</select>
-							</div>
-	                    </td>                    
+	                    	<form>
+		                    	<div id="btn_area"> <!-- btn-group -->
+									<select id="status" class="form-control">
+										<option value="1" selected="selected">作者確認中</option>
+										<option value="2">款項交易中</option>
+										<option value="3">贊助完成</option>									
+									</select>
+									<input type="submit" class="btn btn-danger" id="btn3" value="確認">
+								</div>
+							</form>
+	                    </td>                     
 	                  </tr>
 	                  
 	                  <tr>
@@ -412,16 +415,19 @@ desired effect
 	                    	1轉帳
 	                    </td>
 	                    <td class="mailbox-name">
-	                    	$5000
+	                    	$1000
 	                    </td>                   
 	                    <td class="mailbox-name">	                    
-		                    <div> 
-								<select id="status" class="form-control">
-									<option value="1">作者確認中</option>
-									<option value="2" selected="selected">款項交易中</option>
-									<option value="3">雙方確認完成</option>									
-								</select>
-							</div>
+	                    	<form>
+		                    	<div id="btn_area"> <!-- btn-group -->
+									<select id="status" class="form-control">
+										<option value="1" selected="selected">作者確認中</option>
+										<option value="2">款項交易中</option>
+										<option value="3">贊助完成</option>									
+									</select>
+									<input type="submit" class="btn btn-danger" id="btn3" value="確認">
+								</div>
+							</form>
 	                    </td>                    
 	                  </tr>
 	                  <tr>
@@ -442,13 +448,16 @@ desired effect
 	                    	$1000
 	                    </td>                   
 	                    <td class="mailbox-name">	                    
-	                    	<div> 
-								<select id="status" class="form-control">
-									<option value="1">作者確認中</option>
-									<option value="2">款項交易中</option>
-									<option value="3" selected="selected">雙方確認完成</option>									
-								</select>
-							</div>
+	                    	<form>
+		                    	<div id="btn_area"> <!-- btn-group -->
+									<select id="status" class="form-control">
+										<option value="1" selected="selected">作者確認中</option>
+										<option value="2">款項交易中</option>
+										<option value="3">贊助完成</option>									
+									</select>
+									<input type="submit" class="btn btn-danger" id="btn3" value="確認">
+								</div>
+							</form>
 	                    </td>                    
 	                  </tr>
 	                                   
@@ -466,7 +475,7 @@ desired effect
 		              		<input type="button" href="../_13_Product_info/Product_info.jsp" 
 		              			   class="btn btn-warning" id="btn1" value="回上頁">
 		              	
-		                	<input type="submit" class="btn btn-danger" id="btn2" value="確認修改">    
+<!-- 		                <input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
 	              	</div>
 	              	<!-- /.btn-group -->
 	            </div>
