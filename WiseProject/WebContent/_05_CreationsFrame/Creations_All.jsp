@@ -90,7 +90,6 @@
 		var k = 0;
 		var an = '';
 		xhr.open("GET", '\_01_register\\allartist.json', true);
-// 		xhr.open("GET", '\_07_funds\\allfunds.json', true);
 		xhr.send();
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
@@ -101,10 +100,10 @@
 				for(var j =0  ; j <4 ; j++){
 					content += '<div class="row">';
 					for(var i=0; i < 3; i++){
-						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" >';
-// 						content += '<a href="#' + artist[k].art_id + '">';
-						content += '<a href="#" id ="sp_artist_id">';
-						content += '<img src="'+ artist[k].file_name +'" class="img-circle" width="180" height="180">';
+						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" class="img-link" >';
+// 						content += '<a href="${context}/_05_CreationsFrame/DisplayArtist?art_id=' + artist[k].art_id +'" >';
+						content += '<a href="#" >';
+						content += '<img src="'+ artist[k].file_name +'" class="img-circle img-link" width="180" height="180" id="' + artist[k].art_id + '">';
 						$.ajax({
 							  url: "\_01_register\\singleartusername.json",
 							  type: "get", //send it through get method
@@ -122,7 +121,7 @@
 							  }
 						});	
 // 						content += '<span>' + an + '</span></a></div>';
-						content += '<p>'+an+'</p>' + '</a></div>';    
+						content += an + '</a></div>';    
 						k++;
 						if (k === artist.length) break;
 					}
@@ -135,7 +134,20 @@
 				console.log(content);
 			}		
 		};
+		  $(document).on('click', ".img-link" , function(){
+			  var art_id = $(this).attr('id');
+			  console.log("this is art_id" + art_id);
+		  		  $.ajax({
+		  			  url:"\_05_CreationsFrame\\DisplayArtist?art_id=" + art_id,
+		  			  context: document.body,
+		  			  success: function(response){
+		  				  $('#mainframe').html(response);
+		  			  }
+		  		  });
+	  	 });
 	})
+
+		
 	</script>
 	<script src="${context}/js/default.js"></script>
 	</section>

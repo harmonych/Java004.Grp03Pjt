@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.connector.Request;
-
 import _07_funds.model.FundsBean;
 import _07_funds.model.FundsHibernateDAO;
 import _07_funds.model.IFundsDAO;
@@ -26,11 +24,9 @@ public class DisplaySingleFundPage extends HttpServlet{
 		IFundsDAO fdao = new FundsHibernateDAO();
 		FundsBean fb = fdao.findByPrimaryKey(Integer.parseInt(req.getParameter("fc_id")));
 //		FundsBean fb = fdao.findByPrimaryKey(Integer.parseInt(req.getPathInfo().substring(1)));
-		System.out.println("----fb-----");
-		System.out.println(fb.getArt_id());
 //		System.out.println(Integer.parseInt(req.getPathInfo().substring(1)));
 		req.setAttribute("fb", fb);
-		req.getRequestDispatcher("Fc_Info.jsp").forward(req, resp);
+		req.getRequestDispatcher("Fc_Info2.jsp").forward(req, resp);
 	}
 
 	

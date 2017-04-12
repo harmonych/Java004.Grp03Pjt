@@ -10,7 +10,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     	<link rel="stylesheet" href="${context}/css/funds_page.css">
-  
 	</head>
     
 
@@ -237,8 +236,7 @@
 									    xhr1.abort();
 									  }
 							});	
-// 							content +=  '<img src="'+ pica +'" class="img-responsive" style="width:100%"  alt="Image"/>';
-							content +=  '<img src="'+ pica +'" class="img-thumbnail" style="width:100%" alt="Image"/>';
+							content +=  '<a href="#"><img src="'+ pica +'" class="img-thumbnail img-link" style="width:100%" alt="Image" id = "' + funds[k].fc_id + '"/></a>';
 							$.ajax({
 								  url: "\_07_funds\\singlefcpican.json",
 								  type: "get", //send it through get method
@@ -255,7 +253,7 @@
 								    xhr2.abort();
 								  }
 							});	
-							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations_All.jsp" target="_blank">' + fcan + ' </a></div><span class="crowd-total"> </span></div></div>';    
+							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + fcan + ' </a></div><span class="crowd-total"> </span></div></div>';    
 							k++;
 							if (k === funds.length) break;
 						}
@@ -269,9 +267,11 @@
 					console.log(content);
 				}		
 			};
-			  $(document).on('click', "#sp_fc_info" , function(){
+			  $(document).on('click', ".img-link" , function(){
+				  var fc_id = $(this).attr('id');
+				  console.log("this is fc_id" + fc_id);
 		  		  $.ajax({
-		  			  url:"\_11_Fc_info\\Fc_Info2.jsp",
+		  			  url:"\_11_Fc_info\\DisplayFund?fc_id=" + fc_id,
 		  			  context: document.body,
 		  			  success: function(response){
 		  				  $('#mainframe').html(response);
