@@ -84,17 +84,17 @@
                             </div>
                             
                             <div class="col-md-3 col-xs-3">
-                            <h4>創作者 Blog</h4><input id="art_id" value="${ab.art_id}" type="hidden"/>
+                            <h4>創作者 Blog</h4><input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
                                 <ul class="nav nav-pills nav-stacked">
 <!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
 											 <li><a href="#section2">作者資訊</a>
-
+												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-thumbnail"/>
 											 <li>
 												<a href="pic_address 簡介圖片位址">
-													<img src="${ab.file_name}" class="pic_id 簡介圖片編號" width ="300px"></a>
+													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="300px"></a>
 												<ul class="MSG-mydata1">
 
-													<li>暱稱：<span class="user_name "></span></li>
+													<li>暱稱：<c:out value ="${mb.user_name}"/><span class="user_name "></span></li>
 <!-- 														<li>暱稱：<span class="user_name ">會員暱稱</span></li> -->
 												</ul>
 											</li>
@@ -104,7 +104,7 @@
 												</div>										
 										</li>
                                                                        
-											<li><a href="#section3">創作者相關資訊${ab.introduction}</a></li>
+											<li><a href="#section3">${ab.introduction}</a></li>
 										
 										<!--Facebook-->
 										<button type="button" class="btn btn-fb">
@@ -165,20 +165,21 @@
 			$.ajax({
 				  url: "\_07_funds\\singleartfunds.json",
 				  type: "GET", 
+				  async: false,
 				  data: { 
 				    "art_id":id, 
 				  },
-				  success: function(response) {
+				  success: function(responsefunds) {
 					  console.log("this is fundsByArt:"); 
-					  console.log(response);
-					  for(var i=0; i < response.length ; i++){
+					  console.log(responsefunds);
+					  for(var i=0; i < responsefunds.length ; i++){
 						  funds_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
 						  $.ajax({
 							url: "\_07_funds\\singlefcpic.json",
 							type: "GET",
 							async: false,
 							data: {
-								"fc_id": response[i].fc_id,
+								"fc_id": responsefunds[i].fc_id,
 							},
 							success: function(resFcAdrs){
 								console.log("this is fundsByArt:"); 

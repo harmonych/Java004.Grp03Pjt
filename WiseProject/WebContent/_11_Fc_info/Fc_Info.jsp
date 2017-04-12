@@ -69,81 +69,81 @@ desired effect
 <script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
 <script>
 
-$(document).ready (function () {
-	var xhr1 = new XMLHttpRequest();
-	xhr1.open("GET", '..\\_07_funds\\singlefcpic.json', true);
-	xhr1.send();
-	xhr1.onreadystatechange = function() {
-		if (xhr1.readyState == 4 && xhr1.status == 200) {
-			var picj = JSON.parse(xhr1.responseText);
+// $(document).ready (function () {
+// 	var xhr1 = new XMLHttpRequest();
+// 	xhr1.open("GET", '..\\_07_funds\\singlefcpic.json', true);
+// 	xhr1.send();
+// 	xhr1.onreadystatechange = function() {
+// 		if (xhr1.readyState == 4 && xhr1.status == 200) {
+// 			var picj = JSON.parse(xhr1.responseText);
 			
-			var pic_address = "<img src ="+ picj[0].fc_adress + " width = '400px' >" ;
+// 			var pic_address = "<img src ="+ picj[0].fc_adress + " width = '400px' >" ;
 			
-			var divp = document.getElementById("img_area");
-			divp.innerHTML = pic_address;
-			console.log(picj);
-			console.log(pic_address);
-		}
-	};
+// 			var divp = document.getElementById("img_area");
+// 			divp.innerHTML = pic_address;
+// 			console.log(picj);
+// 			console.log(pic_address);
+// 		}
+// 	};
 
 		
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", '..\\_07_funds\\singlefund.json', true);
-	xhr.send();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-//			var content = "";
-			var fc_name = "";
-			var art_id = "";
-			var start_time = "";
-			var end_time = "";
-			var fc_money = "";
-			var now_money = "";
-			var fc_introduction = "";
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.open("GET", '..\\_07_funds\\singlefund.json', true);
+// 	xhr.send();
+// 	xhr.onreadystatechange = function() {
+// 		if (xhr.readyState == 4 && xhr.status == 200) {
+// //			var content = "";
+// 			var fc_name = "";
+// 			var art_id = "";
+// 			var start_time = "";
+// 			var end_time = "";
+// 			var fc_money = "";
+// 			var now_money = "";
+// 			var fc_introduction = "";
 			
-			var funds = JSON.parse(xhr.responseText);
-			fc_name ="<h1><b>" +funds.fc_name+"</b></h1>" ;
-			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
-			start_time = "<b>開始時間 : </b>" +funds.start_time ;
-			end_time = "<b>結束時間 : </b>" +funds.end_time ;
-			fc_money = "<b>募資金額 : </b>" +funds.fc_money ;
-			now_money = "<b>目前金額  : </b>" +funds.now_money ;
-			fc_introduction = "<b>募資簡介 : </b><br>" +funds.fc_introduction ;			
+// 			var funds = JSON.parse(xhr.responseText);
+// 			fc_name ="<h1><b>" +funds.fc_name+"</b></h1>" ;
+// 			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
+// 			start_time = "<b>開始時間 : </b>" +funds.start_time ;
+// 			end_time = "<b>結束時間 : </b>" +funds.end_time ;
+// 			fc_money = "<b>募資金額 : </b>" +funds.fc_money ;
+// 			now_money = "<b>目前金額  : </b>" +funds.now_money ;
+// 			fc_introduction = "<b>募資簡介 : </b><br>" +funds.fc_introduction ;			
 	
-		}
-		//content += "";
-		//var divs = document.getElementById("somedivS");
-		//divs.innerHTML = content;
+// 		}
+// 		//content += "";
+// 		//var divs = document.getElementById("somedivS");
+// 		//divs.innerHTML = content;
 		
-		fc_name += "";
-		var divs = document.getElementById("fc_name");
-		divs.innerHTML = fc_name;
+// 		fc_name += "";
+// 		var divs = document.getElementById("fc_name");
+// 		divs.innerHTML = fc_name;
 		
-		art_id += "";
-		var divs = document.getElementById("art_id");
-		divs.innerHTML = art_id;
+// 		art_id += "";
+// 		var divs = document.getElementById("art_id");
+// 		divs.innerHTML = art_id;
 		
-		start_time += "";
-		var divs = document.getElementById("start_time");
-		divs.innerHTML = start_time;
+// 		start_time += "";
+// 		var divs = document.getElementById("start_time");
+// 		divs.innerHTML = start_time;
 		
-		end_time += "";
-		var divs = document.getElementById("end_time");
-		divs.innerHTML = end_time;
+// 		end_time += "";
+// 		var divs = document.getElementById("end_time");
+// 		divs.innerHTML = end_time;
 		
-		fc_money += "";
-		var divs = document.getElementById("fc_money");
-		divs.innerHTML = fc_money;
+// 		fc_money += "";
+// 		var divs = document.getElementById("fc_money");
+// 		divs.innerHTML = fc_money;
 		
-		now_money += "";
-		var divs = document.getElementById("now_money");
-		divs.innerHTML = now_money;
+// 		now_money += "";
+// 		var divs = document.getElementById("now_money");
+// 		divs.innerHTML = now_money;
 		
-		fc_introduction += "";
-		var divs = document.getElementById("fc_introduction");
-		divs.innerHTML = fc_introduction;
-	};
-});
+// 		fc_introduction += "";
+// 		var divs = document.getElementById("fc_introduction");
+// 		divs.innerHTML = fc_introduction;
+// 	};
+// });
 
 </script>
 
@@ -413,7 +413,7 @@ $(document).ready (function () {
 
 
           <!-- Main content -->
-          <section id="s1" class="content">
+          <section class="content">
           <!-- Your Page Content Here -->
           	<div class="row">
 			
@@ -432,7 +432,7 @@ $(document).ready (function () {
 					<div id="info_area">
 						
 						<div id="fc_name">
-							<h1>fc_name 募資名稱</h1>
+							<h1>fc_name 募資名稱 <c:out value ="${fb.fc_name}" /></h1>
 						</div>
 						<div id="art_id">	
 							<label id='lb'>創作者編號:</label>
@@ -467,47 +467,34 @@ $(document).ready (function () {
 							<div id="sponsor_money">
 								<div>
 									<label>贊助金額</label>
-								
-									<select class="form-control">
-										<option value="1">NT $500</option>
-										<option value="2">NT $1,000</option>
-										<option value="3">NT $2,000</option>
-										<option value="4">NT $3,000</option>
-										<option value="5">NT $5,000</option>
-										<option value="6">NT $10,000</option>
-										<option value="7">NT $20,000</option>
-										<option value="8">NT $30,000</option>
-										<option value="8">NT $50,000</option>
-									</select>
 								</div>
-								<br>
-								<div>
-									<label>贊助方式</label>
-								
-									<select class="form-control">
-										<option value="1">轉帳</option>
-										<option value="2">匯款</option>										
-									</select>
-								</div>
-									
+									<div>
+										<select class="form-control">
+											<option value="1">NT $500</option>
+											<option value="2">NT $1,000</option>
+											<option value="3">NT $2,000</option>
+											<option value="4">NT $3,000</option>
+											<option value="5">NT $5,000</option>
+											<option value="6">NT $10,000</option>
+											<option value="7">NT $20,000</option>
+											<option value="8">NT $30,000</option>
+											<option value="8">NT $50,000</option>
+										</select>
+									</div>
 							</div>
 
 							<div id="bt_area">
-								<a href="../_17_Fc_List/Fc_List_User.jsp">
-									<input type="button" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
-								</a>
+								<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>		
 	    </section>
-        <!-- /.content -->
-         
-<!--          <div id="part_line" class="col-md-8 col-md-offset-2"></div> -->
+         	<!-- /.content -->
          
          <!-- 留言填寫欄位 -->
-          <section id="s2" class="content">
+          <section class="content">
           	<div class="row">
           		<div class="card03 col-md-8 col-md-offset-2">
           			<div class="box box-warning ">

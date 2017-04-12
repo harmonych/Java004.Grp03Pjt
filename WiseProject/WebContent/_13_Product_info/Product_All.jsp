@@ -1,90 +1,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+  <head>
+	<c:set var="context" value="${pageContext.request.contextPath}" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!--       <link rel="stylesheet" href="../css/Fc_Create2.css"> -->
-	  <title>商品主頁</title>
-      <!-- Tell the browser to be responsive to screen width -->
-      <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-      <!-- Bootstrap 3.3.6 -->
-      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-      <!-- Ionicons -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-      <!-- Theme style -->
-      <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-      <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+	<title>商品主頁</title>
+<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
-      <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  
-  
-      <style>
-        .logo img {
-          width: 50px;
-          height: 35px;
-        }
-     
-        .carousel-inner .item img {
-          max-height: 600px;
-        }
-        .navbar-form{
-          	 display: inline-flex;
-        }
+  </head>
 
-        @media screen and (max-width: 766px) {
-			.container .jumbotron, .container-fluid .jumbotron {
-		     padding-top: 60px;
-		    
-			}
-		}
-			
-		div.col-sm-4 {
-			margin-bottom: 20px;
-		}
-		
-		p {
-		    margin: 0 0 10px;
-		    text-align: center;
-		}
-
-
-      </style>
-    </head>
-    <!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 <body>
 <!--     <body class="hold-transition skin-yellow-light sidebar-mini "> -->
 <%--       <c:set var="userName" value="${LoginOK.user_name}" /> --%>
@@ -348,13 +280,13 @@ desired effect
                     </div>
                 </div>
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+<!--         <div class="content-wrapper"> -->
           <!-- Content Header (Page header) -->
           <section class="content-header">
           </section>
 
           <!-- Main content -->
-          <section class="content">
+          <section class="content" id = "main">
           <!-- Your Page Content Here -->
 				<div class="row">
                     	<div class="col-sm-4">
@@ -402,11 +334,9 @@ desired effect
 
           </section>
           <!-- /.content -->
-        </div>
+<!--         </div> -->
         <!-- /.content-wrapper -->
 
-        <!-- Main Footer -->
-        <footer class="main-footer"></footer>
           <!-- To the right -->
 <!--           <div class="pull-right hidden-xs"> -->
 <!--             Anything you want -->
@@ -493,20 +423,72 @@ desired effect
 <!--         <div class="control-sidebar-bg"></div> -->
     
       <!-- ./wrapper -->
+  </body>
+  	<script type="text/javascript">
+	$(document).ready(function(){
+		var xhr = new XMLHttpRequest();
+		var k = 0;
+		var pn = '';
+		xhr.open("GET", '\_08_product\\allproduct.json', true);
+		xhr.send();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				var products = JSON.parse(xhr.responseText);
+				var content = '';
+				console.log("this is products:");
+				console.log(products);	
+				for(var j =0  ; j <6 ; j++){
+					content += '<div class="row">';
+					for(var i=0; i < 3; i++){
+						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" >';
+						content += '<a href="#" >';
+						$.ajax({
+							  url: "\_08_product\\singlepropic.json",
+							  type: "get", //send it through get method
+							  async: false,
+							  data: { 
+							    "pro_id": k+1, 
+							  },
+							  success: function(resProPica) {
+								 //丟回針對pro_id的所有pic_address
+								 pn = resProPica;
+// 								 if (pn = null) return false;
+								 console.log(resProPica);
+								 console.log(pn);
+							  },
+							  error: function(proPicErr) {
+							    proPicErr.abort();
+							  }
+						});	
+						content += '<img src="'+ pn[0].pic_adress +'" class="img-thumbnail img-link" style="width:100%" id="' + products[k].pro_id + '">';
+// 						content += '<span>' + an + '</span></a></div>';
+						content += '<p>' + products[k].pro_name + '</p>' + '</a></div>';   
+						
+						k++;
+						if (k === products.length) break;
+					}//end of inner-for-ajax
+				
+					content += '</div>';
+				}//end of for-ajax
+				console.log(content);
+				var divs = document.getElementById("main");
+				divs.innerHTML = content;
+			}		
+		};
+		  $(document).on('click', ".img-link" , function(){
+			  var pro_id = $(this).attr('id');
+		  		  $.ajax({
+		  			  url:"\_13_Product_info\\DisplayProduct?pro_id=" + pro_id,
+		  			  context: document.body,
+		  			  success: function(response){
+		  				  $('#mainframe').html(response);
+		  			  }
+		  		  });
+	  	 });
+	})
 
-      <!-- REQUIRED JS SCRIPTS -->
+		
+	</script>
+	<script src="${context}/js/default.js"></script>
 
-      <!-- jQuery 2.2.3 -->
-      <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-      <!-- Bootstrap 3.3.6 -->
-      <script src="../bootstrap/js/bootstrap.min.js"></script>
-      <!-- AdminLTE App -->
-      <script src="../dist/js/app.min.js"></script>
-
-      <!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
-    </body>
-
-    </html>
+</html>

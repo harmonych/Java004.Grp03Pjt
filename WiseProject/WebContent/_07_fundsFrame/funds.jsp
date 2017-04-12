@@ -5,7 +5,7 @@
 	<c:set var="context" value="${pageContext.request.contextPath}" />
 
     <head>
-    	<title>募資平台</title>
+    	<title>作品募資</title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
@@ -76,7 +76,7 @@
 <!--                 </nav> -->
                 <div class="jumbotron">
                     <div class="container text-center">
-                        <h1>募資平台</h1>
+                        <h1>作品募資</h1>
                         <p> </p>
                     </div>
                 </div>

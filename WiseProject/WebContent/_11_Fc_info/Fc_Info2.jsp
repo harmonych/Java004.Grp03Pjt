@@ -116,7 +116,7 @@ $(document).ready(function(){
 				<div class="card_card01 col-md-4 col-md-offset-2">
 					<div id="img_area">
 						<img id="pro_img" >  
-						<!-- src="../images/v06.jpg" -->
+						<img src="${context}/images/ajaxloader.gif">
 						<!-- width="400" height="400" -->
 					</div>
 				</div>
