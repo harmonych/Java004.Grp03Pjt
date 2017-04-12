@@ -4,6 +4,9 @@
     <html>
 
     <head>
+	  <c:set var="context" value="${pageContext.request.contextPath}" />
+	  <c:set var="userName" value="${LoginOK.user_name}" />
+      <c:set var="file_name" value="${LoginOK.file_name}" />
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Wise彙思創作募資</title>
@@ -74,17 +77,13 @@ desired effect
 -->
 
   <body class="hold-transition skin-yellow-light sidebar-mini ">
-    
-	<c:set var="context" value="${pageContext.request.contextPath}" />
-    <c:set var="userName" value="${LoginOK.user_name}" />
-    <c:set var="file_name" value="${LoginOK.file_name}" />
     <div class="wrapper">
 
         <!-- Main Header -->
         <header class="main-header">
 
           <!-- Logo -->
-          <a href="index2.html" class="logo">
+          <a href="index.jsp" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><img src="image/logo-tw-1.png" alt="minilogo"></span>
             <!-- logo for regular state and mobile devices -->
@@ -94,15 +93,24 @@ desired effect
           <!-- Header Navbar -->
           <nav class="navbar navbar-static-top" role="navigation">
            <!-- search form (Optional) -->
-            <form action="#" method="get" class="navbar-form">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-              </div>
-            </form>
+<!--             <form action="#" method="get" class="navbar-form"> -->
+<!--               <div class="input-group"> -->
+<!--                 <input type="text" name="q" class="form-control" placeholder="Search..."> -->
+<!--                 <span class="input-group-btn"> -->
+<!--                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i> -->
+<!--                 </button> -->
+<!--               </span> -->
+<!--               </div> -->
+<!--             </form> -->
+			  <form class="navbar-form" role="search">
+			    <div class="input-group">
+                    <input type="text" class="form-control icon-search" id="search" name="search" placeholder="Search">
+                    <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+	                </button>
+	               </span>
+	              </div>
+                </form>
             <!-- /.search form -->
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -325,9 +333,9 @@ desired effect
 		            </span>
          		 </a>
                 <ul class="treeview-menu">
-                  <li><a href="_08_ImgSearch\img-search-page.html">創作者</a></li>
-                  <li><a href="_08_ImgSearch\img-search-page.html">商城作品</a></li>
-                  <li><a href="_08_ImgSearch\img-search-page.html">募集作品</a></li>
+                  <li><a href="#" class = "sp_search">創作者</a></li>
+                  <li><a href="#" class = "sp_search">商城作品</a></li>
+                  <li><a href="#" class = "sp_search">募集作品</a></li>
                 </ul>
               </li>
               <li id = "sp-artist"><a href="#sp-artist"><i class="fa fa-fw fa-paint-brush"></i><span>創作平台</span></a></li>
@@ -358,25 +366,24 @@ desired effect
                       <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
                     </ol>
                     <div class="carousel-inner">
-                      <div class="item">
-                        <img src="http://pic52.nipic.com/file/20141105/18592292_142907683517_2.jpg" alt="First slide">
+                      <div class="item" align ="center">
+                        <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide">
 
                         <div class="carousel-caption">
-                          First Slide
+                          	新近作品
                         </div>
                       </div>
-                      <div class="item active">
-                        <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="Second slide">
-
+                      <div class="item active" align ="center" >
+                        <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" alt="Second slide" >
                         <div class="carousel-caption">
-                          Second Slide
+                          	近期更新
                         </div>
                       </div>
-                      <div class="item">
+                      <div class="item" align ="center">
                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide">
 
                         <div class="carousel-caption">
-                          Third Slide
+                            
                         </div>
                       </div>
                     </div>
@@ -429,28 +436,28 @@ desired effect
           <div class="tab-content">
             <!-- Home tab content -->
             <div class="tab-pane active" id="control-sidebar-home-tab">
-              <h3 class="control-sidebar-heading">Recent Activity</h3>
+              <h3 class="control-sidebar-heading">最近活動</h3>
               <ul class="control-sidebar-menu">
                 <li>
                   <a href="javascript:;">
-                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+<!--                     <i class="menu-icon fa fa-birthday-cake bg-red"></i> -->
 
                     <div class="menu-info">
-                      <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                      <h4 class="control-sidebar-subheading">募資計畫：機器人崛起 進行了更新</h4>
 
-                      <p>Will be 23 on April 24th</p>
+                      <p>on April 1st</p>
                     </div>
                   </a>
                 </li>
               </ul>
               <!-- /.control-sidebar-menu -->
 
-              <h3 class="control-sidebar-heading">Tasks Progress</h3>
+              <h3 class="control-sidebar-heading">參與計畫一覽</h3>
               <ul class="control-sidebar-menu">
                 <li>
                   <a href="javascript:;">
                     <h4 class="control-sidebar-subheading">
-                      Custom Template Design
+                       	募資計畫：風景畫募資
                       <span class="pull-right-container">
                   <span class="label label-danger pull-right">70%</span>
                       </span>
@@ -517,6 +524,7 @@ desired effect
   				success: function(response){
   					$('#mainframe').html(response);
 //       	    	  $('.content-wrapper').append('<section class =".content-header"></section>');
+  					$(".mainfooter").empty();
       	      }
       	    });
       	  })
@@ -527,6 +535,7 @@ desired effect
   				context: document.body,
   				success: function(response){
   					$('#mainframe').html(response);
+  					$(".mainfooter").empty();
       	      }
       	    });
       	  });
@@ -537,9 +546,21 @@ desired effect
 					context: document.body,
 					success: function(response){
 						$('#mainframe').html(response);
+						$(".mainfooter").empty();
 	    	      }
 	    	    });
 	    	  });
+	      $(".sp_search").click(function(){
+		  	$.ajax({
+				url:"\_08_ImgSearch\\img-search-page.jsp",
+				context: document.body,
+				success: function(response){
+					$('#mainframe').html(response);
+					$(".mainfooter").empty();
+		    	}
+			});
+		  });
+		      
 		});
       </script>
 

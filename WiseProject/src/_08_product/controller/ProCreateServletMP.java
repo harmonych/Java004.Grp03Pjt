@@ -111,7 +111,7 @@ public class ProCreateServletMP extends HttpServlet {
 				if (!errorMsg.isEmpty()) {
 					// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 					//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProductA.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create NEW.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create.jsp");
 					rd.forward(request, response);
 					return;
 				}

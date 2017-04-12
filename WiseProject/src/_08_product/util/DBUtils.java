@@ -10,7 +10,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
+import _08_product.model.IProPicDAO;
 import _08_product.model.IProductDAO;
+import _08_product.model.ProPicBean;
+import _08_product.model.ProPicHBNDAO;
 import _08_product.model.ProductBean;
 import _08_product.model.ProductHibernateDAO;
 

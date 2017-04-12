@@ -173,7 +173,7 @@ public class FundCreateServletMP extends HttpServlet {
 					if (!errorMsg.isEmpty()) {
 						// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 //						RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
-						RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create NEW.jsp");
+						RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create.jsp");
 						rd.forward(request, response);
 						return;
 					}

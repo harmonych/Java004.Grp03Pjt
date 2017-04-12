@@ -14,14 +14,14 @@ import _07_funds.util.HibernateUtil;
 public class ProPicHBNDAO implements IProPicDAO {
 
 	@Override
-	public int insert(ProPicBean fpb) {
+	public int insert(ProPicBean ppb) {
 		int updateCount = 0;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			session.save(fpb);
+			session.save(ppb);
 			updateCount = 1;
 			tx.commit();
 		}catch(Exception e){

@@ -7,7 +7,7 @@ var val=null;
 	$(document).ready(function() {
 		 	    
 		 	   $.ajax({
-		 		    url: "../_07_funds/allfunds.json",
+		 		    url: "\_07_funds\\allfunds.json",
 		 		    type: "GET",
 		 		    dataType: "json",		 		    
 		 		 	}).done(function(response){
@@ -25,7 +25,7 @@ var val=null;
 		 	   
 		 	   
 			   $.ajax({
-		 		    url: "../_08_product/allproduct.json",
+		 		    url: "\_08_product\\allproduct.json",
 		 		    type: "GET",
 		 		    dataType: "json",		 		    
 		 		 	}).done(function(response1){
@@ -41,7 +41,7 @@ var val=null;
 		 		 	}
 		 		 	}); 
 			   $.ajax({
-		 		    url: "../_01_register/allartist.json",
+		 		    url: "\_01_register\\allartist.json",
 		 		    type: "GET",
 		 		    dataType: "json",		 		    
 		 		 	}).done(function(response2){
@@ -70,7 +70,7 @@ var val=null;
 		console.log(storage);
 		$("#searchbox").empty();
 		$.ajax({
-			    url: "../_10_search/search.json",
+			    url: "\_10_search\\search.json",
 			    type: "GET",
 			    dataType: "json",	
 			    data:{
@@ -93,7 +93,7 @@ var val=null;
 		   
 		   
 	   $.ajax({
-			    url: "../_10_search/searchp.json",
+			    url: "\_10_search\\searchp.json",
 			    type: "GET",
 			    dataType: "json",	
 			    data:{
@@ -113,7 +113,7 @@ var val=null;
 			 	}
 			 	}); 
 	   $.ajax({
-			    url: "../_10_search/searcha.json",
+			    url: "\_10_search\\searcha.json",
 			    type: "GET",
 			    dataType: "json",	
 			    data:{
