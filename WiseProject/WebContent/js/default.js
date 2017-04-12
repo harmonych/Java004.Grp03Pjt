@@ -55,15 +55,15 @@ $(document).ready(function () {
 //
 //    })
 });
-$(document).on('click', "#sp_artist_id" , function(){
-	  $.ajax({
-		  url:"\_05_CreationsFrame\\CreationsPage2.jsp",
-		  context: document.body,
-		  success: function(response){
-			  $('#mainframe').html(response);
-		  }
-	  });
-  });
+//$(document).on('click', "#sp_artist_id" , function(){
+//	  $.ajax({
+//		  url:"\_05_CreationsFrame\\CreationsPage2.jsp",
+//		  context: document.body,
+//		  success: function(response){
+//			  $('#mainframe').html(response);
+//		  }
+//	  });
+//  });
 
 $(window).scroll(function() {
     $(".slideanim").each(function(){

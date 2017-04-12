@@ -1,9 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
+	  <c:set var = "fc_id" value = "${fb.fc_id}" />
 	  <c:set var="context" value="${pageContext.request.contextPath}" />
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,13 +17,16 @@
 
 <script>
 
-$(document).ready (function () {
+$(document).ready(function(){
+	
+	var id = $('#fcid').val();
+	console.log(id);
 	$.ajax({
 		  url: "\_07_funds\\singlefcpic.json",
 		  type: "get", 
 		  async: false,
 		  data: { 
-		    "fc_id": 1, 
+		    "fc_id":id, 
 		  },
 		  success: function(response) {
 			  console.log(response);
@@ -36,62 +41,61 @@ $(document).ready (function () {
 	});	
 
 		
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", '\_07_funds\\singlefund.json', true);
-	xhr.send();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-//			var content = "";
-			var fc_name = "";
-			var art_id = "";
-			var start_time = "";
-			var end_time = "";
-			var fc_money = "";
-			var now_money = "";
-			var fc_introduction = "";
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.open("GET", '\_07_funds\\singlefund.json', true);
+// 	xhr.send();
+// 	xhr.onreadystatechange = function() {
+// 		if (xhr.readyState == 4 && xhr.status == 200) {
+// 			var fc_name = "";
+// 			var art_id = "";
+// 			var start_time = "";
+// 			var end_time = "";
+// 			var fc_money = "";
+// 			var now_money = "";
+// 			var fc_introduction = "";
 			
-			var funds = JSON.parse(xhr.responseText);
-			fc_name ="<h1><b>" +funds.fc_name+"</b></h1>" ;
-			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
-			start_time = "<b>開始時間 : </b>" +funds.start_time ;
-			end_time = "<b>結束時間 : </b>" +funds.end_time ;
-			fc_money = "<b>募資金額 : </b>" +funds.fc_money ;
-			now_money = "<b>目前金額  : </b>" +funds.now_money ;
-			fc_introduction = "<b>募資簡介 : </b><br>" +funds.fc_introduction ;			
+// 			var funds = JSON.parse(xhr.responseText);
+// 			fc_name ="<h1><b>" +funds.fc_name+"</b></h1>" ;
+// 			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
+// 			start_time = "<b>開始時間 : </b>" +funds.start_time ;
+// 			end_time = "<b>結束時間 : </b>" +funds.end_time ;
+// 			fc_money = "<b>募資金額 : </b>" +funds.fc_money ;
+// 			now_money = "<b>目前金額  : </b>" +funds.now_money ;
+// 			fc_introduction = "<b>募資簡介 : </b><br>" +funds.fc_introduction ;			
 	
-		}
+// 		}
 		//content += "";
 		//var divs = document.getElementById("somedivS");
 		//divs.innerHTML = content;
 		
-		fc_name += "";
-		var divs = document.getElementById("fc_name");
-		divs.innerHTML = fc_name;
+// 		fc_name += "";
+// 		var divs = document.getElementById("fc_name");
+// 		divs.innerHTML = fc_name;
 		
-		art_id += "";
-		var divs = document.getElementById("art_id");
-		divs.innerHTML = art_id;
+// 		art_id += "";
+// 		var divs = document.getElementById("art_id");
+// 		divs.innerHTML = art_id;
 		
-		start_time += "";
-		var divs = document.getElementById("start_time");
-		divs.innerHTML = start_time;
+// 		start_time += "";
+// 		var divs = document.getElementById("start_time");
+// 		divs.innerHTML = start_time;
 		
-		end_time += "";
-		var divs = document.getElementById("end_time");
-		divs.innerHTML = end_time;
+// 		end_time += "";
+// 		var divs = document.getElementById("end_time");
+// 		divs.innerHTML = end_time;
 		
-		fc_money += "";
-		var divs = document.getElementById("fc_money");
-		divs.innerHTML = fc_money;
+// 		fc_money += "";
+// 		var divs = document.getElementById("fc_money");
+// 		divs.innerHTML = fc_money;
 		
-		now_money += "";
-		var divs = document.getElementById("now_money");
-		divs.innerHTML = now_money;
+// 		now_money += "";
+// 		var divs = document.getElementById("now_money");
+// 		divs.innerHTML = now_money;
 		
-		fc_introduction += "";
-		var divs = document.getElementById("fc_introduction");
-		divs.innerHTML = fc_introduction;
-	};
+// 		fc_introduction += "";
+// 		var divs = document.getElementById("fc_introduction");
+// 		divs.innerHTML = fc_introduction;
+// 	};
 });
 
 </script>
@@ -119,26 +123,38 @@ $(document).ready (function () {
 
 
 				<!-- 募資介紹欄 -->
-				<div class="card_card02 col-md-4">
+				<div class="card_card02 col-md-4"><input id="fcid" value="${fb.fc_id}" type="hidden"/>
 					<div id="info_area">
 						
-						<div id="fc_name">
-							<h1>fc_name 募資名稱</h1>
+						<div id="fc_name" >
+							<b>
+								<h1>募資名稱：<c:out value ="${fb.fc_name}"/> </h1>
+							</b>
 						</div>
-						<div id="art_id">	
-							<label id='lb'>創作者編號:</label>
+						<div id="art_id">
+							<b>	
+								<h4><label id='lb'>創作者編號:<c:out value ="${fb.art_id}"/></label></h4>
+							</b>
 						</div>
 						<div id="start_time" >
-							<label id="lb">start_time 開始時間</label>
+							<b>
+								<label id="lb">開始時間<c:out value ="${fb.start_time}"/></label>
+							</b>							
 						</div>
 						<div id="end_time" >
-							<label id="lb">end_time 結束時間</label>
+							<b>
+								<label id="lb">結束時間<c:out value ="${fb.end_time}"/></label>
+							</b>
 						</div>
 						<div id="fc_money" >
-							<label id="lb">fc_money 募資金額</label>
+							<b>
+								<label id="lb">募資金額<c:out value ="${fb.fc_money}"/></label>
+							</b>
 						</div>	
 						<div id="now_money" >
-							<label id="lb">now_money 目前金額</label>
+							<b>
+								<label id="lb">目前金額<c:out value ="${fb.now_money}"/></label>
+							</b>
 						</div>
 					
 						<div id="line"></div><br>
@@ -147,7 +163,7 @@ $(document).ready (function () {
 							<label id="lb">募資簡介</label><br>
 						
 							<p>
-								fc_Introduction<br> 
+								<c:out value ="${fb.fc_introduction}"/><br> 
 							</p>
 						</div>
 					</div>	

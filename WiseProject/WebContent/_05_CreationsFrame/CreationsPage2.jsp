@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 	<c:set var="context" value="${pageContext.request.contextPath}" />
 	<head>        
@@ -15,7 +16,7 @@
 
 <body>
         <!-- 標題列 -->
-        <section class="container-fluid" id="about">
+<!--         <section class="container-fluid" id="about"> -->
 <!--             <div id="wrapper"> -->
                 <!-- Sidebar -->
 <!--                 <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation"> -->
@@ -70,9 +71,7 @@
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                         </div>
-<!--                                         <div class="row"> -->
-                                        <div id ="funds">
-                                         	<h2>募資</h2>
+                                        <div class="row" id ="funds">
 <!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
 <!--                                             <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" width=50% title=""></div> -->
 <!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
@@ -85,17 +84,17 @@
                             </div>
                             
                             <div class="col-md-3 col-xs-3">
-                            <h4>創作者 Blog</h4>
+                            <h4>創作者 Blog</h4><input id="art_id" value="${ab.art_id}" type="hidden"/>
                                 <ul class="nav nav-pills nav-stacked">
 <!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
 											 <li><a href="#section2">作者資訊</a>
 
 											 <li>
 												<a href="pic_address 簡介圖片位址">
-													<img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a>
+													<img src="${ab.file_name}" class="pic_id 簡介圖片編號" width ="300px"></a>
 												<ul class="MSG-mydata1">
 
-													<li>暱稱：<span class="user_name ">會員暱稱${LoginOK.user_name}</span></li>
+													<li>暱稱：<span class="user_name "></span></li>
 <!-- 														<li>暱稱：<span class="user_name ">會員暱稱</span></li> -->
 												</ul>
 											</li>
@@ -105,7 +104,7 @@
 												</div>										
 										</li>
                                                                        
-											<li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li>
+											<li><a href="#section3">創作者相關資訊${ab.introduction}</a></li>
 										
 										<!--Facebook-->
 										<button type="button" class="btn btn-fb">
@@ -154,44 +153,87 @@
 <!--                         </div> -->
 <!--                     </div> -->
 
-                    <footer class="container-fluid">
-                        <p></p>
-                    </footer>
-                    
-<script>
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", '../_07_funds/allfunds.json', true);
-			xhr.send();
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					var content = "<table border='1'>";
-					var funds = JSON.parse(xhr.responseText);
-					for(var i=0; i <4; i++){
-						content += '<div class="container-fluid bg-3 text-center"> <div class="row">';
-						for(var k=0; k < 4; k++){
-							content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
-							content += '<div>' + funds[k].fc_name +'</div>';
-							content += '<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">';
-							content +=  "<img src='"+ funds[k].pic_address +"'/>";
-							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + funds[i].art_id + ' </a></div><span class="crowd-total"> </span></div></div>';    
-							k++;
-						}
+  <script src="${context}/js/default.js"></script>                          
+  <script>
+	var funds_content = '<h2>募資</h2>';
+	var funds_pica = '';
+	var products_content = '';
+	var ctx_content = '';
+	$(document).ready(function(){
+			var id = $('#art_id').val();
+			console.log("this is art_id" + id);
+			$.ajax({
+				  url: "\_07_funds\\singleartfunds.json",
+				  type: "GET", 
+				  data: { 
+				    "art_id":id, 
+				  },
+				  success: function(response) {
+					  console.log("this is fundsByArt:"); 
+					  console.log(response);
+					  for(var i=0; i < response.length ; i++){
+						  funds_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
+						  $.ajax({
+							url: "\_07_funds\\singlefcpic.json",
+							type: "GET",
+							async: false,
+							data: {
+								"fc_id": response[i].fc_id,
+							},
+							success: function(resFcAdrs){
+								console.log("this is fundsByArt:"); 
+								console.log(resFcAdrs);
+								funds_content += '<img src = "' + resFcAdrs[0].fc_adress + '" class="img-thumbnail" width=90% height=50% title=""  >';
+							} 
+						  })
+						  //end of ajax-fcAdr
+						  funds_content += "</div>"
+					  }
+					  //end of for-fBA
+					  var divp = document.getElementById("funds");
+					  divp.innerHTML = funds_content;
+					  console.log(funds_content);
+				  },
+				  error: function(xhr2) {
+				    xhr2.abort();
+				  }
+			});	
+	})
+// 			var xhr = new XMLHttpRequest();
+// 			xhr.open("GET", '../_07_funds/allfunds.json', true);
+// 			xhr.send();
+// 			xhr.onreadystatechange = function() {
+// 				if (xhr.readyState == 4 && xhr.status == 200) {
+// 					var content = "<table border='1'>";
+// 					var funds = JSON.parse(xhr.responseText);
+// 					for(var i=0; i <4; i++){
+// 						content += '<div class="container-fluid bg-3 text-center"> <div class="row">';
+// 						for(var k=0; k < 4; k++){
+// 							content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
+// 							content += '<div>' + funds[k].fc_name +'</div>';
+// 							content += '<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">';
+// 							content +=  "<img src='"+ funds[k].pic_address +"'/>";
+// 							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + funds[i].art_id + ' </a></div><span class="crowd-total"> </span></div></div>';    
+// 							k++;
+// 						}
 					
-						content += '</div></div>'; 
-					}
+// 						content += '</div></div>'; 
+// 					}
 					
-					content +='</table>';
-					console.log(k);
-					var divs = document.getElementById("funds");
-					divs.innerHTML = content;
- 					console.log(content);
-				}
-			}
- </script>
+// 					content +='</table>';
+// 					console.log(k);
+// 					var divs = document.getElementById("funds");
+// 					divs.innerHTML = content;
+//  					console.log(content);
+// 				}
+// 			}
+
+	
+    </script>
 <!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 <!--                     <script src="asset/js/bootstrap.min.js"></script> -->
-                    <script src="${context}/js/default.js"></script>
-        </section>
+    
+<!--         </section> -->
     </body>
 
     </html>

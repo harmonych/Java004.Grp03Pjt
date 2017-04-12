@@ -183,6 +183,28 @@ public class FundsHibernateDAO implements IFundsDAO {
 		}
 		return user_name;
 	}
+	@Override
+	public List<FundsBean> getAllFundsByArtId(int art_id) {
+		List<FundsBean> list =new ArrayList<FundsBean>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			TypedQuery<FundsBean> query=session.createQuery("from FundsBean where art_id is "+ art_id);
+			list = query.getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return list;
+	}
 
 	@Override
 	public List<FundsBean> getAllFundsJSON() {

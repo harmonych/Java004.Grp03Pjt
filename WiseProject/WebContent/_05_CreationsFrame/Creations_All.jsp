@@ -14,41 +14,8 @@
 
         <section class="container-fluid" id="about">
             <div id="wrapper">
-<!--                 Sidebar -->
-<!--                 <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation"> -->
-<!--                     <ul class="nav sidebar-nav"> -->
-<!--                         <li class="sidebar-brand"> -->
-<!--                             <a href="#"> </a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="../index.jsp">Home</a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="../_07_fundsFrame/funds.jsp">募資大廳</a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="#">商城系統</a> -->
-<!--                         </li> -->
-<!--                         <li class="dropdown"> -->
-<!--                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a> -->
-<!--                             <ul class="dropdown-menu" role="menu"> -->
-<!--                                 <li class="dropdown-header">下拉標題</li> -->
-<!--                                 <li><a href="#">副選單一</a></li> -->
-<!--                                 <li><a href="#">副選單二</a></li> -->
-<!--                             </ul> -->
-<!--                         </li> -->
-<!--                     </ul> -->
-<!--                 </nav> -->
-<!-- 	<div class="container-fluid text-center">     -->
+
 	  <div class="row content">
-<!-- 		<div class="col-sm-2 sidenav"> -->
-	<!-- 	 <div id="mySidenav" class="sidenav">
-		  <a href="#" id="about">作品</a>
-		  <a href="#" id="blog">創作者</a>
-		  <a href="#" id="projects">Projects</a>
-		  <a href="#" id="contact">Contact</a>
-		 </div> -->
-<!-- 		</div> -->
 		<div class="col-sm-8 text-left"> 
 			<div class="box-header with-border">
 	        	<h3 class="box-title">創作者一覽</h3>
@@ -121,7 +88,7 @@
 							  }
 						});	
 // 						content += '<span>' + an + '</span></a></div>';
-						content += '<p>'+an+'</p>' + '</a></div>';    
+						content += '<p>' + an + '</p>' + '</a></div>';    
 						k++;
 						if (k === artist.length) break;
 					}
@@ -131,12 +98,10 @@
 				
 				var divs = document.getElementById("main");
 				divs.innerHTML = content;
-				console.log(content);
 			}		
 		};
 		  $(document).on('click', ".img-link" , function(){
 			  var art_id = $(this).attr('id');
-			  console.log("this is art_id" + art_id);
 		  		  $.ajax({
 		  			  url:"\_05_CreationsFrame\\DisplayArtist?art_id=" + art_id,
 		  			  context: document.body,
