@@ -163,53 +163,106 @@
                             </div>
                         </div>
                       
-                        <div class="col-md-3 col-xs-3">
+						<div class="col-md-3 col-xs-3">
                             <h4>創作者 Blog</h4>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="Creations.jsp">Home</a></li>
-                                <li><a href="#section2">作者資訊</a>
-                                <div id ="main">
-<!--                                 <ul class="MSG-mydata1"> -->
-<!-- <!-- 			                                <label class="fontSize" >大頭貼照：</label> --> 
+                                <ul class="nav nav-pills nav-stacked">
+<!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
+											 <li><a href="#section2">作者資訊</a>
+
+											 <li>
+												<a href="pic_address 簡介圖片位址">
+													<img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a>
+												<ul class="MSG-mydata1">
+
+<%-- 													<li>暱稱：<span class="user_name ">會員暱稱${LoginOK.user_name}</span></li> --%>
+														<li>暱稱：<span class="user_name ">會員暱稱</span></li>
+												</ul>
+											</li>
+											
+												<div>
+													<font color="red" size="-1">${MsgMap.errorIntroPic}</font>
+												</div>										
+										</li>
+                                                                       
+											<li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li>
+										
+										<!--Facebook-->
+										<button type="button" class="btn btn-fb">
+										<i class="fa fa-facebook left"></i> 
+										Facebook</button>
+										<!--Google +-->
+										<button type="button" class="btn btn-gplus">
+										<i class="fa fa-google-plus left"></i> 
+										Google +</button>
+										<!--Twitter-->
+										<button type="button" class="btn btn-tw">
+										<i class="fa fa-twitter left"></i> 
+										Twitter	</button>
+										
+										<br><br>
+										<c:choose>
+										  <c:when test="${!empty LoginOK}">
+<!-- 											<input type="button" value="新增專案" name="新增" style="width:100px;height:30px;"> -->
+											<button><a href="${context}">新增作品</a></button><br>
+											<br>
+											<button><a href="${context}/_12_Product_Create/Product_Create.jsp">新增商品</a></button>	<br>
+											<br>
+											<button><a href="${context}/_10_Fc_Create/Fc_Create.jsp">新增募資</a></button>	
+										 </c:when>
+	              				        </c:choose>
+	              				        
+									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
+                                </ul><br>
+                         </div>
+                      	
+                      
+<!--                         <div class="col-md-3 col-xs-3"> -->
+<!--                             <h4>創作者 Blog</h4> -->
+<!--                             <ul class="nav nav-pills nav-stacked"> -->
+<!-- <!--                                 <li class="active"><a href="Creations.jsp">Home</a></li> --> 
+<!--                                 <li><a href="#section2">作者資訊</a> -->
+<!--                                 <div id ="main"> -->
+<!-- <!--                                 <ul class="MSG-mydata1"> --> 
+<!-- <!-- 			                                <label class="fontSize" >大頭貼照：</label>  -->
 <!-- <!-- 			      							<Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="portrait"><BR> 
-<!-- <!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> --> 
-<%-- <%--                                             <input type="text" name="account" value="${param.account}" class="fieldWidth" maxlength="20" style="width: 200px" > --%> 
-<!-- <!--                                             <li>暱稱：<span class="user_name ">會員名稱</span></li> --> 
-<%-- <%--                                             <input type="text" name="user_name" value="${param.user_name}"  class="fieldWidth" maxlength="20" style="width: 200px;"> --%> 
+<!-- <!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li>  -->
+<%-- <%--                                             <input type="text" name="account" value="${param.account}" class="fieldWidth" maxlength="20" style="width: 200px" >  --%>
+<!-- <!--                                             <li>暱稱：<span class="user_name ">會員名稱</span></li>  -->
+<%-- <%--                                             <input type="text" name="user_name" value="${param.user_name}"  class="fieldWidth" maxlength="20" style="width: 200px;">  --%>
                                         
-<!--                                           <a href="pic_address 簡介圖片位址"> -->
-<%--                                             <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a> --%>
-<!--                                         <ul class="MSG-mydata1"> -->
+<!-- <!--                                           <a href="pic_address 簡介圖片位址"> --> 
+<%-- <%--                                             <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a> --%> 
+<!-- <!--                                         <ul class="MSG-mydata1"> --> 
 <!-- <!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> -->
-                                            <li>暱稱：<span class="user_name ">${LoginOK.user_name}</span></li>
-<!--                                         </ul> -->
-<!--                                         </ul> -->
+<%--                                             <li>暱稱：<span class="user_name ">${LoginOK.user_name}</span></li> --%>
+<!-- <!--                                         </ul> --> 
+<!-- <!--                                         </ul> --> 
                                     
-                                    <div>
-<!--                                     	  <label class="fontSize" >作者簡介：</label><br> -->
-<!-- 									      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth" maxlength="500"></textarea> -->
-<!-- 									      <br/> -->
+<!--                                     <div> -->
+<!-- <!--                                     	  <label class="fontSize" >作者簡介：</label><br> --> 
+<!-- <!-- 									      <textarea name="Introduction" rows="5" cols="20" class="fieldWidth" maxlength="500"></textarea> --> 
+<!-- <!-- 									      <br/> --> 
 									 
-<!-- 									      <label class="fontSize" >*簡介圖片：</label> -->
-<!-- 									      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="intro_pic"> -->
-									      <font color="red" size="-1">${MsgMap.errorIntroPic}</font>
-                                    </div>
-                                </li>
-<!--                                 <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li> -->
-<!--                                 <input type="text" name="intro_pic" value=" "> -->
+<!-- <!-- 									      <label class="fontSize" >*簡介圖片：</label> --> 
+<!-- <!-- 									      <Input Type="file" size="40" class="fieldWidth" style="width: 400px;"  name="intro_pic"> --> 
+<%-- 									      <font color="red" size="-1">${MsgMap.errorIntroPic}</font> --%>
+<!--                                     </div> -->
+<!--                                 </li> -->
+<!-- <!--                                 <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li> --> 
+<!-- <!--                                 <input type="text" name="intro_pic" value=" "> --> 
                                 
-                                <li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li>
-                                <!--Facebook-->
-                                <button type="button" class="btn btn-fb"><i class="fa fa-facebook left"></i> Facebook</button>
-                                <!--Twitter-->
-                                <button type="button" class="btn btn-tw"><i class="fa fa-twitter left"></i> Twitter</button>
-                                <!--Google +-->
-                                <button type="button" class="btn btn-gplus"><i class="fa fa-google-plus left"></i> Google +</button>
+<%--                                 <li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li> --%>
+<!--                                 Facebook -->
+<!--                                 <button type="button" class="btn btn-fb"><i class="fa fa-facebook left"></i> Facebook</button> -->
+<!--                                 Twitter -->
+<!--                                 <button type="button" class="btn btn-tw"><i class="fa fa-twitter left"></i> Twitter</button> -->
+<!--                                 Google + -->
+<!--                                 <button type="button" class="btn btn-gplus"><i class="fa fa-google-plus left"></i> Google +</button> -->
 
 
-                            </ul><br>
+<!--                             </ul><br> -->
 
-                        </div>
+<!--                         </div> -->
 
                     </div>
                 </div>

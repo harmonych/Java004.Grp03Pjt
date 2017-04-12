@@ -10,7 +10,7 @@
 <!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 <!--         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         <link rel="stylesheet" href="${context}/css/Creations_page2.css">
-        <title>創作者大廳</title>
+        <title>創作者主頁</title>
     </head>
 
 <body>
@@ -83,26 +83,76 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-md-3 col-xs-3">
-                                <h4>創作者 Blog</h4>
+                            <h4>創作者 Blog</h4>
                                 <ul class="nav nav-pills nav-stacked">
-                                    <li class="active"><a href="Creations.jsp">創作平台</a></li>
-                                    <li>
-                                        <a href="pic_address 簡介圖片位址">
-                                            <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a>
-                                        <ul class="MSG-mydata1">
-<!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> -->
-                                            <li>暱稱：<span class="user_name ">會員名稱</span></li>
-                                        </ul>
-                                    </li>
-                                    </a>
-                                    </li>
-                                    <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
-                                    <li><a href="#section3">相關...</a></li>
+<!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
+											 <li><a href="#section2">作者資訊</a>
+
+											 <li>
+												<a href="pic_address 簡介圖片位址">
+													<img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a>
+												<ul class="MSG-mydata1">
+
+													<li>暱稱：<span class="user_name ">會員暱稱${LoginOK.user_name}</span></li>
+<!-- 														<li>暱稱：<span class="user_name ">會員暱稱</span></li> -->
+												</ul>
+											</li>
+											
+												<div>
+													<font color="red" size="-1">${MsgMap.errorIntroPic}</font>
+												</div>										
+										</li>
+                                                                       
+											<li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li>
+										
+										<!--Facebook-->
+										<button type="button" class="btn btn-fb">
+										<i class="fa fa-facebook left"></i> 
+										Facebook</button>
+										<!--Google +-->
+										<button type="button" class="btn btn-gplus">
+										<i class="fa fa-google-plus left"></i> 
+										Google +</button>
+										<!--Twitter-->
+										<button type="button" class="btn btn-tw">
+										<i class="fa fa-twitter left"></i> 
+										Twitter	</button>
+										<br><br>
+										<c:choose>
+										  <c:when test="${!empty LoginOK}">
+<!-- 											<input type="button" value="新增專案" name="新增" style="width:100px;height:30px;"> -->
+<%-- 											<a href="${context}/_12_Product_Create/Product_Create.jsp">新增作品</a> --%>
+											<button><a href="${context}/_12_Product_Create/Product_Create.jsp">新增商品</a></button>	<br>
+											<br>
+											<button><a href="${context}/_10_Fc_Create/Fc_Create.jsp">新增募資</a></button>								
+										 </c:when>
+	              				        </c:choose>
+              					 	 
+									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
                                 </ul><br>
-                            </div>
-                        </div>
-                    </div>
+                         </div>
+<!--                             <div class="col-md-3 col-xs-3"> -->
+<!--                                 <h4>創作者 Blog</h4> -->
+<!--                                 <ul class="nav nav-pills nav-stacked"> -->
+<!--                                     <li class="active"><a href="Creations.jsp">創作平台</a></li> -->
+<!--                                     <li> -->
+<!--                                         <a href="pic_address 簡介圖片位址"> -->
+<%--                                             <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a> --%>
+<!--                                         <ul class="MSG-mydata1"> -->
+<!-- <!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> --> 
+<!--                                             <li>暱稱：<span class="user_name ">會員名稱</span></li> -->
+<!--                                         </ul> -->
+<!--                                     </li> -->
+<!--                                     </a> -->
+<!--                                     </li> -->
+<!--                                     <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li> -->
+<!--                                     <li><a href="#section3">相關...</a></li> -->
+<!--                                 </ul><br> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
 
                     <footer class="container-fluid">
                         <p></p>
@@ -140,7 +190,7 @@
  </script>
 <!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 <!--                     <script src="asset/js/bootstrap.min.js"></script> -->
-        	<script src="${context}/js/default.js"></script>
+                    <script src="${context}/js/default.js"></script>
         </section>
     </body>
 

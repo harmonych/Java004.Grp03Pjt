@@ -121,7 +121,7 @@
 							  }
 						});	
 // 						content += '<span>' + an + '</span></a></div>';
-						content += an + '</a></div>';    
+						content += '<p>'+an+'</p>' + '</a></div>';    
 						k++;
 						if (k === artist.length) break;
 					}
