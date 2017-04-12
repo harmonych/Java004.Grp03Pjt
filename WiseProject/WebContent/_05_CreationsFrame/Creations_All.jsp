@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="${context}/css/Creations_page.css">
-<title>作品頁面</title>
+<title>創作者大廳</title>
 </head>
 
 <body>
@@ -104,7 +104,7 @@
 						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" >';
 // 						content += '<a href="#' + artist[k].art_id + '">';
 						content += '<a href="#" id ="sp_artist_id">';
-						content += '<img src="'+ artist[k].file_name +'" class="img-thumbnail" width="130" height="130">';
+						content += '<img src="'+ artist[k].file_name +'" class="img-circle" width="180" height="180">';
 						$.ajax({
 							  url: "\_01_register\\singleartusername.json",
 							  type: "get", //send it through get method
@@ -122,7 +122,7 @@
 							  }
 						});	
 // 						content += '<span>' + an + '</span></a></div>';
-						content += an + '</a></div>';    
+						content += '<p>'+an+'</p>' + '</a></div>';    
 						k++;
 						if (k === artist.length) break;
 					}
