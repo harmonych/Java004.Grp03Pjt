@@ -37,7 +37,7 @@
         }
         
         .carousel-inner .item img {
-          max-height: 600px;
+          height: 600px;
         }
         .navbar-form{
           display: inline-flex;
@@ -52,7 +52,14 @@
 			
 				}
 		}
-		        
+		.fa{
+			color:gray;
+		}
+		.box-title{
+			font-family:Microsoft JhengHei;
+			font-weight:bloder;
+		}
+		       
       </style>
     </head>
     <!--
@@ -355,7 +362,7 @@ desired effect
             <div class="col-md-12">
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">最新創作品</h3>
+                  <h3 class="box-title">加入彙思，讓你的創意被大家看見!</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -383,7 +390,7 @@ desired effect
                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide">
 
                         <div class="carousel-caption">
-                            
+                           	人氣最高
                         </div>
                       </div>
                     </div>
