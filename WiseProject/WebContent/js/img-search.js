@@ -58,8 +58,11 @@ var val=null;
 		 		 	});
 		 	  });
 	$(document).submit(function(e){
+		
 		if(val!=null)val=null;
 		val = $('input[name="search"]').val();
+		
+			$('input').val("");
 		
 		e.preventDefault();
 		
@@ -131,8 +134,14 @@ var val=null;
 			 	     .isotope('appended', $items3);
 			 	}
 			 	}
+			 	console.log(allfund.length)
+		console.log(allpro.length)
+		console.log(Jdata2.length)
+	   if(allfund.length==0||allpro.length==0||Jdata2.length==0){
+			$("#searchfont").append("<h2>找不到符合搜尋字詞的文件。<h2>");
+		}  
 			 	});
-		  
+		
 		
 	});
 	console.log(storage);
@@ -164,6 +173,60 @@ var val=null;
 	        .isotope('appended', $items);
    }
  });
+ 
+ $('.cancel-search').on('click', function () {
+	 $("#searchbox").empty();
+	 $.ajax({
+		    url: "\_07_funds\\allfunds.json",
+		    type: "GET",
+		    dataType: "json",		 		    
+		 	}).done(function(response){
+		 		console.log(response);
+		 		allfund = response;
+		 
+		 	for (var n = 0; n <= allfund.length-1; n++) {
+		 	var $items = getAllFund(allfund[n].fc_id, "fundraising",allfund[n].fc_name);
+		 	   // append elements to container
+		 	   $grid.append($items).isotope('layout')
+		 	     // add and lay out newly appended elements
+		 	     .isotope('appended', $items);
+		 	}
+		 	});
+	   
+	   
+	   $.ajax({
+		    url: "\_08_product\\allproduct.json",
+		    type: "GET",
+		    dataType: "json",		 		    
+		 	}).done(function(response1){
+		 		console.log(response1);
+		 		allpro = response1;
+		 
+		 	for (var n = 0; n <= allpro.length-1; n++) {
+		 	var $items2 = getAllPro(allpro[n].pro_id, "product",allpro[n].pro_name);
+		 	   // append elements to container
+		 	   $grid.append($items2).isotope('layout')
+		 	     // add and lay out newly appended elements
+		 	     .isotope('appended', $items2);
+		 	}
+		 	}); 
+	   $.ajax({
+		    url: "\_01_register\\allartist.json",
+		    type: "GET",
+		    dataType: "json",		 		    
+		 	}).done(function(response2){
+		 		console.log(response2);
+		 		Jdata2 = response2;
+		 
+		 	for (var n = 0; n <= Jdata2.length-1; n++) {
+		 	var $items3 = getItemElement2(Jdata2[n].art_id, "creatter",Jdata2[n].art_name);
+		 	   // append elements to container
+		 	   $grid.append($items3).isotope('layout')
+		 	     // add and lay out newly appended elements
+		 	     .isotope('appended', $items3);
+		 	}
+		 	});
+	 });
 //---------set item then push to grid 
 // make <div class="element-item element-item--width# element-item--height#" />
 function getAllFund(n,category,id) {

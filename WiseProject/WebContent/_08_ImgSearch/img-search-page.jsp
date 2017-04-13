@@ -23,10 +23,11 @@
 <!--                 </form> -->
 <!--                 <div class="button-group form-group navbar-form navbar-left" id="filters"> -->
 					<div class="button-group form-group navbar-form navbar-left" id="filters">
-                    <button class="button is-checked" data-filter="*">show all</button>
+                    <button class="button is-checked" data-filter="*">全部類別</button>
                     <button class="button" data-filter=".creatter">創作者</button>
                     <button class="button" data-filter=".fundraising">作品募資</button>
                     <button class="button" data-filter=".product">文創商城</button>
+                    <button class="button cancel-search" data-filter="*">取消搜尋</button>
                     <!--<button class="button" data-filter=":not(.transition)">not transition</button>
                     <button class="button" data-filter="numberGreaterThan50">number > 50</button>
                     <button class="button" data-filter="ium">name ends with &ndash;ium</button>-->
@@ -49,6 +50,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-12 col-md-offset-1">
+            <div id="searchfont"></div>
                 <div class="grid" id="searchbox">
 <!--                     <div class="element-item transition creatter" data-category="transition"> -->
 <!--                         <img src="img/2.jpg" alt="..."> -->
@@ -59,6 +61,7 @@
 <!--                     </div> -->
                     
                  </div>
+                 
             </div>
         </div>
        </div>
