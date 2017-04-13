@@ -61,7 +61,7 @@ public class FcPicHBNDAO implements IFcPicDAO {
 	}
 
 	@Override
-	public List<FcPicBean> getpicadressJSON(int fc_id) {
+	public List<FcPicBean> getPicAddressJSON(int fc_id) {
 		List<FcPicBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();

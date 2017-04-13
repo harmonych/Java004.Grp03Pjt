@@ -528,8 +528,9 @@ desired effect
       	    $.ajax({
   				url:"\_05_CreationsFrame\\Creations_All.jsp",
   				context: document.body,
-  				success: function(response){
-  					$('#mainframe').html(response);
+  				success: function(responseCreatorAll){
+  					$("#mainframe").empty();
+  					$('#mainframe').html(responseCreatorAll);
 //       	    	  $('.content-wrapper').append('<section class =".content-header"></section>');
   					$(".mainfooter").empty();
       	      }
@@ -540,8 +541,9 @@ desired effect
       	    $.ajax({
   				url:"\_07_fundsFrame\\funds.jsp",
   				context: document.body,
-  				success: function(response){
-  					$('#mainframe').html(response);
+  				success: function(responseFundsAll){
+  					$("#mainframe").empty();
+  					$('#mainframe').html(responseFundsAll);
   					$(".mainfooter").empty();
       	      }
       	    });
@@ -549,10 +551,11 @@ desired effect
           
 	      $("#sp-product").click(function(){
 	    	    $.ajax({
-					url:"\_13_Product_info\\Product_info.jsp",
+					url:"\_13_Product_info\\Product_All.jsp",
 					context: document.body,
-					success: function(response){
-						$('#mainframe').html(response);
+					success: function(responseProAll){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseProAll);
 						$(".mainfooter").empty();
 	    	      }
 	    	    });
@@ -561,8 +564,9 @@ desired effect
 		  	$.ajax({
 				url:"\_08_ImgSearch\\img-search-page.jsp",
 				context: document.body,
-				success: function(response){
-					$('#mainframe').html(response);
+				success: function(responseImgSearch){
+					$("#mainframe").empty();
+					$('#mainframe').html(responseImgSearch);
 					$(".mainfooter").empty();
 		    	}
 			});

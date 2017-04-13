@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<c:set var="context" value="${pageContext.request.contextPath}" />
+	<c:set var="account" value="${LoginOK.account}" />
 	<head>        
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -118,20 +119,12 @@
 										<i class="fa fa-twitter left"></i> 
 										Twitter	</button>
 										<br><br>
-										<c:choose>
-										<c:when test="${!empty LoginOK}">                       
-										 <c:when test="${LoginOK.check_tag = true}">
+										<c:if test="${(LoginOK != null ) && (LoginOK.check_tag = true) && (account == mb.account)}">                       
 <!-- 											<input type="button" value="新增專案" name="新增" style="width:100px;height:30px;"> -->
-<%-- 											<a href="${context}/_12_Product_Create/Product_Create.jsp">新增作品</a> --%>
 											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button><br>
 											<br>
 											<button><a href="${context}/_10_Fc_Create/Fc_Create NEW.jsp">新增募資</a></button>								
-										 </c:when>
-										</c:when>
-										<c:otherwise>
-										</c:otherwise>
-	              				        </c:choose>
-              					 	 
+										</c:if>	
 									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
                                 </ul><br>
                          </div>
@@ -159,8 +152,9 @@
   <script src="${context}/js/default.js"></script>                          
   <script>
 	var funds_content = '<h2>募資</h2>';
-	var funds_pica = '';
+	var funds_len = 0;
 	var products_content = '<h2>商品</h2>';
+	var prods_len = 0;
 	var ctx_content = '';
 	$(document).ready(function(){
 			//讀取art_id
@@ -174,9 +168,11 @@
 				    "art_id":id, 
 				  },
 				  success: function(responsefunds) {
-					  console.log("this is fundsByArt:"); 
-					  console.log(responsefunds);
-					  for(var i=0; i < responsefunds.length ; i++){
+					  funds_len = responsefunds.length;
+					  console.log(funds_len);
+					  console.log("V-V-V上方為長度");
+					  $("#funds").empty();
+					  for(var i=0; i < funds_len ; i++){
 						  funds_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
 						  $.ajax({
 							url: "\_07_funds\\singleFcPic.json",
@@ -214,9 +210,9 @@
 				    "art_id":id, 
 				  },
 				  success: function(responseProducts) {
-					  console.log("this is productsByArt:"); 
-					  console.log(responseProducts);
-					  for(var i=0; i < responseProducts.length ; i++){
+					  $("#products").empty();
+					  prods_len = responseProducts.length;
+					  for(var i=0; i < prods_len ; i++){
 						  products_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
 						  $.ajax({
 							url: "\_08_product\\singlepropic.json",
@@ -236,6 +232,8 @@
 						  products_content += "</div>"
 					  }
 					  //end of for-pBA
+					  console.log("這是長度");
+					  console.log(responseProducts.length);
 					  var divpr = document.getElementById("products");
 					  divpr.innerHTML = products_content;
 					  console.log(products_content);

@@ -1,4 +1,4 @@
-package _07_funds.controller;
+package _01_register.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,10 +20,10 @@ import _07_funds.model.FundsHibernateDAO;
 import _07_funds.model.IFcPicDAO;
 import _07_funds.model.IFundsDAO;
 
-@WebServlet("/_11_Fc_info/DisplayFund")
-public class DisplaySingleFundPage extends HttpServlet{
+@WebServlet("/_05_CreationsFreame/DisplayCreations")
+public class DisplayCreationsPage extends HttpServlet{
 	private static final long serialVersionUID = 1L;	
-	public DisplaySingleFundPage() {
+	public DisplayCreationsPage() {
 		super();
 	}
 

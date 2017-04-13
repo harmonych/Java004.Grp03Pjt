@@ -8,7 +8,7 @@ public interface IFcPicDAO {
 	
 	int delete(int pic_id);
 	
-	List<FcPicBean> getpicadressJSON(int fc_id);
+	List<FcPicBean> getPicAddressJSON(int fc_id);
 
 
 	public int getFc_id();

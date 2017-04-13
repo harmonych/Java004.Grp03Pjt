@@ -48,7 +48,7 @@ public class SingleProPicJsonServlet extends HttpServlet {
 		try {
 			IProPicDAO jdbc = new ProPicHBNDAO();
 			jdbc.setPro_id(pro_id);
-			List<ProPicBean> ppb = jdbc.getpicadressJSON(pro_id);			
+			List<ProPicBean> ppb = jdbc.getPicAddressJSON(pro_id);			
 			String singleFundsJson = new Gson().toJson(ppb); 		
             out.write(singleFundsJson);
 		} catch (Exception e) {

@@ -60,14 +60,14 @@ public class ProPicHBNDAO implements IProPicDAO {
 		return updateCount;
 	}
 	@Override
-	public ProPicBean findByPrimaryKey(int key) {
+	public ProPicBean findByPrimaryKey(int pic_id) {
 		ProPicBean ppb = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			ppb = session.get(ProPicBean.class, key);
+			ppb = session.get(ProPicBean.class, pic_id);
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -81,7 +81,7 @@ public class ProPicHBNDAO implements IProPicDAO {
 	}
 
 	@Override
-	public List<ProPicBean> getpicadressJSON(int pro_id) {
+	public List<ProPicBean> getPicAddressJSON(int pro_id) {
 		List<ProPicBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -89,7 +89,7 @@ public class ProPicHBNDAO implements IProPicDAO {
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			TypedQuery<ProPicBean> query=session.createQuery(hql);
+			TypedQuery<ProPicBean> query = session.createQuery(hql);
 			list = query.getResultList();
 			tx.commit();
 		}catch(Exception e){

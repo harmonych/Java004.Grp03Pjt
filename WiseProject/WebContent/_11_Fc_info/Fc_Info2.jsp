@@ -15,90 +15,6 @@
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
 
-<script>
-
-$(document).ready(function(){
-	var id = $('#fcid').val();
-	console.log(id);
-	$.ajax({
-		  url: "\_07_funds\\singleFcPic.json",
-		  type: "get", 
-		  async: false,
-		  data: { 
-		    "fc_id":id, 
-		  },
-		  success: function(responseFcP) {
-			  console.log(responseFcP);
-				var pic_address = "<img src ="+ responseFcP[0].fc_adress + " width = '400px' >" ;			
-				var divp = document.getElementById("img_area");
-				divp.innerHTML = pic_address;
-		  },
-		  error: function(responseFcPErr) {
-			  responseFcPErr.abort();
-		  }
-	});	
-
-		
-// 	var xhr = new XMLHttpRequest();
-// 	xhr.open("GET", '\_07_funds\\singlefund.json', true);
-// 	xhr.send();
-// 	xhr.onreadystatechange = function() {
-// 		if (xhr.readyState == 4 && xhr.status == 200) {
-// 			var fc_name = "";
-// 			var art_id = "";
-// 			var start_time = "";
-// 			var end_time = "";
-// 			var fc_money = "";
-// 			var now_money = "";
-// 			var fc_introduction = "";
-			
-// 			var funds = JSON.parse(xhr.responseText);
-// 			fc_name ="<h1><b>" +funds.fc_name+"</b></h1>" ;
-// 			art_id = "<h4><b>創作者編號 : </b>" +funds.art_id+ "</h4>" ;
-// 			start_time = "<b>開始時間 : </b>" +funds.start_time ;
-// 			end_time = "<b>結束時間 : </b>" +funds.end_time ;
-// 			fc_money = "<b>募資金額 : </b>" +funds.fc_money ;
-// 			now_money = "<b>目前金額  : </b>" +funds.now_money ;
-// 			fc_introduction = "<b>募資簡介 : </b><br>" +funds.fc_introduction ;			
-	
-// 		}
-		//content += "";
-		//var divs = document.getElementById("somedivS");
-		//divs.innerHTML = content;
-		
-// 		fc_name += "";
-// 		var divs = document.getElementById("fc_name");
-// 		divs.innerHTML = fc_name;
-		
-// 		art_id += "";
-// 		var divs = document.getElementById("art_id");
-// 		divs.innerHTML = art_id;
-		
-// 		start_time += "";
-// 		var divs = document.getElementById("start_time");
-// 		divs.innerHTML = start_time;
-		
-// 		end_time += "";
-// 		var divs = document.getElementById("end_time");
-// 		divs.innerHTML = end_time;
-		
-// 		fc_money += "";
-// 		var divs = document.getElementById("fc_money");
-// 		divs.innerHTML = fc_money;
-		
-// 		now_money += "";
-// 		var divs = document.getElementById("now_money");
-// 		divs.innerHTML = now_money;
-		
-// 		fc_introduction += "";
-// 		var divs = document.getElementById("fc_introduction");
-// 		divs.innerHTML = fc_introduction;
-// 	};
-});
-
-</script>
-
-
 <body class="hold-transition skin-yellow-light sidebar-mini ">
       <c:set var="userName" value="${LoginOK.user_name}" />
       <c:set var="file_name" value="${LoginOK.file_name}" />
@@ -114,7 +30,7 @@ $(document).ready(function(){
 				<div class="card_card01 col-md-4 col-md-offset-2">
 					<div id="img_area">
 						<img id="pro_img" >  
-						<img src="${context}/images/ajaxloader.gif">
+						<img src="<c:out value ='${fpl[0].fc_adress}'/>" width = '400px'>
 						<!-- width="400" height="400" -->
 					</div>
 				</div>
@@ -126,12 +42,12 @@ $(document).ready(function(){
 						
 						<div id="fc_name" >
 							<b>
-								<h1>募資名稱：<c:out value ="${fb.fc_name}"/> </h1>
+								<h1><c:out value ="${fb.fc_name}"/> </h1>
 							</b>
 						</div>
 						<div id="art_id">
 							<b>	
-								<h4><label id='lb'>創作者編號:<c:out value ="${fb.art_id}"/></label></h4>
+								<h4><label id='lb'>發起者:<c:out value ="${mb.user_name}"/></label></h4>
 							</b>
 						</div>
 						<div id="start_time" >

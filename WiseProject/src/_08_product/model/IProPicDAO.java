@@ -11,12 +11,9 @@ public interface IProPicDAO {
 	int insert(ProPicBean pb);
 	
 	int delete(int pic_id);
-	
+
 	ProPicBean findByPrimaryKey(int key);
 	
-	List<ProPicBean> getpicadressJSON(int pro_id);
-
-
-
+	List<ProPicBean> getPicAddressJSON(int pro_id);
 	
 }

@@ -200,16 +200,14 @@
 										Twitter	</button>
 										
 										<br><br>
-										<c:choose>
-										  <c:when test="${LoginOK.check_tag=1}">
 <!-- 											<input type="button" value="新增專案" name="新增" style="width:100px;height:30px;"> -->
+											<c:if test="${(LoginOK != null ) && (LoginOK.check_tag = true) && (account == mb.account)}">
 											<button><a href="${context}">新增作品</a></button><br>
 											<br>
 											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button>	<br>
 											<br>
 											<button><a href="${context}/_10_Fc_Create/Fc_Create NEW.jsp">新增募資</a></button>	
-										 </c:when>
-	              				        </c:choose>
+											</c:if>
 	              				        
 									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
                                 </ul><br>

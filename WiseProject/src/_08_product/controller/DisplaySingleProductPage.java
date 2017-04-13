@@ -1,6 +1,7 @@
 package _08_product.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,18 +31,17 @@ public class DisplaySingleProductPage extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ArtistBean ab = null;
 		MemberBean mb = null;
-		ProPicBean ppb = null;
 		IProductDAO pdao = new ProductHibernateDAO();
 		IArtistDAO adao = new ArtistHibernateDAO();
 		IProPicDAO ppdao = new ProPicHBNDAO();
 		ProductBean pb = pdao.findByPrimaryKey(Integer.parseInt(req.getParameter("pro_id")));
 //		FundsBean fb = fdao.findByPrimaryKey(Integer.parseInt(req.getPathInfo().substring(1)));
 //		System.out.println(Integer.parseInt(req.getPathInfo().substring(1)));
-		ppb = ppdao.findByPrimaryKey(pb.getPro_id());
+		List<ProPicBean> pblist = ppdao.getPicAddressJSON((pb.getPro_id()));
 		ab = adao.findByPrimaryKey(pb.getArt_id());
 		mb = ab.getMemberbean();
 
-		req.setAttribute("ppb", ppb);
+		req.setAttribute("pbl", pblist);
 		req.setAttribute("pb", pb);
 		req.setAttribute("ab", ab);
 		req.setAttribute("mb", mb);

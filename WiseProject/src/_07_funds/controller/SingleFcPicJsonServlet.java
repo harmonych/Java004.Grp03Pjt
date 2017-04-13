@@ -51,7 +51,7 @@ public class SingleFcPicJsonServlet extends HttpServlet {
 		try {
 			IFcPicDAO jdbc = new FcPicHBNDAO();
 			jdbc.setFc_id(fc_id);
-			List<FcPicBean> fb = jdbc.getpicadressJSON(fc_id);			
+			List<FcPicBean> fb = jdbc.getPicAddressJSON(fc_id);			
 			String singleFundsJson = new Gson().toJson(fb); 			
             out.write(singleFundsJson);
 		} catch (Exception e) {
