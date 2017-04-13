@@ -16,19 +16,15 @@ import com.google.gson.Gson;
 import _07_funds.model.FundsBean;
 import _07_funds.model.FundsHibernateDAO;
 import _07_funds.model.IFundsDAO;
-
-
-
 /*
   1. 呼叫DAO類別(BookJDBC.java)來取得所有的書籍資料，這些書籍資料存放入List<BookBean>物件內
   2. 呼叫Gson的toJson()方法，將List<BookBean>內所有書籍資料全部轉換為JSON格式的陣列
   3. 要寫出JSON格式的資料必須撰寫下列兩行敘述:
   	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-  
  */
-// 
-@WebServlet("/_07_funds/singleartfunds.json")
+//以art_id來找該創作者所有募資計畫
+@WebServlet("/_07_funds/allFundsByArtist.json")
 public class ArtistToFundsJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

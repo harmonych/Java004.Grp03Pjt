@@ -62,8 +62,7 @@
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                         </div>
-                                        <div class="row">
-                                            <h2>商品</h2>
+                                        <div class="row" id = "products">                                            
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                             <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/17.jpg" class="img-thumbnail" width=60% height=50% title=""> 
                                             </div>
@@ -88,7 +87,7 @@
                                 <ul class="nav nav-pills nav-stacked">
 <!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
 											 <li><a href="#section2">作者資訊</a>
-<%-- 												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100" /> --%>
+												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100"/>
 											 <li>
 												<a href="pic_address 簡介圖片位址">
 													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="150px"></a>
@@ -120,13 +119,17 @@
 										Twitter	</button>
 										<br><br>
 										<c:choose>
-										  <c:when test="${LoginOK.check_tag=1}">
+										<c:when test="${!empty LoginOK}">                       
+										 <c:when test="${LoginOK.check_tag = true}">
 <!-- 											<input type="button" value="新增專案" name="新增" style="width:100px;height:30px;"> -->
 <%-- 											<a href="${context}/_12_Product_Create/Product_Create.jsp">新增作品</a> --%>
-											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button>	<br>
+											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button><br>
 											<br>
 											<button><a href="${context}/_10_Fc_Create/Fc_Create NEW.jsp">新增募資</a></button>								
 										 </c:when>
+										</c:when>
+										<c:otherwise>
+										</c:otherwise>
 	              				        </c:choose>
               					 	 
 									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
@@ -157,13 +160,14 @@
   <script>
 	var funds_content = '<h2>募資</h2>';
 	var funds_pica = '';
-	var products_content = '';
+	var products_content = '<h2>商品</h2>';
 	var ctx_content = '';
 	$(document).ready(function(){
+			//讀取art_id
 			var id = $('#art_id').val();
-			console.log("this is art_id" + id);
 			$.ajax({
-				  url: "\_07_funds\\singleartfunds.json",
+				  //得到所有該artist的募資計畫 01 ArtToFunds Servlet
+				  url: "\_07_funds\\allFundsByArtist.json",
 				  type: "GET", 
 				  async: false,
 				  data: { 
@@ -175,17 +179,18 @@
 					  for(var i=0; i < responsefunds.length ; i++){
 						  funds_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
 						  $.ajax({
-							url: "\_07_funds\\singlefcpic.json",
+							url: "\_07_funds\\singleFcPic.json",
 							type: "GET",
 							async: false,
 							data: {
 								"fc_id": responsefunds[i].fc_id,
 							},
 							success: function(resFcAdrs){
-								console.log("this is fundsByArt:"); 
-								console.log(resFcAdrs);
-								funds_content += '<img src = "' + resFcAdrs[0].fc_adress + '" class="img-thumbnail" width=90% height=50% title=""  >';
-							} 
+								//套上簡介圖片
+								funds_content += '<a href = "#"><img src = "' + resFcAdrs[0].fc_adress; 
+								//套上img-link跟ip_fc_id
+								funds_content += '" class="img-thumbnail img-link" width=90% height=50% title="" id ="ip_fc_id'+ responsefunds[i].fc_id +'"></a>';
+							}
 						  })
 						  //end of ajax-fcAdr
 						  funds_content += "</div>"
@@ -198,38 +203,50 @@
 				  error: function(xhr2) {
 				    xhr2.abort();
 				  }
-			});	
+			});
+			//生成商品
+			$.ajax({
+				  //得到所有該Artist的商品 01 ArtistToProducts Servlet
+				  url: "\_08_product\\allProductsByArtist.json",
+				  type: "GET", 
+				  async: false,
+				  data: { 
+				    "art_id":id, 
+				  },
+				  success: function(responseProducts) {
+					  console.log("this is productsByArt:"); 
+					  console.log(responseProducts);
+					  for(var i=0; i < responseProducts.length ; i++){
+						  products_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
+						  $.ajax({
+							url: "\_08_product\\singlepropic.json",
+							type: "GET",
+							async: false,
+							data: {
+								"pro_id": responseProducts[i].pro_id,
+							},
+							success: function(resProAdrs){
+								//套上簡介圖片
+								products_content += '<a href = "#"><img src = "' + resProAdrs[0].pic_adress; 
+								//套上img-link跟ip_pro_id
+								products_content += '" class="img-thumbnail img-link" width=90% height=50% title="" id ="ip_pro_id'+ responseProducts[i].pro_id +'"></a>';
+							}
+						  })
+						  //end of ajax-ProAdr
+						  products_content += "</div>"
+					  }
+					  //end of for-pBA
+					  var divpr = document.getElementById("products");
+					  divpr.innerHTML = products_content;
+					  console.log(products_content);
+				  },
+				  error: function(responseProductsErr) {
+					  responseProductsErr.abort();
+				  }
+			});
+			
+			
 	})
-// 			var xhr = new XMLHttpRequest();
-// 			xhr.open("GET", '../_07_funds/allfunds.json', true);
-// 			xhr.send();
-// 			xhr.onreadystatechange = function() {
-// 				if (xhr.readyState == 4 && xhr.status == 200) {
-// 					var content = "<table border='1'>";
-// 					var funds = JSON.parse(xhr.responseText);
-// 					for(var i=0; i <4; i++){
-// 						content += '<div class="container-fluid bg-3 text-center"> <div class="row">';
-// 						for(var k=0; k < 4; k++){
-// 							content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
-// 							content += '<div>' + funds[k].fc_name +'</div>';
-// 							content += '<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">';
-// 							content +=  "<img src='"+ funds[k].pic_address +"'/>";
-// 							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + funds[i].art_id + ' </a></div><span class="crowd-total"> </span></div></div>';    
-// 							k++;
-// 						}
-					
-// 						content += '</div></div>'; 
-// 					}
-					
-// 					content +='</table>';
-// 					console.log(k);
-// 					var divs = document.getElementById("funds");
-// 					divs.innerHTML = content;
-//  					console.log(content);
-// 				}
-// 			}
-
-	
     </script>
 <!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 <!--                     <script src="asset/js/bootstrap.min.js"></script> -->

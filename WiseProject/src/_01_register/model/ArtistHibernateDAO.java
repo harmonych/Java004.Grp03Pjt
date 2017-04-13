@@ -249,10 +249,13 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		try{
 			tx = session.beginTransaction();
 			ab = session.get(ArtistBean.class, art_id);
-			System.out.println("-------------------------------------------");
-			System.out.println(ab.getArt_id());
-			user_name = ab.getMemberbean().getUser_name();
-			tx.commit();
+			if(ab!=null){
+				user_name = ab.getMemberbean().getUser_name();
+				System.out.println(user_name);
+				tx.commit();
+			}else{
+				tx.rollback();
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 			if(tx!=null){
@@ -262,6 +265,60 @@ public class ArtistHibernateDAO implements IArtistDAO {
 			session.close();
 		}
 		return user_name;
+	}
+	@Override
+	public String findArtPortraitByArtId(int art_id) {
+		ArtistBean ab = null;
+		String file_name = "";
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			ab = session.get(ArtistBean.class, art_id);
+			if(ab!=null){
+				file_name = ab.getMemberbean().getFile_name();
+				System.out.println(file_name);
+				tx.commit();
+			}else{
+				tx.rollback();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return file_name;
+	}
+
+	@Override
+	public boolean isAuthenticate(int art_id) {
+		ArtistBean ab = null;
+		boolean authd = false;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			ab = session.get(ArtistBean.class, art_id);
+			if(ab!=null){
+				authd = ab.getMemberbean().isAuthenticate();
+				tx.commit();
+			}else{
+				tx.rollback();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return authd;
 	}
 	
 

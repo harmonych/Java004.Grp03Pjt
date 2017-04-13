@@ -1,9 +1,5 @@
 package _08_product.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +20,9 @@ import _08_product.util.HibernateUtil;
 
 
 public class ProductHibernateDAO implements IProductDAO {
+
+	DataSource ds;
+	int pro_id;
 
 	public int getPro_Id() {
 		return pro_id;
@@ -164,7 +163,7 @@ public class ProductHibernateDAO implements IProductDAO {
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			TypedQuery<ProductBean> query=session.createQuery("from ProductBean");
+			TypedQuery<ProductBean> query = session.createQuery("from ProductBean");
 			list = query.getResultList();
 			//list =session.createQuery("from FundsBean").getResultList();
 			Hibernate.initialize(list);
@@ -203,8 +202,28 @@ public class ProductHibernateDAO implements IProductDAO {
 		}
 		return list;
 	}
-	DataSource ds;
-	int pro_id;
+	@Override
+	public List<ProductBean> getAllFundsByArtId(int art_id) {
+		List<ProductBean> list =new ArrayList<ProductBean>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			TypedQuery<ProductBean> query = session.createQuery("from ProductBean where art_id is "+ art_id);
+			list = query.getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return list;
+	}
 
 	
 	

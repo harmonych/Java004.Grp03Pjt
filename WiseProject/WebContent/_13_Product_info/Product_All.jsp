@@ -466,14 +466,14 @@
 				var content = '';
 				console.log("this is products:");
 				console.log(products);	
-				for(var j =0  ; j <6 ; j++){
+				for(var j =0  ; j <(products.length / 3) ; j++){
 					content += '<div class="row">';
 					for(var i=0; i < 3; i++){
 						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" >';
 						content += '<a href="#" >';
 						$.ajax({
 							  url: "\_08_product\\singlepropic.json",
-							  type: "get", //send it through get method
+							  type: "GET", 
 							  async: false,
 							  data: { 
 							    "pro_id": k+1, 
@@ -481,20 +481,19 @@
 							  success: function(resProPica) {
 								 //丟回針對pro_id的所有pic_address
 								 pn = resProPica;
-// 								 if (pn = null) return false;
-								 console.log(resProPica);
-								 console.log(pn);
 							  },
 							  error: function(proPicErr) {
-							    proPicErr.abort();
+								 console.log(proPicErr);
+								 console.log(pn);
+							     proPicErr.abort();
 							  }
 						});	
-						content += '<img src="'+ pn[0].pic_adress +'" class="img-thumbnail img-link" style="width:100%" id="' + products[k].pro_id + '">';
+						content += '<img src="'+ pn[0].pic_adress +'" class="img-thumbnail img-link" style="width:100%" id="ip_pro_id' + products[k].pro_id + '">';
 // 						content += '<span>' + an + '</span></a></div>';
-						content += '<p>' + products[k].pro_name + '</p>' + '</a></div>';   
+						content += '<p text-align = "center">' + products[k].pro_name + '</p>' + '</a></div>';   
 						
 						k++;
-						if (k == products.length) break;
+						if (k === products.length) break;
 					}//end of inner-for-ajax
 				
 					content += '</div>';
@@ -504,16 +503,6 @@
 				divs.innerHTML = content;
 			}		
 		};
-		  $(document).on('click', ".img-link" , function(){
-			  var pro_id = $(this).attr('id');
-		  		  $.ajax({
-		  			  url:"\_13_Product_info\\DisplayProduct?pro_id=" + pro_id,
-		  			  context: document.body,
-		  			  success: function(response){
-		  				  $('#mainframe').html(response);
-		  			  }
-		  		  });
-	  	 });
 	})
 
 		

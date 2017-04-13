@@ -18,25 +18,23 @@
 <script>
 
 $(document).ready(function(){
-	
 	var id = $('#fcid').val();
 	console.log(id);
 	$.ajax({
-		  url: "\_07_funds\\singlefcpic.json",
+		  url: "\_07_funds\\singleFcPic.json",
 		  type: "get", 
 		  async: false,
 		  data: { 
 		    "fc_id":id, 
 		  },
-		  success: function(response) {
-			  console.log(response);
-				var pic_address = "<img src ="+ response[0].fc_adress + " width = '400px' >" ;			
+		  success: function(responseFcP) {
+			  console.log(responseFcP);
+				var pic_address = "<img src ="+ responseFcP[0].fc_adress + " width = '400px' >" ;			
 				var divp = document.getElementById("img_area");
 				divp.innerHTML = pic_address;
-				console.log(pic_address);
 		  },
-		  error: function(xhr2) {
-		    xhr2.abort();
+		  error: function(responseFcPErr) {
+			  responseFcPErr.abort();
 		  }
 	});	
 

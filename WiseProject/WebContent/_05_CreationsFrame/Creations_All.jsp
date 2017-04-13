@@ -67,28 +67,29 @@
 				for(var j =0  ; j <4 ; j++){
 					content += '<div class="row">';
 					for(var i=0; i < 3; i++){
-						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" class="img-link" >';
+						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal">';
 // 						content += '<a href="${context}/_05_CreationsFrame/DisplayArtist?art_id=' + artist[k].art_id +'" >';
 						content += '<a href="#" >';
-						content += '<img src="'+ artist[k].file_name +'" class="img-circle img-link" width="180" height="180" id="' + artist[k].art_id + '">';
 						$.ajax({
-							  url: "\_01_register\\singleartusername.json",
-							  type: "get", //send it through get method
+							  url: "\_01_register\\singleArtMemberInfo.json",
+							  type: "GET", 
 							  async: false,
 							  data: { 
 							    "art_id":k+1, 
 							  },
-							  success: function(response1) {
-								 an = response1;
-								 console.log(response1);
-								 console.log(k);
+							  success: function(responseCreator) {
+								 an = responseCreator;
+								 console.log(an);
 							  },
-							  error: function(xhr2) {
-							    xhr2.abort();
+							  error: function(xhrCreatorErr) {
+			    				 xhrCreatorErr.abort();
+   								 console.log(xhrCreatorErr);
+								 console.log(k);
 							  }
 						});	
 // 						content += '<span>' + an + '</span></a></div>';
-						content += '<p>' + an + '</p>' + '</a></div>';    
+						content += '<img src="'+ an.file_name +'" class="img-circle img-link" width="180" height="180" id="ip_art_id' + artist[k].art_id + '">';
+						content += '<p>' + an.user_name + '</p>' + '</a></div>';    
 						k++;
 						if (k === artist.length) break;
 					}
@@ -100,17 +101,7 @@
 				divs.innerHTML = content;
 			}		
 		};
-		  $(document).on('click', ".img-link" , function(){
-			  var art_id = $(this).attr('id');
-		  		  $.ajax({
-		  			  url:"\_05_CreationsFrame\\DisplayArtist?art_id=" + art_id,
-		  			  context: document.body,
-		  			  success: function(response){
-		  				  $('#mainframe').html(response);
-		  			  }
-		  		  });
-	  	 });
-	})
+})
 
 		
 	</script>

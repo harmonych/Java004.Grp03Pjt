@@ -1,4 +1,4 @@
-package _08_product.controller;
+package _01_register.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,18 +29,19 @@ import _08_product.model.ProductHibernateDAO;
   
  */
 // 
-@WebServlet("/_08_product/allproduct.json")
-public class ProductJsonServlet extends HttpServlet {
+@WebServlet("/_08_product/allProductsByArtist.json")
+public class ArtistToProductsJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json; charset=utf-8");
+		int art_id  = Integer.parseInt(request.getParameter("art_id").trim());
+	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		try {
 			IProductDAO dao = new ProductHibernateDAO();
-			List<ProductBean> list = dao.getAllProductJSON();
+			List<ProductBean> list = dao.getAllFundsByArtId(art_id);
 //			for (FundsBean temp : list) {
 //				System.out.println(temp.getArtid());
 //			}

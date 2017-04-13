@@ -26,7 +26,7 @@ import _01_register.model.IArtistDAO;
 
 */
 @WebServlet("/_01_register/singleartusername.json")
-
+//以art_id來找該id的暱稱
 public class SingleArtistUserNameJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,8 +43,8 @@ public class SingleArtistUserNameJsonServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		try {
 			IArtistDAO dao = new ArtistHibernateDAO();
-			String singleFundsJson = new Gson().toJson(dao.findArtNameByArtId(art_id)); 			
-            out.write(singleFundsJson);
+			String singleUserNameJson = new Gson().toJson(dao.findArtNameByArtId(art_id)); 			
+            out.write(singleUserNameJson);
 		} catch (Exception e) {
 			throw new ServletException("DB error", e);
 		} finally {

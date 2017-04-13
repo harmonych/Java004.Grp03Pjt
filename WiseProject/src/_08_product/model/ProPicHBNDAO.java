@@ -59,6 +59,26 @@ public class ProPicHBNDAO implements IProPicDAO {
 		}
 		return updateCount;
 	}
+	@Override
+	public ProPicBean findByPrimaryKey(int key) {
+		ProPicBean ppb = null;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			ppb = session.get(ProPicBean.class, key);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return ppb;
+	}
 
 	@Override
 	public List<ProPicBean> getpicadressJSON(int pro_id) {

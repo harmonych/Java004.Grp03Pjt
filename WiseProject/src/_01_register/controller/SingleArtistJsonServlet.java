@@ -32,7 +32,7 @@ import _07_funds.model.IFundsDAO;
 
 */
 @WebServlet("/_01_register/singleartist.json")
-
+//以art_id來找特定一創作者
 public class SingleArtistJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -51,8 +51,8 @@ public class SingleArtistJsonServlet extends HttpServlet {
 			IArtistDAO jdbc = new ArtistHibernateDAO();
 			jdbc.setArt_id(art_id);
 			ArtistBean ab = jdbc.findByPrimaryKey(art_id);			
-			String singleFundsJson = new Gson().toJson(ab);			
-            out.write(singleFundsJson);
+			String singleArtistJson = new Gson().toJson(ab);			
+            out.write(singleArtistJson);
 		} catch (Exception e) {
 			throw new ServletException("DB error", e);
 		} finally {

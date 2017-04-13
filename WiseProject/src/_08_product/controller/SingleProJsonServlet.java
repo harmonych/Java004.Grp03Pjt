@@ -2,8 +2,6 @@ package _08_product.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import _07_funds.model.FundsBean;
-import _07_funds.model.FundsHibernateDAO;
-import _07_funds.model.IFundsDAO;
 import _08_product.model.IProductDAO;
 import _08_product.model.ProductBean;
 import _08_product.model.ProductHibernateDAO;
@@ -43,20 +38,15 @@ public class SingleProJsonServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int proid = 1;
-		//fcid = Integer.parseInt(request.getParameter("fcid").trim());
+		int proid  = Integer.parseInt(request.getParameter("pro_id").trim());
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		try {
 			IProductDAO dao = new ProductHibernateDAO();
-			List<ProductBean> list = dao.getAllProductJSON();
 			dao.setPro_Id(proid);
 			ProductBean fb = dao.findByPrimaryKey(proid);
-
-			
 			String singleFundsJson = new Gson().toJson(fb); 
-			
             out.write(singleFundsJson);
 		} catch (Exception e) {
 			throw new ServletException("DB error", e);

@@ -28,4 +28,8 @@ public interface IArtistDAO {
 
 	public String findArtNameByArtId(int art_id);
 
+	public String findArtPortraitByArtId(int art_id);
+
+	public boolean isAuthenticate(int art_id);
+
 }

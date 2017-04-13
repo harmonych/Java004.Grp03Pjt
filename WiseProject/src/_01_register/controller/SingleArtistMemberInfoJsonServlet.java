@@ -1,8 +1,9 @@
-package _07_funds.controller;
+package _01_register.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,12 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import _07_funds.model.FcPicBean;
-import _07_funds.model.FcPicHBNDAO;
-import _07_funds.model.FundsBean;
-import _07_funds.model.FundsHibernateDAO;
-import _07_funds.model.IFcPicDAO;
-import _07_funds.model.IFundsDAO;
+import _01_register.model.ArtistHibernateDAO;
+import _01_register.model.IArtistDAO;
 
 
 /*
@@ -31,29 +28,31 @@ import _07_funds.model.IFundsDAO;
 		PrintWriter out = response.getWriter();
 
 */
-//用fc_id找fc_pic資料表內的該fc_id所有物件
-@WebServlet("/_07_funds/singleFcPic.json")
-
-public class SingleFcPicJsonServlet extends HttpServlet {
+@WebServlet("/_01_register/singleArtMemberInfo.json")
+//以art_id來找該對應MemberBean(暱稱、大頭照位址、email etc.)
+public class SingleArtistMemberInfoJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public SingleFcPicJsonServlet() {
+	public SingleArtistMemberInfoJsonServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int fc_id = Integer.parseInt(request.getParameter("fc_id").trim());
+		int art_id = Integer.parseInt(request.getParameter("art_id").trim());
+		Map<Object, Object> hm = new HashMap<Object, Object>();
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		try {
-			IFcPicDAO jdbc = new FcPicHBNDAO();
-			jdbc.setFc_id(fc_id);
-			List<FcPicBean> fb = jdbc.getpicadressJSON(fc_id);			
-			String singleFundsJson = new Gson().toJson(fb); 			
-            out.write(singleFundsJson);
+			IArtistDAO dao = new ArtistHibernateDAO();
+			hm.put("user_name", dao.findArtNameByArtId(art_id));
+			hm.put("file_name", dao.findArtPortraitByArtId(art_id));
+			if(hm != null){
+				String singleArtistMBJson = new Gson().toJson(hm); 			
+				out.write(singleArtistMBJson);
+			}
 		} catch (Exception e) {
 			throw new ServletException("DB error", e);
 		} finally {

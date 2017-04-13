@@ -1,4 +1,4 @@
-package _07_funds.controller;
+package _08_product.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,12 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import _07_funds.model.FcPicBean;
-import _07_funds.model.FcPicHBNDAO;
-import _07_funds.model.FundsBean;
-import _07_funds.model.FundsHibernateDAO;
-import _07_funds.model.IFcPicDAO;
-import _07_funds.model.IFundsDAO;
+import _08_product.model.IProPicDAO;
+import _08_product.model.ProPicBean;
+import _08_product.model.ProPicHBNDAO;
 
 
 /*
@@ -31,28 +28,28 @@ import _07_funds.model.IFundsDAO;
 		PrintWriter out = response.getWriter();
 
 */
-//用fc_id找fc_pic資料表內的該fc_id所有物件
-@WebServlet("/_07_funds/singleFcPic.json")
+//用pro_id抓對應該pro_id的所有圖片
+@WebServlet("/_08_product/singlepropic.json")
 
-public class SingleFcPicJsonServlet extends HttpServlet {
+public class SingleProPicJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public SingleFcPicJsonServlet() {
+	public SingleProPicJsonServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int fc_id = Integer.parseInt(request.getParameter("fc_id").trim());
+		int pro_id = Integer.parseInt(request.getParameter("pro_id").trim());
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		try {
-			IFcPicDAO jdbc = new FcPicHBNDAO();
-			jdbc.setFc_id(fc_id);
-			List<FcPicBean> fb = jdbc.getpicadressJSON(fc_id);			
-			String singleFundsJson = new Gson().toJson(fb); 			
+			IProPicDAO jdbc = new ProPicHBNDAO();
+			jdbc.setPro_id(pro_id);
+			List<ProPicBean> ppb = jdbc.getpicadressJSON(pro_id);			
+			String singleFundsJson = new Gson().toJson(ppb); 		
             out.write(singleFundsJson);
 		} catch (Exception e) {
 			throw new ServletException("DB error", e);

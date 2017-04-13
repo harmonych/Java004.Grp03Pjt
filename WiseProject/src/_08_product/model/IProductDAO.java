@@ -21,4 +21,6 @@ public interface IProductDAO {
 	List<ProductBean> getAllProductJSON();
 
 	List<ProductBean> getAllProductJSONtag(String search);
+
+	List<ProductBean> getAllFundsByArtId(int art_id);
 }

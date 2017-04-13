@@ -198,11 +198,6 @@
 <!-- 							</table> -->
 <!-- 							</div> -->
                 </section>
-                	
-                <footer class="container-fluid text-center">
-                    
-                    <p> </p>
-                </footer>
 		
 		<script	>
 		$(document).ready(function(){
@@ -219,10 +214,9 @@
 					for(var j =0  ; j <4 ; j++){
 						content += '<div class="container-fluid bg-3 text-center"> <div class="row">';
 						for(var i=0; i < 3; i++){
-							content += '<div class="col-sm-4" id="sp_fc_info">';
-							content += '<div id="fc_img_url' + k + '"></div>';
+							content += '<div class="col-sm-4">';
 							$.ajax({
-									  url: "\_07_funds\\singlefcpic.json",
+									  url: "\_07_funds\\singleFcPic.json",
 									  type: "get", //send it through get method
 									  async: false,
 									  data: { 
@@ -236,7 +230,7 @@
 									    xhr1.abort();
 									  }
 							});	
-							content +=  '<a href="#"><img src="'+ pica +'" class="img-thumbnail img-link" style="width:100%" alt="Image" id = "' + funds[k].fc_id + '"/></a>';
+							content +=  '<a href="#"><img src="'+ pica +'" class="img-thumbnail img-link" style="width:100%" alt="Image" id = "ip_fc_id' + funds[k].fc_id + '"/></a>';
 							$.ajax({
 								  url: "\_07_funds\\singlefcpican.json",
 								  type: "get", //send it through get method
@@ -253,7 +247,8 @@
 								    xhr2.abort();
 								  }
 							});	
-							content += '<div class="info"><div class="owner">by <a href="../_05_CreationsFrame/Creations.jsp" target="_blank">' + fcan + ' </a></div><span class="crowd-total"> </span></div></div>';    
+							content += '<div class="info" ><div class="owner">by <a href="#" class = " img-link " id = "ip_art_id' + funds[k].art_id + '">'; 
+							content += fcan + ' </a></div><span class="crowd-total"> </span></div></div>';    
 							k++;
 							if (k === funds.length) break;
 						}
@@ -267,17 +262,7 @@
 					console.log(content);
 				}		
 			};
-			  $(document).on('click', ".img-link" , function(){
-				  var fc_id = $(this).attr('id');
-				  console.log("this is fc_id" + fc_id);
-		  		  $.ajax({
-		  			  url:"\_11_Fc_info\\DisplayFund?fc_id=" + fc_id,
-		  			  context: document.body,
-		  			  success: function(response){
-		  				  $('#mainframe').html(response);
-		  			  }
-		  		  });
-		  	  });
+
 		})
 	</script>
     <script src="${context}/js/default.js"></script>
