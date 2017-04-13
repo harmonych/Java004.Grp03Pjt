@@ -88,10 +88,10 @@
                                 <ul class="nav nav-pills nav-stacked">
 <!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
 											 <li><a href="#section2">作者資訊</a>
-												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-thumbnail"/>
+<%-- 												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100" /> --%>
 											 <li>
 												<a href="pic_address 簡介圖片位址">
-													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="300px"></a>
+													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="150px"></a>
 												<ul class="MSG-mydata1">
 
 													<li>暱稱：<c:out value ="${mb.user_name}"/><span class="user_name "></span></li>
@@ -120,12 +120,12 @@
 										Twitter	</button>
 										<br><br>
 										<c:choose>
-										  <c:when test="${!empty LoginOK}">
+										  <c:when test="${LoginOK.check_tag=1}">
 <!-- 											<input type="button" value="新增專案" name="新增" style="width:100px;height:30px;"> -->
 <%-- 											<a href="${context}/_12_Product_Create/Product_Create.jsp">新增作品</a> --%>
-											<button><a href="${context}/_12_Product_Create/Product_Create.jsp">新增商品</a></button>	<br>
+											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button>	<br>
 											<br>
-											<button><a href="${context}/_10_Fc_Create/Fc_Create.jsp">新增募資</a></button>								
+											<button><a href="${context}/_10_Fc_Create/Fc_Create NEW.jsp">新增募資</a></button>								
 										 </c:when>
 	              				        </c:choose>
               					 	 

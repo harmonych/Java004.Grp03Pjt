@@ -14,7 +14,36 @@
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
+      <style>
+        .logo img {
+          width: 50px;
+          height: 35px;
+        }
+     
+        .carousel-inner .item img {
+          max-height: 600px;
+        }
+        .navbar-form{
+          	 display: inline-flex;
+        }
 
+        @media screen and (max-width: 766px) {
+			.container .jumbotron, .container-fluid .jumbotron {
+		     padding-top: 60px;
+		    
+			}
+		}
+			
+		div.col-sm-4 {
+			margin-bottom: 20px;
+		}
+		
+		p {
+		    margin: 0 0 10px;
+		    text-align: center;
+		}
+
+      </style>
   </head>
 
 <body>
@@ -465,7 +494,7 @@
 						content += '<p>' + products[k].pro_name + '</p>' + '</a></div>';   
 						
 						k++;
-						if (k === products.length) break;
+						if (k == products.length) break;
 					}//end of inner-for-ajax
 				
 					content += '</div>';
