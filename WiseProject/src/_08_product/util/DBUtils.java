@@ -100,6 +100,31 @@ public class DBUtils {
 		}
 	}
 
+		public static void initProPic(String filename, String encoding){
+		IProPicDAO dao = new ProPicHBNDAO();
+		try (
+			FileInputStream fis = new FileInputStream(filename);
+			InputStreamReader in = new InputStreamReader(fis, encoding);
+			BufferedReader br = new BufferedReader(in);
+		) {
+			
+			String line = "";
+			while ((line = br.readLine()) != null) {
+			  String[] sa = line.split(",");
+			  int pic_id = Integer.parseInt(sa[0].trim());
+			  int pro_id  = Integer.parseInt(sa[1].trim());
+			  String pic_address = sa[2].trim();
+			  ProPicBean ppb = new ProPicBean(pic_id, pro_id, pic_address);
+			  dao.insert(ppb);
+
+			}
+			System.out.println("檔案" + filename + "新增完畢");
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage() + "==>" + filename);
+			ex.printStackTrace();
+		}
+	}
+
 //	public static void displayData(ProductBean pb) {
 //		String saveFolderImg = "D:\\images1221";
 //		File dirImg = new File(saveFolderImg);
