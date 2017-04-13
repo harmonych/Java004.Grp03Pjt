@@ -371,7 +371,7 @@ desired effect
 										</div>
 									</div>
 									
-									<div class="form-group">
+									<div id="ipt1">
 									    <label for="exampleInputFile">上傳圖片</label>
 									    <input type="file" id="exampleInputFile">
 									

@@ -9,34 +9,27 @@
 	color:#000;	
 }
 
-.pro_img{
-	float: right;
-	height:500px;
-	width:450px;
-	border:solid, 1px, black;
-}
-
 #ipt1{
 	margin:10px 10px 10px 10px;
 }
 
-#lb{
-	margin-right:20px;
-}
+/* #lb{ */
+/* 	margin-right:20px; */
+/* } */
 
-.tx1{
-	width:300px;
-	margin-right:20px;
-	border:solid 1px black;
-	background:#ffff96;
-}
+/* .tx1{ */
+/* 	width:300px; */
+/* 	margin-right:20px; */
+/* 	border:solid 1px black; */
+/* 	background:#ffff96; */
+/* } */
 
-.txa1{
-	width:300px;
-	height:200px;
-	border:solid 1px black;
-	background:#ffff96;
-}
+/* .txa1{ */
+/* 	width:300px; */
+/* 	height:200px; */
+/* 	border:solid 1px black; */
+/* 	background:#ffff96; */
+/* } */
 
 #bt_area{
 /* 	width:300px; */
@@ -45,9 +38,9 @@
 	text-align:center;
 }
 
-
 .btn1{
 	font-weight:bold;
+	border:1px solid #AAA;
 	background:#f78e05;
 	color:#fff;
 }	

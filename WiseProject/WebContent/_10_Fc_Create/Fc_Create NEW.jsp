@@ -333,65 +333,66 @@ desired effect
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
+          <!-- 網頁內容部分 -->
 			<div class="row">				
 				
 				<!-- 募資輸入欄 -->
 				<div class="card02 col-md-8 col-md-offset-2">
 					<div class="box box-warning">
 						<div class="box-header with-border">
-				        	<h2 class="box-title"><b>建立商品</b></h2>
+				        	<h2 class="box-title"><b>建立專案</b></h2>
 				        </div>
 						
 						<div class="box-body">	
 							<form  ENCTYPE="multipart/form-data" method="POST" action="<c:url value='../_07_funds/FundCreate.do' />" 
 									id="FundCreate.do" >
 								
-								<div class="ipt1">
+								<div id="ipt1">
 						        	<label>專案名稱</label>
 						        	<input type="text" name="fcname" value="${param.fcname}" class="form-control">
 									<font size="-1" color="#FF0000">${MsgMap.errorfcnameEmpty}${MsgMap.errorfcnameDup}</font>
 					            </div>
 										
-								<div class="ipt1">
+								<div id="ipt1">
 				                 	<label>專案金額</label>
 				                 	<input type="text" name="fcmoneys" value="${param.fcmoneys}" class="form-control">
 									<font color="red" size="-1">${MsgMap.errorfcmoneysEmpty}</font>
 				                </div>
 										
-								<div class="ipt1">
+								<div id="ipt1">
 				                 	<label>開始時間</label>
 				                 	<input type="date" name="starttime" value="${param.starttime}" class="form-control ">
 									<font color="red" size="-1">${MsgMap.errorstarttimeEmpty}</font>
 				                </div>
 				                
-								<div class="ipt1">
+								<div id="ipt1">
 				                 	<label>結束時間</label>
 				                 	<input type="date" name="endtime" value="${param.endtime}" class="form-control ">
 									<font color="red" size="-1">${MsgMap.errorendtimeEmpty}</font>
 				                </div>
 				                				               
-								<div class="ipt1">
+								<div id="ipt1">
 				                 	<label>分類標籤</label>
 				                 	<input type="text" name="hashtag" value="${param.hashtag}" class="form-control">
 									<font color="red" size="-1">${MsgMap.errorhashtagEmpty}</font>
 				                </div>
 				                
-				                <div class="ipt1">
+				                <div id="ipt1">
 					                <label>專案簡介</label>
 					                <textarea name="fcintroduction" class="form-control" rows="5"></textarea><br>
 									<font color="red" size="-1">${MsgMap.errorfcintroduction}</font>					                
 				                </div>
 								
-								<div class="form-group">
+								<div id="ipt1">
 									    <label for="exampleInputFile">上傳圖片</label>
 									    <input type="file" id="exampleInputFile">
 									
 									    <p class="help-block">請選擇上傳圖檔</p>
 								</div>
 															
-								<div id="box-footer">
+								<div class="box-footer">
 									<div id="bt_area">
-										<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="發起專案">
+										<input type="submit" name="submit" class="btn1 btn-lg" value="發起專案">
 									</div>
 <!-- 									<div id="bt">	 -->
 <!-- 										<input type="reset" name="cancel" class="btn2 btn-lg btn-block" value="清除重填"> -->
