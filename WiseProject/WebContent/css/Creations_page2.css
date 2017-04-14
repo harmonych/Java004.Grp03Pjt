@@ -16,8 +16,16 @@
     .sidenav a {
         font-size: 18px;
     }
+    .content{
+    	padding:20px;
+    }
 }
-
+ .box-header .box-title {
+    font-size: 30px;
+}
+.h2 {
+	padding-top:25px;
+	}
 .item h4 {
     font-size: 19px;
     line-height: 1.375em;
@@ -359,10 +367,24 @@
     height: auto;
     padding: 10px;
 }
-.row.content {height:auto;} 
+.row.content {
+	padding-bottom:20px;
+} 
+
+	div.card {
+	 height:170px;
+	 padding:0px;
+	
+	}
+	div .col-xs-3{
+	    width: 50%;
+	}
 }
 
 /* 內容畫面 */
+.img-thumbnail {
+	height: 100%;
+}
 
 .card {
     font-size: 50px;
@@ -370,12 +392,13 @@
     color: #FFA58A;
     text-align: center;
     line-height: 150px;
-    height: 150px;
-    background: #ddc;
+    height:210px;
+    padding:5px;
+/*     background: #ddc; */
     /* rgba(255, 0, 0 , 0.4); */
     background-size: cover;
     background-position: center;
-    border: solid 1px #ccc;
+/*     border: solid 1px #000040; */
     box-sizing: border-box;
     transition: all .3s ease-in-out;
 }

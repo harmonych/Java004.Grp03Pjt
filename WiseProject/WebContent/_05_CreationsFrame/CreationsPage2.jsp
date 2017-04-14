@@ -50,6 +50,9 @@
                     <div class="container-fluid">
                         <div class="row content">
                             <div class="col-md-9 col-xs-9">
+                            <div class="box-header with-border">
+					        	<h2 class="box-title">創作者主頁</h2>
+					       	</div>
                                 <div class="BH-lbox MSG-box5">
                                     <div class="HOME-mainbox1">
                                         <!--內容開始-->
@@ -57,7 +60,7 @@
                                             <h2>作品</h2>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6" id="sp_pro_id" >
                                             <a href="#pro_id">
-                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=90% height=50% title=""></a> </div>
+                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=100% height=80% title=""></a> </div>
 <!--                                             <p> <a href="CreationsPage3.jsp"><h5>作品1</h5></a> -->
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
@@ -65,7 +68,7 @@
                                         </div>
                                         <div class="row" id = "products">                                            
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/17.jpg" class="img-thumbnail" width=60% height=50% title=""> 
+                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/17.jpg" class="img-thumbnail" width=100% height=80% title=""> 
                                             </div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
@@ -84,18 +87,19 @@
                             </div>
                             
                             <div class="col-md-3 col-xs-3">
-                            <h4>創作者 Blog</h4><input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
+                           <h4>創作者 Blog</h4><input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
                                 <ul class="nav nav-pills nav-stacked">
 <!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
 											 <li><a href="#section2">作者資訊</a>
 												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100"/>
 											 <li>
-												<a href="pic_address 簡介圖片位址">
-													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="150px"></a>
+												
 												<ul class="MSG-mydata1">
 
 													<li>暱稱：<c:out value ="${mb.user_name}"/><span class="user_name "></span></li>
 <!-- 														<li>暱稱：<span class="user_name ">會員暱稱</span></li> -->
+													<a href="pic_address 簡介圖片位址">
+													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="150px"></a>
 												</ul>
 											</li>
 											
@@ -105,6 +109,8 @@
 										</li>
                                                                        
 											<li><a href="#section3">${ab.introduction}</a></li>
+                                                                       
+
 										
 										<!--Facebook-->
 										<button type="button" class="btn btn-fb">
@@ -120,7 +126,7 @@
 										Twitter	</button>
 										<br><br>
 										<c:if test="${(LoginOK != null ) && (LoginOK.check_tag = true) && (account == mb.account)}">                       
-<!-- 											<input type="button" value="新增專案" name="新增" style="width:100px;height:30px;"> -->
+<!-- 											<input type="button" value="新增作品" name="新增" style="width:100px;height:30px;"> -->
 											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button><br>
 											<br>
 											<button><a href="${context}/_10_Fc_Create/Fc_Create NEW.jsp">新增募資</a></button>								
@@ -128,26 +134,7 @@
 									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
                                 </ul><br>
                          </div>
-<!--                             <div class="col-md-3 col-xs-3"> -->
-<!--                                 <h4>創作者 Blog</h4> -->
-<!--                                 <ul class="nav nav-pills nav-stacked"> -->
-<!--                                     <li class="active"><a href="Creations.jsp">創作平台</a></li> -->
-<!--                                     <li> -->
-<!--                                         <a href="pic_address 簡介圖片位址"> -->
-<%--                                             <img src="${context}/images/picture.png" class="pic_id 簡介圖片編號"></a> --%>
-<!--                                         <ul class="MSG-mydata1"> -->
-<!-- <!--                                             <li>帳號：<span class="r_user_id ">創作者編號</span></li> --> 
-<!--                                             <li>暱稱：<span class="user_name ">會員名稱</span></li> -->
-<!--                                         </ul> -->
-<!--                                     </li> -->
-<!--                                     </a> -->
-<!--                                     </li> -->
-<!--                                     <li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li> -->
-<!--                                     <li><a href="#section3">相關...</a></li> -->
-<!--                                 </ul><br> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
+
 
   <script src="${context}/js/default.js"></script>                          
   <script>
@@ -185,7 +172,7 @@
 								//套上簡介圖片
 								funds_content += '<a href = "#"><img src = "' + resFcAdrs[0].fc_adress; 
 								//套上img-link跟ip_fc_id
-								funds_content += '" class="img-thumbnail img-link" width=90% height=50% title="" id ="ip_fc_id'+ responsefunds[i].fc_id +'"></a>';
+								funds_content += '" class="img-thumbnail img-link" width=90% height=50%  title="" id ="ip_fc_id'+ responsefunds[i].fc_id +'"></a>';
 							}
 						  })
 						  //end of ajax-fcAdr

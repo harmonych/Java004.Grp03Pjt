@@ -82,7 +82,7 @@
 						</div>
 					</div>	
 					<div id="line"></div>
-					
+				<c:if test="${(LoginOK != null ) && (LoginOK.check_tag = true)}">
 					<div id="sponsor_area">
 						<form id="form1">
 							<div id="sponsor_money">
@@ -109,6 +109,7 @@
 							</div>
 						</form>
 					</div>
+					</c:if>
 				</div>
 			</div>		
 	    </section>

@@ -18,7 +18,7 @@
 	  <div class="row content">
 		<div class="col-sm-8 text-left"> 
 			<div class="box-header with-border">
-	        	<h3 class="box-title">創作者一覽</h3>
+	        	<h2 class="box-title">創作者一覽</h2>
 	       	</div>
 		  <div class="container" id ="main">
 			<div class="row">

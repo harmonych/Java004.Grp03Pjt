@@ -72,9 +72,9 @@
 								</p>
 							</div>
 						</header>
-						
-						<div id="line"></div>
 					
+						<div id="line"></div>
+						<c:if test="${(LoginOK != null ) && (LoginOK.check_tag = true)}">
 						<div id="buy_area">
 							<form id="form1">													
 								<div id="bt_area">
@@ -87,6 +87,7 @@
 								</div>
 							</form>		
 						</div>
+						</c:if>
 					</div>
 				</div>
 

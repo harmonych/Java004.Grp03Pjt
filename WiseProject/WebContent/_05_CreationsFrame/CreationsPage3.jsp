@@ -175,7 +175,8 @@
 												<ul class="MSG-mydata1">
 
 <%-- 													<li>暱稱：<span class="user_name ">會員暱稱${LoginOK.user_name}</span></li> --%>
-														<li>暱稱：<span class="user_name ">會員暱稱</span></li>
+<!-- 														<li>暱稱：<span class="user_name ">會員暱稱</span></li> -->
+														<li>暱稱：<c:out value ="${mb.user_name}"/><span class="user_name "></span></li>
 												</ul>
 											</li>
 											
@@ -184,8 +185,8 @@
 												</div>										
 										</li>
                                                                        
-											<li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li>
-										
+<%-- 											<li><a href="#section3">創作者相關資訊${IsArtist.introduction}</a></li> --%>
+										<li><a href="#section3">創作者相關資訊${ab.introduction}</a></li>
 										<!--Facebook-->
 										<button type="button" class="btn btn-fb">
 										<i class="fa fa-facebook left"></i> 

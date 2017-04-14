@@ -16,7 +16,14 @@
     .sidenav a {
         font-size: 18px;
     }
+   
 }
+
+
+ .box-header .box-title {
+    font-size: 30px;
+}
+
 
 .item h4 {
     font-size: 19px;
@@ -430,10 +437,10 @@ footer {
     text-align:center; 
 	line-height:22px;
     height: 220px;
-
+/*   background-color: #f8d3a1; */
     background-size: cover;
     background-position: center;
-    border: solid 1px #eee;
+    border: solid 1px #ffe;
     box-sizing: border-box;
     transition: all .3s ease-in-out;
 }
