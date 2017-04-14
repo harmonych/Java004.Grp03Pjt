@@ -99,7 +99,6 @@ public class MemberBean implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="user_id")
 	public int getUser_id() {
 	return user_id;
 	}

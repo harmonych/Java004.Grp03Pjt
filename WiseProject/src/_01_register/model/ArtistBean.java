@@ -2,15 +2,19 @@ package _01_register.model;
 
 import java.io.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -21,6 +25,7 @@ import com.google.gson.annotations.Expose;
 public class ArtistBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 @Expose	private int art_id;
+@Expose	private int user_id;
 @Expose	private String user_name;
 @Expose	private String introduction;
 @Expose	private String bank_account;
@@ -98,14 +103,24 @@ public class ArtistBean implements Serializable {
 //	}
 
 	public ArtistBean() {
-	}	
-	
-	
+	}		
 
 	@Id
+	@Column(unique = true, nullable = false)
 	@GeneratedValue(generator = "gen") 	
-	@GenericGenerator(name = "gen", strategy = "increment", 
+	@GenericGenerator(name = "gen", strategy = "foreign", 
 	parameters = { @Parameter(name = "property", value = "memberbean") })
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+	
+	
+	@Column(unique = true, nullable = false, columnDefinition="serial")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getArt_id() {
 		return art_id;
 	}
@@ -114,8 +129,8 @@ public class ArtistBean implements Serializable {
 		this.art_id = art_id;
 	}
 	
-	@OneToOne
-	@PrimaryKeyJoinColumn 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn( name ="user_id")
 	public MemberBean getMemberbean() {
 		return memberbean;
 	}
