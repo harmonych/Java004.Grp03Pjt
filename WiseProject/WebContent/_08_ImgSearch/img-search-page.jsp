@@ -70,7 +70,7 @@
         <script src="${context}\asset\js\bootstrap.min.js"></script>
         <script src="${context}\js\isotope.pkgd.min.js"></script>
         <script src="${context}\js\img-search.js?ver=1"></script>
-
+	 	<script src="${context}\js\default.js"></script>
 </body>
 
 </html>

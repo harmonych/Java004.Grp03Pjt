@@ -3,7 +3,8 @@ var allfund = null;
 var allpro = null;
 var Jdata2 = null;
 var val=null;
-
+var fcaddress=null;
+var proaddress=null;
 	$(document).ready(function() {
 		 	    
 		 	   $.ajax({
@@ -13,14 +14,30 @@ var val=null;
 		 		 	}).done(function(response){
 		 		 		console.log(response);
 		 		 		allfund = response;
-		 		 
-		 		 	for (var n = 0; n <= allfund.length-1; n++) {
-		 		 	var $items = getAllFund(allfund[n].fc_id, "fundraising",allfund[n].fc_name);
+		 		 	
+		 		 	for (var n = 0; n <=allfund.length-1; n++) {
+		 		 		$.ajax({
+				 		    url: "\_07_funds\\singleFcPic.json",
+				 		    type: "GET",
+				 		    dataType: "json",
+				 		    async: false,
+				 		    data:{
+				 		    	'fc_id':allfund[n].fc_id
+				 		    }
+				 		 	}).done(function(fcad){
+				 		 		
+				 		 		fcaddress=fcad[0].fc_adress;
+				 		 		
+				 		});
+		 		 		
+		 		 	var $items = getAllFund(allfund[n].fc_id,fcaddress, "fundraising",allfund[n].fc_name);
 		 		 	   // append elements to container
 		 		 	   $grid.append($items).isotope('layout')
 		 		 	     // add and lay out newly appended elements
 		 		 	     .isotope('appended', $items);
+		 		 	
 		 		 	}
+		 		 	
 		 		 	});
 		 	   
 		 	   
@@ -33,7 +50,22 @@ var val=null;
 		 		 		allpro = response1;
 		 		 
 		 		 	for (var n = 0; n <= allpro.length-1; n++) {
-		 		 	var $items2 = getAllPro(allpro[n].pro_id, "product",allpro[n].pro_name);
+		 		 		$.ajax({
+				 		    url: "\_08_product\\singlepropic.json",
+				 		    type: "GET",
+				 		    dataType: "json",
+				 		    async: false,
+				 		    data:{
+				 		    	'pro_id':allpro[n].pro_id
+				 		    }
+				 		 	}).done(function(proad){
+				 		 		
+				 		 		proaddress=proad[0].pro_adress;
+				 		 		
+				 		});
+		 		 		
+		 		 		 		 		
+		 		 		var $items2 = getAllPro(allpro[n].pro_id,proaddress, "product",allpro[n].pro_name);
 		 		 	   // append elements to container
 		 		 	   $grid.append($items2).isotope('layout')
 		 		 	     // add and lay out newly appended elements
@@ -49,7 +81,7 @@ var val=null;
 		 		 		Jdata2 = response2;
 		 		 
 		 		 	for (var n = 0; n <= Jdata2.length-1; n++) {
-		 		 	var $items3 = getItemElement2(Jdata2[n].art_id, "creatter",Jdata2[n].art_name);
+		 		 	var $items3 = getItemElement2(Jdata2[n].art_id,Jdata2[n].memberbean.file_name, "creatter",Jdata2[n].memberbean.user_name);
 		 		 	   // append elements to container
 		 		 	   $grid.append($items3).isotope('layout')
 		 		 	     // add and lay out newly appended elements
@@ -70,8 +102,9 @@ var val=null;
 			storage['search'] = "";
 			storage.setItem('search',val);
 		}
-		console.log(storage);
+		
 		$("#searchbox").empty();
+		
 		$.ajax({
 			    url: "\_10_search\\search.json",
 			    type: "GET",
@@ -84,17 +117,31 @@ var val=null;
 			 		
 			 	if(allfund.length != 0){
 			 	for (var n = 0; n <= allfund.length-1; n++) {
-			 		
-			 	var $items = getAllFund(allfund[n].fc_id, "fundraising",allfund[n].fc_name);
-			 	   // append elements to container
-			 	   $grid.append($items).isotope('layout')
-			 	     // add and lay out newly appended elements
-			 	     .isotope('appended', $items);
+			 		$.ajax({
+			 		    url: "\_07_funds\\singleFcPic.json",
+			 		    type: "GET",
+			 		    dataType: "json",
+			 		    async: false,
+			 		    data:{
+			 		    	'fc_id':allfund[n].fc_id
+			 		    }
+			 		 	}).done(function(fcad){
+			 		 		
+			 		 		fcaddress=fcad[0].fc_adress;
+			 		 		
+			 		});
+	 		 		
+	 		 	var $items = getAllFund(allfund[n].fc_id,fcaddress, "fundraising",allfund[n].fc_name);
+	 		 	   // append elements to container
+	 		 	   $grid.append($items).isotope('layout')
+	 		 	     // add and lay out newly appended elements
+	 		 	     .isotope('appended', $items);
+	 		 	
+	 		 	
 			 	}
 			 	}
 			 	});
-		   
-		   
+		 
 	   $.ajax({
 			    url: "\_10_search\\searchp.json",
 			    type: "GET",
@@ -107,12 +154,29 @@ var val=null;
 			 		allpro = response1;
 			 	if(allpro.length != 0){
 			 	for (var n = 0; n <= allpro.length-1; n++) {
-			 	var $items2 = getAllPro(allpro[n].pro_id, "product",allpro[n].pro_name);
-			 	   // append elements to container
-			 	   $grid.append($items2).isotope('layout')
-			 	     // add and lay out newly appended elements
-			 	     .isotope('appended', $items2);
-			 	}
+			 		$.ajax({
+			 		    url: "\_08_product\\singlepropic.json",
+			 		    type: "GET",
+			 		    dataType: "json",
+			 		    async: false,
+			 		    data:{
+			 		    	'pro_id':allpro[n].pro_id
+			 		    }
+			 		 	}).done(function(proad){
+			 		 		
+			 		 		proaddress=proad[0].pro_adress;
+			 		 		
+			 		});
+	 		 		
+	 		 		 		 		
+	 		 		var $items2 = getAllPro(allpro[n].pro_id,proaddress, "product",allpro[n].pro_name);
+	 		 	   // append elements to container
+	 		 	   $grid.append($items2).isotope('layout')
+	 		 	     // add and lay out newly appended elements
+	 		 	     .isotope('appended', $items2);
+	 		 	}
+			 		
+			 		
 			 	}
 			 	}); 
 	   $.ajax({
@@ -125,19 +189,20 @@ var val=null;
 	   			}).done(function(response2){
 			 		console.log(response2);
 			 		Jdata2 = response2;
+			 		
 			 	if(Jdata2.length != 0){
-			 	for (var n = 0; n <= Jdata2.length-1; n++) {
-			 	var $items3 = getItemElement2(Jdata2[n].art_id, "creatter",Jdata2[n].art_name);
+			 	for (var n = 0; n < Jdata2.length; n++) {
+			 	var $items3 = getItemElement2(Jdata2[n].art_id,Jdata2[n].memberbean.file_name, "creatter",Jdata2[n].memberbean.user_name);
 			 	   // append elements to container
 			 	   $grid.append($items3).isotope('layout')
 			 	     // add and lay out newly appended elements
 			 	     .isotope('appended', $items3);
 			 	}
 			 	}
-			 	console.log(allfund.length)
-		console.log(allpro.length)
-		console.log(Jdata2.length)
-	   if(allfund.length==0||allpro.length==0||Jdata2.length==0){
+		console.log(allfund)
+		console.log(allpro)
+		console.log(Jdata2)
+	   if(allfund.length==0&&allpro.length==0&&Jdata2.length==0){
 			$("#searchfont").append("<h2>找不到符合搜尋字詞的文件。<h2>");
 		}  
 			 	});
@@ -185,11 +250,27 @@ var val=null;
 		 		allfund = response;
 		 
 		 	for (var n = 0; n <= allfund.length-1; n++) {
-		 	var $items = getAllFund(allfund[n].fc_id, "fundraising",allfund[n].fc_name);
-		 	   // append elements to container
-		 	   $grid.append($items).isotope('layout')
-		 	     // add and lay out newly appended elements
-		 	     .isotope('appended', $items);
+		 		$.ajax({
+		 		    url: "\_07_funds\\singleFcPic.json",
+		 		    type: "GET",
+		 		    dataType: "json",
+		 		    async: false,
+		 		    data:{
+		 		    	'fc_id':allfund[n].fc_id
+		 		    }
+		 		 	}).done(function(fcad){
+		 		 		
+		 		 		fcaddress=fcad[0].fc_adress;
+		 		 		
+		 		});
+ 		 		
+ 		 	var $items = getAllFund(allfund[n].fc_id,fcaddress, "fundraising",allfund[n].fc_name);
+ 		 	   // append elements to container
+ 		 	   $grid.append($items).isotope('layout')
+ 		 	     // add and lay out newly appended elements
+ 		 	     .isotope('appended', $items);
+ 		 	
+ 		 	
 		 	}
 		 	});
 	   
@@ -203,12 +284,27 @@ var val=null;
 		 		allpro = response1;
 		 
 		 	for (var n = 0; n <= allpro.length-1; n++) {
-		 	var $items2 = getAllPro(allpro[n].pro_id, "product",allpro[n].pro_name);
-		 	   // append elements to container
-		 	   $grid.append($items2).isotope('layout')
-		 	     // add and lay out newly appended elements
-		 	     .isotope('appended', $items2);
-		 	}
+		 		$.ajax({
+		 		    url: "\_08_product\\singlepropic.json",
+		 		    type: "GET",
+		 		    dataType: "json",
+		 		    async: false,
+		 		    data:{
+		 		    	'pro_id':allpro[n].pro_id
+		 		    }
+		 		 	}).done(function(proad){
+		 		 		
+		 		 		proaddress=proad[0].pro_adress;
+		 		 		
+		 		});
+ 		 		
+ 		 		 		 		
+ 		 		var $items2 = getAllPro(allpro[n].pro_id,proaddress, "product",allpro[n].pro_name);
+ 		 	   // append elements to container
+ 		 	   $grid.append($items2).isotope('layout')
+ 		 	     // add and lay out newly appended elements
+ 		 	     .isotope('appended', $items2);
+ 		 	}
 		 	}); 
 	   $.ajax({
 		    url: "\_01_register\\allartist.json",
@@ -219,7 +315,7 @@ var val=null;
 		 		Jdata2 = response2;
 		 
 		 	for (var n = 0; n <= Jdata2.length-1; n++) {
-		 	var $items3 = getItemElement2(Jdata2[n].art_id, "creatter",Jdata2[n].art_name);
+		 	var $items3 = getItemElement2(Jdata2[n].art_id,Jdata2[n].memberbean.file_name, "creatter",Jdata2[n].memberbean.user_name);
 		 	   // append elements to container
 		 	   $grid.append($items3).isotope('layout')
 		 	     // add and lay out newly appended elements
@@ -229,12 +325,12 @@ var val=null;
 	 });
 //---------set item then push to grid 
 // make <div class="element-item element-item--width# element-item--height#" />
-function getAllFund(n,category,id) {
+function getAllFund(id,address,category,name) {
   var $item = $('<div class="element-item"></div>');
   //  data-category="alkali"
   $item.addClass(category);
   $item.attr("data-category","fundraising");
-  $item.append('<img src="http://saudade.myasustor.com/JPjt/fc_pic_address/' + n + '.jpg" alt="..."><h3 class="name"></h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
+  $item.append('<img src="' + address + '" class="img-link" id="ip_fc_id'+id+'" alt="..."><h3 class="name">'+name+'</h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
   // add width and height class
   // var wRand = Math.random();
   // var hRand = Math.random();
@@ -243,12 +339,12 @@ function getAllFund(n,category,id) {
   // $item.addClass( widthClass ).addClass( heightClass );
   return $item;
 }
-function getAllPro(n,category,id) {
+function getAllPro(id,address,category,name) {
 	  var $item2 = $('<div class="element-item"></div>');
 	  //  data-category="alkali"
 	  $item2.addClass(category);
 	  $item2.attr("data-category",category);
-	  $item2.append('<img src="http://saudade.myasustor.com/JPjt/pro_pic_address/' + n + '.jpg" alt="..."><h3 class="name"></h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
+	  $item2.append('<img src="' + address + '" class="img-link" id="ip_fc_id'+id+'" alt="..."><h3 class="name">'+name+'</h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
 	  // add width and height class
 	  // var wRand = Math.random();
 	  // var hRand = Math.random();
@@ -257,12 +353,12 @@ function getAllPro(n,category,id) {
 	  // $item.addClass( widthClass ).addClass( heightClass );
 	  return $item2;
 	}
-function getItemElement2(n,category,id) {
+function getItemElement2(id,file,category,name) {
 	  var $item3 = $('<div class="element-item"></div>');
 	  //  data-category="alkali"
 	  $item3.addClass(category);
 	  $item3.attr("data-category",category);
-	  $item3.append('<img src="http://saudade.myasustor.com/JPjt/intro_pic/' + n + '.jpg" alt="..."><h3 class="name"></h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
+	  $item3.append('<img src="'+file+'" class="img-link" id="ip_ar_id'+id+'" alt="..."><h3 class="name">'+name+'</h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
 	  // add width and height class
 	  // var wRand = Math.random();
 	  // var hRand = Math.random();
