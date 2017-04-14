@@ -115,7 +115,8 @@ public class ModifyUserInfo extends HttpServlet {
 					
 					if (fldName.equals("user_id")) {
 						userId = Integer.parseInt(value);
-					}else if (fldName.equals("account")) {
+					}else 
+					if (fldName.equals("account")) {
 						account = value;
 					}else if (fldName.equals("old_password")) {
 						old_password = value;
@@ -138,7 +139,15 @@ public class ModifyUserInfo extends HttpServlet {
 					} else if (fldName.equals("authenticate")) {
 						authenticate = Boolean.parseBoolean(value);
 					}else if (fldName.equals("art_id")) {
-						artId = Integer.parseInt(value);
+						if (value == null || value.length() == 0) {
+						    value = "0";
+						}
+						try {
+							artId = Integer.parseInt(value);
+						}catch (NumberFormatException e) {
+						    e.printStackTrace();
+							artId = 0;
+						}						
 					}else if (fldName.equalsIgnoreCase("Introduction")) {
 						Introduction = value;
 					} else if (fldName.equalsIgnoreCase("bank_account")) {
@@ -252,8 +261,7 @@ public class ModifyUserInfo extends HttpServlet {
 			// 儲存會員的資料
     
 //          String gender = ID.charAt(1);        利用ID判定男女
-			MemberBean mem = new MemberBean(userId, account, password, user_name, phonenum, email, gender, birthday, check_tag,
-					authenticate);
+			MemberBean mem = new MemberBean(userId ,account, password, user_name, phonenum, email, gender, birthday, check_tag, authenticate);
 			int n = 0;
 			if (is != null) {
 				String dirPortrait = getServletContext().getInitParameter("upload.location.portrait");
@@ -269,7 +277,19 @@ public class ModifyUserInfo extends HttpServlet {
 			// 如果修改一般會員資料，僅將MemberBean mem寫入Database
 			if (!check_tag) {
 				n = mb.update(mem);
-			}else{
+			}else if ( !old_mb.isCheck_tag() && mem.isCheck_tag()){
+				System.out.println(old_mb.isCheck_tag() + "想成為創作者" + mem.isCheck_tag() );				
+				ArtistBean art = new ArtistBean(user_name, Introduction, bank_account, ID, art_name, art_address,
+						hashtag);
+				if (ipis != null) {
+					String dirIntro = getServletContext().getInitParameter("upload.location.intro"); 
+					DBUtils.isToFiles(ipis, intro_pic_name, dirIntro);
+					art.setFile_name( "http://saudade.myasustor.com/JPjt/intro_pic/" + intro_pic_name);
+				}
+				// 如果修改創作者會員資料，會將MemberBean mem及ArtistBean art寫入Database
+				n = ab.update(mem, art);		
+			}else {
+				System.out.println(old_mb.isCheck_tag() + "想成為創作者" + mem.isCheck_tag() );				
 				ArtistBean art = new ArtistBean(artId, user_name, Introduction, bank_account, ID, art_name, art_address,
 						hashtag);
 				if (ipis != null) {
@@ -279,7 +299,6 @@ public class ModifyUserInfo extends HttpServlet {
 				}
 				// 如果修改創作者會員資料，會將MemberBean mem及ArtistBean art寫入Database
 				n = ab.update(mem, art);
-				
 			}
 			
 			

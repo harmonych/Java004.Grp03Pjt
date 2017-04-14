@@ -58,6 +58,18 @@ public class ArtistBean implements Serializable {
 		this.art_address = art_address;
 		this.hashtag = hashtag;
 	}
+	//修改會員資料使用
+	public ArtistBean(String user_name, String introduction, String bank_account, String ID, String art_name,
+			String art_address, String hashtag) {
+		super();
+		this.user_name = user_name;
+		this.introduction = introduction;
+		this.bank_account = bank_account;
+		this.ID = ID;
+		this.art_name = art_name;
+		this.art_address = art_address;
+		this.hashtag = hashtag;
+	}
 	public ArtistBean(String user_name, String introduction, String bank_account, String ID, String art_name,
 			String art_address, String hashtag, String file_name) {
 		super();
@@ -92,7 +104,7 @@ public class ArtistBean implements Serializable {
 
 	@Id
 	@GeneratedValue(generator = "gen") 	
-	@GenericGenerator(name = "gen", strategy = "identity", 
+	@GenericGenerator(name = "gen", strategy = "increment", 
 	parameters = { @Parameter(name = "property", value = "memberbean") })
 	public int getArt_id() {
 		return art_id;

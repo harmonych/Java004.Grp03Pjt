@@ -62,24 +62,6 @@ public class MemberBean implements Serializable {
 		this.check_tag = check_tag;
 		this.authenticate = authenticate;
 	}
-//	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
-//			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag, boolean authenticate) {
-//		super();
-//		this.user_id = user_id;
-//		this.account = account;
-//		this.password = password;
-//		this.user_name = user_name;
-//		this.phonenum = phonenum;
-//		this.email = email;
-//		this.gender = gender;
-//		this.birthday = birthday;
-//		this.file_name = file_name;
-//		this.portrait = portrait;
-//		this.check_tag = check_tag;
-//		this.authenticate = authenticate;
-//	}
-
-	//為了RegisterServletMP.java而做的建構子
 	public MemberBean(String account, String password, String user_name, String phonenum, String email, String gender,
 			String birthday, boolean check_tag, String file_name, boolean authenticate) {
 		super();
@@ -97,9 +79,26 @@ public class MemberBean implements Serializable {
 
 	public MemberBean() {
 	}	
+//	public MemberBean(int user_id, String account, String password, String user_name, String phonenum, String email,
+//			String gender, String birthday, String file_name, byte[] portrait, boolean check_tag, boolean authenticate) {
+//		super();
+//		this.user_id = user_id;
+//		this.account = account;
+//		this.password = password;
+//		this.user_name = user_name;
+//		this.phonenum = phonenum;
+//		this.email = email;
+//		this.gender = gender;
+//		this.birthday = birthday;
+//		this.file_name = file_name;
+//		this.portrait = portrait;
+//		this.check_tag = check_tag;
+//		this.authenticate = authenticate;
+//	}
+	//為了RegisterServletMP.java而做的建構子
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="user_id")
 	public int getUser_id() {
 	return user_id;

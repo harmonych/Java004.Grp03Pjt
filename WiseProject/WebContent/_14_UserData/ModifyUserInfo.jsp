@@ -339,7 +339,7 @@ span.input-group-addon i {
 									<BR>
 								</c:when>
 								<c:when test="${LoginOK.check_tag==false}">
-									<input type="checkbox" name="registerArtist" value="false">
+									<input type="checkbox" name="registerArtist" value="true">
 									<BR>
 
 								</c:when>
