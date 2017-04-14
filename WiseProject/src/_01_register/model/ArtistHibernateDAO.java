@@ -12,18 +12,28 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import _01_register.util.HibernateUtil;
-import _07_funds.model.FundsBean;
 
 public class ArtistHibernateDAO implements IArtistDAO {
 	DataSource ds;
+	int user_id;
 	int art_id;
-//	private List<MemberBean> memberList = getAllMember();
+	@Override
 	public int getArt_id() {
 		return art_id;
 	}
-
+	@Override
 	public void setArt_id(int art_id) {
 		this.art_id = art_id;
+	}
+
+	@Override
+	public int getUser_id() {
+		return user_id;
+	}
+
+	@Override
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;		
 	}
 	@Override
 	public int insert(MemberBean mb, ArtistBean ab) {
@@ -172,15 +182,19 @@ public class ArtistHibernateDAO implements IArtistDAO {
 	}
 
 	@Override
-	public ArtistBean findByPrimaryKey(int key) {
+	public ArtistBean findByArtId(int art_id) {
 		ArtistBean ab = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
+		String hql = " from ArtistBean where art_id = " + art_id + " )";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			ab=session.get(ArtistBean.class, key);
+			TypedQuery<ArtistBean> query = session.createQuery(hql);
+			List<ArtistBean> list = query.getResultList();
+			Hibernate.initialize(list);
 			tx.commit();
+			ab = list.get(0);
 		}catch(Exception e){
 			e.printStackTrace();
 			if(tx!=null){
@@ -214,12 +228,13 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		}
 		return list;
 	}
+	
 	@Override
 	public List<ArtistBean> getAllArtisttag(String search) {
 		List<ArtistBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-		String hql = " from ArtistBean where (art_name like  \'%"+search+"%\' or hashtag like  \'%"+search+"%\')";
+		String hql = " FROM ArtistBean a JOIN MemberBean b WHERE (b.user_name like  \'%"+search+"%\' or a.hashtag like  \'%"+search+"%\' on a.user_id = b.user_id)";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
@@ -245,16 +260,18 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		String user_name = "";
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
+		String hql = " from ArtistBean where art_id = " + art_id + " )";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			ab = session.get(ArtistBean.class, art_id);
+			TypedQuery<ArtistBean> query = session.createQuery(hql);
+			List<ArtistBean> list = query.getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+			ab = list.get(0);
 			if(ab!=null){
 				user_name = ab.getMemberbean().getUser_name();
 				System.out.println(user_name);
-				tx.commit();
-			}else{
-				tx.rollback();
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -272,16 +289,18 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		String file_name = "";
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
+		String hql = " from ArtistBean where art_id = " + art_id + " )";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			ab = session.get(ArtistBean.class, art_id);
+			TypedQuery<ArtistBean> query = session.createQuery(hql);
+			List<ArtistBean> list = query.getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+			ab = list.get(0);
 			if(ab!=null){
 				file_name = ab.getMemberbean().getFile_name();
 				System.out.println(file_name);
-				tx.commit();
-			}else{
-				tx.rollback();
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -294,36 +313,7 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		return file_name;
 	}
 
-	@Override
-	public boolean isAuthenticate(int art_id) {
-		ArtistBean ab = null;
-		boolean authd = false;
-		SessionFactory factory = HibernateUtil.getSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = null;
-		try{
-			tx = session.beginTransaction();
-			ab = session.get(ArtistBean.class, art_id);
-			if(ab!=null){
-				authd = ab.getMemberbean().isAuthenticate();
-				tx.commit();
-			}else{
-				tx.rollback();
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-			if(tx!=null){
-				tx.rollback();
-			}
-		}finally{
-			session.close();
-		}
-		return authd;
-	}
-	
 
 
-
-	
 	
 }

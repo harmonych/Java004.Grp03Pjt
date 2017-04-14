@@ -23,7 +23,7 @@ public class DisplaySingleArtistPage extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		IArtistDAO adao = new ArtistHibernateDAO();
-		ArtistBean ab = adao.findByPrimaryKey(Integer.parseInt(req.getParameter("art_id")));
+		ArtistBean ab = adao.findByArtId(Integer.parseInt(req.getParameter("art_id")));
 		MemberBean mb =  ab.getMemberbean();
 //		System.out.println(Integer.parseInt(req.getPathInfo().substring(1)));
 		req.setAttribute("ab", ab);

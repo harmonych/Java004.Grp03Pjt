@@ -35,6 +35,7 @@ public class ArtistBean implements Serializable {
 @Expose	private String hashtag;
 //	private byte[] intro_pic;
 @Expose	private String file_name;
+	private String portrait;
 	private MemberBean memberbean;
 	
 	//含所有屬性的建構子
@@ -193,14 +194,6 @@ public class ArtistBean implements Serializable {
 	public void setHashtag(String hashtag) {
 		this.hashtag = hashtag;
 	}
-//	@Column(name = "intro_pic", columnDefinition="MediumBlob", nullable = false)
-//	public byte[] getIntro_pic() {
-//		return intro_pic;
-//	}
-//
-//	public void setIntro_pic(byte[] intro_pic) {
-//		this.intro_pic = intro_pic;
-//	}
 
 	public String getFile_name() {
 		return file_name;
@@ -208,6 +201,13 @@ public class ArtistBean implements Serializable {
 
 	public void setFile_name(String file_name) {
 		this.file_name = file_name;
+	}
+	@Transient
+	public String getPortrait() {
+		return portrait;
+	}
+	public void setPortrait(String portrait) {
+		this.portrait = portrait;
 	}
 
 }

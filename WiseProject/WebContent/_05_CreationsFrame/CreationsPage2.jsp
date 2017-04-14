@@ -125,11 +125,13 @@
 										<i class="fa fa-twitter left"></i> 
 										Twitter	</button>
 										<br><br>
-										<c:if test="${(LoginOK != null ) && (LoginOK.check_tag = true) && (account == mb.account)}">                       
+										<c:if test="${LoginOK != null}">     
+										 <c:if test ="${account == mb.account}">                      
 <!-- 											<input type="button" value="新增作品" name="新增" style="width:100px;height:30px;"> -->
 											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button><br>
 											<br>
 											<button><a href="${context}/_10_Fc_Create/Fc_Create NEW.jsp">新增募資</a></button>								
+										 </c:if>
 										</c:if>	
 									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
                                 </ul><br>
@@ -177,6 +179,7 @@
 						  })
 						  //end of ajax-fcAdr
 						  funds_content += "</div>"
+						  if (i === funds_len) break; 
 					  }
 					  //end of for-fBA
 					  var divp = document.getElementById("funds");
@@ -217,6 +220,7 @@
 						  })
 						  //end of ajax-ProAdr
 						  products_content += "</div>"
+						  if (i === prods_len) break; 
 					  }
 					  //end of for-pBA
 					  console.log("這是長度");

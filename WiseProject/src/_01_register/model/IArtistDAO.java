@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface IArtistDAO {
 	
-	public int getArt_id();
+	public int getUser_id();
 	
-	public void setArt_id(int art_id);
+	public void setUser_id(int user_id);
 
 	int insert(ArtistBean ab);
 	
@@ -18,10 +18,10 @@ public interface IArtistDAO {
 
 	int delete(int key);
 
-	ArtistBean findByPrimaryKey(int key);
+	ArtistBean findByArtId(int key);
 
 	List<ArtistBean> getAllArtist();
-	
+		
 	List<ArtistBean> getAllArtisttag(String search);
 
 	int update(MemberBean mb, ArtistBean ab);
@@ -30,6 +30,8 @@ public interface IArtistDAO {
 
 	public String findArtPortraitByArtId(int art_id);
 
-	public boolean isAuthenticate(int art_id);
+	public void setArt_id(int art_id);
+
+	public int getArt_id();
 
 }

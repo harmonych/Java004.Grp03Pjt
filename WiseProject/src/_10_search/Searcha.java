@@ -26,6 +26,8 @@ import _01_register.model.IArtistDAO;
 @WebServlet("/_10_search/searcha.json")
 public class Searcha extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

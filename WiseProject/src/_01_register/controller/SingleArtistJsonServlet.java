@@ -50,7 +50,7 @@ public class SingleArtistJsonServlet extends HttpServlet {
 		try {
 			IArtistDAO jdbc = new ArtistHibernateDAO();
 			jdbc.setArt_id(art_id);
-			ArtistBean ab = jdbc.findByPrimaryKey(art_id);			
+			ArtistBean ab = jdbc.findByArtId(art_id);			
 			String singleArtistJson = new Gson().toJson(ab);			
             out.write(singleArtistJson);
 		} catch (Exception e) {

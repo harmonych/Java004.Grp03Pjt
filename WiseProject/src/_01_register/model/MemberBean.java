@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="user_info")
@@ -28,6 +29,7 @@ public class MemberBean implements Serializable {
 	private String file_name;
 	private boolean authenticate;
 	private ArtistBean artistbean;
+	private int art_id;
 	
 
 
@@ -210,6 +212,14 @@ public class MemberBean implements Serializable {
 
 	public String toString() {
 		return "userid=" + account + "   password="+password;
+	}
+	//有客戶隱私資料，Servlet注意使用MemberBean
+	@Transient
+	public int getArt_id() {
+		return art_id;
+	}
+	public void setArt_id(int art_id) {
+		this.art_id = art_id;
 	}
 
 }

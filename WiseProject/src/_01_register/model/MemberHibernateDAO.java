@@ -187,7 +187,106 @@ public class MemberHibernateDAO implements IMemberDAO {
 		}
 		return list;
 	}
+	@Override
+	public List<MemberBean> getAllArtistPortrait() {
+		List<MemberBean> list = new ArrayList<>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			TypedQuery<MemberBean> query = session.createQuery("SELECT a.file_name FROM MemberBean a JOIN ArtistBean b  ON a.user_id = b.user_id ");
+			list = query.getResultList();
+			// list =session.createQuery("from MemberBean").getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 
+	@Override
+	public List<MemberBean> getAllArtistUserName() {
+		List<MemberBean> list = new ArrayList<>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			TypedQuery<MemberBean> query = session.createQuery("SELECT a.user_name FROM MemberBean a JOIN ArtistBean b  ON a.user_id = b.user_id ");
+			list = query.getResultList();
+			// list =session.createQuery("from MemberBean").getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	@Override
+	public List<MemberBean> getAllArtistArtId() {
+		List<MemberBean> list = new ArrayList<>();
+//		List<MemberBean> list2 = new ArrayList<>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			TypedQuery<MemberBean> query = session.createQuery("SELECT b.art_id FROM MemberBean a JOIN ArtistBean b  ON a.user_id = b.user_id ");
+			list = query.getResultList();
+			// list =session.createQuery("from MemberBean").getResultList();
+			Hibernate.initialize(list);
+//			for ( MemberBean m : list){
+//				m.setArt_id((m.getArtistbean().getArt_id()));
+//				list2.add(m);
+//				System.out.println("===");
+//				System.out.println(m.getArt_id());
+//			}
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	@Override
+	public List<MemberBean> getAllArtistSearch() {
+		List<MemberBean> list = new ArrayList<>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			TypedQuery<MemberBean> query = session.createQuery("SELECT b.art_id, a.file_name, a.user_name, b.hashtag FROM MemberBean a JOIN ArtistBean b  ON a.user_id = b.user_id ");
+			list = query.getResultList();
+			// list =session.createQuery("from MemberBean").getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 	DataSource ds;
 	int user_id;
 

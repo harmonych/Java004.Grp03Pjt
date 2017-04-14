@@ -22,4 +22,12 @@ public interface IMemberDAO {
 	MemberBean findByPrimaryKey(int key);
 
 	List<MemberBean> getAllMember();
+	
+	List<MemberBean> getAllArtistPortrait();
+	
+	List<MemberBean> getAllArtistUserName();
+
+	List<MemberBean> getAllArtistArtId();
+
+	List<MemberBean> getAllArtistSearch();
 }

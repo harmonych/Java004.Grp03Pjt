@@ -60,12 +60,12 @@ var proaddress=null;
 				 		    }
 				 		 	}).done(function(proad){
 				 		 		
-				 		 		proaddress=proad[0].pro_adress;
+				 		 		proaddress=proad[0].pic_adress;
 				 		 		
 				 		});
 		 		 		
 		 		 		 		 		
-		 		 		var $items2 = getAllPro(allpro[n].pro_id,proaddress, "product",allpro[n].pro_name);
+		 		 		var $items2 = getAllPro(allpro[n].pro_id,proaddress, "product", allpro[n].pro_name);
 		 		 	   // append elements to container
 		 		 	   $grid.append($items2).isotope('layout')
 		 		 	     // add and lay out newly appended elements
@@ -73,7 +73,7 @@ var proaddress=null;
 		 		 	}
 		 		 	}); 
 			   $.ajax({
-		 		    url: "\_01_register\\allartist.json",
+		 		    url: "\_08_ImgSearch\\searchAllArtist.json",
 		 		    type: "GET",
 		 		    dataType: "json",		 		    
 		 		 	}).done(function(response2){
@@ -81,7 +81,7 @@ var proaddress=null;
 		 		 		Jdata2 = response2;
 		 		 
 		 		 	for (var n = 0; n <= Jdata2.length-1; n++) {
-		 		 	var $items3 = getItemElement2(Jdata2[n].art_id,Jdata2[n].memberbean.file_name, "creatter",Jdata2[n].memberbean.user_name);
+		 		 	var $items3 = getItemElement2(Jdata2[n][0],Jdata2[n][1], "creatter",Jdata2[n][2]);
 		 		 	   // append elements to container
 		 		 	   $grid.append($items3).isotope('layout')
 		 		 	     // add and lay out newly appended elements
@@ -294,7 +294,7 @@ var proaddress=null;
 		 		    }
 		 		 	}).done(function(proad){
 		 		 		
-		 		 		proaddress=proad[0].pro_adress;
+		 		 		proaddress=proad[0].pic_adress;
 		 		 		
 		 		});
  		 		
@@ -307,7 +307,7 @@ var proaddress=null;
  		 	}
 		 	}); 
 	   $.ajax({
-		    url: "\_01_register\\allartist.json",
+		    url: "\_08_ImgSearch\\searchAllArtist.json",
 		    type: "GET",
 		    dataType: "json",		 		    
 		 	}).done(function(response2){
@@ -315,11 +315,14 @@ var proaddress=null;
 		 		Jdata2 = response2;
 		 
 		 	for (var n = 0; n <= Jdata2.length-1; n++) {
-		 	var $items3 = getItemElement2(Jdata2[n].art_id,Jdata2[n].memberbean.file_name, "creatter",Jdata2[n].memberbean.user_name);
-		 	   // append elements to container
-		 	   $grid.append($items3).isotope('layout')
-		 	     // add and lay out newly appended elements
-		 	     .isotope('appended', $items3);
+//		 	var $items3 = getItemElement2(Jdata2[n].art_id,Jdata2[n].memberbean.file_name, "creatter",Jdata2[n].memberbean.user_name);
+//		 	   // append elements to container
+//		 	   $grid.append($items3).isotope('layout')
+//		 	     // add and lay out newly appended elements
+//		 	     .isotope('appended', $items3);
+		 		var $items3 = getItemElement2(Jdata2[n][0],Jdata2[n][1], "creatter",Jdata2[n][2]);
+			 	$grid.append($items3).isotope('layout')
+			 	.isotope('appended', $items3);
 		 	}
 		 	});
 	 });
@@ -344,7 +347,7 @@ function getAllPro(id,address,category,name) {
 	  //  data-category="alkali"
 	  $item2.addClass(category);
 	  $item2.attr("data-category",category);
-	  $item2.append('<img src="' + address + '" class="img-link" id="ip_fc_id'+id+'" alt="..."><h3 class="name">'+name+'</h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
+	  $item2.append('<img src="' + address + '" class="img-link" id="ip_pro_id'+id+'" alt="..."><h3 class="name">'+name+'</h3><p class="symbol"></p><p class="number"></p><p class="weight"></p></div>');
 	  // add width and height class
 	  // var wRand = Math.random();
 	  // var hRand = Math.random();
