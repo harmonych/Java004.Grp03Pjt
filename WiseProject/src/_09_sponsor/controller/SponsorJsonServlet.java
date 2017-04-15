@@ -29,7 +29,7 @@ import _09_sponsor.model.SponsorHBNDAO;
   
  */
 // 
-@WebServlet("/_09_sponsor/allsponsorbyfc.json")
+@WebServlet("/_09_sponsor/allSponsorByFc.json")
 public class SponsorJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -38,12 +38,11 @@ public class SponsorJsonServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		int fcid = 0;
-		fcid = Integer.parseInt(request.getParameter("fcid").trim());
+		int fc_id = Integer.parseInt(request.getParameter("fc_id").trim());
 		try {
 			ISponsorDAO dao = new SponsorHBNDAO();
-			dao.setFc_id(fcid);
-			List<SponsorBean> list = dao.getAllbyfcJSON(fcid);
+			dao.setFc_id(fc_id);
+			List<SponsorBean> list = dao.getAllByFcId(fc_id);
 //			for (FundsBean temp : list) {
 //				System.out.println(temp.getArtid());
 //			}

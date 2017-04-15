@@ -139,7 +139,7 @@
             			
             		<!-- /.box-header -->
            <c:choose>
-         	<c:when test= "{LoginOK != null}"> 
+         	<c:when test= "${LoginOK != null}"> 
          			<div class="box-body">
               			<div class="form-group">
                 			<input class="form-control" name= "msg_title" placeholder="留言標題">

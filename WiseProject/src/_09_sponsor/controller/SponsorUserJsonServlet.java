@@ -2,8 +2,7 @@ package _09_sponsor.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
-
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +28,7 @@ import _09_sponsor.model.SponsorHBNDAO;
   
  */
 // 
-@WebServlet("/_09_sponsor/sponsorquery.json")
+@WebServlet("/_09_sponsor/allSponsorByUser.json")
 public class SponsorUserJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,13 +36,12 @@ public class SponsorUserJsonServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("application/json; charset=utf-8");
-	    int userid = 0;
-		userid = Integer.parseInt(request.getParameter("userid").trim());
+	    int userid = Integer.parseInt(request.getParameter("userid").trim());
 	    PrintWriter out = response.getWriter();
 		try {
 			ISponsorDAO dao = new SponsorHBNDAO();
 			dao.setUser_id(userid);
-			SponsorBean sb = dao.sponsorquery(userid);
+			List<SponsorBean> sb = dao.getAllByUserId(userid);
 
 			String categoriesJson = new Gson().toJson(sb); 
             out.write(categoriesJson);

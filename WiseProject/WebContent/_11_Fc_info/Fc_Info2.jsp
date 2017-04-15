@@ -94,22 +94,34 @@
 				<c:choose>	
 				<c:when test="${(LoginOK != null )}">
 					<div id="sponsor_area">
-						<form id="form1">
+					<h4 class="control-sidebar-subheading">
+                       	募資計畫：風景畫募資
+                      <span class="pull-right-container">
+                  <span class="label label-danger pull-right">目前進度：<c:out value ="${(fb.now_money)/(fb.fc_money)*100}"/>%</span>
+                      </span>
+                    </h4>
+
+                    <div class="progress progress-xxs">
+                      <div class="progress-bar progress-bar-danger" style="width: <c:out value ="${(fb.now_money)/(fb.fc_money)*100}"/>"></div>
+                    </div>
+						<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_09_sponsor/sponsoringFc.do' />"  id="sponsoringFc" >
+          				  <input id="fc_id" name = "fc_id" value="<c:out value ="${fb.fc_id}"/>" type="hidden"/>
+            			  <input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
+              			  <input id="spon_account" name = "spon_account" value="<c:out value ="${IsArtist.bank_account}"/>" type="hidden"/>			
 							<div id="sponsor_money">
 								<div>
 									<label>贊助金額</label>
 								</div>
 									<div>
-										<select class="form-control">
-											<option value="1">NT $500</option>
-											<option value="2">NT $1,000</option>
-											<option value="3">NT $2,000</option>
-											<option value="4">NT $3,000</option>
-											<option value="5">NT $5,000</option>
-											<option value="6">NT $10,000</option>
-											<option value="7">NT $20,000</option>
-											<option value="8">NT $30,000</option>
-											<option value="8">NT $50,000</option>
+										<select class="form-control" id ="spon_money" name ="spon_money">
+											<option value="100">NT $100</option>
+											<option value="200">NT $200</option>
+											<option value="300">NT $300</option>
+											<option value="500">NT $500</option>
+											<option value="900">NT $900</option>
+											<option value="1000">NT $1,000</option>
+											<option value="3000">NT $3,000</option>
+											<option value="5000">NT $5,000</option>
 										</select>
 									</div>
 							</div>
@@ -159,7 +171,7 @@
             			
             		<!-- /.box-header -->
         <c:choose>
-         <c:when test= "{LoginOK != null}"> 
+         <c:when test= "${(LoginOK != null)}"> 
             		<div class="box-body">
               			<div class="form-group">
                 			<input class="form-control" name= "msg_title" placeholder="留言標題">
@@ -304,6 +316,19 @@
 					  resMsgErr.abort();
 				  }
 			});
+			$.ajax({
+				  url: "\_09_sponsor\\allSponsorByFc.json",
+				  type: "GET", 
+				  data: { 
+				    "fc_id": fc_id, 
+				  },
+				  success: function(resSponOK){
+					  console.log(resSponOK)
+				  },
+				  error: function(resSponErr){
+					  resSponErr.abort();
+				  }
+			})
 			var opts = {
 					url:'\_11_message\\fcMessage.do',
 					success: function(){	
@@ -356,11 +381,45 @@
 						});
 					}
 			}
+			
+			
 			$('#fcMessage').on('submit', function(e){
 			    e.preventDefault();
 				$(this).ajaxSubmit(opts);		
 				return false;
 			})
+			
+			
+			var options={
+				url:'\_09_sponsor\\sponsoringFc.do',
+				success: function(){	
+					$.ajax({
+						  url: "\_09_sponsor\\allSponsorByFc.json",
+						  type: "GET", 
+						  data: { 
+						    "fc_id": fc_id, 
+						  },
+						  success: function(resSponOK){
+							  console.log(resSponOK)
+						  },
+						  error: function(resSponErr){
+							  resSponErr.abort();
+						  }
+					})
+			        alert("贊助成功!");	
+				}
+			}
+			
+			
+			$('#sponsoringFc').on('submit', function(e){
+			    e.preventDefault();
+				$(this).ajaxSubmit(options);		
+				return false;
+			})
+			
+			
+			
+			
 		})
 		
 		

@@ -10,14 +10,40 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import _00_init.HibernateUtil;
-
-
-
+import _01_register.util.HibernateUtil;
 
 
 public class SponsorHBNDAO implements ISponsorDAO {
-
+	int user_id;
+	int spon_id;
+	int fc_id;
+	public int getUser_id(){
+	
+		return user_id;	
+	
+	}
+	public void setUser_id(int userid){
+	 
+		this.user_id=userid;
+		
+	};
+	public int getFc_id() {
+		return fc_id;
+	}
+	public void setFc_id(int fcid) {
+		this.fc_id = fcid;
+	}
+	
+	@Override
+	public int getSpon_id() {
+		return spon_id;
+	}
+	
+	@Override
+	public void setSpon_id(int spon_id) {
+		this.spon_id = spon_id;
+	}
+		
 	@Override
 	public int sponsor(SponsorBean sb) {
 		int updateCount = 0;
@@ -41,14 +67,14 @@ public class SponsorHBNDAO implements ISponsorDAO {
 	}
 
 	@Override
-	public SponsorBean sponsorquery(int userid) {
+	public SponsorBean FindByPrimaryKey(int spon_id) {
 		SponsorBean sb = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			sb=session.get(SponsorBean.class,userid);
+			sb=session.get(SponsorBean.class, spon_id);
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -61,12 +87,12 @@ public class SponsorHBNDAO implements ISponsorDAO {
 		return sb;
 	}
 	@Override
-	public List<SponsorBean> getAllbyfcJSON(int fcid) {
+	public List<SponsorBean> getAllByFcId(int fcid) {
 		List<SponsorBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 				
-		String hql = "from SponsorBean where fcid = "+fcid;
+		String hql = "FROM SponsorBean a JOIN MemberBean b ON a.user_id = b.user_id WHERE fc_id = " + fcid + " ORDER BY spon_time desc";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
@@ -109,22 +135,32 @@ public class SponsorHBNDAO implements ISponsorDAO {
 		return updateCount;
 	}
 	
-	int user_id;
-	public int getUser_id(){
+	@Override
+	public List<SponsorBean> getAllByUserId(int userid) {
+		List<SponsorBean> list =new ArrayList<>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+				
+		String hql = " SELECT b.fc_name, a.* "; 
+		hql +=		 " FROM SponsorBean a JOIN FundsBean b ON a.fc_id = b.fc_id WHERE user_id = " + userid + " ORDER BY spon_time desc";
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			TypedQuery<SponsorBean> query=session.createQuery(hql);
+			list = query.getResultList();
+			//list =session.createQuery("from FundsBean").getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return list;
+	}
 	
-		return user_id;	
-	
-	}
-	public void setUser_id(int userid){
-	 
-		this.user_id=userid;
-		
-	};
-	int fc_id;
-	public int getFc_id() {
-		return fc_id;
-	}
-	public void setFc_id(int fcid) {
-		this.fc_id = fcid;
-	}
+
 }
