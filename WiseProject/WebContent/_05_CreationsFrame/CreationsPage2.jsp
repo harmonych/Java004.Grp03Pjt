@@ -67,9 +67,7 @@
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                         </div>
                                         <div class="row" id = "products">                                            
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/17.jpg" class="img-thumbnail" width=100% height=80% title=""> 
-                                            </div>
+                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
@@ -157,9 +155,9 @@
 				    "art_id":id, 
 				  },
 				  success: function(responsefunds) {
+					  funds_content = '<h2>募資</h2>' ;
+					  funds_len = 0;
 					  funds_len = responsefunds.length;
-					  console.log(funds_len);
-					  console.log("V-V-V上方為長度");
 					  $("#funds").empty();
 					  for(var i=0; i < funds_len ; i++){
 						  funds_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
@@ -178,13 +176,11 @@
 							}
 						  })
 						  //end of ajax-fcAdr
-						  funds_content += "</div>"
-						  if (i === funds_len) break; 
+						  funds_content += "</div>"; 
 					  }
 					  //end of for-fBA
 					  var divp = document.getElementById("funds");
 					  divp.innerHTML = funds_content;
-					  console.log(funds_content);
 				  },
 				  error: function(xhr2) {
 				    xhr2.abort();
@@ -200,6 +196,8 @@
 				    "art_id":id, 
 				  },
 				  success: function(responseProducts) {
+					  products_content = '<h2>商品</h2>';
+					  prods_len = 0;
 					  $("#products").empty();
 					  prods_len = responseProducts.length;
 					  for(var i=0; i < prods_len ; i++){
@@ -219,8 +217,7 @@
 							}
 						  })
 						  //end of ajax-ProAdr
-						  products_content += "</div>"
-						  if (i === prods_len) break; 
+						  products_content += "</div>"; 
 					  }
 					  //end of for-pBA
 					  console.log("這是長度");

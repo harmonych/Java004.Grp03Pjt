@@ -15,12 +15,6 @@ import _11_message.model.promessage.IProMessage;
 import _11_message.model.promessage.ProMessageBean;
 import _11_message.model.promessage.ProMsgHBNDAO;
 
-
-
-
-
-
-
 /*
   1. 呼叫DAO類別(BookJDBC.java)來取得所有的書籍資料，這些書籍資料存放入List<BookBean>物件內
   2. 呼叫Gson的toJson()方法，將List<BookBean>內所有書籍資料全部轉換為JSON格式的陣列

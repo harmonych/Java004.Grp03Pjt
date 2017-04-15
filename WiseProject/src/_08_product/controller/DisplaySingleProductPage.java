@@ -38,7 +38,7 @@ public class DisplaySingleProductPage extends HttpServlet{
 //		FundsBean fb = fdao.findByPrimaryKey(Integer.parseInt(req.getPathInfo().substring(1)));
 //		System.out.println(Integer.parseInt(req.getPathInfo().substring(1)));
 		List<ProPicBean> pblist = ppdao.getPicAddressJSON((pb.getPro_id()));
-		ab = adao.findByPrimaryKey(pb.getArt_id());
+		ab = adao.findByArtId(pb.getArt_id());
 		mb = ab.getMemberbean();
 
 		req.setAttribute("pbl", pblist);

@@ -4,7 +4,11 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="pro_message")
@@ -22,6 +26,31 @@ public class ProMessageBean {
 	
 	
 	
+	public ProMessageBean(String msg_title, int prev_msg_id, int user_id, String sender_name,
+			String receiver_name, int pro_id, String msg_text, int msg_status) {
+		super();
+		this.msg_title = msg_title;
+		this.prev_msg_id = prev_msg_id;
+		this.user_id = user_id;
+		this.sender_name = sender_name;
+		this.receiver_name = receiver_name;
+		this.pro_id = pro_id;
+		this.msg_text = msg_text;
+		this.msg_status = msg_status;
+	}
+
+	public ProMessageBean(String msg_title, int user_id, String sender_name, String receiver_name,
+			int pro_id, String msg_text, int msg_status) {
+		super();
+		this.msg_title = msg_title;
+		this.user_id = user_id;
+		this.sender_name = sender_name;
+		this.receiver_name = receiver_name;
+		this.pro_id = pro_id;
+		this.msg_text = msg_text;
+		this.msg_status = msg_status;
+	}
+
 	public ProMessageBean(String msg_title, int prev_msg_id, int user_id, String sender_name, String receiver_name,
 			Timestamp msg_time, int pro_id, String msg_text, int msg_status) {
 		super();
@@ -36,7 +65,8 @@ public class ProMessageBean {
 		this.msg_status = msg_status;
 	}
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getMsg_id() {
 		return msg_id;
 	}
@@ -49,6 +79,7 @@ public class ProMessageBean {
 	public void setMsg_title(String msg_title) {
 		this.msg_title = msg_title;
 	}
+	@Column(nullable = true)
 	public int getPrev_msg_id() {
 		return prev_msg_id;
 	}
@@ -73,12 +104,14 @@ public class ProMessageBean {
 	public void setReceiver_name(String receiver_name) {
 		this.receiver_name = receiver_name;
 	}
+	@Transient
 	public Timestamp getMsg_time() {
 		return msg_time;
 	}
 	public void setMsg_time(Timestamp msg_time) {
 		this.msg_time = msg_time;
 	}
+	@Column(nullable = false)
 	public int getPro_id() {
 		return pro_id;
 	}

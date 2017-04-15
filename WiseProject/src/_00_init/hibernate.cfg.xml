@@ -41,5 +41,7 @@
 <!-- 	<mapping class="_01_register.model.MemberBean"/> -->
 	<mapping class="_07_funds.model.FundsBean"/>
 <!-- 	<mapping class="_09_sponsor.model.SponsorBean"/> -->
+	<mapping class="_11_message.model.promessage.ProMessageBean"/>
+<!-- 	<mapping class="_11_message.model.fcomessage.FcMessageBean"/> -->
 	</session-factory>
 </hibernate-configuration>

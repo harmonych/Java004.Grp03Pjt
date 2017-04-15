@@ -1,14 +1,8 @@
 package _07_funds.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.persistence.TypedQuery;
 import javax.sql.DataSource;
 
@@ -17,9 +11,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import _00_init.SystemUtil;
-import _01_register.model.ArtistBean;
-import _01_register.model.MemberBean;
+import _01_register.model.ArtistHibernateDAO;
+import _01_register.model.IArtistDAO;
 import _07_funds.util.HibernateUtil;
 
 
@@ -160,18 +153,17 @@ public class FundsHibernateDAO implements IFundsDAO {
 	@Override
 	public String findArtNameByFcId(int fc_id) {
 		FundsBean fb = null;
-		ArtistBean ab = null;
 		String user_name = "";
+		IArtistDAO idao = new ArtistHibernateDAO();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
 			fb=session.get(FundsBean.class, fc_id);
-			ab = session.get(ArtistBean.class, fb.getArt_id());
+			user_name = idao.findArtNameByArtId(fb.getArt_id());			
 //			System.out.println("-------------------------------------------");
 //			System.out.println(ab.getArt_id());
-			user_name = ab.getMemberbean().getUser_name();
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();

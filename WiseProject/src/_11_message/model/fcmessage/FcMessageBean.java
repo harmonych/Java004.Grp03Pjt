@@ -4,10 +4,13 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="pro_message")
+@Table(name="fc_message")
 public class FcMessageBean {
 	private int msg_id;
 	private String msg_title;
@@ -19,6 +22,7 @@ public class FcMessageBean {
 	private int fc_id;
 	private String msg_text;
 	private int msg_status;
+	
 	
 	
 	
@@ -36,7 +40,8 @@ public class FcMessageBean {
 		this.msg_status = msg_status;
 	}
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getMsg_id() {
 		return msg_id;
 	}
@@ -84,11 +89,9 @@ public class FcMessageBean {
 		return fc_id;
 	}
 
-
 	public void setFc_id(int fc_id) {
 		this.fc_id = fc_id;
 	}
-
 
 	@Column(columnDefinition="LongText")
 	public String getMsg_text() {

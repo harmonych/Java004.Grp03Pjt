@@ -304,7 +304,7 @@
  		 <section class="container-fluid" id="about">	
  			<div class="jumbotron">
                     <div class="container text-center">
-                        <h1>商品平台</h1>
+                        <h1>文創商城</h1>
                         <p> </p>
                     </div>
                 </div>

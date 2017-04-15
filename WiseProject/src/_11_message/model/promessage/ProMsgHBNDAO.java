@@ -7,7 +7,17 @@ import org.hibernate.Transaction;
 
 import _00_init.HibernateUtil;
 
+
 public class ProMsgHBNDAO implements IProMessage {
+
+	int pro_id;
+	public void setPro_id(int pro_id) {
+		this.pro_id = pro_id;
+	}
+	public int getPro_id() {
+		return pro_id;
+	}
+	
 
 	@Override
 	public int insertmessage(ProMessageBean mb) {
@@ -78,10 +88,6 @@ public class ProMsgHBNDAO implements IProMessage {
 		}
 		return updateCount;
 	
-	}
-	int pro_id;
-	public void setPro_id(int pro_id) {
-		this.pro_id = pro_id;
 	}
 
 }

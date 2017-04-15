@@ -81,3 +81,20 @@
 	background:#f78e05;
 	border:  1px solid #CCC; 
 }
+
+/*小圖展示區@Harmony*/
+.pic_address {
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 680px;
+	overflow: hidden;
+}
+/* .pic_address img {
+	margin-right: 10px;
+} */
+.pic_address img {
+	width: 80px;
+    height: 80px;
+    vertical-align: middle;
+}
+/*小圖展示結束*/

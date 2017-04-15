@@ -34,7 +34,7 @@ public class DisplaySingleFundPage extends HttpServlet{
 		IArtistDAO adao = new ArtistHibernateDAO();
 		FundsBean fb = fdao.findByPrimaryKey(Integer.parseInt(req.getParameter("fc_id")));
 		List<FcPicBean> fplist = fpdao.getPicAddressJSON(Integer.parseInt(req.getParameter("fc_id")));
-		ArtistBean ab = adao.findByPrimaryKey((fb.getArt_id()));
+		ArtistBean ab = adao.findByArtId((fb.getArt_id()));
 		MemberBean mb = ab.getMemberbean();
 //		FundsBean fb = fdao.findByPrimaryKey(Integer.parseInt(req.getPathInfo().substring(1)));
 //		System.out.println(Integer.parseInt(req.getPathInfo().substring(1)));
