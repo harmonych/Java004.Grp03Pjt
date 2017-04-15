@@ -330,8 +330,8 @@ desired effect
 					<div class="order_body">
 						<div class="box box-warning">
 							<div class="box-header with-border">
-								<h3 class="box-title">
-									<b>T.C.STAR官方旗艦店訂購明細</b>
+								<h3>
+									<b>XXX作者訂購明細</b>
 								</h3>
 							</div>
 
@@ -341,7 +341,7 @@ desired effect
 										<tr>
 											<th class="mailbox-name">商品圖片</th>
 											<th class="mailbox-name">商品名稱</th>
-											<th class="mailbox-name">單價</th>
+											<th class="mailbox-star">單價</th>
 											<th class="mailbox-star">數量</th>
 											<th class="mailbox-star">小記</th>
 											<th class="mailbox-star">刪除商品</th>
@@ -350,120 +350,87 @@ desired effect
 
 									<tbody id="table_text">
 										<tr>
-											<td>
+											<td id="td1">
 												<div id="order_img">
-													<img src="../images/bigPic/bookxb001.jpg" id="pro_img"
-														width="100px" height="100px">
+													<img id="pro_img" src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg"  
+														 width="100px" height="100px">
 												</div>
 											</td>
-											<td class="mailbox-name">
+											<td id="td2" class="mailbox-name">
 												<div id="pro_name">
-													<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+													<a href="../_13_Product_info/Product_info.jsp">同墨一斑</a>
 												</div>
 											</td>
 
-											<td id="red" class="mailbox-star">$599</td>
+											<td id="td2" class="mailbox-star">
+												<font color="red">$150</font>
+											</td>
 
-											<td class="mailbox-star">
-												<select class="form-control">
-									            	<option> 1</option>
-									                <option> 2</option>
-									                <option> 3</option>
-									                <option> 4</option>
-									                <option> 5</option>
-									                <option> 6</option>
-									                <option> 7</option>
-									                <option> 8</option>
-									                <option> 9</option>
-									                <option> 10</option>
+											<td id="td2" class="mailbox-star">
+												<select id="quantity" class="form-control">
+									            	<option value="1"> 1</option>
+									                <option value="2"> 2</option>
+									                <option value="3"> 3</option>
+									                <option value="4"> 4</option>
+									                <option value="5"> 5</option>
+									                <option value="6"> 6</option>
+									                <option value="7"> 7</option>
+									                <option value="8"> 8</option>
+									                <option value="9"> 9</option>
+									                <option value="10"> 10</option>
 									            </select>
 											</td>
 
-											<td id="red" class="mailbox-star">$599</td>
+											<td id="td2" class="mailbox-star">
+												<font color="red">$150</font>
+											</td>
 
-											<td class="mailbox-star">
+											<td id="td2" class="mailbox-star">
 												<div id="delete">
-												<button type="button" class="btn btn-default btn-sm">
-													<i class="fa fa-trash-o"></i>
-												</button>
+													<button type="button" class="btn btn-default btn-sm">
+														<i class="fa fa-trash-o"></i>
+													</button>
 												</div>
 											</td>
 										</tr>
 
 										<tr>
-											<td>
+											<td id="td1">
 												<div id="order_img">
-													<img src="../images/bigPic/bookxb002.jpg" id="pro_img"
-														width="100px" height="100px">
+													<img id="pro_img" src="http://saudade.myasustor.com/JPjt/pro_pic_address/2.jpg"  
+														 width="100px" height="100px">
 												</div>
 											</td>
-											<td class="mailbox-name">
+											<td id="td2" class="mailbox-name">
 												<div id="pro_name">
-													<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+													<a href="../_13_Product_info/Product_info.jsp">需求與供給</a>
 												</div>
 											</td>
 
-											<td id="red" class="mailbox-star">$599</td>
+											<td id="td2" class="mailbox-star">
+												<font color="red">$150</font>
+											</td>
 
-											<td class="mailbox-star">
-												<select class="form-control">
-									            	<option> 1</option>
-									                <option> 2</option>
-									                <option> 3</option>
-									                <option> 4</option>
-									                <option> 5</option>
-									                <option> 6</option>
-									                <option> 7</option>
-									                <option> 8</option>
-									                <option> 9</option>
-									                <option> 10</option>
+											<td id="td2" class="mailbox-star">
+												<select id="quantity" class="form-control">
+									            	<option value="1"> 1</option>
+									                <option value="2"> 2</option>
+									                <option value="3"> 3</option>
+									                <option value="4"> 4</option>
+									                <option value="5"> 5</option>
+									                <option value="6"> 6</option>
+									                <option value="7"> 7</option>
+									                <option value="8"> 8</option>
+									                <option value="9"> 9</option>
+									                <option value="10"> 10</option>
 									            </select>
 											</td>
 
-											<td id="red" class="mailbox-star">$599</td>
-
-											<td class="mailbox-star">
-												<div id="delete">
-												<button type="button" class="btn btn-default btn-sm">
-													<i class="fa fa-trash-o"></i>
-												</button>
-												</div>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<div id="order_img">
-													<img src="../images/bigPic/bookxb001.jpg" id="pro_img"
-														width="100px" height="100px">
-												</div>
-											</td>
-											<td class="mailbox-name">
-												<div id="pro_name">
-													<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
-												</div>
+											<td id="td2" class="mailbox-star">
+												<font color="red">$150</font>
 											</td>
 
-											<td id="red" class="mailbox-star">$599</td>
-
-											<td class="mailbox-star">																					
-												<select class="form-control">
-									            	<option> 1</option>
-									                <option> 2</option>
-									                <option> 3</option>
-									                <option> 4</option>
-									                <option> 5</option>
-									                <option> 6</option>
-									                <option> 7</option>
-									                <option> 8</option>
-									                <option> 9</option>
-									                <option> 10</option>
-									            </select>
-											</td>
-
-											<td id="red" class="mailbox-star">$599</td>
-
-											<td class="mailbox-star">
+											<td id="td2" class="mailbox-star">
 												<div id="delete">
 													<button type="button" class="btn btn-default btn-sm">
 														<i class="fa fa-trash-o"></i>
@@ -528,7 +495,9 @@ desired effect
 								<!-- /.box-body -->
 
 								<div class="box-footer">
-									<button type="submit" class="btn btn-warning">確認訂購</button>
+									<div id="bt_area">
+									<button type="submit" id="bt1" class="btn btn-warning btn-lg">確認訂購</button>
+								
 								</div>
 							</form>
 						</div>

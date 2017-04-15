@@ -332,116 +332,110 @@ desired effect
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
-		  	<div class="card1 col-md-8 col-md-offset-2">
-	          <div class="box box-warning">
-	            <div class="box-header with-border">
-	              <h3 class="box-title"><b>會員訂單</b></h3>
+	          <div class="row">
+			  	<div class="card1 col-md-8 col-md-offset-2">
+		          <div class="box box-warning">
+		            <div class="box-header with-border">
+		              <h3 class="box-title"><b>商品販售列表</b></h3>
+			        </div>
+		            
+		            <!-- /.box-header -->
+		            <div class="box-body no-padding">
+		              <div class="mailbox-controls">
+		                <div class="btn-group">
+		                	<a href="../_05_CreationsFrame/CreationsPage2.jsp">		                	
+		 	                	<button type="button"  class="btn btn-block btn-warning">回上頁</button>
+		 	                </a>	
+
+		                </div>
+		              </div>
+		              <div class="table-responsive mailbox-messages">
+		                <table class="table table-hover table-striped">
+	<%-- 	                <colgroup> --%>
+	<%-- 	                	<col width="3%"> --%>
+	<%-- 	                	<col width="16%"> --%>
+	<%-- 	                	<col width="65%"> --%>
+	<%-- 	                	<col width="16%"> --%>
+	<%-- 	                </colgroup> --%>
+		                  <thead id="title">
+		                  	<tr>
+		                    	<th class="mailbox-name">訂單編號</th>
+		                    	<th class="mailbox-name">訂購會員</th>
+		                    	<th class="mailbox-name">商品名稱</th>
+		                    	<th class="mailbox-star">訂單狀態</th>
+		                    	       
+		                  	</tr>
+						</thead>
+		                  
+		                <tbody>
+		                  <tr>
+	<!-- 	                <td><input type="checkbox"></td> -->
+		                    <td class="mailbox-name">
+		                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
+		                    </td>
+		                    <td class="mailbox-name">
+		                    	XXX
+		                    </td>
+		                    <td class="mailbox-name">
+		                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+		                    </td> 
+		                    <td class="mailbox-name">
+		                    	<div id="status">1作者確認中</div>
+		                    </td>                    
+		                  </tr>
+		                  
+		                  <tr>
+	<!-- 	                <td><input type="checkbox"></td> -->
+		                    <td class="mailbox-name">
+		                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
+		                    </td>
+		                    <td class="mailbox-name">
+		                    	XXX
+		                    </td>
+		                    <td class="mailbox-name">
+		                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+		                    </td> 
+		                    <td class="mailbox-name">
+		                    	<div id="status">2出貨中</div>
+		                    </td>                    
+		                  </tr>
+		                  <tr>
+	<!-- 	                <td><input type="checkbox"></td> -->
+		                    <td class="mailbox-name">
+		                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
+		                    </td>
+		                    <td class="mailbox-name">
+		                    	XXX
+		                    </td>
+		                    <td class="mailbox-name">
+		                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
+		                    </td> 
+		                    <td class="mailbox-name">
+		                    	<div id="status">3雙方確認完成</div>
+		                    </td>                    
+		                  </tr>
+		                                   
+		                </tbody>
+		                </table>
+		                <!-- /.table -->
+		              </div>
+		              <!-- /.mail-box-messages -->
+		            </div>
+		            
+		            <!-- /.box-body -->
+		            <div class="box-footer no-padding">
+		            	<div class="mailbox-controls">
+			              	<div class="btn-group">
+			                	<a href="../_05_CreationsFrame/CreationsPage2.jsp">		                	
+			 	                	<button type="button"  class="btn btn-block btn-warning">回上頁</button>
+			 	                </a>	
+		                	</div>
+		            	</div>
+		          </div>
+		          <!-- /. box -->
 		        </div>
-	            
-	            <!-- /.box-header -->
-	            <div class="box-body no-padding">
-	              <div class="mailbox-controls">
-	                <!-- Check all button -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
-<!-- 	                </button> -->
-	                <div class="btn-group">
-	                		                	
- 	                	<button type="button" href="../_13_Product_info/Product_info.jsp" class="btn btn-block btn-warning">回上頁
- 	                		
- 	                	</button>
-<!-- 	            	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
-	                </div>
-	              </div>
-	              <div class="table-responsive mailbox-messages">
-	                <table class="table table-hover table-striped">
-<%-- 	                <colgroup> --%>
-<%-- 	                	<col width="3%"> --%>
-<%-- 	                	<col width="16%"> --%>
-<%-- 	                	<col width="65%"> --%>
-<%-- 	                	<col width="16%"> --%>
-<%-- 	                </colgroup> --%>
-	                  <thead id="title">
-	                  	<tr>
-	                    	<th class="mailbox-name">訂單編號</th>
-	                    	<th class="mailbox-name">訂購會員</th>
-	                    	<th class="mailbox-name">商品名稱</th>
-	                    	<th class="mailbox-star">訂單狀態</th>
-	                    	       
-	                  	</tr>
-					</thead>
-	                  
-	                <tbody>
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name">
-	                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	XXX
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
-	                    </td> 
-	                    <td class="mailbox-name">
-	                    	<div id="status">1作者確認中</div>
-	                    </td>                    
-	                  </tr>
-	                  
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name">
-	                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	XXX
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
-	                    </td> 
-	                    <td class="mailbox-name">
-	                    	<div id="status">2出貨中</div>
-	                    </td>                    
-	                  </tr>
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name">
-	                    	<a href="../_16_artist_sale/Order_Item.jsp">1</a>
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	XXX
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	<a href="../_13_Product_info/Product_info.jsp">TCSTAR 悍將風輪-電競頭戴式耳機麥克風TCE9030BK</a>
-	                    </td> 
-	                    <td class="mailbox-name">
-	                    	<div id="status">3雙方確認完成</div>
-	                    </td>                    
-	                  </tr>
-	                                   
-	                </tbody>
-	                </table>
-	                <!-- /.table -->
-	              </div>
-	              <!-- /.mail-box-messages -->
-	            </div>
-	            
-	            <!-- /.box-body -->
-	            <div class="box-footer no-padding">
-	              <div class="mailbox-controls">
-	              	<div class="btn-group">
-	                	<a type="" href="../_13_Product_info/Product_info.jsp" class="">回上頁</a>
-<!-- 	            	
-	                </div>
-	                <!-- /.btn-group -->
-	                
-	              </div>
-	            </div>
-	          </div>
-	          <!-- /. box -->
-	        </div>
-			</div>
+				</div>
+	          </div>	
           </section>
           <!-- /.content -->
         </div>

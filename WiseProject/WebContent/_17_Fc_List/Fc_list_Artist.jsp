@@ -8,7 +8,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <link rel="stylesheet" href="../css/Fc_list_Artist.css">
-	  <title>贊助者清單列表</title>
+	  <title>會員贊助清單列表</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
@@ -335,7 +335,7 @@ desired effect
 		  	<div class="card1 col-md-10 col-md-offset-1">
 	          <div class="box box-warning">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"><b>贊助者清單</b></h3>
+	              <h3 class="box-title"><b>會員贊助清單列表</b></h3>
 		        </div>
 	            
 	            <!-- /.box-header -->

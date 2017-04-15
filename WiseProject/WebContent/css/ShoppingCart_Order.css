@@ -1,33 +1,81 @@
 @CHARSET "UTF-8";
 
+#list{
+	font-weight:bold;
+	font-size: 140%;
+}
+
+#title{
+	border-bottom: 1px solid #AAA; 
+	font-size: 120%;
+	background: rgba(243, 156, 18, 0.2);
+	
+}
 
 #table_text{
-	font-size: 110%;
+	font-size: 120%;
+	background: #FFF;
 }
 
-#delete{
+#td1{
+	width: 100px;
+	height: 100px;
+}
+
+#td2{
+	vertical-align: middle;
+}
+
+#order_img{
+	width: 100px;
+	height: 100px;
+}
+
+.mailbox-name{
+	text-align: center;	
+}
+
+.mailbox-star{
 	text-align: center;
 }
-
 
 #red{
 	color: #F00;
 	font-weight: bold;
 }
 
+#quantity{
+	text-align: center;
+	width: 70px;
+	display: inline;
+}
+
+#delete{
+	text-align: center;
+}
+
 #price_area{
+	border-top:1px solid #CCC;
 	height:80px;
 	background:rgba(243, 156, 18, 0.2);
 	font-weight: bold;
-	font-size: 110%;
+	font-size: 140%;
 }
 
 #total{
 	padding-top:30px;
 	vertical-align:middle;
-	font-weight: bold;
 }
 
 #price{
 	color: #F00;
+}
+
+#bt_area{
+	text-align: center;
+}
+
+#bt1{
+	font-weight: bold;
+	border: 1px solid #BBB;
 }

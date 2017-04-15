@@ -332,153 +332,111 @@ desired effect
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
-		  	<div class="card1 col-md-8 col-md-offset-2">
-	          <div class="box box-warning">
-	            <div class="box-header with-border">
-	              <h3 class="box-title"><b>購物車清單</b></h3>
-		        </div>
-	            
-	            <!-- /.box-header -->
-	            <div class="box-body no-padding">
-	              <div class="mailbox-controls">
-	                <!-- Check all button -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
-<!-- 	                </button> -->
-	                <div class="btn-group">
-	                		                	
- 	                	<button type="button" href="../_13_Product_info/Product_info.jsp" class="btn btn-block btn-warning">回上頁
- 	                		
- 	                	</button>
-<!-- 	            	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
-	                </div>
-	              </div>
-	              <div class="table-responsive mailbox-messages">
-	                <table class="table table-hover table-striped">
-<%-- 	                <colgroup> --%>
-<%-- 	                	<col width="3%"> --%>
-<%-- 	                	<col width="16%"> --%>
-<%-- 	                	<col width="65%"> --%>
-<%-- 	                	<col width="16%"> --%>
-<%-- 	                </colgroup> --%>
-	                  <thead id="title">
-	                  	<tr>
-	                    	<th class="mailbox-name">創作者名稱</th>
-	                    	<th class="mailbox-name">購物車內商品數</th>
-	                    	<th class="mailbox-star">檢視購物車</th>
-	                    	<th class="mailbox-star">刪除購物車</th>            
-	                  	</tr>
-					</thead>
-	                  
-	                <tbody>
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
-	                    </td>
-	                    <td class="mailbox-name">購物車內共...筆商品
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<a href="ShoppingCart_Order.jsp"><button type="button" class="btn btn-default btn-sm checkbox-toggle">
-	                		<i class="fa fa-fw fa-shopping-cart"></i>
-	                		</button></a>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm">
-	                    	<i class="fa fa-trash-o" ></i>
-	                    	</button>
-	                    </td>
-	                  </tr>
-	                  
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-	                		<i class="fa fa-fw fa-shopping-cart"></i>
-	                	</button>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm">
-	                    	<i class="fa fa-trash-o"></i>
-	                    	</button>
-	                    </td>
-	                  </tr>
-	                  
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-	                		<i class="fa fa-fw fa-shopping-cart"></i>
-	                	</button>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm">
-	                    	<i class="fa fa-trash-o"></i>
-	                    	</button>
-	                    </td>
-	                  </tr>
-	                  
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-	                		<i class="fa fa-fw fa-shopping-cart"></i>
-	                	</button>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm">
-	                    	<i class="fa fa-trash-o"></i>
-	                    	</button>
-	                    </td>
-	                  </tr>
-	                  
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-	                    <td class="mailbox-name"><a href="../_13_Product_info/Product_info.jsp">Trying to find a solution to this problem...</a>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm checkbox-toggle">
-	                		<i class="fa fa-fw fa-shopping-cart"></i>
-	                	</button>
-	                    </td>
-	                    <td class="mailbox-star">
-	                    	<button type="button" class="btn btn-default btn-sm">
-	                    	<i class="fa fa-trash-o"></i>
-	                    	</button>
-	                    </td>
-	                  </tr>
-	                 </tbody>
-	                </table>
-	                <!-- /.table -->
-	              </div>
-	              <!-- /.mail-box-messages -->
-	            </div>
-	            
-	            <!-- /.box-body -->
-	            <div class="box-footer no-padding">
-	              <div class="mailbox-controls">
-	              	<div class="btn-group">
-	                	<a type="" href="../_13_Product_info/Product_info.jsp" class="">回上頁</a>
-<!-- 	            	
-	                </div>
-	                <!-- /.btn-group -->
-	                
-	              </div>
-	            </div>
+	          <div class="row">
+				  <div class="card1 col-md-8 col-md-offset-2">
+			          <div class="box box-warning">
+			            <div class="box-header with-border">
+			              <h3 class="box-title"><b>購物車清單</b></h3>
+				        </div>
+			            
+			            <!-- /.box-header -->
+			            <div class="box-body no-padding">
+			              <div class="mailbox-controls">			                		
+			                <div class="btn-group">
+			                	<a href="../_13_Product_info/Product_info.jsp" >	                	
+		 	                		<button type="button" class="btn btn-block btn-warning">回上頁</button>
+		 	                	</a>		            	
+			                </div>
+			              </div>
+			              
+			              <div class="table-responsive mailbox-messages">
+			                <table class="table table-hover table-striped">
+		
+				               	<thead id="title">
+				                  	<tr>
+				                    	<th class="mailbox-name">創作者名稱</th>
+				                    	<th class="mailbox-name">購物車內商品數</th>
+				                    	<th class="mailbox-star">檢視購物車</th>
+				                    	<th class="mailbox-star">刪除購物車</th>            
+				                  	</tr>
+								</thead>
+					                  
+					            <tbody>
+					                  <tr>
+					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
+					                    </td>
+					                    <td class="mailbox-name">
+											購物車內共<font id="red" >1</font>筆商品
+					                    </td>
+					                    <td class="mailbox-star">
+					                    	<a href="ShoppingCart_Order.jsp"><button type="button" class="btn btn-default btn-sm checkbox-toggle">
+					                		<i class="fa fa-fw fa-shopping-cart"></i>
+					                		</button></a>
+					                    </td>
+					                    <td class="mailbox-star">
+					                    	<button type="button" class="btn btn-default btn-sm">
+					                    	<i class="fa fa-trash-o" ></i>
+					                    	</button>
+					                    </td>
+					                  </tr>
+					                  
+					                  <tr>
+					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
+					                   <td class="mailbox-name">
+											購物車內共<font id="red" >2</font>筆商品
+					                    </td>
+					                    </td>
+					                    <td class="mailbox-star">
+					                    	<a href="ShoppingCart_Order.jsp"><button type="button" class="btn btn-default btn-sm checkbox-toggle">
+					                		<i class="fa fa-fw fa-shopping-cart"></i>
+					                		</button></a>
+					                    </td>
+					                    <td class="mailbox-star">
+					                    	<button type="button" class="btn btn-default btn-sm">
+					                    	<i class="fa fa-trash-o" ></i>
+					                    	</button>
+					                    </td>
+					                  </tr>
+					                  
+					                  <tr>
+					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
+					                    </td>
+					                    <td class="mailbox-name">
+											購物車內共<font id="red" >3</font>筆商品
+					                    </td>
+					                    <td class="mailbox-star">
+					                    	<a href="ShoppingCart_Order.jsp"><button type="button" class="btn btn-default btn-sm checkbox-toggle">
+					                		<i class="fa fa-fw fa-shopping-cart"></i>
+					                		</button></a>
+					                    </td>
+					                    <td class="mailbox-star">
+					                    	<button type="button" class="btn btn-default btn-sm">
+					                    	<i class="fa fa-trash-o" ></i>
+					                    	</button>
+					                    </td>
+					                  </tr>
+					                  
+				            	</tbody>
+				            </table>
+			                <!-- /.table -->
+			              </div>
+			              <!-- /.mail-box-messages -->
+			            </div>
+			            
+			            <!-- /.box-body -->
+			            <div class="box-footer no-padding">
+			              <div class="mailbox-controls">
+			              	<div class="btn-group">
+			                	<a href="../_13_Product_info/Product_info.jsp" >	                	
+		 	                		<button type="button" class="btn btn-block btn-warning">回上頁</button>
+		 	                	</a>		            	
+			                </div>
+			            </div>
+			          </div>
+			          <!-- /. box -->
+			        </div>
+					</div>
 	          </div>
-	          <!-- /. box -->
-	        </div>
-			</div>
           </section>
           <!-- /.content -->
         </div>
@@ -581,6 +539,8 @@ desired effect
       <script src="../bootstrap/js/bootstrap.min.js"></script>
       <!-- AdminLTE App -->
       <script src="../dist/js/app.min.js"></script>
+      
+      <script src="default.js"></script>
 
       <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

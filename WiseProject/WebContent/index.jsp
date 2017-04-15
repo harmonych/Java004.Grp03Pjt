@@ -269,10 +269,10 @@ desired effect
                               <a href="#">追蹤名單</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="#">投資計畫</a>
+                              <a href="_17_Fc_List/Fc_List_User.jsp">投資計畫</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="#">訂購清單</a>
+                              <a href="_15_ShoppingCart/ShoppingCart_List.jsp">訂購清單</a>
                             </div>
                           </div>
                           <!-- /.row -->
