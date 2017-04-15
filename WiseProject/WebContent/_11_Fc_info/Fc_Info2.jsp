@@ -91,7 +91,8 @@
 						</div>
 					</div>	
 					<div id="line"></div>
-				<c:if test="${(LoginOK != null ) && (LoginOK.check_tag = true)}">
+				<c:choose>	
+				<c:when test="${(LoginOK != null )}">
 					<div id="sponsor_area">
 						<form id="form1">
 							<div id="sponsor_money">
@@ -118,14 +119,30 @@
 							</div>
 						</form>
 					</div>
-					</c:if>
+					</c:when>
+					<c:otherwise>
+						<div id="buy_area">
+							<form id="form1">													
+								<div id="bt_area">
+									<a href="${context}/_02_login/login.jsp">
+										<input type="button" class="btn1 btn-lg btn-block" value="立即登入贊助">
+									</a>
+									<a href="${context}/_01_register/register.jsp">
+										<input type="button" class="btn2 btn-lg btn-block" value="立即註冊贊助">
+									</a>
+								</div>
+							</form>		
+						</div>
+					</c:otherwise>
+				</c:choose>
 				</div>
 			</div>		
 	    </section>
          	<!-- /.content -->
          
          <!-- 留言填寫欄位 -->
-         <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_11_message/fcMessage.do' />"  id="fcMessage" >
+
+          <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_11_message/fcMessage.do' />"  id="fcMessage" >
           <section class="content">
           	<div class="row">
           		<div class="card03 col-md-8 col-md-offset-2">
@@ -141,6 +158,8 @@
             			</div>
             			
             		<!-- /.box-header -->
+        <c:choose>
+         <c:when test= "{LoginOK != null}"> 
             		<div class="box-body">
               			<div class="form-group">
                 			<input class="form-control" name= "msg_title" placeholder="留言標題">
@@ -175,6 +194,23 @@
        
       	</section>
       	</form>
+      	</c:when>
+      	<c:otherwise>
+      		<section class="content">
+          	<div class="row">
+          		<div class="card03 col-md-8 col-md-offset-2">
+          			<div class="box box-warning">
+            			<div class="box-header with-border">
+            			<h3 class="box-title">欲留言請先登入</h3>
+            			</div>
+            			</div>
+          		<!-- /. box -->
+        		</div>
+        	</div>
+       
+      	</section>
+      	</c:otherwise>
+      	</c:choose>
         <!-- /.content -->
         <!-- 留言串列 -->
         <section>
@@ -220,10 +256,9 @@
 			var reader_id = $('#user_id').val();
 			//讀取創作者user_id
 			var receiver_id = $('#receiver_id').val();
-			console.log(pro_id);
+			console.log(fc_id);
 			console.log(reader_id);
 			console.log(receiver_id);
-			
 			$.ajax({
 				  url: "\_11_message\\fcmessage.json",
 				  type: "GET", 
@@ -278,7 +313,7 @@
 							  url: "\_11_message\\fcmessage.json",
 							  type: "GET", 
 							  data: { 
-							    "pro_id": pro_id, 
+							    "fc_id": fc_id, 
 							  },
 							  success: function(resMsgOK) {
 								  var respm = resMsgOK;

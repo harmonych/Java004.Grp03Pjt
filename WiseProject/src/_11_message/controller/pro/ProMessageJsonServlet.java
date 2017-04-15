@@ -25,8 +25,7 @@ public class ProMessageJsonServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		int pro_id = 0;
-		pro_id = Integer.parseInt(request.getParameter("pro_id").trim());
+		int pro_id = Integer.parseInt(request.getParameter("pro_id").trim());
 		try {
 			IProMessage dao = new ProMsgHBNDAO();
 			dao.setPro_id(pro_id);

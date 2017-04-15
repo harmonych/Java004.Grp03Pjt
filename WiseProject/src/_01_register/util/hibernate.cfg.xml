@@ -43,6 +43,8 @@
 	<mapping class="_07_funds.model.FundsBean"/>
 	<mapping class="_07_funds.model.FcPicBean"/>
 	<mapping class="_08_product.model.ProductBean"/>
-	<mapping class="_08_product.model.ProPicBean"/>	
+	<mapping class="_08_product.model.ProPicBean"/>		
+	<mapping class="_11_message.model.promessage.ProMessageBean"/>
+	<mapping class="_11_message.model.fcmessage.FcMessageBean"/>
 	</session-factory>
 </hibernate-configuration>

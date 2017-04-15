@@ -10,7 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import _00_init.HibernateUtil;
+import _01_register.util.HibernateUtil;
+
 
 public class FcMsgHBNDAO implements IFcMessage {
 

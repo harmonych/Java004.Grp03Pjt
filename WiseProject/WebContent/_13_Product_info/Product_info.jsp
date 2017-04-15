@@ -121,6 +121,7 @@
 			
 		  <!-- 留言填寫欄位 -->
 <%-- 		  <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_11_message/proMessage.do' />"  id="proMessage.do" > --%>
+
           <form ENCTYPE="multipart/form-data" method="POST" action = "${context}/_11_message/proMessage.do" id="proMessage" >
           <section class="content">
           	<div class="row">
@@ -137,7 +138,9 @@
             			</div>
             			
             		<!-- /.box-header -->
-            		<div class="box-body">
+           <c:choose>
+         	<c:when test= "{LoginOK != null}"> 
+         			<div class="box-body">
               			<div class="form-group">
                 			<input class="form-control" name= "msg_title" placeholder="留言標題">
               			</div>
@@ -171,6 +174,23 @@
        
       	</section>
       	</form>
+      	</c:when>
+      	<c:otherwise>
+      		<section class="content">
+          	<div class="row">
+          		<div class="card03 col-md-8 col-md-offset-2">
+          			<div class="box box-warning">
+            			<div class="box-header warning">
+            			<h3 class="box-title">欲留言請先登入</h3>
+            			</div>
+            			</div>
+          		<!-- /. box -->
+        		</div>
+        	</div>
+       
+      	</section>
+      	</c:otherwise>
+      	</c:choose>
         <!-- /.content -->
         <!-- 留言串列 -->
         <section>
