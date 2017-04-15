@@ -1,5 +1,10 @@
 package _11_message.model.fcmessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,6 +13,16 @@ import org.hibernate.Transaction;
 import _00_init.HibernateUtil;
 
 public class FcMsgHBNDAO implements IFcMessage {
+
+	int fc_id;
+	@Override
+	public void setFc_id(int fc_id) {
+		this.fc_id = fc_id;
+	}
+	@Override
+	public int getFc_id() {
+		return fc_id;
+	}
 
 	@Override
 	public int insertmessage(FcMessageBean mb) {
@@ -32,24 +47,27 @@ public class FcMsgHBNDAO implements IFcMessage {
 	}
 
 	@Override
-	public FcMessageBean Messagequery(int pro_id) {
-		FcMessageBean mb = null;
+	public List<FcMessageBean> Messagequery(int fc_id) {
+		List<FcMessageBean> list = new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			mb=session.get(FcMessageBean.class,pro_id);
+			TypedQuery<FcMessageBean> query = session.createQuery("FROM FcMessageBean WHERE fc_id = " + fc_id + " ORDER BY msg_time desc");
+			list = query.getResultList();
+			// list =session.createQuery("from MemberBean").getResultList();
+			Hibernate.initialize(list);
 			tx.commit();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-			if(tx!=null){
+			if (tx != null) {
 				tx.rollback();
 			}
-		}finally{
+		} finally {
 			session.close();
 		}
-		return mb;
+		return list;
 	}
 
 	@Override
@@ -78,10 +96,6 @@ public class FcMsgHBNDAO implements IFcMessage {
 		}
 		return updateCount;
 	
-	}
-	int pro_id;
-	public void setPro_id(int pro_id) {
-		this.pro_id = pro_id;
 	}
 
 }

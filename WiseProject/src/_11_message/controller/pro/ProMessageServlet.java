@@ -46,8 +46,6 @@ public class ProMessageServlet extends HttpServlet {
 		String sender_name = ""; //(String)session.getAttribute("user_name");
 //		int r_user_id = Integer.parseInt(request.getParameter("r_user_id"));
 		String receiver_name = "";
-		Timestamp ts=new Timestamp(System.currentTimeMillis());
-		String pro_ids = "" ;// request.getParameter("pro_id");
 		int pro_id =0;
 		String msg_txt = "";
 		int msg_status = 1 ;
@@ -124,7 +122,7 @@ public class ProMessageServlet extends HttpServlet {
 		// 如果 errorMsg 是空的，表示沒有任何錯誤，交棒給下一棒
 		if (errorMsg.isEmpty()) {
 			session.setAttribute("MessageInsertOK", "留言成功");
-//			response.sendRedirect(request.getContextPath() + "/index.jsp");
+//			response.sendRedirect(request.getContextPath() + "index.jsp");
 			return;
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp

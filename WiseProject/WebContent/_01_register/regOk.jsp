@@ -18,7 +18,7 @@
 </style>
 
 </head>
-<body  style="background:#EBFFEB;">
+<body  style="background:white;">
 
 <%
 	int n =5;

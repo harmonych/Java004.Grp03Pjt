@@ -1,5 +1,10 @@
 package _11_message.model.promessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,24 +47,27 @@ public class ProMsgHBNDAO implements IProMessage {
 	}
 
 	@Override
-	public ProMessageBean Messagequery(int pro_id) {
-		ProMessageBean mb = null;
+	public List<ProMessageBean> Messagequery(int pro_id) {
+		List<ProMessageBean> list = new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			mb=session.get(ProMessageBean.class,pro_id);
+			TypedQuery<ProMessageBean> query = session.createQuery("FROM ProMessageBean WHERE pro_id = " + pro_id + " ORDER BY msg_time desc");
+			list = query.getResultList();
+			// list =session.createQuery("from MemberBean").getResultList();
+			Hibernate.initialize(list);
 			tx.commit();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-			if(tx!=null){
+			if (tx != null) {
 				tx.rollback();
 			}
-		}finally{
+		} finally {
 			session.close();
 		}
-		return mb;
+		return list;
 	}
 
 	@Override

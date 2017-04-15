@@ -26,7 +26,7 @@ import _11_message.model.promessage.ProMsgHBNDAO;
 
 
 
-@WebServlet("/_11_message/fcmessage.do")
+@WebServlet("/_11_message/fcMessage.do")
 public class FcMessageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,8 +46,6 @@ public class FcMessageServlet extends HttpServlet {
 		String sender_name = ""; //(String)session.getAttribute("user_name");
 //		int r_user_id = Integer.parseInt(request.getParameter("r_user_id"));
 		String receiver_name = "";
-		Timestamp ts=new Timestamp(System.currentTimeMillis());
-		String fc_ids = "" ;// request.getParameter("pro_id");
 		int fc_id =0;
 		String msg_txt = "";
 		int msg_status = 1 ;
@@ -82,15 +80,12 @@ public class FcMessageServlet extends HttpServlet {
 						msg_txt = value;
                     }  else if (fldName.equals("msg_status")) {
                     	if (value != ""){
-                    		if(Integer.parseInt(request.getParameter("msg_status")) == 0) msg_status =0;
-            					
+                    		if(Integer.parseInt(request.getParameter("msg_status")) == 0) msg_status =0;		
                     	}
                     } 
 				} 
 			}
-			// 2. 進行必要的資料轉換
-
-			// 3. 檢查使用者輸入資料
+			// 2. 檢查使用者輸入資料
 			if (msg_title == null || msg_title.trim().length() == 0) {
 				errorMsg.put("TitleError", "必須輸入主旨");
 			}
@@ -110,8 +105,7 @@ public class FcMessageServlet extends HttpServlet {
 			int n = 0;
 			
 
-			FcMessageBean mb = new FcMessageBean(msg_title,prev_msg_id,user_id,sender_name,receiver_name,
-					ts,fc_id,msg_txt,msg_status );
+			FcMessageBean mb = new FcMessageBean(msg_title,prev_msg_id,user_id,sender_name,receiver_name,fc_id,msg_txt,msg_status );
 		    FcMsgHBNDAO ms = new FcMsgHBNDAO();
 		    n = ms.insertmessage(mb);
 			

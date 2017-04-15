@@ -22,10 +22,20 @@ public class FcMessageBean {
 	private int fc_id;
 	private String msg_text;
 	private int msg_status;
-	
-	
-	
-	
+
+	public FcMessageBean(String msg_title, int prev_msg_id, int user_id, String sender_name, String receiver_name,
+			int fc_id, String msg_text, int msg_status) {
+		super();
+		this.msg_title = msg_title;
+		this.prev_msg_id = prev_msg_id;
+		this.user_id = user_id;
+		this.sender_name = sender_name;
+		this.receiver_name = receiver_name;
+		this.fc_id = fc_id;
+		this.msg_text = msg_text;
+		this.msg_status = msg_status;
+	}
+
 	public FcMessageBean(String msg_title, int prev_msg_id, int user_id, String sender_name, String receiver_name,
 			Timestamp msg_time, int fc_id, String msg_text, int msg_status) {
 		super();
@@ -40,6 +50,9 @@ public class FcMessageBean {
 		this.msg_status = msg_status;
 	}
 	
+	public FcMessageBean() {
+		super();
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getMsg_id() {
