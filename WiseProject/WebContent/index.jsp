@@ -10,6 +10,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Wise彙思創作募資</title>
+      <link rel="stylesheet" href="css/index.css">
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
@@ -294,15 +295,15 @@ desired effect
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                          <div class="pull-left">
-                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" class="btn btn-default btn-flat">個人資料</a>
+                          <div id="mid" class="">
+                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" id="mid_bt" class="btn btn-default btn-flat">個人資料</a>
                           </div>
-                          <div class="pull-left">
-                            <a href="${context}/_05_CreationsFrame/CreationsPage2.jsp" class="btn btn-default btn-flat">個人主頁</a>
+                          <div id="mid" class="">
+                            <a href="${context}/_05_CreationsFrame/CreationsPage2.jsp" id="mid_bt" class="btn btn-default btn-flat">個人主頁</a>
                           </div>
                           
-                          <div class="pull-right">
-                            <a href="${context}/_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>
+                          <div id="mid" class="">
+                            <a href="${context}/_02_login/logout.jsp" id="mid_bt" class="btn btn-default btn-flat">登出</a>
                           </div>
                         </li>
                       </ul>

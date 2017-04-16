@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+#mid{
+	margin-right: 10px;
+	display: inline;
+}
+
+#mid_bt{
+	width:77px;
+	background: #f7bf67;
+}
