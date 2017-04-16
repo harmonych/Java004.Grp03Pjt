@@ -234,7 +234,7 @@ public class ArtistHibernateDAO implements IArtistDAO {
 		List<ArtistBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-		String hql = " FROM ArtistBean a JOIN MemberBean b WHERE (b.user_name like  \'%"+search+"%\' or a.hashtag like  \'%"+search+"%\' on a.user_id = b.user_id)";
+		String hql = " FROM ArtistBean WHERE (memberbean.user_name like  \'%"+search+"%\' or hashtag like  \'%"+search+"%\' )";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
