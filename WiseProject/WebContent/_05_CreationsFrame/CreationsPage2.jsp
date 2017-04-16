@@ -176,9 +176,9 @@
 										<c:if test="${LoginOK != null}">     
 										 <c:if test ="${account == mb.account}">                      
 <!-- 											<input type="button" value="新增作品" name="新增" style="width:100px;height:30px;"> -->
-											<button><a href="${context}/_12_Product_Create/Product_Create NEW.jsp">新增商品</a></button><br>
+											<button id="create-product">新增商品</button><br>
 											<br>
-											<button><a href="${context}/_10_Fc_Create/Fc_Create NEW.jsp">新增募資</a></button>								
+											<button id="create-funds">新增募資</button>								
 										 </c:if>
 										</c:if>	
 									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
@@ -280,8 +280,28 @@
 					  responseProductsErr.abort();
 				  }
 			});
-			
-			
+			 $("#create-product").click(function(){
+		    	    $.ajax({
+						url:"\_12_Product_Create\\Product_Create NEW.jsp",
+						context: document.body,
+						success: function(responseProAll){
+							$("#mainframe").empty();
+							$('#mainframe').html(responseProAll);
+							$(".mainfooter").empty();
+		    	      }
+		    	    });
+		    	  });
+			 $("#create-funds").click(function(){
+		    	    $.ajax({
+						url:"\_10_Fc_Create\\Fc_Create NEW.jsp",
+						context: document.body,
+						success: function(responseProAll){
+							$("#mainframe").empty();
+							$('#mainframe').html(responseProAll);
+							$(".mainfooter").empty();
+		    	      }
+		    	    });
+		    	  });
 	})
     </script>
 <!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
