@@ -18,8 +18,8 @@
 	  <div class="row content">
 		<div class="col-sm-8 text-left"> 
 			<div class="box-header with-border">
-	        	<h2 class="box-title">創作者一覽</h2>
-	       	</div>
+<!-- 	        	<h2 class="box-title">創作者一覽</h2> -->
+					<img src="${context}/images/words/CreationsAWord1s.png" >
 		  <div class="container" id ="main">
 			<div class="row">
 			

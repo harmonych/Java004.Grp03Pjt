@@ -50,8 +50,8 @@
  		 <section class="container-fluid" id="about">	
  			<div class="jumbotron">
                     <div class="container text-center">
-                        <h1>文創商城</h1>
-                        <p> </p>
+<!--                         <h1>文創商城</h1> -->
+                     	<img src="${context}/images/words/productWord1s.png" >
                     </div>
                 </div>
         <!-- Content Wrapper. Contains page content -->

@@ -23,7 +23,10 @@
     border-radius: 50%;
     margin-left: 50px;
 }
-  
+.box-header.with-border {
+/*     border-bottom: 1px solid #f4f4f4; */
+    text-align: center;
+}
 </style>
         
         
@@ -65,7 +68,8 @@
                         <div class="row content">
                            <div class="col-md-9 col-xs-9">
                             <div class="box-header with-border">
-					        	<h2 class="box-title">創作者主頁</h2>
+<!-- 					        	<h2 class="box-title">創作者主頁</h2> -->
+								<img src="${context}/images/words/CreationsWord1s.png" >
 					       	</div>
                                 <div class="BH-lbox MSG-box5">
                                     <div class="HOME-mainbox1">
