@@ -137,7 +137,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-          <a href="Compose.jsp" class="btn btn-primary btn-block margin-bottom">Compose</a>
+          <a href="Compose.jsp" class="btn btn-warning btn-block margin-bottom">Compose</a>
 
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -150,7 +150,7 @@
             </div>
             <div class="box-body no-padding">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="#"><i class="fa fa-inbox"></i> Inbox
+                <li><a href="MailBox.jsp"><i class="fa fa-inbox"></i> Inbox
                   
                 <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
                                
@@ -183,7 +183,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-          <div class="box box-primary">
+          <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">Read Mail</h3>
 

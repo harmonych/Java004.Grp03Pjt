@@ -30,6 +30,13 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <style>
+  .nav-stacked>li.active>a, .nav-stacked>li.active>a:hover {
+      border-left-color: #f39c12;
+	}
+		
+	
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -286,7 +293,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-          <a href="Compose.jsp" class="btn btn-primary btn-block margin-bottom">Compose</a>
+          <a href="Compose.jsp" class="btn btn-warning btn-block margin-bottom">Compose</a>
 
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -300,7 +307,7 @@
             <div class="box-body no-padding">
               <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox
-                  <span class="label label-primary pull-right"></span></a></li>
+                  <span class="label label-warning pull-right"></span></a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
                                
                 <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
@@ -331,7 +338,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-          <div class="box box-primary">
+          <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">Inbox</h3>
 
@@ -372,48 +379,48 @@
                   <tr>
                     <td><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="ReadMail.jsp">寄件人</a></td>
-                    <td class="mailbox-subject"><b>標題</b> </td>
+                    <td class="mailbox-name">寄件人</td>
+                    <td class="mailbox-subject"><a href="ReadMail.jsp"><b>標題</b></a></td>
 <!--                     <td class="mailbox-attachment"></td> -->
 <!--                     <td class="mailbox-date">5 mins ago</td> -->
                   </tr>
                   <tr>
                     <td><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="ReadMail.jsp">寄件人</a></td>
-                    <td class="mailbox-subject"><b>標題</b> </td>
+                     <td class="mailbox-name">寄件人</td>
+                    <td class="mailbox-subject"><a href="ReadMail.jsp"><b>標題</b></a></td>
 <!--                     <td class="mailbox-attachment"></td> -->
 <!--                     <td class="mailbox-date">5 mins ago</td> -->
                   </tr>
              <tr>
                     <td><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="ReadMail.jsp">寄件人</a></td>
-                    <td class="mailbox-subject"><b>標題</b> </td>
+                    <td class="mailbox-name">寄件人</td>
+                    <td class="mailbox-subject"><a href="ReadMail.jsp"><b>標題</b></a></td>
 <!--                     <td class="mailbox-attachment"></td> -->
 <!--                     <td class="mailbox-date">5 mins ago</td> -->
                   </tr>
                   <tr>
                     <td><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="ReadMail.jsp">寄件人</a></td>
-                    <td class="mailbox-subject"><b>標題</b> </td>
+                    <td class="mailbox-name">寄件人</td>
+                    <td class="mailbox-subject"><a href="ReadMail.jsp"><b>標題</b></a></td>
 <!--                     <td class="mailbox-attachment"></td> -->
 <!--                     <td class="mailbox-date">5 mins ago</td> -->
                   </tr>
                   <tr>
                     <td><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="ReadMail.jsp">寄件人</a></td>
-                    <td class="mailbox-subject"><b>標題</b> </td>
+                    <td class="mailbox-name">寄件人</td>
+                    <td class="mailbox-subject"><a href="ReadMail.jsp"><b>標題</b></a></td>
 <!--                     <td class="mailbox-attachment"></td> -->
 <!--                     <td class="mailbox-date">5 mins ago</td> -->
                   </tr>
                   <tr>
                     <td><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="ReadMail.jsp">寄件人</a></td>
-                    <td class="mailbox-subject"><b>標題</b> </td>
+                    <td class="mailbox-name">寄件人</td>
+                    <td class="mailbox-subject"><a href="ReadMail.jsp"><b>標題</b></a></td>
 <!--                     <td class="mailbox-attachment"></td> -->
 <!--                     <td class="mailbox-date">5 mins ago</td> -->
                   </tr>

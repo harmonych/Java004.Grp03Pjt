@@ -59,7 +59,22 @@
 			font-family:Microsoft JhengHei;
 			font-weight:bloder;
 		}
-		       
+		skin-yellow-light .sidebar-menu>li:hover>a, 
+			.skin-yellow-light .sidebar-menu>li.active>a {
+		    color: #000;
+		    background: rgba(102, 102, 102, 0.2);
+		}
+
+		.skin-yellow-light .wrapper, .skin-yellow-light .main-sidebar, 
+			.skin-yellow-light .left-side {
+		    background-color: rgba(243, 156, 18, 0.4);
+		}
+
+		.skin-yellow-light .sidebar-menu>li.header {
+		    color: #848484;
+		    background: rgba(243, 156, 18, 0);
+		
+		} 
       </style>
     </head>
     <!--
@@ -374,21 +389,23 @@ desired effect
                     </ol>
                     <div class="carousel-inner">
                       <div class="item" align ="center">
-                        <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide">
-
+<!--                         <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide"> -->
+						<img src="${context}/images/Creations/10.jpg" alt="First slide">
                         <div class="carousel-caption">
                           	新近作品
                         </div>
                       </div>
                       <div class="item active" align ="center" >
-                        <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" alt="Second slide" >
+<!--                         <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" alt="Second slide" > -->
+                        <img src="${context}/images/Creations/6.jpg" alt="Second slide" > 
+                       
                         <div class="carousel-caption">
                           	近期更新
                         </div>
                       </div>
                       <div class="item" align ="center">
-                        <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide">
-
+<!--                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide"> -->
+ 						<img src="${context}/images/Creations/1.jpg" alt="Third slide" >
                         <div class="carousel-caption">
                            	人氣最高
                         </div>

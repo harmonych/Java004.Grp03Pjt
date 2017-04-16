@@ -144,7 +144,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<a href="MailBox.jsp"
-							class="btn btn-primary btn-block margin-bottom">Back to Inbox</a>
+							class="btn btn-warning btn-block margin-bottom">Back to Inbox</a>
 
 						<div class="box box-solid">
 							<div class="box-header with-border">
@@ -160,7 +160,7 @@
 							<div class="box-body no-padding">
 								<ul class="nav nav-pills nav-stacked">
 									<li><a href="MailBox.jsp"><i class="fa fa-inbox"></i>
-											Inbox <span class="label label-primary pull-right"></span></a></li>
+											Inbox <span class="label label-warning pull-right"></span></a></li>
 									<li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
 
 									<li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
@@ -195,7 +195,7 @@
 					<!-- /.col -->
 					<div class="col-md-9">
 					
-						<div class="box box-primary">
+						<div class="box box-warning">
 							<div class="box-header with-border">
 								<h3 class="box-title">Compose New Message</h3>
 							</div>
@@ -226,7 +226,7 @@
 							<!-- /.box-body -->
 							<div class="box-footer">
 								<div class="pull-right">
-									<button type="submit" class="btn btn-primary">
+									<button type="submit" class="btn btn-warning">
 										<i class="fa fa-envelope-o"></i> Send
 									</button>
 								</div>
