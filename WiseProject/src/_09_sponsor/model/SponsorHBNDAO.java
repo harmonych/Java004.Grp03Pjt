@@ -91,12 +91,12 @@ public class SponsorHBNDAO implements ISponsorDAO {
 		List<SponsorBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-				
-		String hql = "FROM SponsorBean a JOIN MemberBean b ON a.user_id = b.user_id WHERE fc_id = " + fcid + " ORDER BY spon_time desc";
+		String hql	= "SELECT b.user_name, a.fc_id, a.spon_account, a.spon_mode, a.spon_money, a.spon_time, a.user_id ";
+		hql += "FROM SponsorBean a JOIN MemberBean b ON a.user_id = b.user_id WHERE fc_id = " + fcid + " ORDER BY spon_time desc";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			TypedQuery<SponsorBean> query=session.createQuery(hql);
+			TypedQuery<SponsorBean> query= session.createQuery(hql);
 			list = query.getResultList();
 			//list =session.createQuery("from FundsBean").getResultList();
 			Hibernate.initialize(list);

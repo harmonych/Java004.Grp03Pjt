@@ -10,19 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
 
-	@Entity
-	@Table(name="sponsor")
-	public class SponsorBean implements Serializable {
-		
-		private static final long serialVersionUID = 1L;
-		private int spon_id;
-		private int fc_id;
-		private int user_id;
-		private int spon_money;
-		private Timestamp spon_time;
-		private int spon_mode;
-		private String spon_account;
+
+@Entity
+@Table(name="sponsor")
+public class SponsorBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+@Expose	    private int spon_id;
+@Expose		private int fc_id;
+@Expose		private int user_id;
+@Expose		private int spon_money;
+@Expose		private Timestamp spon_time;
+@Expose		private int spon_mode;
+@Expose		private String spon_account;
 		
 		//網頁上傳入
 		public SponsorBean(int fc_id, int user_id, int spon_money) {
@@ -34,6 +36,14 @@ import javax.persistence.Table;
 		//修改
 		public SponsorBean(int spon_money, int spon_mode, String spon_account) {
 			super();
+			this.spon_money = spon_money;
+			this.spon_mode = spon_mode;
+			this.spon_account = spon_account;
+		}
+		public SponsorBean(int fc_id, int user_id, int spon_money, int spon_mode, String spon_account) {
+			super();
+			this.fc_id = fc_id;
+			this.user_id = user_id;
 			this.spon_money = spon_money;
 			this.spon_mode = spon_mode;
 			this.spon_account = spon_account;
@@ -57,21 +67,20 @@ import javax.persistence.Table;
 		
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
-		@Column(name = "spon_id")
 		public int getSpon_id() {
 			return spon_id;
 		}
 		public void setSpon_id(int sponid) {
 			this.spon_id = sponid;
 		}
-		@Column(name = "fc_id", nullable = false)
+		@Column(nullable = false)
 		public int getFc_id() {
 			return fc_id;
 		}
 		public void setFc_id(int fcid) {
 			this.fc_id = fcid;
 		}
-		@Column(name = "user_id", nullable = false)
+		@Column(nullable = false)
 		public int getUser_id() {
 			return user_id;
 		}

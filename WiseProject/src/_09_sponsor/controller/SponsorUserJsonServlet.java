@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-
+import com.google.gson.GsonBuilder;
 
 import _09_sponsor.model.ISponsorDAO;
 import _09_sponsor.model.SponsorBean;
@@ -42,8 +42,8 @@ public class SponsorUserJsonServlet extends HttpServlet {
 			ISponsorDAO dao = new SponsorHBNDAO();
 			dao.setUser_id(userid);
 			List<SponsorBean> sb = dao.getAllByUserId(userid);
-
-			String categoriesJson = new Gson().toJson(sb); 
+			final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+			String categoriesJson = gson.toJson(sb);
             out.write(categoriesJson);
             out.flush();
 		} catch (Exception e) {

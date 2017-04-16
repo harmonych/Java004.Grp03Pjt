@@ -58,7 +58,7 @@ public class SponsorServlet extends HttpServlet {
 
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
-					if (fldName.equals("user_id")) {
+					if (fldName.equals("user_id2")) {
 						user_id = Integer.parseInt(value);
 					} else if (fldName.equals("spon_mode")) {
 						sps = value;
@@ -67,7 +67,7 @@ public class SponsorServlet extends HttpServlet {
 						}else{
 							spon_mode = 0;
 						}
-					} else if (fldName.equals("fc_id")) {
+					} else if (fldName.equals("fc_id2")) {
 						fc_id = Integer.parseInt(value);
 					} else if (fldName.equals("spon_money")) {
 						spon_money = Integer.parseInt(value);
@@ -101,9 +101,11 @@ public class SponsorServlet extends HttpServlet {
 				n = dao.sponsor(sb);
 			}else if(spon_mode != 0 || spon_account != ""){
 				ISponsorDAO dao = new SponsorHBNDAO();
-				SponsorBean sb = new SponsorBean(spon_money, spon_mode, spon_account);
+				SponsorBean sb = new SponsorBean(fc_id, user_id, spon_money, spon_mode, spon_account);
 				n = dao.sponsor(sb);
-			}else{				
+			}else{	
+				ISponsorDAO dao = new SponsorHBNDAO();
+				SponsorBean sb = new SponsorBean(fc_id, user_id, spon_money, spon_mode, spon_account);
 			}
 			
 		if (n == 0) {
