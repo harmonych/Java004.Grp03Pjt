@@ -51,7 +51,9 @@
  			<div class="jumbotron">
                     <div class="container text-center">
 <!--                         <h1>文創商城</h1> -->
-                     	<img src="${context}/images/words/productWord1s.png" >
+                         <img src="${context}/images/words/productWord1s.png" >
+
+                        <p> </p>
                     </div>
                 </div>
         <!-- Content Wrapper. Contains page content -->
@@ -201,9 +203,9 @@
   </body>
   	<script type="text/javascript">
 	$(document).ready(function(){
-		var xhr = new XMLHttpRequest();
 		var k = 0;
 		var pn = '';
+// 		var xhr = new XMLHttpRequest();
 // 		xhr.open("GET", '\_08_product\\allproduct.json', true);
 // 		xhr.send();
 // 		xhr.onreadystatechange = function() {
@@ -217,11 +219,11 @@
 				var content = '';
 				console.log("this is products:");
 				console.log(products);	
-				for(var j =0  ; j <(products.length / 3) ; j++){
+				for(var j =0  ; j <(products.length / 3-1) ; j++){
 					content += '<div class="row">';
 					for(var i=0; i < 3; i++){
 						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" >';
-						content += '<a href="#" >';
+						content += '<a href="javascript:;" >';
 						$.ajax({
 							  url: "\_08_product\\singlepropic.json",
 							  type: "GET", 
@@ -231,7 +233,11 @@
 							  },
 							  success: function(resProPica) {
 								 //丟回針對pro_id的所有pic_address
-								 pn = resProPica;
+// 								 if (!$.trim(resProPica)){  
+									 pn = resProPica;	 
+// 								 }else{
+// 									 return false;
+// 								 }								 
 							  },
 							  error: function(proPicErr) {
 								 console.log(proPicErr);
@@ -244,7 +250,7 @@
 						content += '<p text-align = "center">' + products[k].pro_name + '</p>' + '</a></div>';   
 						
 						k++;
-						if (k == products.length-1) break;
+// 						if (k == products.length-1) break;
 					}//end of inner-for-ajax
 				
 					content += '</div>';

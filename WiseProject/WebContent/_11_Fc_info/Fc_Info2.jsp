@@ -10,9 +10,8 @@
 	  <c:set var="context" value="${pageContext.request.contextPath}" />
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js" integrity="sha384-tIwI8+qJdZBtYYCKwRkjxBGQVZS3gGozr3CtI+5JF/oL1JmPEHzCEnIKbDbLTCer" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="${context}/css/Fc_info.css">
-	  <title>募資內容頁</title>	  
+       <link rel="stylesheet" href="${context}/css/Fc_info.css">
+	  <title>募資內容頁</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
@@ -31,16 +30,16 @@
 				<!-- 圖片顯示欄 -->
 				<div class="card_card01 col-md-4 col-md-offset-2">
 					<div id="img_area" class = "showbox">
-						<img src="<c:out value ='${fpl[0].fc_adress}'/>"  id="pro_img" width="400" height="400">
+						<img src="<c:out value ='${fpl[0].fc_adress}'/>"  id="pro_img"  width = "400" height ="400">
 						<!-- width="400" height="400" -->
 					</div>
 					<a>
-						<div class="pic_address" id ="selections">
-							<c:forEach var="i" begin="0" end="${fn:length(fpl)-1}">
-	   							<img src="<c:out value="${fpl[i].fc_adress}"/>" title=""> 
-							</c:forEach>
-							<br clear="all">
-						</div>
+					<div class="pic_address" id ="selections">
+						<c:forEach var="i" begin="0" end="${fn:length(fpl)-1}">
+   							<img src="<c:out value="${fpl[i].fc_adress}"/>" title=""> 
+						</c:forEach>
+						<br clear="all">
+					</div>
 					</a>
 				</div>
 
@@ -61,29 +60,29 @@
 						</div>
 						<div id="start_time" >
 							<b>
-								<label id="lb">開始時間<c:out value ="${fb.start_time}"/></label>
+								<label id="lb">開始時間:<c:out value ="${fb.start_time}"/></label>
 							</b>							
 						</div>
 						<div id="end_time" >
 							<b>
-								<label id="lb">結束時間<c:out value ="${fb.end_time}"/></label>
+								<label id="lb">結束時間:<c:out value ="${fb.end_time}"/></label>
 							</b>
 						</div>
 						<div id="fc_money" >
 							<b>
-								<label id="lb">募資金額<c:out value ="${fb.fc_money}"/></label>
+								<label id="lb">募資金額:<c:out value ="${fb.fc_money}"/></label>
 							</b>
 						</div>	
 						<div id="now_money" >
 							<b>
-								<label id="lb">目前金額<c:out value ="${fb.now_money}"/></label>
+								<label id="lb">目前金額:<c:out value ="${fb.now_money}"/></label>
 							</b>
 						</div>
 					
 						<div id="line"></div><br>
 					
 						<div id="fc_introduction">
-							<label id="lb">募資簡介</label><br>
+							<label id="lb">簡介:</label><br>
 						
 							<p>
 								<c:out value ="${fb.fc_introduction}"/><br> 
@@ -97,39 +96,43 @@
 					<h4 class="control-sidebar-subheading">
                        	募資計畫：風景畫募資
                       <span class="pull-right-container">
-                  <span class="label label-danger pull-right">目前進度：<c:out value ="${(fb.now_money)/(fb.fc_money)*100}"/>%</span>
+                  <span class="label label-danger pull-right">目前進度：<fmt:formatNumber  value ="${(fb.now_money)/(fb.fc_money)*100}" maxFractionDigits="3"/>%</span>
                       </span>
                     </h4>
 
                     <div class="progress progress-xxs">
-                      <div class="progress-bar progress-bar-danger" style="width: <c:out value ="${(fb.now_money)/(fb.fc_money)*100}"/>"></div>
+                      <div class="progress-bar progress-bar-danger" style="width: <fmt:formatNumber  value ="${(fb.now_money)/(fb.fc_money)*100}" maxFractionDigits="3"/>%"></div>
                     </div>
 						<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_09_sponsor/sponsoringFc.do' />"  id="sponsoringFc" >
-          				  <input id="fc_id" name = "fc_id" value="<c:out value ="${fb.fc_id}"/>" type="hidden"/>
-            			  <input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
+          				  <input id="fc_id2" name = "fc_id2" value="<c:out value ="${fb.fc_id}"/>" type="hidden"/>
+            			  <input id="user_id2" name = "user_id2" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
               			  <input id="spon_account" name = "spon_account" value="<c:out value ="${IsArtist.bank_account}"/>" type="hidden"/>			
-							<div >
-								<div id="sponsor_money">
-									<label>贊助金額</label>								
-									<select class="form-control" id ="spon_money" name ="spon_money">
-										<option value="100">NT $100</option>
-										<option value="200">NT $200</option>
-										<option value="300">NT $300</option>
-										<option value="500">NT $500</option>
-										<option value="900">NT $900</option>
-										<option value="1000">NT $1,000</option>
-										<option value="3000">NT $3,000</option>
-										<option value="5000">NT $5,000</option>
-									</select>
+							<div id="sponsor_money">
+								<div>
+									<label>贊助金額</label>
 								</div>
-								<div id="sponsor_money">
-									<label>贊助方式</label>								
-									<select class="form-control" id ="spon_mode" name ="spon_mode">
-										<option value="1">轉帳</option>
-										<option value="2">匯款</option>											
-									</select>
-								</div>
-							</div>
+									<div>
+										<select class="form-control" id ="spon_money" name ="spon_money">
+											<option value="100">NT $100</option>
+											<option value="200">NT $200</option>
+											<option value="300">NT $300</option>
+											<option value="500">NT $500</option>
+											<option value="900">NT $900</option>
+											<option value="1000">NT $1,000</option>
+											<option value="3000">NT $3,000</option>
+											<option value="5000">NT $5,000</option>
+										</select>
+									</div>
+								<div id="pay_money">
+                                    <label>贊助方式</label>                                
+                                    <select class="form-control" id = "spon_mode" name ="spon_mode">
+                                        <option value="1">轉帳</option>
+                                        <option value="2">匯款</option>
+                                        
+                                    </select>
+                                </div>
+									
+						  </div>
 
 							<div id="bt_area">
 								<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
@@ -229,7 +232,6 @@
       	</c:otherwise>
       	</c:choose>
         <!-- /.content -->
-        
         <!-- 留言串列 -->
         <section>
         	<div class="row" id ="renewToView">

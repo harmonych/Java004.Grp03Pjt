@@ -27,6 +27,7 @@
 /*     border-bottom: 1px solid #f4f4f4; */
     text-align: center;
 }
+          
 </style>
         
         
@@ -69,7 +70,8 @@
                            <div class="col-md-9 col-xs-9">
                             <div class="box-header with-border">
 <!-- 					        	<h2 class="box-title">創作者主頁</h2> -->
-								<img src="${context}/images/words/CreationsWord1s.png" >
+                                <img src="${context}/images/words/CreationsWord1s.png" >
+
 					       	</div>
                                 <div class="BH-lbox MSG-box5">
                                     <div class="HOME-mainbox1">
@@ -147,11 +149,12 @@
                             <div class="col-md-3 col-xs-3">
                         	   <h4>創作者 Blog</h4><input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
                                 <ul class="nav nav-pills nav-stacked"> 								
-										<li><a href="#section2">作者資訊</a>
+										<li><a href="javascript:;">作者資訊</a>
 												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100"/>
 											 <li>
 												<ul class="MSG-mydata1">
-													<li>暱稱：<c:out value ="${mb.user_name}"/><span class="user_name "></span></li>														
+													<li id="artUserName"><c:out value ="${mb.user_name}"/><span class="user_name "></span></li>
+													<input id="user_id" value="<c:out value ="${mb.user_id}"/>" type="hidden"/>														
 														<a href="pic_address 簡介圖片位址">
 													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="150px"></a>
 												</ul>
@@ -182,10 +185,18 @@
 <!-- 											<input type="button" value="新增作品" name="新增" style="width:100px;height:30px;"> -->
 											<button id="create-product">新增商品</button><br>
 											<br>
-											<button id="create-funds">新增募資</button>								
+											<br>
+									        <button id="create-funds">新增募資</button>                                
 										 </c:if>
 										</c:if>	
-									<li><a href="#section3"><i class="fa fa-fw fa-commenting-o"></i>訪客留言</a></li>
+										<c:choose>
+										<c:when test="${LoginOK == null}"> 
+									<li><a href="${context}/_02_login/login.jsp"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
+                                		</c:when>
+                                		<c:otherwise>
+                                	<li><a href="javascript:;" id="msgsys"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
+                                		</c:otherwise>
+                                		</c:choose>
                                 </ul><br>
                          </div>
 
@@ -224,7 +235,7 @@
 							},
 							success: function(resFcAdrs){
 								//套上簡介圖片
-								funds_content += '<a href = "#"><img src = "' + resFcAdrs[0].fc_adress; 
+								funds_content += '<a href = "javascript:;"><img src = "' + resFcAdrs[0].fc_adress; 
 								//套上img-link跟ip_fc_id
 								funds_content += '" class="img-thumbnail img-link" width=90% height=50%  title="" id ="ip_fc_id'+ responsefunds[i].fc_id +'"></a>';
 							}
@@ -265,7 +276,7 @@
 							},
 							success: function(resProAdrs){
 								//套上簡介圖片
-								products_content += '<a href = "#"><img src = "' + resProAdrs[0].pic_adress; 
+								products_content += '<a href = "javascript:;"><img src = "' + resProAdrs[0].pic_adress; 
 								//套上img-link跟ip_pro_id
 								products_content += '" class="img-thumbnail img-link" width=90% height=50% title="" id ="ip_pro_id'+ responseProducts[i].pro_id +'"></a>';
 							}
@@ -284,28 +295,48 @@
 					  responseProductsErr.abort();
 				  }
 			});
-			 $("#create-product").click(function(){
-		    	    $.ajax({
-						url:"\_12_Product_Create\\Product_Create NEW.jsp",
-						context: document.body,
-						success: function(responseProAll){
-							$("#mainframe").empty();
-							$('#mainframe').html(responseProAll);
-							$(".mainfooter").empty();
-		    	      }
-		    	    });
-		    	  });
-			 $("#create-funds").click(function(){
-		    	    $.ajax({
-						url:"\_10_Fc_Create\\Fc_Create NEW.jsp",
-						context: document.body,
-						success: function(responseProAll){
-							$("#mainframe").empty();
-							$('#mainframe').html(responseProAll);
-							$(".mainfooter").empty();
-		    	      }
-		    	    });
-		    	  });
+            $("#create-product").click(function(){
+                $.ajax({
+                    url:"\_12_Product_Create\\Product_Create NEW.jsp",
+                    context: document.body,
+                    success: function(responseProAll){
+                        $("#mainframe").empty();
+                        $('#mainframe').html(responseProAll);
+                        $(".mainfooter").empty();
+                  }
+                });
+              });
+         $("#create-funds").click(function(){
+                $.ajax({
+                    url:"\_10_Fc_Create\\Fc_Create NEW.jsp",
+                    context: document.body,
+                    success: function(responseProAll){
+                        $("#mainframe").empty();
+                        $('#mainframe').html(responseProAll);
+                        $(".mainfooter").empty();
+                  }
+                });
+              });
+			//讀取作者暱稱
+			var user_id = $('#user_id').val();
+			$("#msgsys").click(function(){
+				$.ajax({
+					  url: "\_06_mailbox\\messageReply.do",
+					  type: "GET", 
+					  async: false,
+					  data: { 
+					    "r_user_id":user_id,
+					  },
+					  success: function(responseMsg) {
+						$("#mainframe").empty();
+		  				$('#mainframe').html(responseMsg);
+					  },
+					  error: function(responseMsgErr) {
+						  responseMsgErr.abort();
+					  }
+				});
+			})
+	
 	})
     </script>
 <!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->

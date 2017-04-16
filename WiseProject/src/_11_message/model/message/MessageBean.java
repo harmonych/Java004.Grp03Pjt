@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
@@ -16,13 +18,27 @@ public class MessageBean implements Serializable{
 	String sender_name; 
 	String receiver_name; 
 	int r_user_id;
-	String title;
-	
+	String title;	
 	String msg_txt;
 	Timestamp msg_time;
 	int s_msg_status;
 	int r_msg_status;
+	int msg_read = 0;
+	//0已讀 1未讀
 	
+	public MessageBean(int s_user_id, String sender_name, String receiver_name, int r_user_id, String title,
+			String msg_txt, int s_msg_status, int r_msg_status) {
+		super();
+		this.s_user_id = s_user_id;
+		this.sender_name = sender_name;
+		this.receiver_name = receiver_name;
+		this.r_user_id = r_user_id;
+		this.title = title;
+		this.msg_txt = msg_txt;
+		this.s_msg_status = s_msg_status;
+		this.r_msg_status = r_msg_status;
+	}
+
 	public MessageBean(int s_user_id, String sender_name, String receiver_name, int r_user_id, String title,
 			String msg_txt, Timestamp msg_time, int s_msg_status, int r_msg_status) {
 		super();
@@ -37,6 +53,22 @@ public class MessageBean implements Serializable{
 		this.r_msg_status = r_msg_status;
 	}
 	
+	public MessageBean(int msg_id, int s_user_id, String sender_name, String receiver_name, int r_user_id, String title,
+			String msg_txt, Timestamp msg_time, int s_msg_status, int r_msg_status, int msg_read) {
+		super();
+		this.msg_id = msg_id;
+		this.s_user_id = s_user_id;
+		this.sender_name = sender_name;
+		this.receiver_name = receiver_name;
+		this.r_user_id = r_user_id;
+		this.title = title;
+		this.msg_txt = msg_txt;
+		this.msg_time = msg_time;
+		this.s_msg_status = s_msg_status;
+		this.r_msg_status = r_msg_status;
+		this.msg_read = msg_read;
+	}
+
 	public MessageBean(int msg_id, int s_user_id, String sender_name, String receiver_name, int r_user_id,
 			String title,String msg_txt, Timestamp msg_time,int s_msg_status,int r_msg_status) {
 		super();
@@ -51,7 +83,13 @@ public class MessageBean implements Serializable{
 		this.s_msg_status= s_msg_status;
 		this.r_msg_status= r_msg_status;
 	}
+	
+	public MessageBean() {
+		super();
+	}
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getMsg_id() {
 		return msg_id;
 	}

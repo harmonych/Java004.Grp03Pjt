@@ -10,10 +10,8 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Wise彙思創作募資</title>
-      <link rel="stylesheet" href="css/index.css">
-      <!-- Tell the browser to be responsive to screen width -->
+      <!-- Tell the browser to be responsive to screen width -->     
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-      <!-- Bootstrap 3.3.6 -->
       <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
       <!-- Font Awesome -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -24,6 +22,8 @@
 
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
       <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+      
+	<link rel="stylesheet" href="${context}/plugins/iCheck/flat/blue.css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -185,74 +185,74 @@ desired effect
                </c:choose>
 
                 <!-- Notifications Menu -->
-             <c:choose>
-              	<c:when test="${!empty LoginOK}">
-                <li class="dropdown notifications-menu">
+<%--              <c:choose> --%>
+<%--               	<c:when test="${!empty LoginOK}"> --%>
+<!--                 <li class="dropdown notifications-menu"> -->
                   <!-- Menu toggle button -->
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="label label-warning">10</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">You have 10 notifications</li>
-                    <li>
+<!--                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> -->
+<!--                     <i class="fa fa-bell-o"></i> -->
+<!--                     <span class="label label-warning">10</span> -->
+<!--                   </a> -->
+<!--                   <ul class="dropdown-menu"> -->
+<!--                     <li class="header">You have 10 notifications</li> -->
+<!--                     <li> -->
                       <!-- Inner Menu: contains the notifications -->
-                      <ul class="menu">
-                        <li>
+<!--                       <ul class="menu"> -->
+<!--                         <li> -->
                           <!-- start notification -->
-                          <a href="#">
-                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                          </a>
-                        </li>
+<!--                           <a href="#"> -->
+<!--                             <i class="fa fa-users text-aqua"></i> 5 new members joined today -->
+<!--                           </a> -->
+<!--                         </li> -->
                         <!-- end notification -->
-                      </ul>
-                    </li>
-                    <li class="footer"><a href="#">View all</a></li>
-                  </ul>
-                </li>
-              </c:when>
-            </c:choose>
+<!--                       </ul> -->
+<!--                     </li> -->
+<!--                     <li class="footer"><a href="#">View all</a></li> -->
+<!--                   </ul> -->
+<!--                 </li> -->
+<%--               </c:when> --%>
+<%--             </c:choose> --%>
                 <!-- Tasks Menu -->
-                <c:choose>
-              	<c:when test="${!empty LoginOK}">
-                <li class="dropdown tasks-menu">
+<%--                 <c:choose> --%>
+<%--               	<c:when test="${!empty LoginOK}"> --%>
+<!--                 <li class="dropdown tasks-menu"> -->
                   <!-- Menu Toggle Button -->
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-flag-o"></i>
-                    <span class="label label-danger">9</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">You have 9 tasks</li>
-                    <li>
+<!--                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> -->
+<!--                     <i class="fa fa-flag-o"></i> -->
+<!--                     <span class="label label-danger">9</span> -->
+<!--                   </a> -->
+<!--                   <ul class="dropdown-menu"> -->
+<!--                     <li class="header">You have 9 tasks</li> -->
+<!--                     <li> -->
                       <!-- Inner menu: contains the tasks -->
-                      <ul class="menu">
-                        <li>
+<!--                       <ul class="menu"> -->
+<!--                         <li> -->
                           <!-- Task item -->
-                          <a href="#">
+<!--                           <a href="#"> -->
                             <!-- Task title and progress text -->
-                            <h3>
-                              Design some buttons
-                              <small class="pull-right">20%</small>
-                            </h3>
+<!--                             <h3> -->
+<!--                               Design some buttons -->
+<!--                               <small class="pull-right">20%</small> -->
+<!--                             </h3> -->
                             <!-- The progress bar -->
-                            <div class="progress xs">
+<!--                             <div class="progress xs"> -->
                               <!-- Change the css width attribute to simulate progress -->
-                              <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">20% Complete</span>
-                              </div>
-                            </div>
-                          </a>
-                        </li>
+<!--                               <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"> -->
+<!--                                 <span class="sr-only">20% Complete</span> -->
+<!--                               </div> -->
+<!--                             </div> -->
+<!--                           </a> -->
+<!--                         </li> -->
                         <!-- end task item -->
-                      </ul>
-                    </li>
-                    <li class="footer">
-                      <a href="#">View all tasks</a>
-                    </li>
-                  </ul>
-                </li>
-                </c:when>
-              </c:choose>
+<!--                       </ul> -->
+<!--                     </li> -->
+<!--                     <li class="footer"> -->
+<!--                       <a href="#">View all tasks</a> -->
+<!--                     </li> -->
+<!--                   </ul> -->
+<!--                 </li> -->
+<%--                 </c:when> --%>
+<%--               </c:choose> --%>
                 <!-- User Account Menu -->
 
 
@@ -295,15 +295,16 @@ desired effect
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                          <div id="mid" class="">
-                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" id="mid_bt" class="btn btn-default btn-flat">個人資料</a>
+                          <div class="pull-left">
+                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" class="btn btn-default btn-flat">個人資料</a>
                           </div>
-                          <div id="mid" class="">
-                            <a href="${context}/_05_CreationsFrame/CreationsPage2.jsp" id="mid_bt" class="btn btn-default btn-flat">個人主頁</a>
+                          <c:if test = "${LoginOK.check_tag}" >
+                          <div class="pull-left">
+                            <a href="Javascript:;" class="btn btn-default btn-flat" id="isThisAnEffingJoke">個人主頁</a>
                           </div>
-                          
-                          <div id="mid" class="">
-                            <a href="${context}/_02_login/logout.jsp" id="mid_bt" class="btn btn-default btn-flat">登出</a>
+                          </c:if>
+                          <div class="pull-right">
+                            <a href="${context}/_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>
                           </div>
                         </li>
                       </ul>
@@ -332,22 +333,22 @@ desired effect
           <section class="sidebar">
 
             <!-- Sidebar user panel (optional) -->
-            <c:choose>
-            	<c:when test="${empty LoginOK}">
-                </c:when>
-                <c:when test="${!empty LoginOK}">
-		            <div class="user-panel">
-		              <div class="pull-left image">
-		                <img src="${file_name}" class="img-circle" alt="User Image">
-		              </div>
-		              <div class="pull-left info">
-		                <p>${userName}</p>
+<%--             <c:choose> --%>
+<%--             	<c:when test="${empty LoginOK}"> --%>
+<%--                 </c:when> --%>
+<%--                 <c:when test="${!empty LoginOK}"> --%>
+<!-- 		            <div class="user-panel"> -->
+<!-- 		              <div class="pull-left image"> -->
+<%-- 		                <img src="${file_name}" class="img-circle" alt="User Image"> --%>
+<!-- 		              </div> -->
+<!-- 		              <div class="pull-left info"> -->
+<%-- 		                <p>${userName}</p> --%>
 		                <!-- Status -->
-		                <a href="#"><i class="fa fa-circle text-success"></i> 在線</a>
-		              </div>
-		            </div>
-				</c:when>
-			</c:choose>
+<!-- 		                <a href="#"><i class="fa fa-circle text-success"></i> 在線</a> -->
+<!-- 		              </div> -->
+<!-- 		            </div> -->
+<%-- 				</c:when> --%>
+<%-- 			</c:choose> --%>
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
@@ -365,9 +366,9 @@ desired effect
                   <li><a href="#" class = "sp_search">募集作品</a></li>
                 </ul>
               </li>
-              <li id = "sp-artist"><a href="#sp-artist"><i class="fa fa-fw fa-paint-brush"></i><span>創作平台</span></a></li>
-              <li id = "sp-funds"><a href="#sp-funds"><i class="fa fa-fw fa-group"></i><span>作品募資</span></a></li>
-              <li id = "sp-product"><a href="#sp-product"><i class="fa fa-fw fa-gift"></i><span>文創商城</span></a></li>
+              <li id = "sp-artist"><a href="javascript:;"><i class="fa fa-fw fa-paint-brush"></i><span>創作平台</span></a></li>
+              <li id = "sp-funds"><a href="javascript:;"><i class="fa fa-fw fa-group"></i><span>作品募資</span></a></li>
+              <li id = "sp-product"><a href="javascript:;"><i class="fa fa-fw fa-gift"></i><span>文創商城</span></a></li>
 				
             </ul>
             <!-- /.sidebar-menu -->
@@ -379,69 +380,67 @@ desired effect
         <div class="content-wrapper" id = "mainframe">
           <!-- Content Header (Page header) -->
           <section class="content-header">
-            <div class="row">
-	            <div class="col-md-12">
-	              <div class="box box-solid">
-	                <div class="box-header with-border">
-	                  <h3 class="box-title">加入彙思，讓你的創意被大家看見!</h3>
-	                </div>
-	                <!-- /.box-header -->
-	                <div class="box-body">
-	                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-	                    <ol class="carousel-indicators">
-	                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-	                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-	                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-	                    </ol>
-	                    <div class="carousel-inner">
-	                      <div class="item" align ="center">
-	<!--                         <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide"> -->
-							<img src="${context}/images/Creations/10.jpg" alt="First slide">
-	                        <div class="carousel-caption">
-	                          	新近作品
-	                        </div>
-	                      </div>
-	                      <div class="item active" align ="center" >
-	<!--                         <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" alt="Second slide" > -->
-	                        <img src="${context}/images/Creations/6.jpg" alt="Second slide" > 
-	                       
-	                        <div class="carousel-caption">
-	                          	近期更新
-	                        </div>
-	                      </div>
-	                      <div class="item" align ="center">
-	<!--                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide"> -->
-	 						<img src="${context}/images/Creations/1.jpg" alt="Third slide" >
-	                        <div class="carousel-caption">
-	                           	人氣最高
-	                        </div>
-	                      </div>
-	                    </div>
-	                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-	                      <span class="fa fa-angle-left"></span>
-	                    </a>
-	                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-	                      <span class="fa fa-angle-right"></span>
-	                    </a>
-	                  </div>
-	                </div>
-	                <!-- /.box-body -->
-	              </div>
-	              <!-- /.box -->
-	            </div>
-	        </div>
-            <ol class="breadcrumb">
-              <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-              <li class="active">Here</li>
-            </ol>
+            <div class="col-md-12">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">加入彙思，讓你的創意被大家看見!</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="item" align ="center">
+<!--                         <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide"> -->
+						<img src="${context}/images/Creations/10.jpg" alt="First slide">
+                        <div class="carousel-caption">
+                          	新近作品
+                        </div>
+                      </div>
+                      <div class="item active" align ="center" >
+<!--                         <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" alt="Second slide" > -->
+                        <img src="${context}/images/Creations/6.jpg" alt="Second slide" > 
+                       
+                        <div class="carousel-caption">
+                          	近期更新
+                        </div>
+                      </div>
+                      <div class="item" align ="center">
+<!--                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide"> -->
+ 						<img src="${context}/images/Creations/1.jpg" alt="Third slide" >
+                        <div class="carousel-caption">
+                           	人氣最高
+                        </div>
+                      </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                      <span class="fa fa-angle-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                      <span class="fa fa-angle-right"></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+<!--             <ol class="breadcrumb"> -->
+<!--               <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li> -->
+<!--               <li class="active">Here</li> -->
+<!--             </ol> -->
           </section>
 
           <!-- Main content -->
-<!--           <section class="content"> -->
+          <section class="content">
 
-<!--             Your Page Content Here -->
+            <!-- Your Page Content Here -->
 
-<!--           </section> -->
+          </section>
           <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -450,7 +449,7 @@ desired effect
         <footer class="main-footer">
           <!-- To the right -->
           <div class="pull-right hidden-xs">
-            Anything you want
+            	The Wise Choice.
           </div>
           <!-- Default to the left -->
           <strong>Copyright &copy; 2017 <a href="mailto:wisejava004@gmail.com">彙思</a>.</strong> All rights reserved.
@@ -540,10 +539,24 @@ desired effect
     <!-- jQuery 2.2.3 -->
 <!--     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script> -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js" integrity="sha384-tIwI8+qJdZBtYYCKwRkjxBGQVZS3gGozr3CtI+5JF/oL1JmPEHzCEnIKbDbLTCer" crossorigin="anonymous"></script>
+     
     <!-- Bootstrap 3.3.6 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
+   	<script src="${context}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="${context}/plugins/fastclick/fastclick.js"></script>
+	<!-- AdminLTE for demo purposes -->
+<%-- 	<script src="${context}/dist/js/demo.js"></script> --%>
+	<!-- iCheck -->
+	
+	<script src="${context}/plugins/iCheck/icheck.min.js"></script>
+	<!-- Bootstrap WYSIHTML5 -->
+	<script
+		src="${context}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<%--     <script src="${context}\js\img-search.js?ver=1"></script> --%>
     
       <!-- Bootstrap 3.3.7 as Backup -->
 <!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
@@ -596,15 +609,20 @@ desired effect
 		    	}
 			});
 		  });
-		      
+	      $("#isThisAnEffingJoke").click(function(){
+			  	$.ajax({
+					url:"\_05_CreationsFrame\\CreationsPage2.jsp",
+					context: document.body,
+					success: function(responseRSS){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseRSS);
+						$(".mainfooter").empty();
+			    	}
+				});
+		  });  
 		});
       </script>
 
-
-      <!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
    </body>
 
 </html>

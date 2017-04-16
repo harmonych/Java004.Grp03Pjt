@@ -53,7 +53,7 @@
           <div class="box box-solid">
             <div class="box-header with-border">
             <input id="user_id" value="<c:out value ="${LoginOK.user_id}"/>" type="hidden"/>	
-              <h3 class="box-title" id="receiver_name"><c:out value = "${LoginOK.user_name}"/></h3>
+              <h3 class="box-title" id="sender_name"><c:out value = "${LoginOK.user_name}"/></h3>
               <div class="box-tools">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -95,7 +95,7 @@
         <div class="col-md-9">
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">收件匣</h3>
+              <h3 class="box-title">寄件備份</h3>
 
               <div class="box-tools pull-right">
                 <div class="has-feedback">
@@ -131,11 +131,11 @@
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                   <tbody>
-					<c:forEach var="i" begin="0" end="${fn:length(rmbl)-1}">
-						<tr class="readMailLink" id ="<c:out value ="${rmbl[i].msg_id}"/>">
+					<c:forEach var="i" begin="1" end="${fn:length(smbl)}">
+						<tr class="readMailLink" id ="<c:out value ="${smbl[i].msg_id}"/>">
 					<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-                    <td class="mailbox-name"><c:out value = "${rmbl[i].sender_name }"/></td>
-	                <td class="mailbox-subject"><a href="javascript:;"><b><c:out value = "${rmbl[i].title}"/></b></a></td>
+                    <td class="mailbox-name"><c:out value = "${smbl[i].receiver_name }"/></td>
+	                <td class="mailbox-subject"><a href="javascript:;"><b><c:out value = "${smbl[i].title}"/></b></a></td>
 						</tr>
 					</c:forEach>
 <!--                   <tr> -->
@@ -246,7 +246,7 @@
     	var msg_id = $(this).attr('id');
     	console.log(msg_id)
 		  $.ajax({
-			  url:"\_06_mailbox\\messageByMsgId.do?msg_id=" + msg_id,
+			  url:"\_06_mailbox\\messageByMsgIdS.do?msg_id=" + msg_id,
 			  context: document.body,
 			  success: function(responseRMsg){
 				$("#mainframe").empty();
@@ -260,20 +260,6 @@
 	$(".mailBoxLink").click(function(){
 		$.ajax({
 			  url: "\_06_mailbox\\messageReceived.do?r_user_id=" + r_user_id,
-			  type: "GET", 
-			  success: function(responseMsg) {
-				$("#mainframe").empty();
-				$('#mainframe').html(responseMsg);
-			  },
-			  error: function(responseMsgErr) {
-				  responseMsgErr.abort();
-			  }
-		});
-	});
-	//此頁面下選寄信備份
-	$(".sentBoxLink").click(function(){
-		$.ajax({
-			  url: "\_06_mailbox\\messageSent.do?s_user_id=" + r_user_id,
 			  type: "GET", 
 			  success: function(responseMsg) {
 				$("#mainframe").empty();

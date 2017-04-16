@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
     <head>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <c:set var="context" value="${pageContext.request.contextPath}" />
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -171,12 +172,10 @@
 <%--    <c:set var="msg" value="<font color='red'>${sessionScope.timeOut}</font>" /> --%>
 <%-- </c:if> --%>
 <!-- 引入共同的頁首 -->
-<jsp:include page="/fragment/top.jsp" />
-
         <div class="container">
             <div class="row main">
                 <div class="main-login main-center">
-                    <p class="text-center">Register an account? <a href="../_01_register/register.jsp">Register in here</a></p>
+                    <p class="text-center">Register an account? <a href="${context}/_01_register/register.jsp">Register in here</a></p>
                     <h5 class="text-center">創作不為什麼，只是刻下痕跡</h5>
                     <Form action="<c:url value='login.do' />" method="POST" name="loginForm">
                     <!--<Font color="#006600" face="標楷體">${funcName},${msg}</Font>-->

@@ -45,8 +45,8 @@
 			<section class="content">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="MailBox.jsp"
-							class="btn btn-warning btn-block margin-bottom">Back to Inbox</a>
+<!-- 						<a href="MailBox.jsp" -->
+<!-- 							class="btn btn-warning btn-block margin-bottom">Back to Inbox</a> -->
 
 						<div class="box box-solid">
 							<div class="box-header with-border">
@@ -60,9 +60,9 @@
 							</div>
 							<div class="box-body no-padding">
 								<ul class="nav nav-pills nav-stacked">
-									<li><a href="MailBox.jsp"><i class="fa fa-inbox"></i>
+									<li><a href="javascript:;" id="mailBox"><i class="fa fa-inbox"></i>
 											收件匣 <span class="label label-warning pull-right"></span></a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i> 寄件備份</a></li>
+									<li><a href="#" class ="sentBoxLink"><i class="fa fa-envelope-o"></i> 寄件備份</a></li>
 
 <!-- 									<li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li> -->
 								</ul>
@@ -99,19 +99,19 @@
 						
 						<div class="box box-warning">
 							<div class="box-header with-border">
-								<h3 class="box-title">編輯信件</h3>
+								<h3 class="box-title">發送信件</h3>
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body">
-								<div class="form-group">收件者: <c:out value ="${param.receiver_name}" />
-								</div><input type="hidden" class="form-control" name='receiver_name' value='${param.receiver_name}' placeholder="To:">
+								<div class="form-group">收件者: <c:out value ="${mb.user_name}" />
+								</div><input type="hidden" class="form-control" id = "rn" name='receiver_name' value='${mb.user_id}' placeholder="To:">
 								<div class="form-group">
 								</div><input class="form-control" name='title' value='${param.title}' placeholder="主題:">
-								<div class="form-group">
+								<div class="form-group" id="w5">
 									<textarea id="compose-textarea" class="form-control" name='msg_txt' style="height: 300px">${param.msg_txt}
                    					</textarea>
 								</div>
-								<input type="hidden" name='s_user_id' value='${LoginOK.user_id}'>
+								<input type="hidden" id = "s_user_id" name='s_user_id' value='${LoginOK.user_id}'>
 								<input type="hidden" name='sender_name'	value='${LoginOK.user_name}'>
 							</div>
 						</div>
@@ -146,12 +146,29 @@
 	<script>
 	$(document).ready(function(){
 		$(function() {
+			$(".wysihtml5-toolbar").empty();
 			//Add text editor
 			$("#compose-textarea").wysihtml5();
 		});
+		var aun = $('#rn').val();
+		console.log(aun);
 		var options={
 				url:'\_11_message\\messagecreate.do',
 				success: function(){	
+					$.ajax({
+						  url: "\_06_mailbox\\Compose.jsp",
+						  type: "GET", 
+						  data: { 
+						    "receiver_name":aun,
+						  },
+						  success: function(responseMsg) {
+							$("#mainframe").empty();
+			  				$('#mainframe').html(responseMsg);
+						  },
+						  error: function(responseMsgErr) {
+							  responseMsgErr.abort();
+						  }
+					});
 			        alert("寄信成功!");	
 				}
 			}			
@@ -160,6 +177,34 @@
 			$(this).ajaxSubmit(options);		
 			return false;
 		})
+		var s_user_id = $('#s_user_id').val();
+		$("#mailBox").click(function(){
+			$.ajax({
+				  url: "\_06_mailbox\\messageReceived.do?r_user_id=" + s_user_id,
+				  type: "GET", 
+				  success: function(responseMsg) {
+					$("#mainframe").empty();
+					$('#mainframe').html(responseMsg);
+				  },
+				  error: function(responseMsgErr) {
+					  responseMsgErr.abort();
+				  }
+			});
+		});
+		//此頁面下選寄信備份
+		$(".sentBoxLink").click(function(){
+			$.ajax({
+				  url: "\_06_mailbox\\messageSent.do?s_user_id=" + s_user_id,
+				  type: "GET", 
+				  success: function(responseMsg) {
+					$("#mainframe").empty();
+					$('#mainframe').html(responseMsg);
+				  },
+				  error: function(responseMsgErr) {
+					  responseMsgErr.abort();
+				  }
+			});
+		});
 	})
 	</script>
 </body>

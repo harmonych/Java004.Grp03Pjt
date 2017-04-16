@@ -42,13 +42,13 @@ public class MessageJsonrecieveServlet extends HttpServlet {
 			IMessage dao = new MessageHBNDAO();
 			dao.setR_user_id(r_user_id);
 			
-			MessageBean mbs = dao.Messagerecievequery(r_user_id);
+//			MessageBean mbs = dao.Messagerecievequery(r_user_id);
 //			for (FundsBean temp : list) {
 //				System.out.println(temp.getArtid());
 //			}
-			String msgs = new Gson().toJson(mbs); 
+//			String msgs = new Gson().toJson(mbs); 
 			
-            out.write(msgs);
+//            out.write(msgs);
             out.flush();
 		} catch (Exception e) {
 			throw new ServletException("DB error", e);

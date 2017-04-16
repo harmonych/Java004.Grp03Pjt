@@ -478,7 +478,6 @@ desired effect
 										<option value="8">NT $50,000</option>
 									</select>
 								</div>
-								
 								<div id="sponsor_money">
 									<label>贊助方式</label>								
 									<select class="form-control">

@@ -50,7 +50,6 @@
             <div class="box-header with-border">
               <h3 class="box-title" id="receiver_name"><c:out value ="${LoginOK.user_name}"/></h3>
 				<input id="r_user_id" value="${msgb.r_user_id}" type="hidden"/>
-				<input id="user_id" value="${LoginOK.user_id}" type="hidden"/>
               <div class="box-tools">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -60,7 +59,7 @@
               <ul class="nav nav-pills nav-stacked">
                 <li><a href="javascript:;" class = "mailBoxLink"><i class="fa fa-inbox"></i> 收信匣</a></li>
                   
-                <li><a href="javascript:;" class = "sentBoxLink"><i class="fa fa-envelope-o"></i> 寄件備份</a></li>
+                <li><a href="javascript:;" class="sentBoxLink"><i class="fa fa-envelope-o"></i> 寄件備份</a></li>
                                
                 
 <!--                 <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li> -->
@@ -93,7 +92,7 @@
         <div class="col-md-9">
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">閱讀信件</h3>
+              <h3 class="box-title">閱讀備份</h3>
 
               <div class="box-tools pull-right">
                 <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
@@ -179,7 +178,8 @@
             <!-- /.box-footer -->
             <div class="box-footer">
               <div class="pull-right">
-                <button type="button" class="btn btn-default composeMailLink"><i class="fa fa-reply "></i> 回信</button>
+<!--               寄件者，不讓其第二次回信 -->
+<!--                 <button type="button" class="btn btn-default composeMailLink"><i class="fa fa-reply "></i> 回信</button> -->
 <!--                 <button type="button" class="btn btn-default"><i class="fa fa-share"></i> Forward</button> -->
               </div>
 <!--               <button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button> -->
@@ -206,11 +206,11 @@
 <!-- <script src="../dist/js/demo.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function(){
+	var si = $('#s_user_id').val();	
+	console.log(si);
 	//此頁面下選回信
 	$(".composeMailLink").click(function(){
-		var si = $('#s_user_id').val();
-		
-		console.log(si);
+
 		$.ajax({
 			  url: "\_06_mailbox\\messageReply.do" ,
 			  type: "GET", 
@@ -246,11 +246,11 @@ $(document).ready(function(){
 	//此頁面下選寄信備份
 	$(".sentBoxLink").click(function(){
 		$.ajax({
-			  url: "\_06_mailbox\\messageSent.do?s_user_id=" + r_user_id,
+			  url: "\_06_mailbox\messageSent.do?s_user_id=" + s_user_id,
 			  type: "GET", 
-			  success: function(responseMsgSent) {
+			  success: function(responseMsg) {
 				$("#mainframe").empty();
-				$('#mainframe').html(responseMsgSent);
+				$('#mainframe').html(responseMsg);
 			  },
 			  error: function(responseMsgErr) {
 				  responseMsgErr.abort();

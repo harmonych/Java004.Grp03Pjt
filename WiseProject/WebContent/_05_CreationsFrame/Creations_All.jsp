@@ -19,7 +19,9 @@
 		<div class="col-sm-8 text-left"> 
 			<div class="box-header with-border">
 <!-- 	        	<h2 class="box-title">創作者一覽</h2> -->
-					<img src="${context}/images/words/CreationsAWord1s.png" >
+                    <img src="${context}/images/words/CreationsAWord1s.png" >
+
+	       	</div>
 		  <div class="container" id ="main">
 			<div class="row">
 			
