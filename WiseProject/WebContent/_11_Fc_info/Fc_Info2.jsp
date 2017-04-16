@@ -31,16 +31,16 @@
 				<!-- 圖片顯示欄 -->
 				<div class="card_card01 col-md-4 col-md-offset-2">
 					<div id="img_area" class = "showbox">
-						<img src="<c:out value ='${fpl[0].fc_adress}'/>"  id="pro_img"  width = "400px">
+						<img src="<c:out value ='${fpl[0].fc_adress}'/>"  id="pro_img" width="400" height="400">
 						<!-- width="400" height="400" -->
 					</div>
 					<a>
-					<div class="pic_address" id ="selections">
-						<c:forEach var="i" begin="0" end="${fn:length(fpl)-1}">
-   							<img src="<c:out value="${fpl[i].fc_adress}"/>" title=""> 
-						</c:forEach>
-						<br clear="all">
-					</div>
+						<div class="pic_address" id ="selections">
+							<c:forEach var="i" begin="0" end="${fn:length(fpl)-1}">
+	   							<img src="<c:out value="${fpl[i].fc_adress}"/>" title=""> 
+							</c:forEach>
+							<br clear="all">
+						</div>
 					</a>
 				</div>
 
@@ -108,22 +108,27 @@
           				  <input id="fc_id" name = "fc_id" value="<c:out value ="${fb.fc_id}"/>" type="hidden"/>
             			  <input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
               			  <input id="spon_account" name = "spon_account" value="<c:out value ="${IsArtist.bank_account}"/>" type="hidden"/>			
-							<div id="sponsor_money">
-								<div>
-									<label>贊助金額</label>
+							<div >
+								<div id="sponsor_money">
+									<label>贊助金額</label>								
+									<select class="form-control" id ="spon_money" name ="spon_money">
+										<option value="100">NT $100</option>
+										<option value="200">NT $200</option>
+										<option value="300">NT $300</option>
+										<option value="500">NT $500</option>
+										<option value="900">NT $900</option>
+										<option value="1000">NT $1,000</option>
+										<option value="3000">NT $3,000</option>
+										<option value="5000">NT $5,000</option>
+									</select>
 								</div>
-									<div>
-										<select class="form-control" id ="spon_money" name ="spon_money">
-											<option value="100">NT $100</option>
-											<option value="200">NT $200</option>
-											<option value="300">NT $300</option>
-											<option value="500">NT $500</option>
-											<option value="900">NT $900</option>
-											<option value="1000">NT $1,000</option>
-											<option value="3000">NT $3,000</option>
-											<option value="5000">NT $5,000</option>
-										</select>
-									</div>
+								<div id="sponsor_money">
+									<label>贊助方式</label>								
+									<select class="form-control" id ="spon_mode" name ="spon_mode">
+										<option value="1">轉帳</option>
+										<option value="2">匯款</option>											
+									</select>
+								</div>
 							</div>
 
 							<div id="bt_area">

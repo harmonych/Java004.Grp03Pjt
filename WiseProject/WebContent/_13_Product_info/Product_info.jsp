@@ -35,7 +35,7 @@
 					<!-- 圖片顯示欄 -->
 					<div class="card_card01 col-md-4 col-md-offset-2">
 					  <div id="img_area" class = "showbox">
-						<img src=" <c:out value ="${pbl[0].pic_adress}"/>" id ="pro_img">						
+						<img src=" <c:out value ="${pbl[0].pic_adress}"/>" id="pro_img" width="400" height="400">						
 					  </div>
 					  <a>
 					  <div class="pic_address" id ="selections">
