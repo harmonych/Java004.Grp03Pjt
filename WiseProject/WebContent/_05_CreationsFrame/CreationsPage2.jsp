@@ -13,6 +13,20 @@
 <!--         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         <link rel="stylesheet" href="${context}/css/Creations_page2.css">
         <title>創作者主頁</title>
+<style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+ .img-circle {
+    border-radius: 50%;
+    margin-left: 50px;
+}
+  
+</style>
+        
+        
     </head>
 
 <body>
@@ -49,7 +63,7 @@
                     <!-- Modal -->
                     <div class="container-fluid">
                         <div class="row content">
-                            <div class="col-md-9 col-xs-9">
+                           <div class="col-md-9 col-xs-9">
                             <div class="box-header with-border">
 					        	<h2 class="box-title">創作者主頁</h2>
 					       	</div>
@@ -57,14 +71,56 @@
                                     <div class="HOME-mainbox1">
                                         <!--內容開始-->
                                         <div class="row">
+                                       
                                             <h2>作品</h2>
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6" id="sp_pro_id" >
-                                            <a href="#pro_id">
-                                            <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=100% height=80% title=""></a> </div>
-<!--                                             <p> <a href="CreationsPage3.jsp"><h5>作品1</h5></a> -->
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
+                                       									
+                                            <div class="box-body">
+							                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+							                    <ol class="carousel-indicators">
+							                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+							                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+							                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+							                    </ol>
+							                    <div class="carousel-inner">
+							                      <div class="item" align ="center">
+							
+													<img src="${context}/images/Creations/8.jpg" alt="First slide" width="460" height="345">
+							                        <div class="carousel-caption">
+							                          	
+							                        </div>
+							                      </div>
+							                      <div class="item active" align ="center" >
+							                        <img src="${context}/images/Creations/5.jpg" alt="Second slide" width="460" height="345"> 
+							                        <div class="carousel-caption">
+							                          	
+							                        </div>
+							                      </div>
+							                      <div class="item" align ="center">
+														<img src="${context}/images/Creations/2.jpg" alt="Third slide" width="460" height="345">
+							                        <div class="carousel-caption">
+							                           	 
+							                        </div>
+							                      </div>
+							                  
+							                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+							                      <span class="fa fa-angle-left"></span>
+							                    </a>
+							                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+							                      <span class="fa fa-angle-right"></span>
+							                    </a>
+							                  </div>
+							                </div>
+<!-- 							                /.box-body -->
+							              </div>
+<!-- 							              /.box -->
+							             </div>
+<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6" id="sp_pro_id" > -->
+<!--                                             <a href="#pro_id"> -->
+<!--                                             <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=100% height=80% title=""></a> </div> -->
+<!-- 												<p> <a href="CreationsPage3.jsp"><h5>作品1</h5></a> --> 
+<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
                                         </div>
                                         <div class="row" id = "products">                                            
                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
@@ -82,33 +138,27 @@
 
                                     </div>
                                 </div>
-                            </div>
+                          
                             
                             <div class="col-md-3 col-xs-3">
-                           <h4>創作者 Blog</h4><input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
-                                <ul class="nav nav-pills nav-stacked">
-<!-- 										<li class="active"><a href="Creations.jsp">創作平台</a></li> -->
-											 <li><a href="#section2">作者資訊</a>
+                        	   <h4>創作者 Blog</h4><input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
+                                <ul class="nav nav-pills nav-stacked"> 								
+										<li><a href="#section2">作者資訊</a>
 												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100"/>
 											 <li>
-												
 												<ul class="MSG-mydata1">
-
-													<li>暱稱：<c:out value ="${mb.user_name}"/><span class="user_name "></span></li>
-<!-- 														<li>暱稱：<span class="user_name ">會員暱稱</span></li> -->
-													<a href="pic_address 簡介圖片位址">
+													<li>暱稱：<c:out value ="${mb.user_name}"/><span class="user_name "></span></li>														
+														<a href="pic_address 簡介圖片位址">
 													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="150px"></a>
 												</ul>
-											</li>
-											
+											 </li>
 												<div>
 													<font color="red" size="-1">${MsgMap.errorIntroPic}</font>
 												</div>										
 										</li>
                                                                        
 											<li><a href="#section3">${ab.introduction}</a></li>
-                                                                       
-
+                                                              
 										
 										<!--Facebook-->
 										<button type="button" class="btn btn-fb">
