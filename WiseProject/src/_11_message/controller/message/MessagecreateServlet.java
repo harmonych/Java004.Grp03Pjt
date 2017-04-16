@@ -39,6 +39,7 @@ public class MessagecreateServlet extends HttpServlet {
 		String sender_name = "123";//(String)session.getAttribute("user_name");
 		
 		String reciever_name = request.getParameter("reciever_name");
+		reciever_name = "ya";
 		int r_user_id = mh.Checkreciever(reciever_name);
 		String title = request.getParameter("title");
 		String msg_txt = request.getParameter("msg_txt");
@@ -55,11 +56,11 @@ public class MessagecreateServlet extends HttpServlet {
 		if (msg_txt == null || msg_txt.trim().length() == 0) {
 			errorMsgMap.put("msg_txtError", "必須輸入內文");
 		}
-		if (!errorMsgMap.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("/blog.jsp");
-			rd.forward(request, response);
-			return;
-		}
+//		if (!errorMsgMap.isEmpty()) {
+//			RequestDispatcher rd = request.getRequestDispatcher("/blog.jsp");
+//			rd.forward(request, response);
+//			return;
+//		}
 
 			int n = 0;
 
@@ -67,7 +68,7 @@ public class MessagecreateServlet extends HttpServlet {
 					msg_txt,ts,s_msg_state, r_msg_state);
 		    MessageHBNDAO ms = new MessageHBNDAO();
 		    n = ms.insertmessage(mb);
-			
+			System.out.println(n);
 		if (n == 0) {
 			errorMsgMap.put("InsertError",	"新增失敗");
 		} else {

@@ -1,5 +1,6 @@
 package _11_message.model.message;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -8,7 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="message")
-public class MessageBean {
+public class MessageBean implements Serializable{
+	private static final long serialVersionUID = 1L;
 	int msg_id; 
 	int s_user_id; 
 	String sender_name; 
