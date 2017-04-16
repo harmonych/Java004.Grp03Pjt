@@ -84,7 +84,17 @@
 					<c:choose>
 						<c:when test="${LoginOK != null}">
 						<div id="buy_area">
-							<form id="form1">													
+							<form id="form1">
+							
+								<div id="pay_money">
+									<label>贊助方式</label>								
+									<select class="form-control">
+										<option value="1">轉帳</option>
+										<option value="2">匯款</option>
+										
+									</select>
+								</div>
+																				
 								<div id="bt_area">
 									<a href="${context}/_15_ShoppingCart/ShoppingCart_Order.jsp">
 										<input type="button" class="btn1 btn-lg btn-block" value="立即購買">

@@ -420,9 +420,8 @@ desired effect
 				<!-- 圖片顯示欄 -->
 				<div class="card_card01 col-md-4 col-md-offset-2">
 					<div id="img_area">
-						<img id="pro_img" >  
-						<!-- src="../images/v06.jpg" -->
-						<!-- width="400" height="400" -->
+						<img id="pro_img" width="400" height="400">  
+						<!-- src="../images/v06.jpg" -->						
 					</div>
 				</div>
 
@@ -464,27 +463,35 @@ desired effect
 					
 					<div id="sponsor_area">
 						<form id="form1">
-							<div id="sponsor_money">
-								<div>
-									<label>贊助金額</label>
+							<div>
+								<div id="sponsor_money">
+									<label>贊助金額</label>								
+									<select class="form-control">
+										<option value="1">NT $500</option>
+										<option value="2">NT $1,000</option>
+										<option value="3">NT $2,000</option>
+										<option value="4">NT $3,000</option>
+										<option value="5">NT $5,000</option>
+										<option value="6">NT $10,000</option>
+										<option value="7">NT $20,000</option>
+										<option value="8">NT $30,000</option>
+										<option value="8">NT $50,000</option>
+									</select>
 								</div>
-									<div>
-										<select class="form-control">
-											<option value="1">NT $500</option>
-											<option value="2">NT $1,000</option>
-											<option value="3">NT $2,000</option>
-											<option value="4">NT $3,000</option>
-											<option value="5">NT $5,000</option>
-											<option value="6">NT $10,000</option>
-											<option value="7">NT $20,000</option>
-											<option value="8">NT $30,000</option>
-											<option value="8">NT $50,000</option>
-										</select>
-									</div>
+								<div id="sponsor_money">
+									<label>贊助方式</label>								
+									<select class="form-control">
+										<option value="1">轉帳</option>
+										<option value="2">匯款</option>
+										
+									</select>
+								</div>
 							</div>
 
 							<div id="bt_area">
-								<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
+								<a href="../_17_Fc_List/Fc_List_User.jsp">
+									<input type="button" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
+								</a>
 							</div>
 						</form>
 					</div>
@@ -494,7 +501,7 @@ desired effect
          	<!-- /.content -->
          
          <!-- 留言填寫欄位 -->
-          <section class="content">
+          <section id="s2" class="content">
           	<div class="row">
           		<div class="card03 col-md-8 col-md-offset-2">
           			<div class="box box-warning ">

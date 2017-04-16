@@ -26,9 +26,18 @@
 	border:solid, 1px, black;
 }
 
+@media screen and (max-width:768px ) and (max-height: 768px){
+#img_area{
+	float: right;
+	height:300px;
+	width:300px;	
+	border:solid, 1px, black;
+}
+
 .pro_img{
-	height:400px;
-	width:400px;
+	height:300px;
+	width:300px;
+}
 }
 
 #info_area{
@@ -38,7 +47,7 @@
 
 #fc_introduction{
 	width:300px;
-	height:150px;
+/* 	height:150px; */
 }
 
 #line{
@@ -83,11 +92,15 @@
 	border:  1px solid #CCC; 
 }
 
+#s2{
+	padding-top: 30px;
+}
+
 /*小圖展示區@Harmony*/
 .pic_address {
-	margin-top: 10px;
-	margin-left: 10px;
-	width: 680px;
+	padding-top: 20px;
+/* 	margin-left: 10px; */
+	width: 400px;
 	overflow: hidden;
 }
 /* .pic_address img {

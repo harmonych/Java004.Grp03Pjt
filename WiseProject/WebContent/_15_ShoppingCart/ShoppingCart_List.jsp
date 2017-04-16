@@ -363,7 +363,7 @@ desired effect
 					                  
 					            <tbody>
 					                  <tr>
-					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
+					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2.jsp">XXX 作者名稱</a>
 					                    </td>
 					                    <td class="mailbox-name">
 											購物車內共<font id="red" >1</font>筆商品
@@ -381,7 +381,7 @@ desired effect
 					                  </tr>
 					                  
 					                  <tr>
-					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
+					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2.jsp">XXX 作者名稱</a>
 					                   <td class="mailbox-name">
 											購物車內共<font id="red" >2</font>筆商品
 					                    </td>
@@ -399,7 +399,7 @@ desired effect
 					                  </tr>
 					                  
 					                  <tr>
-					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">XXX 作者名稱</a>
+					                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2.jsp">XXX 作者名稱</a>
 					                    </td>
 					                    <td class="mailbox-name">
 											購物車內共<font id="red" >3</font>筆商品

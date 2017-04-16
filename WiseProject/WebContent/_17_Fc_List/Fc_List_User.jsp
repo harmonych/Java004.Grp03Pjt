@@ -335,7 +335,7 @@ desired effect
 		  	<div class="card1 col-md-8 col-md-offset-2">
 	          <div class="box box-warning">
 	            <div class="box-header with-border">
-	              <h3 class="box-title"><b>贊助者清單</b></h3>
+	              <h3 class="box-title"><b>贊助清單</b></h3>
 		        </div>
 	            
 	            <!-- /.box-header -->

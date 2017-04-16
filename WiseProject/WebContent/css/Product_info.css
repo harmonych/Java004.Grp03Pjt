@@ -28,7 +28,7 @@
 
 #pro_introduction{
 	width:300px;
-	height:300px;
+/* 	height:300px; */
 }
 
 #line{
@@ -42,7 +42,7 @@
 	height:200px;
 }
 
-#quantity{
+#pay_money{
 	margin:20px 0px 20px 0px;
 }
 
@@ -82,11 +82,12 @@
 	border:  1px solid #CCC; 
 }
 
+
 /*小圖展示區@Harmony*/
 .pic_address {
-	margin-top: 10px;
-	margin-left: 10px;
-	width: 680px;
+	padding-top: 20px;
+/* 	margin-left: 10px; */
+	width: 400px;
 	overflow: hidden;
 }
 /* .pic_address img {

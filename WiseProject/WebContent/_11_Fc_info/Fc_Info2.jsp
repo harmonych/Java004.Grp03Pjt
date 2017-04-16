@@ -12,7 +12,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js" integrity="sha384-tIwI8+qJdZBtYYCKwRkjxBGQVZS3gGozr3CtI+5JF/oL1JmPEHzCEnIKbDbLTCer" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="${context}/css/Fc_info.css">
-	  <title>募資內容頁</title>
+	  <title>募資內容頁</title>	  
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
@@ -224,6 +224,7 @@
       	</c:otherwise>
       	</c:choose>
         <!-- /.content -->
+        
         <!-- 留言串列 -->
         <section>
         	<div class="row" id ="renewToView">

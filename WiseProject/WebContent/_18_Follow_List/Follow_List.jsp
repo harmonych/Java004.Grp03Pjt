@@ -7,8 +7,8 @@
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="../css/Fc_list_Artist.css">
-	  <title>會員贊助清單列表</title>
+      <link rel="stylesheet" href="../css/Follow_List.css">
+	  <title>購物車清單</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
@@ -332,160 +332,99 @@ desired effect
           <!-- Main content -->
           <section class="content">
           <!-- Your Page Content Here -->
-		  	<div class="card1 col-md-10 col-md-offset-1">
-	          <div class="box box-warning">
-	            <div class="box-header with-border">
-	              <h3 class="box-title"><b>會員贊助清單列表</b></h3>
-		        </div>
-	            
-	            <!-- /.box-header -->
-	            <div class="box-body no-padding">
-	            	<div class="mailbox-controls">
-		                <div id="btn_area">	              		
-			              	<a href="../_05_CreationsFrame/CreationsPage2.jsp">	
-			              		<input type="button" class="btn btn-warning" id="btn1" value="回上頁">
-			              	</a>
-			              	
-<!-- 		                <input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
-		              	</div>
-		              	<!-- /.btn-group -->	              
-	              </div>
-	              <div class="table-responsive mailbox-messages">
-	                <table class="table table-hover table-striped">
-	                
-	                  <thead id="title">
-	                  	<tr>
-	                    	<th class="mailbox-name">贊助編號</th>
-	                    	<th class="mailbox-name">募資名稱</th>
-	                    	<th class="mailbox-name">贊助會員</th>
-	                    	<th class="mailbox-name">贊助方式</th>
-	                    	<th class="mailbox-name">贊助金額</th>
-	                    	<th class="mailbox-star">贊助狀態</th>
-	                    	       
-	                  	</tr>
-					</thead>
-	                  
-	                <tbody>
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name">
-	                    	贊助編號spon_id
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	募資名稱fc_name
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	會員名稱user_id
-	                    </td> 
-	                    <td class="mailbox-name">
-	                    	1轉帳
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	$1000
-	                    </td>                   
-	                    <td class="mailbox-name">	                    
-	                    	<form>
-		                    	<div id="btn_area"> <!-- btn-group -->
-									<select id="status" class="form-control">
-										<option value="1" selected="selected">作者確認中</option>
-										<option value="2">款項交易中</option>
-										<option value="3">贊助完成</option>									
-									</select>
-									<input type="submit" class="btn btn-danger" id="btn3" value="確認">
-								</div>
-							</form>
-	                    </td>                     
-	                  </tr>
-	                  
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name">
-	                    	贊助編號spon_id
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	募資名稱fc_name
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	會員名稱user_id
-	                    </td> 
-	                    <td class="mailbox-name">
-	                    	1轉帳
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	$1000
-	                    </td>                   
-	                    <td class="mailbox-name">	                    
-	                    	<form>
-		                    	<div id="btn_area"> <!-- btn-group -->
-									<select id="status" class="form-control">
-										<option value="1" selected="selected">作者確認中</option>
-										<option value="2">款項交易中</option>
-										<option value="3">贊助完成</option>									
-									</select>
-									<input type="submit" class="btn btn-danger" id="btn3" value="確認">
-								</div>
-							</form>
-	                    </td>                    
-	                  </tr>
-	                  <tr>
-<!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name">
-	                    	贊助編號spon_id
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	募資名稱fc_name
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	會員名稱user_id
-	                    </td> 
-	                    <td class="mailbox-name">
-	                    	2匯款
-	                    </td>
-	                    <td class="mailbox-name">
-	                    	$1000
-	                    </td>                   
-	                    <td class="mailbox-name">	                    
-	                    	<form>
-		                    	<div id="btn_area"> <!-- btn-group -->
-									<select id="status" class="form-control">
-										<option value="1" selected="selected">作者確認中</option>
-										<option value="2">款項交易中</option>
-										<option value="3">贊助完成</option>									
-									</select>
-									<input type="submit" class="btn btn-danger" id="btn3" value="確認">
-								</div>
-							</form>
-	                    </td>                    
-	                  </tr>
-	                                   
-	                </tbody>
-	                </table>
-	                <!-- /.table -->
-	              </div>
-	              <!-- /.mail-box-messages -->
-	            </div>
-	            
-	            <!-- /.box-body -->
-	            <div class="box-footer no-padding">
-	              <div class="mailbox-controls">
-	              	<div id="btn_area">	              		
-		              	<a href="../_05_CreationsFrame/CreationsPage2.jsp">	
-		              		<input type="button" class="btn btn-warning" id="btn1" value="回上頁">
-		              	</a>
-<!-- 		                <input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
-	              	</div>
-	              	<!-- /.btn-group -->
-	            </div>
+	          <div class="row">
+				  <div class="card1 col-md-8 col-md-offset-2">
+			          <div class="box box-warning">
+			            <div class="box-header with-border">
+			              <h3 class="box-title"><b>購物車清單</b></h3>
+				        </div>
+			            
+			            <!-- /.box-header -->
+			            <div class="box-body no-padding">
+			              <div class="mailbox-controls">			                		
+			                <div class="btn-group">
+			                	<a href="../_13_Product_info/Product_info.jsp" >	                	
+		 	                		<button type="button" class="btn btn-block btn-warning">回上頁</button>
+		 	                	</a>		            	
+			                </div>
+			              </div>
+			              
+			              <div class="table-responsive mailbox-messages">
+			                <table class="table table-hover table-striped">
+		
+				               	<thead id="title">
+				                  	<tr>
+				                    	<th class="mailbox-name">創作者名稱</th>
+				                    	<th class="mailbox-name">加入時間</th>
+				                    	<th class="mailbox-star">刪除追蹤</th>            
+				                  	</tr>
+								</thead>
+					                  
+					            <tbody>
+					                  <tr>
+						                  <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2.jsp">XXX 作者名稱</a>
+						                  </td>
+						                  <td class="mailbox-name">
+												加入時間 follow_time
+						                  </td>
+						                  <td class="mailbox-star">
+							                  <button type="button" class="btn btn-default btn-sm">
+							                  	<i class="fa fa-trash-o" ></i>
+							                  </button>
+						                  </td>
+					                  </tr>
+					                  
+					                  <tr>
+						                  <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2.jsp">XXX 作者名稱</a>
+						                  </td>
+						                  <td class="mailbox-name">
+												加入時間 follow_time
+						                  </td>
+						                  <td class="mailbox-star">
+							                  <button type="button" class="btn btn-default btn-sm">
+							                  	<i class="fa fa-trash-o" ></i>
+							                  </button>
+						                  </td>
+					                  </tr>
+					                  
+					                  <tr>
+						                  <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2.jsp">XXX 作者名稱</a>
+						                  </td>
+						                  <td class="mailbox-name">
+												加入時間 follow_time
+						                  </td>
+						                  <td class="mailbox-star">
+							                  <button type="button" class="btn btn-default btn-sm">
+							                  	<i class="fa fa-trash-o" ></i>
+							                  </button>
+						                  </td>
+					                  </tr>
+					                  
+				            	</tbody>
+				            </table>
+			                <!-- /.table -->
+			              </div>
+			              <!-- /.mail-box-messages -->
+			            </div>
+			            
+			            <!-- /.box-body -->
+			            <div class="box-footer no-padding">
+			              <div class="mailbox-controls">
+			              	<div class="btn-group">
+			                	<a href="../_13_Product_info/Product_info.jsp" >	                	
+		 	                		<button type="button" class="btn btn-block btn-warning">回上頁</button>
+		 	                	</a>		            	
+			                </div>
+			            </div>
+			          </div>
+			          <!-- /. box -->
+			        </div>
+					</div>
 	          </div>
-	          <!-- /. box -->
-	        </div>
-			</div>
           </section>
           <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-
 
         <!-- Main Footer -->
         <footer class="main-footer">
@@ -584,6 +523,8 @@ desired effect
       <script src="../bootstrap/js/bootstrap.min.js"></script>
       <!-- AdminLTE App -->
       <script src="../dist/js/app.min.js"></script>
+      
+      <script src="default.js"></script>
 
       <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
