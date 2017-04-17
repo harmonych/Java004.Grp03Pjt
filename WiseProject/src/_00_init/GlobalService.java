@@ -128,6 +128,11 @@ public class GlobalService {
                        + fileName.substring(n+1); 
 		return fileName;
 	}
+	public static String adjustPicName(String fileName, int id) {
+		  int n      = fileName.lastIndexOf(".");
+        fileName =  id + "." + fileName.substring(n+1); 
+		return fileName;
+	}
 	public static String getFileName(final Part part) {
 		for (String content : part.getHeader("content-disposition").split(";")) {
 			if (content.trim().startsWith("filename")) {
