@@ -89,7 +89,7 @@ desired effect
 					<div class="box box-warning">
 						<div class="box-header with-border">
 				        	<h3 class=""><b>建立專案</b></h3>
-				        	<div class="box-title">步驟1 >> 填寫資訊</div>
+				        	<div class="box-title">步驟2 >> 選擇精美的圖片</div>
 				        </div>
 						
 						<div class="box-body">	
@@ -97,45 +97,16 @@ desired effect
 									id="FundCreate.do" >
 								
 								<div id="ipt1">
-						        	<label>專案名稱</label>
-						        	<input type="text" name="fcname" value="${param.fcname}" class="form-control">
-									<font size="-1" color="#FF0000">${MsgMap.errorfcnameEmpty}${MsgMap.errorfcnameDup}</font>
-					            </div>
-										
-								<div id="ipt1">
-				                 	<label>專案金額</label>
-				                 	<input type="text" name="fcmoneys" value="${param.fcmoneys}" class="form-control">
-									<font color="red" size="-1">${MsgMap.errorfcmoneysEmpty}</font>
-				                </div>
-										
-								<div id="ipt1">
-				                 	<label>開始時間</label>
-				                 	<input type="date" name="starttime" value="${param.starttime}" class="form-control ">
-									<font color="red" size="-1">${MsgMap.errorstarttimeEmpty}</font>
-				                </div>
-				                
-								<div id="ipt1">
-				                 	<label>結束時間</label>
-				                 	<input type="date" name="endtime" value="${param.endtime}" class="form-control ">
-									<font color="red" size="-1">${MsgMap.errorendtimeEmpty}</font>
-				                </div>
-				                				               
-								<div id="ipt1">
-				                 	<label>分類標籤</label>
-				                 	<input type="text" name="hashtag" value="${param.hashtag}" class="form-control">
-									<font color="red" size="-1">${MsgMap.errorhashtagEmpty}</font>
-				                </div>
-				                
-				                <div id="ipt1">
-					                <label>專案簡介</label>
-					                <textarea name="fcintroduction" class="form-control" rows="5"></textarea><br>
-									<font color="red" size="-1">${MsgMap.errorfcintroduction}</font>					                
-				                </div>														
-															
+									    <label for="exampleInputFile">上傳圖片</label>
+									    <input type="file" id="exampleInputFile">
+									
+									    <p class="help-block">請選擇上傳圖檔</p>
+								</div>	
+																												
 								<div class="box-footer">
 									<div id="bt_area">
-										<a href="">
-										<input type="submit" name="submit" class="btn1 btn-lg" value="發起專案"></a>
+										<a href="Fc_Create OK.jsp">
+										<input type="submit" name="submit" class="btn1 btn-lg" value="上傳圖片"></a>
 									</div>
 <!-- 									<div id="bt">	 -->
 <!-- 										<input type="reset" name="cancel" class="btn2 btn-lg btn-block" value="清除重填"> -->

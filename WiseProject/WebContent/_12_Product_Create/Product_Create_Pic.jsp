@@ -91,57 +91,24 @@ desired effect
 						<div class="box box-warning">
 							<div class="box-header with-border">
 				        		<h3 class=""><b>建立商品</b></h3>
-				        		<div class="box-title">步驟1 >> 填寫資訊</div>
+				        		<div class="box-title">步驟2 >> 選擇精美圖片</div>
 				        	</div>
-				        	
+							
 							<div class="box-body">
 								<form ENCTYPE="multipart/form-data" method="POST"action="<c:url value='../_09_product/ProductCreate.do' />"
-									  id="ProductCreate.do">
+									  id="ProductCreate.do">														
 									
-									<div>
-										<div id="ipt1">
-											<label id="lb">商品名稱</label> <br>
-											<input type="text" name="proname" value="${param.proname}" class="form-control"> 
-											<font size="-1" color="#FF0000">${MsgMap.errorpronameEmpty}</font>
-										</div>
-										<div id="ipt1">
-											<label id="lb">商品金額</label> <br>
-											<input type="text" name="prices" value="${param.prices}" class="form-control"> 
-											<font color="red" size="-1">${MsgMap.errorpricesEmpty}</font>
-										</div>
-										<div id="ipt1">
-											<label id="lb">上架時間</label> <br>
-											<input type="date" name="saletime" value="${param.saletime}" class="form-control"> 
-											<font color="red" size="-1">${MsgMap.errorsaletimeEmpty}</font>
-										</div>
-										<div id="ipt1">
-											<label id="lb">庫存數量</label> <br>
-											<input type="number" min="0"name="proinvs" value="${param.proinvs}" class="form-control">
-											<font color="red" size="-1">${MsgMap.errorproinvsEmpty}</font>
-										</div>
-										<div id="ipt1">
-											<label id="lb">分類標籤</label> <br>
-											<input type="text" name="hashtag" value="${param.hashtag}" class="form-control">
-												<font color="red" size="-1">${MsgMap.errorhashtagEmpty}</font>
-										</div>
-										<div id="ipt1">
-											<label id="lb">商品簡介</label> <br>
-											<textarea name="prointroduction" class="form-control" rows="5"></textarea><br>
-											<font color="red" size="-1">${MsgMap.errorprointroduction}</font>
-										</div>
+									<div id="ipt1">
+									    <label for="exampleInputFile">上傳圖片</label>
+									    <input type="file" id="exampleInputFile">
+									
+									    <p class="help-block">請選擇上傳圖檔</p>
 									</div>
-									
-<!-- 									<div id="ipt1"> -->
-<!-- 									    <label for="exampleInputFile">上傳圖片</label> -->
-<!-- 									    <input type="file" id="exampleInputFile"> -->
-									
-<!-- 									    <p class="help-block">請選擇上傳圖檔</p> -->
-<!-- 									</div> -->
 									
 									<div class="box-footer">
 										<div id="bt_area">
 										<a href="">
-											<input type="submit" name="submit" class="btn1 btn-lg " value="建立商品資訊"></a>
+											<input type="submit" name="submit" class="btn1 btn-lg " value="建立商品"></a>
 										</div>
 <!-- 									<div id="bt"> -->
 <!-- 										<input type="reset" name="cancel" class="btn2 btn-lg btn-block" value="清除重填"> -->

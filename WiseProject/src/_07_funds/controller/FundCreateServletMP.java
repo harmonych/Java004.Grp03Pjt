@@ -163,7 +163,7 @@ public class FundCreateServletMP extends HttpServlet {
 					int n = rs.insert(fb);
 					if (n == 1) {
 						msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../_10_Fc_Create/Fc_Create_Ok.jsp");
+						response.sendRedirect("../_10_Fc_Create/Fc_Create_Pic.jsp");
 						return;
 					} else {
 						errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");

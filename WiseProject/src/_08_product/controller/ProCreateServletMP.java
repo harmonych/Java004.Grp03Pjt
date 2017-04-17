@@ -134,7 +134,7 @@ public class ProCreateServletMP extends HttpServlet {
 					int n = rs.insert(pb);
 					if (n == 1) {
 						msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../_12_Product_Create/Product_Create_Ok.jsp");
+						response.sendRedirect("../_12_Product_Create/Product_Create_Pic.jsp");
 						return;
 					} else {
 						errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
