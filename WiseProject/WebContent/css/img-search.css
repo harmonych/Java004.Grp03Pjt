@@ -27,7 +27,7 @@ body {
 
 .button:active,
 .button.is-checked {
-  background-color: #28F;
+  background-color: #f39c12;
 }
 
 .button.is-checked {
