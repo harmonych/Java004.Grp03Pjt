@@ -297,7 +297,7 @@
 			});
             $("#create-product").click(function(){
                 $.ajax({
-                    url:"\_12_Product_Create\\Product_Create NEW.jsp",
+                    url:"\_12_Product_Create\\Product_Create_NEW.jsp",
                     context: document.body,
                     success: function(responseProAll){
                         $("#mainframe").empty();
@@ -308,7 +308,7 @@
               });
          $("#create-funds").click(function(){
                 $.ajax({
-                    url:"\_10_Fc_Create\\Fc_Create NEW.jsp",
+                    url:"\_10_Fc_Create\\Fc_Create_NEW.jsp",
                     context: document.body,
                     success: function(responseProAll){
                         $("#mainframe").empty();

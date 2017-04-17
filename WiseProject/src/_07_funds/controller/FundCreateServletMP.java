@@ -3,6 +3,7 @@ package _07_funds.controller;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -21,9 +22,13 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import _00_init.GlobalService;
+import _01_register.util.DBUtils;
 import _07_funds.model.FundsBean;
 import _07_funds.model.FundsHibernateDAO;
 import _07_funds.model.IFundsDAO;
+import _08_product.model.IProPicDAO;
+import _08_product.model.ProPicBean;
+import _08_product.model.ProPicHBNDAO;
 
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
@@ -56,7 +61,7 @@ import _07_funds.model.IFundsDAO;
 //maxRequestSize: 上傳所有檔案之總長度限制，如果超過此數值，Web Container會丟出例外
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
-@WebServlet("/_07_funds/FundCreate.do")
+@WebServlet("/_10_Fc_Create/FundCreate.do")
 public class FundCreateServletMP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -72,10 +77,8 @@ public class FundCreateServletMP extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
 		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
-		
-		
-		int artid =0;
-		String artids="";
+
+		int artid = 0;
 		String fcname = "";
 		String fcmoneys = "";
 		int nowmoney = 0;
@@ -83,8 +86,16 @@ public class FundCreateServletMP extends HttpServlet {
 		String starttime = "";
 		String endtime = "";
 		String updatetime = "";
-		String fcintroduction ="";
-		String hashtag="";
+		String fcintroduction = "";
+		String hashtag = "";
+		String introPicName = "";
+		String fileName1 = "";
+		String fileName2 = "";
+		String fileName3 = "";
+		InputStream ipsintro = null;
+		InputStream ips1 = null;
+		InputStream ips2 = null;
+		InputStream ips3 = null;
 
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
 														// request內所有的parts
@@ -98,9 +109,9 @@ public class FundCreateServletMP extends HttpServlet {
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
 					if (fldName.equals("artids")) {
-						artids = value;
+						artid = Integer.parseInt(value);
 					} else if (fldName.equals("fcname")) {
-						fcname = value;	
+						fcname = value;
 					} else if (fldName.equals("fcmoneys")) {
 						fcmoneys = value;
 					} else if (fldName.equalsIgnoreCase("starttime")) {
@@ -112,89 +123,142 @@ public class FundCreateServletMP extends HttpServlet {
 					} else if (fldName.equalsIgnoreCase("hashtag")) {
 						hashtag = value;
 					}
-				}	
-				
+				} else {
+
+					if (fldName.equalsIgnoreCase("intro_pic")) {
+						introPicName = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						if (introPicName != null && introPicName.trim().length() > 0) {
+							ipsintro = p.getInputStream();
+						}
+					} else if (fldName.equalsIgnoreCase("pic_1")) {
+						fileName1 = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName1 = GlobalService.adjustFileName(fileName1, GlobalService.IMAGE_FILENAME_LENGTH);
+						if (fileName1 != null && fileName1.trim().length() > 0) {
+							ips1 = p.getInputStream();
+						}
+					} else if (fldName.equalsIgnoreCase("pic_2")) {
+						fileName2 = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName2 = GlobalService.adjustFileName(fileName2, GlobalService.IMAGE_FILENAME_LENGTH);
+						if (fileName2 != null && fileName2.trim().length() > 0) {
+							ips2 = p.getInputStream();
+						}
+					} else if (fldName.equalsIgnoreCase("pic_3")) {
+						fileName3 = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName3 = GlobalService.adjustFileName(fileName3, GlobalService.IMAGE_FILENAME_LENGTH);
+						if (fileName3 != null && fileName3.trim().length() > 0) {
+							ips3 = p.getInputStream();
+						}
+					}
+				}
 			}
 			System.out.println("123");
-				// 2. 進行必要的資料轉換
-				artid=Integer.parseInt(artids);
-				// 3. 檢查使用者輸入資料
-				if (fcname == null || fcname.trim().length() == 0) {
-					errorMsg.put("errorfcnameEmpty", "專案名稱欄必須輸入");
-				}
-				if (fcmoneys == null || fcmoneys.trim().length() == 0) {
-					errorMsg.put("errorfcmoneysEmpty", "募資金額欄必須輸入");
-				}
-				if (starttime == null || starttime.trim().length() == 0) {
-					errorMsg.put("errorstarttimeEmpty", "專案開始日期欄必須輸入");
-				}
-				if (endtime == null || endtime.trim().length() == 0) {
-					errorMsg.put("errorendtimeEmpty", "募資結束日期欄必須輸入");
-				} 
-				if (hashtag == null || hashtag.trim().length() == 0) {
-					errorMsg.put("errorhashtagEmpty", "tag欄必須輸入");
-				} 
-				
-				
-			}else {
-					errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
-				}
-				System.out.println("123");// 如果有錯誤
-				if (!errorMsg.isEmpty()) {
-					// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-//					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
-					rd.forward(request, response);
-					return;
-				}
+			// 2. 進行必要的資料轉換
 			
-				System.out.println("123");
-				int fcmoney = Integer.parseInt(fcmoneys);
-				SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
-				Date date = new Date();
-				createtime = sdFormat.format(date);
-				updatetime = createtime;
-				try {
-					// 4. 進行Business Logic運算
-					// RegisterServiceFile類別的功能：
-				
-					IFundsDAO rs = new FundsHibernateDAO();
+			// 3. 檢查使用者輸入資料
+			if (fcname == null || fcname.trim().length() == 0) {
+				errorMsg.put("errorfcnameEmpty", "專案名稱欄必須輸入");
+			}
+			if (fcmoneys == null || fcmoneys.trim().length() == 0) {
+				errorMsg.put("errorfcmoneysEmpty", "募資金額欄必須輸入");
+			}
+			if (starttime == null || starttime.trim().length() == 0) {
+				errorMsg.put("errorstarttimeEmpty", "專案開始日期欄必須輸入");
+			}
+			if (endtime == null || endtime.trim().length() == 0) {
+				errorMsg.put("errorendtimeEmpty", "募資結束日期欄必須輸入");
+			}
+			if (hashtag == null || hashtag.trim().length() == 0) {
+				errorMsg.put("errorhashtagEmpty", "tag欄必須輸入");
+			}
 
-					FundsBean fb = new FundsBean(artid, fcname, fcmoney, nowmoney, createtime, starttime, endtime,
-							updatetime, fcintroduction,hashtag);
-					
-					int n = rs.insert(fb);
-					
-					int fcid=rs.getNewFcid(artid);
-					System.out.println(fcid);
-					if (n == 1) {
-						msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-						request.setAttribute("fc_id", fcid);
-						
-						request.getRequestDispatcher("/_10_Fc_Create/Fc_Create_Pic.jsp").forward(request, response);
-						
-						//response.sendRedirect("../_10_Fc_Create/Fc_Create_Pic.jsp");
-						return;
-					} else {
-						errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
-					}
+		} else {
+			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
+		}
+		System.out.println("123");// 如果有錯誤
+		if (!errorMsg.isEmpty()) {
+			// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
+			// RequestDispatcher rd =
+			// request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/Fc_Create_NEW.jsp");
+			rd.forward(request, response);
+			return;
+		}
 
-					// 5.依照 Business Logic 運算結果來挑選適當的畫面
-					if (!errorMsg.isEmpty()) {
-						// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-//						RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
-						RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
-						rd.forward(request, response);
-						return;
+		System.out.println("123");
+		int fcmoney = Integer.parseInt(fcmoneys);
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+		createtime = sdFormat.format(date);
+		updatetime = createtime;
+		try {
+			// 4. 進行Business Logic運算
+			// RegisterServiceFile類別的功能：
+
+			IFundsDAO rs = new FundsHibernateDAO();
+
+			FundsBean fb = new FundsBean(artid, fcname, fcmoney, nowmoney, createtime, starttime, endtime, updatetime,
+					fcintroduction, hashtag);
+
+			int n = rs.insert(fb);
+			fb.setFc_id(fb.getFc_id());
+			int fcid = fb.getFc_id();
+			System.out.println(fcid);
+			if (n == 1) {
+				int i = 0;
+				if (ipsintro != null) {
+					introPicName = GlobalService.adjustPicName(introPicName, fcid);
+					String dirPortrait = getServletContext().getInitParameter("upload.location.fc");
+					DBUtils.isToFiles(ipsintro, introPicName, dirPortrait);
+					ProPicBean ppb = new ProPicBean(fcid,
+							"http://saudade.myasustor.com/JPjt/fc_pic_address/" + introPicName);
+					IProPicDAO ppdao = new ProPicHBNDAO();
+					n = ppdao.insert(ppb);
+					if (ips1 != null) {
+						String dirPortrait1 = getServletContext().getInitParameter("upload.location.fc");
+						DBUtils.isToFiles(ips1, fileName1, dirPortrait1);
+						ProPicBean ppb1 = new ProPicBean(fcid,
+								"http://saudade.myasustor.com/JPjt/fc_pic_address/" + fileName1);
+						ppdao.insert(ppb1);
+						if (ips2 != null) {
+							String dirPortrait2 = getServletContext().getInitParameter("upload.location.fc");
+							DBUtils.isToFiles(ips2, fileName2, dirPortrait2);
+							ProPicBean ppb2 = new ProPicBean(fcid,
+									"http://saudade.myasustor.com/JPjt/fc_pic_address/" + fileName2);
+							ppdao.insert(ppb2);
+							if (ips3 != null) {
+								String dirPortrait3 = getServletContext().getInitParameter("upload.location.fc");
+								DBUtils.isToFiles(ips3, fileName3, dirPortrait3);
+								ProPicBean ppb3 = new ProPicBean(fcid,
+										"http://saudade.myasustor.com/JPjt/fc_pic_address/" + fileName3);
+								ppdao.insert(ppb3);
+							}
+						}
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
-					errorMsg.put("errorAccountDup", e.getMessage());
-//					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
-					rd.forward(request, response);
 				}
-			
-		
+
+				response.sendRedirect("../index.jsp");
+				return;
+			} else {
+				errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
+			}
+
+			// 5.依照 Business Logic 運算結果來挑選適當的畫面
+			if (!errorMsg.isEmpty()) {
+				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
+				// RequestDispatcher rd =
+				// request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
+				rd.forward(request, response);
+				return;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			errorMsg.put("errorAccountDup", e.getMessage());
+			// RequestDispatcher rd =
+			// request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
+			rd.forward(request, response);
+		}
+
 	}
 }

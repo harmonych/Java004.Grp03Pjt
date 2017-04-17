@@ -36,7 +36,7 @@ public class FcPicBean implements Serializable {
 	}
 	@Id
 	@Column(name = "pic_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getPic_id() {
 		return pic_id;
 	}
