@@ -10,6 +10,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Wise彙思創作募資</title>
+      <link rel="stylesheet" href="css/index.css">
       <!-- Tell the browser to be responsive to screen width -->     
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -158,7 +159,7 @@ desired effect
                       <ul class="menu">
                         <li>
                           <!-- start message -->
-                          <a href="#"><input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
+                          <a href="#">
                             <div class="pull-left">
                               <!-- User Image -->
                               <!-- 留言系統代入留言者頭像及資料 -->                      
@@ -295,16 +296,16 @@ desired effect
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                          <div class="pull-left">
-                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" class="btn btn-default btn-flat">個人資料</a>
+                          <div id="mid" class="mid">
+                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" id="mid_bt" class="btn btn-default btn-flat">個人資料</a>
                           </div>
                           <c:if test = "${LoginOK.check_tag}" >
-                          <div class="pull-left">
+                          <div id="mid" class="mid">
                             <a href="Javascript:;" class="btn btn-default btn-flat" id="isThisAnEffingJoke">個人主頁</a>
                           </div>
                           </c:if>
-                          <div class="pull-right">
-                            <a href="${context}/_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>
+                          <div id="mid" class="mid">
+                            <a href="${context}/_02_login/logout.jsp" id="mid_bt" class="btn btn-default btn-flat">登出</a>
                           </div>
                         </li>
                       </ul>
@@ -380,68 +381,70 @@ desired effect
         <div class="content-wrapper" id = "mainframe">
           <!-- Content Header (Page header) -->
           <section class="content-header">
-            <div class="col-md-12">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">加入彙思，讓你的創意被大家看見!</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="item" align ="center">
-<!--                         <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide"> -->
-						<img src="${context}/images/Creations/10.jpg" alt="First slide">
-                        <div class="carousel-caption">
-                          	新近作品
-                        </div>
-                      </div>
-                      <div class="item active" align ="center" >
-<!--                         <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" alt="Second slide" > -->
-                        <img src="${context}/images/Creations/6.jpg" alt="Second slide" > 
-                       
-                        <div class="carousel-caption">
-                          	近期更新
-                        </div>
-                      </div>
-                      <div class="item" align ="center">
-<!--                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide"> -->
- 						<img src="${context}/images/Creations/1.jpg" alt="Third slide" >
-                        <div class="carousel-caption">
-                           	人氣最高
-                        </div>
-                      </div>
-                    </div>
-                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                      <span class="fa fa-angle-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                      <span class="fa fa-angle-right"></span>
-                    </a>
-                  </div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-<!--             <ol class="breadcrumb"> -->
-<!--               <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li> -->
-<!--               <li class="active">Here</li> -->
-<!--             </ol> -->
+            <div class="row">
+	            <div class="col-md-12">
+	              <div class="box box-solid">
+	                <div class="box-header with-border">
+	                  <h3 class="box-title">加入彙思，讓你的創意被大家看見!</h3>
+	                </div>
+	                <!-- /.box-header -->
+	                <div class="box-body">
+	                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	                    <ol class="carousel-indicators">
+	                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+	                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+	                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+	                    </ol>
+	                    <div class="carousel-inner">
+	                      <div class="item" align ="center">
+	<!--                         <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide"> -->
+							<img src="${context}/images/Creations/10.jpg" alt="First slide">
+	                        <div class="carousel-caption">
+	                          	新近作品
+	                        </div>
+	                      </div>
+	                      <div class="item active" align ="center" >
+	<!--                         <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" alt="Second slide" > -->
+	                        <img src="${context}/images/Creations/6.jpg" alt="Second slide" > 
+	                       
+	                        <div class="carousel-caption">
+	                          	近期更新
+	                        </div>
+	                      </div>
+	                      <div class="item" align ="center">
+	<!--                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide"> -->
+	 						<img src="${context}/images/Creations/1.jpg" alt="Third slide" >
+	                        <div class="carousel-caption">
+	                           	人氣最高
+	                        </div>
+	                      </div>
+	                    </div>
+	                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+	                      <span class="fa fa-angle-left"></span>
+	                    </a>
+	                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+	                      <span class="fa fa-angle-right"></span>
+	                    </a>
+	                  </div>
+	                </div>
+	                <!-- /.box-body -->
+	              </div>
+	              <!-- /.box -->
+	            </div>
+	<!--             <ol class="breadcrumb"> -->
+	<!--               <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li> -->
+	<!--               <li class="active">Here</li> -->
+	<!--             </ol> -->
+          	</div>
           </section>
 
           <!-- Main content -->
-          <section class="content">
-
-            <!-- Your Page Content Here -->
-
-          </section>
-          <!-- /.content -->
+<!--           <section class="content"> -->
+<!--           Your Page Content Here -->
+<!--           </section> -->
+<!--           /.content -->
+        
+        
         </div>
         <!-- /.content-wrapper -->
 
@@ -587,8 +590,6 @@ desired effect
       	    });
       	  });
           
-    	  var member_id = $('#user_id').val();
-    	  console.log(member_id);
 	      $("#sp-product").click(function(){
 	    	    $.ajax({
 					url:"\_13_Product_info\\Product_All.jsp",
@@ -613,7 +614,7 @@ desired effect
 		  });
 	      $("#isThisAnEffingJoke").click(function(){
 			  	$.ajax({
-					url:"\_05_CreationsFrame\\DisplayArtist?art_id=" + member_id,
+					url:"\_05_CreationsFrame\\CreationsPage2.jsp",
 					context: document.body,
 					success: function(responseRSS){
 						$("#mainframe").empty();

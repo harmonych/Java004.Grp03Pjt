@@ -83,73 +83,30 @@
 						<div id="line"></div>
 					<c:choose>
 						<c:when test="${LoginOK != null}">
-<!-- 						<div id="buy_area"> -->
-<!-- 							<form id="form1"> -->
+						<div id="buy_area">
+							<form id="form1">
 							
-<!-- 								<div id="pay_money"> -->
-<!-- 									<label>贊助方式</label>								 -->
-<!-- 									<select class="form-control"> -->
-<!-- 										<option value="1">轉帳</option> -->
-<!-- 										<option value="2">匯款</option> -->
+								<div id="pay_money">
+									<label>贊助方式</label>								
+									<select class="form-control">
+										<option value="1">轉帳</option>
+										<option value="2">匯款</option>
 										
-<!-- 									</select> -->
-<!-- 								</div> -->
-																				
-<!-- 								<div id="bt_area"> -->
-<%-- 									<a href="${context}/_15_ShoppingCart/ShoppingCart_Order.jsp"> --%>
-<!-- 										<input type="button" class="btn1 btn-lg btn-block" value="立即購買"> -->
-<!-- 									</a> -->
-<%-- 									<a href="${context}/_15_ShoppingCart/ShoppingCart_List.jsp"> --%>
-<!-- 										<input type="button" class="btn2 btn-lg btn-block" value="加入購物車"> -->
-<!-- 									</a> -->
-<!-- 								</div> -->
-<!-- 							</form>		 -->
-<!-- 						</div> -->
-							<div id="buy_area">
-							<form id="form1" action="<c:url value='/_04_ShoppingCart/OrderList.do' />" 
-								method="POST">
-								<div id="quantity">
-									<div>
-										<label>購買數量</label>
-									</div>
-									<div>
-										<select class="form-control" name="ord_amount" >
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-										</select>
-									</div>
+									</select>
 								</div>
-									<Input type='hidden' id='pro_inv_input' name='pro_inv' value="${pb.pro_inv}"> 
-									<Input type='hidden' id='pro_id_input' name='pro_id' value="${pb.pro_id}"> 
-									<Input type='hidden' id='pro_name_input' name='pro_name' value="${pb.pro_name}"> 
-									<Input type='hidden' id='art_id_input' name='art_id' value="${pb.art_id}">
-									<Input type='hidden' id='price_input' name='price' value="${pb.price}">
-									<Input type='hidden' id='user_id_input' name='user_id' value='${LoginOK.user_id}'>
-
-								
-								
-								<input type="submit" name="submit"
-										class="btn2 btn-lg btn-block" value="加入購物車" onClick="return CheckForm()">
-		
-							</form>
-
-							<form id="form2" action="<c:url value='/_15_ShoppingCart/ShoppingCart_List.jsp' />"
-								method="POST">
-								<input type="submit" name="submit" class="btn1 btn-lg btn-block"
-									value="立即購買" >
-							</form>
-							</div>
+																				
+								<div id="bt_area">
+									<a href="${context}/_15_ShoppingCart/ShoppingCart_Order.jsp">
+										<input type="button" class="btn1 btn-lg btn-block" value="立即購買">
+									</a>
+									<a href="${context}/_15_ShoppingCart/ShoppingCart_List.jsp">
+										<input type="button" class="btn2 btn-lg btn-block" value="加入購物車">
+									</a>
+								</div>
+							</form>		
+						</div>
 						</c:when>
 						<c:otherwise>
-						
 						<div id="buy_area">
 							<form id="form1">													
 								<div id="bt_area">
@@ -279,7 +236,7 @@ $(document).ready(function(){
         //把當前的元素砍掉
         $(".showbox").children('img').remove();
         //增加新url在showbox這class下面
-        $(".showbox").append('<img src="' + $(this).attr('src') + '" id="pro_img"  width = "400px">');
+        $(".showbox").append('<img src="' + $(this).attr('src') + '" id="pro_img"  width="400px" height="400px">');
         });	
     });
 	var pro_id = $('#pro_id').val();
@@ -356,19 +313,19 @@ $(document).ready(function(){
 							  //如果設為私密，但讀者非寄送者或者擁有者 first if
 							  if(respm[i].msg_status == 0 && (reader_id != respm[i].user_id && reader_id != receiver_id || reader_id == null || reader_id =="" )){
 								  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-								  msgStr += '</h4></div><br><div>#' + (i+1);
+								  msgStr += '</h4></div><br><div>';
 								  msgStr += '<div class="mes_by"></div></div></div>';
 								  msgStr += '<div class="box-body"><div class="message">此為私密留言內容</div></div>';
 							  }else{
 								  //second if 讀者為寄送者或者擁有者
 								  if(respm[i].msg_status == 0 && (reader_id == respm[i].user_id || reader_id == receiver_id)){
 									  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-									  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
+									  msgStr += respm[i].msg_title + '</h4></div><br><div>';
 									  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
 									  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
 								  }else{						  
 									  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-									  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
+									  msgStr += respm[i].msg_title + '</h4></div><br><div>';
 									  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
 									  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
 								  }//end of second if

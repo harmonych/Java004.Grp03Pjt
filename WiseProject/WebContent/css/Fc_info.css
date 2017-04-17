@@ -46,8 +46,8 @@
 }
 
 #fc_introduction{
-	width:300px;
-/* 	height:150px; */
+	width:350px;
+	height:auto;
 }
 
 #line{
@@ -72,10 +72,24 @@
 	
 }
 
+/* .btn1{ */
+/* 	color:#fff; */
+/* 	font-weight:bolder; */
+/* 	background:#f78e05; */
+/* } */
+
 .btn1{
-	color:#fff;
-	font-weight:bolder;
+	margin:20px 0px 20px 0px;
 	background:#f78e05;
+	color: #FFF;
+	border: 1px solid #CCC;
+}
+
+.btn2{
+	margin:20px 0px 20px 0px;
+	background:#FFF;
+	color: #f78e05;
+	border: 2px solid #f78e05;
 }
 
 .box-title{
