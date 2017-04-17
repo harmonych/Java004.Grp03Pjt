@@ -35,7 +35,6 @@
 	clear:both; height:200px; position:relative; 
 }
 
-
 #meg{
 	text-align:center;
 	

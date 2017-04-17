@@ -140,7 +140,7 @@ public class FundCreateServletMP extends HttpServlet {
 				if (!errorMsg.isEmpty()) {
 					// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 //					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create NEW.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
 					rd.forward(request, response);
 					return;
 				}
@@ -163,7 +163,7 @@ public class FundCreateServletMP extends HttpServlet {
 					int n = rs.insert(fb);
 					if (n == 1) {
 						msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../_10_Fc_Create/Fc_Create Ok.jsp");
+						response.sendRedirect("../_10_Fc_Create/Fc_Create_Ok.jsp");
 						return;
 					} else {
 						errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
@@ -173,7 +173,7 @@ public class FundCreateServletMP extends HttpServlet {
 					if (!errorMsg.isEmpty()) {
 						// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 //						RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
-						RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create NEW.jsp");
+						RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
 						rd.forward(request, response);
 						return;
 					}
@@ -181,7 +181,7 @@ public class FundCreateServletMP extends HttpServlet {
 					e.printStackTrace();
 					errorMsg.put("errorAccountDup", e.getMessage());
 //					RequestDispatcher rd = request.getRequestDispatcher("../_04_findfunds/createproject.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create NEW.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../_10_Fc_Create/Fc_Create_NEW.jsp");
 					rd.forward(request, response);
 				}
 			
