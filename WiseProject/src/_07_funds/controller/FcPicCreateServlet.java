@@ -23,8 +23,10 @@ import javax.servlet.http.Part;
 import _00_init.GlobalService;
 import _07_funds.model.FcPicBean;
 import _07_funds.model.FcPicHBNDAO;
-
+import _07_funds.model.FundsBean;
+import _07_funds.model.FundsHibernateDAO;
 import _07_funds.model.IFcPicDAO;
+import _07_funds.model.IFundsDAO;
 
 
 /*
@@ -75,7 +77,7 @@ public class FcPicCreateServlet extends HttpServlet {
 		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
 		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
 
-		int fc_id = 0;
+		
 		String fc_ids = null;
 		String fileName= "";
 		InputStream is = null;
@@ -84,10 +86,13 @@ public class FcPicCreateServlet extends HttpServlet {
 		GlobalService.exploreParts(parts, request);
 		for (Part p : parts) {
 			String fldName = p.getName();
+			String value = request.getParameter(fldName);
 			
 			if (p.getContentType() == null) {
 				
-				if (fldName.equalsIgnoreCase("fileName")) {
+				if (fldName.equals("fcids")) {
+					fc_ids = value;
+					}else if (fldName.equalsIgnoreCase("filename")) {
 					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
 					fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
 					if (fileName != null && fileName.trim().length() > 0) {
@@ -98,6 +103,7 @@ public class FcPicCreateServlet extends HttpServlet {
 			}
 		}
 		String fc_adress = "http://saudade.myasustor.com/JPjt/fc_pic_address/" + fileName;
+		int fc_id =Integer.parseInt(fc_ids);
 		try {
 			// 4. 進行Business Logic運算
 			// RegisterServiceFile類別的功能：
@@ -107,6 +113,7 @@ public class FcPicCreateServlet extends HttpServlet {
 			FcPicBean fb = new FcPicBean(fc_id,fc_adress);
 
 			int n = rs.insert(fb);
+			
 			if (n == 1) {
 				msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
 				response.sendRedirect("../index.jsp");

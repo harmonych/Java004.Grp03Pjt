@@ -3,27 +3,27 @@
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
-
+	<c:set var="context" value="${pageContext.request.contextPath}" />
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="../css/Fc_Create.css">
+      <link rel="stylesheet" href="${context}/css/Fc_Create.css">
 	  <title>建立專案</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
-      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.min.css">
       <!-- Font Awesome -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
       <!-- Ionicons -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
       <!-- Theme style -->
-      <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+      <link rel="stylesheet" href="${context}/dist/css/AdminLTE.min.css">
       <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
-      <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+      <link rel="stylesheet" href="${context}/dist/css/skins/_all-skins.min.css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,6 +98,7 @@ desired effect
 								
 								<div id="ipt1">
 						        	<label>專案名稱</label>
+						        	<input name="artids" value="${ab.art_id}" type="hidden">
 						        	<input type="text" name="fcname" value="${param.fcname}" class="form-control">
 									<font size="-1" color="#FF0000">${MsgMap.errorfcnameEmpty}${MsgMap.errorfcnameDup}</font>
 					            </div>
@@ -226,7 +227,7 @@ desired effect
 <!--         </aside> -->
 <!--         /.control-sidebar -->
 <!--         Add the sidebar's background. This div must be placed
-<!--        immediately after the control sidebar --> -->
+<!--        immediately after the control sidebar -->
 <!--         <div class="control-sidebar-bg"></div> -->
 <!--       </div> -->
 <!--       ./wrapper -->
@@ -235,12 +236,12 @@ desired effect
       <!-- REQUIRED JS SCRIPTS -->
 
       <!-- jQuery 2.2.3 -->
-      <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+      <script src="${context}/plugins/jQuery/jquery-2.2.3.min.js"></script>
       <!-- Bootstrap 3.3.6 -->
-      <script src="../bootstrap/js/bootstrap.min.js"></script>
+      <script src="${context}/bootstrap/js/bootstrap.min.js"></script>
       <!-- AdminLTE App -->
-      <script src="../dist/js/app.min.js"></script>
-
+      <script src="${context}/dist/js/app.min.js"></script>
+		
       <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

@@ -35,6 +35,8 @@ public class FcPicBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	@Id
+	@Column(name = "pic_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getPic_id() {
 		return pic_id;
 	}
@@ -47,7 +49,7 @@ public class FcPicBean implements Serializable {
 	public void setFc_id(int fc_id) {
 		this.fc_id = fc_id;
 	}
-	@Column(name = "pic_address")
+	@Column(name = "pic_address", columnDefinition="LongText")
 	public String getFc_adress() {
 		return fc_adress;
 	}

@@ -93,19 +93,20 @@ desired effect
 				        </div>
 						
 						<div class="box-body">	
-							<form  ENCTYPE="multipart/form-data" method="POST" action="<c:url value='../_07_funds/FundCreate.do' />" 
-									id="FundCreate.do" >
+							<form  ENCTYPE="multipart/form-data" method="POST" action="<c:url value='../_07_funds/pic.do' />" 
+									id="fcpic.do" >
 								
 								<div id="ipt1">
 									    <label for="exampleInputFile">上傳圖片</label>
-									    <input type="file" id="exampleInputFile">
+									    <input name="fcids" value="${fc_id}" type="hidden">
+									    <input type="file" size="40"  class="form-control" name="filename" />
 									
 									    <p class="help-block">請選擇上傳圖檔</p>
 								</div>	
 																												
 								<div class="box-footer">
 									<div id="bt_area">
-										<a href="Fc_Create OK.jsp">
+										<a href="Fc_Create_OK.jsp">
 										<input type="submit" name="submit" class="btn1 btn-lg" value="上傳圖片"></a>
 									</div>
 <!-- 									<div id="bt">	 -->
@@ -211,7 +212,7 @@ desired effect
       <script src="../bootstrap/js/bootstrap.min.js"></script>
       <!-- AdminLTE App -->
       <script src="../dist/js/app.min.js"></script>
-
+		<script>console.log(${fc_id})</script>
       <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

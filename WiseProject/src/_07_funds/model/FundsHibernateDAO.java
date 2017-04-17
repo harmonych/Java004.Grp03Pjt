@@ -10,6 +10,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import _01_register.model.ArtistHibernateDAO;
 import _01_register.model.IArtistDAO;
@@ -244,6 +245,31 @@ public class FundsHibernateDAO implements IFundsDAO {
 			session.close();
 		}
 		return list;
+	}
+	
+	@Override
+	public int getNewFcid(int artid) {
+		int fcid = 0;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		String hql = "select max(fc_id) from FundsBean where art_id="+artid+"";
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			Query<FundsBean> query=session.createQuery(hql);
+			fcid = (int) ((Query) query).uniqueResult();
+			//list =session.createQuery("from FundsBean").getResultList();
+			
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return fcid;
 	}
 	
 	
