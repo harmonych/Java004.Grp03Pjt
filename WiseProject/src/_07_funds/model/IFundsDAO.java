@@ -26,5 +26,7 @@ public interface IFundsDAO {
 
 	List<FundsBean> getAllFundsByArtId(int art_id);
 
+	int getNewFcid(int artid);
+
 	
 }

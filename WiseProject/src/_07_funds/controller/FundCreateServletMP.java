@@ -74,7 +74,8 @@ public class FundCreateServletMP extends HttpServlet {
 		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
 		
 		
-		int artid = 1;
+		int artid =0;
+		String artids="";
 		String fcname = "";
 		String fcmoneys = "";
 		int nowmoney = 0;
@@ -96,8 +97,10 @@ public class FundCreateServletMP extends HttpServlet {
 
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
-					if (fldName.equals("fcname")) {
-						fcname = value;
+					if (fldName.equals("artids")) {
+						artids = value;
+					} else if (fldName.equals("fcname")) {
+						fcname = value;	
 					} else if (fldName.equals("fcmoneys")) {
 						fcmoneys = value;
 					} else if (fldName.equalsIgnoreCase("starttime")) {
@@ -114,7 +117,7 @@ public class FundCreateServletMP extends HttpServlet {
 			}
 			System.out.println("123");
 				// 2. 進行必要的資料轉換
-
+				artid=Integer.parseInt(artids);
 				// 3. 檢查使用者輸入資料
 				if (fcname == null || fcname.trim().length() == 0) {
 					errorMsg.put("errorfcnameEmpty", "專案名稱欄必須輸入");
@@ -161,9 +164,16 @@ public class FundCreateServletMP extends HttpServlet {
 							updatetime, fcintroduction,hashtag);
 					
 					int n = rs.insert(fb);
+					
+					int fcid=rs.getNewFcid(artid);
+					System.out.println(fcid);
 					if (n == 1) {
 						msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../_10_Fc_Create/Fc_Create_Pic.jsp");
+						request.setAttribute("fc_id", fcid);
+						
+						request.getRequestDispatcher("/_10_Fc_Create/Fc_Create_Pic.jsp").forward(request, response);
+						
+						//response.sendRedirect("../_10_Fc_Create/Fc_Create_Pic.jsp");
 						return;
 					} else {
 						errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
