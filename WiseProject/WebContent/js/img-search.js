@@ -227,17 +227,7 @@ var proaddress=null;
 //});
 //------------ add element-item
 
-//按鈕增加圖片
- $('.append-button').on('click', function () {
-   // create new item elements
-   for (var n = 1; n <= 6; n++) {
-	   var  $items = getAllFund(n, "fundraising",allfund[n].fc_name);
-	      // append elements to container
-	      $grid.append($items).isotope('layout')
-	        // add and lay out newly appended elements
-	        .isotope('appended', $items);
-   }
- });
+ 
  
  $('.cancel-search').on('click', function () {
 	 $("#searchbox").empty();
