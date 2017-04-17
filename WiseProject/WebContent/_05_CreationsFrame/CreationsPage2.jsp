@@ -147,7 +147,7 @@
                           
                             
                             <div class="col-md-3 col-xs-3">
-                        	   <h4>創作者 Blog</h4><input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
+                        	  <input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
                                 <ul class="nav nav-pills nav-stacked"> 								
 										<li><a href="javascript:;">作者資訊</a>
 												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100"/>

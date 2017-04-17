@@ -27,9 +27,9 @@
           	 display: inline-flex;
         }
 
-        @media screen and (max-width: 766px) {
+        @media screen and (max-width: 768px) {
 			.container .jumbotron, .container-fluid .jumbotron {
-		     padding-top: 60px;
+		     padding-top: 80px;
 		    
 			}
 		}

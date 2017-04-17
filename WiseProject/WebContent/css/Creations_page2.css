@@ -362,15 +362,15 @@
 /*     box-shadow: none; */
 /* } */
 /*     On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-.sidenav {
-    height: auto;
-    padding: 10px;
-}
-.row.content {
-	padding-bottom:20px;
-} 
-
+@media screen and (max-width: 768px) {
+	.sidenav {
+	    height: auto;
+	    padding: 10px;
+	}
+	.row.content {
+		padding-bottom:20px;
+	} 
+	
 	div.card {
 	 height:170px;
 	 padding:0px;
@@ -378,6 +378,9 @@
 	}
 	div .col-xs-3{
 	    width: 50%;
+	}
+	.box-header {
+        padding-top: 80px;
 	}
 }
 

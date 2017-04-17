@@ -133,15 +133,22 @@
 					margin: 0 auto;
 					max-width: 400px;
 					padding: 10px 40px;
-					background: #fff;
+					background: rgba(167, 142, 12, 0.2);
 					/*background: #009edf;*/
 					color: dodgerblue;
 					text-shadow: none;
 					-webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
 					-moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
 					box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+					border-top: 5px solid #f39c12;
 				}
-				
+				h5{
+					color:black;
+				}
+				small {
+				       color: black;
+				}
+
 				span.input-group-addon i {
 					color: #009edf;
 					font-size: 17px;
@@ -160,6 +167,29 @@
 				}
 				.input-group-addon:first-child{
 					width: 50px;
+				}
+				
+				.fa-user-circle-o:before {
+				    content: "\f2be";
+				    color:#f39c12;
+				}
+				.fa-lock:before {
+				    content: "\f023";
+				    color: #f39c12;
+				}
+				
+				label {
+				    margin-bottom: 15px;
+				    color: #f39c12;
+				}
+				p {
+				    margin: 0 0 10px;
+					color: black;
+				}
+					
+				a {
+				    color: #f39c12;
+				    text-decoration: none;
 				}
 			</style>
             <title>Login</title>
@@ -206,7 +236,7 @@
                             <input type="checkbox" name="rememberMe" <c:if test='${sessionScope.rememberMe==true}'>checked='checked'</c:if> value="true">
                             <small>記住密碼</small>
                             <Font color='red' size="-1">${ErrorMsgKey.LoginError}&nbsp;</Font>
-                            <input class="btn btn-primary btn-lg btn-block login-button" type="submit" name="submit" id="submit" value="Login" />
+                            <input class="btn btn-warning btn-lg btn-block login-button" type="submit" name="submit" id="submit" value="Login" />
                         </div>
 
                     </form>
