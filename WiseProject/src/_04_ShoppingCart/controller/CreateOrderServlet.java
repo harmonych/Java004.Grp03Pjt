@@ -27,10 +27,8 @@ import _04_ShoppingCart.model.ShoppingCart;
 public class CreateOrderServlet extends HttpServlet {
 	//當使用者按下確認訂購時呼叫此程式
 	private static final long serialVersionUID = 1L;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       doPost(request, response);
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+		HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		if (session == null) {      // 使用逾時
@@ -86,7 +84,6 @@ public class CreateOrderServlet extends HttpServlet {
 		
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("../index.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("https://goo.gl/f0ItZ5");
 	}
 }

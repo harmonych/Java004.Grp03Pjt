@@ -1,31 +1,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
 
     <head>
-    
-	<c:set var="context" value="${pageContext.request.contextPath}" />
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="${context }/css/ShoppingCart_List.css">
+      <link rel="stylesheet" href="../css/ShoppingCart_List.css">
 	  <title>購物車清單</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
-      <link rel="stylesheet" href="${context }/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
       <!-- Font Awesome -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
       <!-- Ionicons -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
       <!-- Theme style -->
-      <link rel="stylesheet" href="${context }/dist/css/AdminLTE.min.css">
+      <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
       <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
-      <link rel="stylesheet" href="${context }/dist/css/skins/_all-skins.min.css">
+      <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -141,6 +139,71 @@ desired effect
                   </ul>
                 </li>
                 <!-- /.messages-menu -->
+
+                <!-- Notifications Menu -->
+                <li class="dropdown notifications-menu">
+                  <!-- Menu toggle button -->
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bell-o"></i>
+                    <span class="label label-warning">10</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="header">You have 10 notifications</li>
+                    <li>
+                      <!-- Inner Menu: contains the notifications -->
+                      <ul class="menu">
+                        <li>
+                          <!-- start notification -->
+                          <a href="#">
+                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                          </a>
+                        </li>
+                        <!-- end notification -->
+                      </ul>
+                    </li>
+                    <li class="footer"><a href="#">View all</a></li>
+                  </ul>
+                </li>
+                <!-- Tasks Menu -->
+                <li class="dropdown tasks-menu">
+                  <!-- Menu Toggle Button -->
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-flag-o"></i>
+                    <span class="label label-danger">9</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="header">You have 9 tasks</li>
+                    <li>
+                      <!-- Inner menu: contains the tasks -->
+                      <ul class="menu">
+                        <li>
+                          <!-- Task item -->
+                          <a href="#">
+                            <!-- Task title and progress text -->
+                            <h3>
+                              Design some buttons
+                              <small class="pull-right">20%</small>
+                            </h3>
+                            <!-- The progress bar -->
+                            <div class="progress xs">
+                              <!-- Change the css width attribute to simulate progress -->
+                              <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                <span class="sr-only">20% Complete</span>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                        <!-- end task item -->
+                      </ul>
+                    </li>
+                    <li class="footer">
+                      <a href="#">View all tasks</a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- User Account Menu -->
+
+
                 <c:choose>
                   <c:when test="${empty LoginOK}">
                     <li><a href="../_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
@@ -283,7 +346,7 @@ desired effect
 <!-- 	                </button> -->
 	                <div class="btn-group">
 	                		                	
- 	                	<button type="button" href="${context }/_13_Product_info/Product_info.jsp" class="btn btn-block btn-warning">回上頁
+ 	                	<button type="button" href="../_13_Product_info/Product_info.jsp" class="btn btn-block btn-warning">回上頁
  	                		
  	                	</button>
 <!-- 	            	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button> -->
@@ -312,7 +375,7 @@ desired effect
 	                 <c:forEach varStatus="vs" var="anEntry" items="${OrderList.orderList}">
 	                  <tr>
 <!-- 	                <td><input type="checkbox"></td> -->
-	                    <td class="mailbox-name"><a href="${context }/_05_CreationsFrame/CreationsPage2-1.jsp">${anEntry.value.art_user_name}</a>
+	                    <td class="mailbox-name"><a href="../_05_CreationsFrame/CreationsPage2-1.jsp">${anEntry.value.art_user_name}</a>
 	                    </td>
 	                    <td class="mailbox-name">購物車內共${anEntry.value.ord_count}筆商品
 	                    </td>
@@ -322,9 +385,10 @@ desired effect
 	                		</button></a>
 	                    </td>
 	                    <td class="mailbox-star">
+	                    	<a href="<c:url value='/_04_ShoppingCart/deleteOrderList.do?art_id=${anEntry.value.art_id}'/>">
 	                    	<button type="button" class="btn btn-default btn-sm">
 	                    	<i class="fa fa-trash-o" ></i>
-	                    	</button>
+	                    	</button></a>
 	                    </td>
 	                  </tr>
 	                  </c:forEach>
@@ -339,7 +403,7 @@ desired effect
 	            <div class="box-footer no-padding">
 	              <div class="mailbox-controls">
 	              	<div class="btn-group">
-	                	<a type="" href="${context}/_13_Product_info/Product_info.jsp" class="">回上頁</a>
+	                	<a type="" href="../_13_Product_info/Product_info.jsp" class="">回上頁</a>
 <!-- 	            	
 	                </div>
 	                <!-- /.btn-group -->
@@ -362,7 +426,7 @@ desired effect
             Anything you want
           </div>
           <!-- Default to the left -->
-          <strong>Copyright &copy; 2017 <a href="#">彙思</a>.</strong> A Wise Choice.
+          <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
@@ -447,11 +511,11 @@ desired effect
       <!-- REQUIRED JS SCRIPTS -->
 
       <!-- jQuery 2.2.3 -->
-      <script src="${context }/plugins/jQuery/jquery-2.2.3.min.js"></script>
+      <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
       <!-- Bootstrap 3.3.6 -->
-      <script src="${context }/bootstrap/js/bootstrap.min.js"></script>
+      <script src="../bootstrap/js/bootstrap.min.js"></script>
       <!-- AdminLTE App -->
-      <script src="${context }/dist/js/app.min.js"></script>
+      <script src="../dist/js/app.min.js"></script>
 
       <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

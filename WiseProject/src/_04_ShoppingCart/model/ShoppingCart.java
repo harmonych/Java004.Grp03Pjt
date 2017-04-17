@@ -2,13 +2,17 @@ package _04_ShoppingCart.model;
 
 import java.util.*;
 import _04_ShoppingCart.model.OrderItemBean;
+import _08_product.model.IProPicDAO;
+import _08_product.model.ProPicBean;
+import _08_product.model.ProPicHBNDAO;
 
 public class ShoppingCart {
 
 	private Map<Integer, OrderBean> cart = new LinkedHashMap<>();
 	private Map<Integer, OrderBean> orderList = new LinkedHashMap<>();
 	private Map<Integer, OrderBean> checkoutlist = new LinkedHashMap<>();
-
+	private IProPicDAO jdbc = new ProPicHBNDAO();
+	
 	public ShoppingCart() {
 	}
 
@@ -25,27 +29,27 @@ public class ShoppingCart {
 	}
 
 	public void addOrderList(int art_id, OrderBean ob) {
-		Set<Integer> set = orderList.keySet();
-		int pb_id = ob.getPro_id();
 		int old_pb_id = 0;
-		for (int n : set) {
-			old_pb_id = orderList.get(n).getOrder_id();
-
-			if (pb_id == old_pb_id) {
-				orderList.put(n, cart.get(n));
-			}
-
+		boolean repeatBuy = false;
+		//判斷之前是否將相同商品加入購物車
+		for (OrderBean ob2 : orderList.values()) {
+			if(ob.getPro_id() == ob2.getPro_id()){
+				repeatBuy = true;
+			} 
 		}
-
-		// 如果尚未購買此創作者商品，購物車清單新增創作者
+		// 如果購物車清單內查無此創作者商品，購物車清單新增該創作者
 		if (orderList.get(art_id) == null) {
 			orderList.put(art_id, ob);
 		} else {
-			// 如果已購買此創作者商品，該創作者購物車商品數量+1
-			OrderBean ob_old = orderList.get(art_id);
-			ob_old.setOrd_count(ob_old.getOrd_count() + 1);
-
-		}
+			if(repeatBuy == true){
+			}else{
+				// 如果沒買過該創作者非相同商品，該創作者購物車商品項目數+1
+				OrderBean ob_old = orderList.get(art_id);
+				ob_old.setOrd_count(ob_old.getOrd_count() + 1);
+			}
+			
+			
+		} 
 
 	}
 
@@ -65,18 +69,47 @@ public class ShoppingCart {
 		}
 	}
 
-	// 將相同創作者的商品加入結帳清單
+	// 將相同創作者的商品加入結帳清單(**購物車結帳)
 	public void addCheckOutList(int art_id, ShoppingCart cart) {
 		checkoutlist.clear();
 		for (OrderBean ob : cart.getContent().values()) {
 
 			if (art_id == ob.getArt_id()) {
+				//設定商品小計
 				int subtotal = getSubtotal(ob.getPrice(), ob.getOrd_amount());
 				ob.setSubtotal(subtotal);
+				//取得產品圖片
+				int pro_id = ob.getPro_id();
+				jdbc.setPro_id(pro_id);
+				List<ProPicBean> ppb = jdbc.getPicAddressJSON(pro_id);
+				String phoAdr = ppb.get(0).getPic_adress();
+				ob.setPhoto_address(phoAdr);
+				//將ob放入checkoutlist內
 				checkoutlist.put(ob.getPro_id(), ob);
 			}
 		}
 	}
+	
+	// 將相同創作者的商品加入結帳清單(**立即購買)
+		public void addCheckOutList(int art_id, OrderBean ob) {
+			//設定商品小計
+			checkoutlist.clear();
+			int subtotal = getSubtotal(ob.getPrice(), ob.getOrd_amount());
+			ob.setSubtotal(subtotal);
+			
+			//取得產品圖片
+			int pro_id = ob.getPro_id();
+			jdbc.setPro_id(pro_id);
+			List<ProPicBean> ppb = jdbc.getPicAddressJSON(pro_id);
+			String phoAdr = ppb.get(0).getPic_adress();
+			ob.setPhoto_address(phoAdr);
+			//將ob放入checkoutlist內
+			checkoutlist.put(ob.getPro_id(), ob);
+					
+					
+		}
+			
+	
 
 	// 計算結帳清單所有商品的合計金額(每項商品的單價*數量的總和)
 	public int getTotal() {
@@ -109,6 +142,16 @@ public class ShoppingCart {
 			return 0;
 		}
 	}
+	
+	// 刪除某項購物車項目
+		public int deleteOrderListItem(int art_id) {
+			if (orderList.get(art_id) != null) {
+				orderList.remove(art_id); // Map介面的remove()方法
+				return 1;
+			} else {
+				return 0;
+			}
+		}
 
 	// 修改商品的數量
 	// public boolean modifyQty(int product_id, OrderItemBean oib) {

@@ -356,7 +356,7 @@ desired effect
 										<td>
 										
 												<div id="order_img">
-													<img src="<c:out value=""/>" id="loop_pro_id'<c:out value="${checkout.value.pro_id}"/>'"
+													<img src="${checkout.value.photo_address}" id="loop_pro_id'<c:out value="${checkout.value.pro_id}"/>'"
 														width="100px" height="100px">
 												</div>
 											</td>
@@ -410,7 +410,7 @@ desired effect
 							<!-- /.box-header -->
 							<!-- form start -->
 
-							<form id="form1" action="<c:url value='/_04_ShoppingCart/CreateOrder.do' />">
+							<form id="form1" method="post" action="<c:url value='/_04_ShoppingCart/CreateOrder.do' />">
 								<div class="box-body">
 									<div class="form-group">
 										<label for="exampleInputEmail1">收件人</label> 

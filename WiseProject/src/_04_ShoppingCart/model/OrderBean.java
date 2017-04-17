@@ -27,13 +27,14 @@ public class OrderBean implements Serializable {
 	private String transport;
 	private String payment;
 	
-	//以下五個變數僅存入Shopping Cart的Session中，不存入資料庫。
+	//以下七個變數僅存入Shopping Cart的Session中，不存入資料庫。
 	private int subtotal;
 	private int ord_count;
 	private int pro_id;
 	private String pro_name;
 	private int price;
 	private int ord_amount;
+	private String photo_address;
 	
 	
 	public OrderBean(int order_id, int user_id, int art_id, int ord_status,
@@ -237,6 +238,15 @@ public class OrderBean implements Serializable {
 
 	public void setSubtotal(int subtotal) {
 		this.subtotal = subtotal;
+	}
+
+	@Transient
+	public String getPhoto_address() {
+		return photo_address;
+	}
+
+	public void setPhoto_address(String photo_address) {
+		this.photo_address = photo_address;
 	}
 
 	

@@ -55,10 +55,9 @@ public class BuyProductServlet extends HttpServlet {
 		String pro_id_str		= request.getParameter("pro_id");
 		String art_id_str 		= request.getParameter("art_id");
 		String price_str 		= request.getParameter("price");
-		String pro_name 	= request.getParameter("pro_name");
+		String pro_name 		= request.getParameter("pro_name");
 		String ord_amount_str 	= request.getParameter("ord_amount");
-		
-		
+				
 		int user_id = 0 ; 
 		int pro_id = 0 ;
 		int art_id = 0 ;
@@ -94,5 +93,6 @@ public class BuyProductServlet extends HttpServlet {
 		orderList.addOrderList(art_id, ob);
 		RequestDispatcher rd = request.getRequestDispatcher("../_15_ShoppingCart/ShoppingCart_List.jsp");
 		rd.forward(request, response);
+		
 	}
 }

@@ -84,7 +84,7 @@ public class CheckoutServlet extends HttpServlet {
 			   System.out.println(ob3.getArt_id());
 			   System.out.println(ob3.getArt_id());
 			   System.out.println(ob3.getPro_id());
-			   pbl.addAll(dao.getPicAddressJSON(ob3.getPro_id()));
+			  
 			   
 			   System.out.println(ob3.getPro_name());
 			   System.out.println(ob3.getArt_user_name());

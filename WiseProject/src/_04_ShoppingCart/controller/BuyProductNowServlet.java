@@ -1,6 +1,8 @@
 package _04_ShoppingCart.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +16,20 @@ import _01_register.model.ArtistBean;
 import _01_register.model.ArtistHibernateDAO;
 import _01_register.model.IArtistDAO;
 import _04_ShoppingCart.model.OrderBean;
-import _04_ShoppingCart.model.OrderItemBean;
 import _04_ShoppingCart.model.ShoppingCart;
+import _08_product.model.IProPicDAO;
+import _08_product.model.ProPicBean;
+import _08_product.model.ProPicHBNDAO;
 @WebServlet("/_04_ShoppingCart/OrderListNow.do")
 public class BuyProductNowServlet extends HttpServlet {
-	// 當使用者按下『加入購物車』時，瀏覽器會送出請求到本程式
+	// 當使用者按下『立即結帳』時，瀏覽器會送出請求到本程式
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        doPost(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		if (session == null) {      // 使用逾時
@@ -33,28 +39,26 @@ public class BuyProductNowServlet extends HttpServlet {
 			return;
 		}
 		// 取出存放在session物件內的ShoppingCart物件
-		ShoppingCart cart = (ShoppingCart)session.getAttribute("ShoppingCart");
-		ShoppingCart orderList = (ShoppingCart)session.getAttribute("orderList");
-		// 如果找不到ShoppingCart物件
-		if (cart == null) {
-			// 就新建ShoppingCart物件
-			cart = new ShoppingCart();
-			// 將此新建ShoppingCart的物件放到session物件內
-			session.setAttribute("ShoppingCart", cart);   // ${ShoppingCart.zzz}
-		// 如果找不到orderList物件
-		}else if(orderList == null){
-			// 就新建orderList物件
-			orderList = new ShoppingCart();
-			// 將此新建ShoppingCart的物件放到session物件內
-			session.setAttribute("orderList", orderList);   // ${ShoppingCart.zzz}
+		ShoppingCart checkoutlist = (ShoppingCart)session.getAttribute("CheckOutList");
+		IProPicDAO dao = new ProPicHBNDAO();
+		List<ProPicBean> adrlist = new ArrayList<>();
+		
+		   
+		// 如果找不到CheckOutList物件
+		if (checkoutlist == null) {
+			// 就新建CheckOutList物件
+			checkoutlist = new ShoppingCart();
+			// 將此新建CheckOutList的物件放到session物件內
+			session.setAttribute("CheckOutList", checkoutlist);   // ${CheckOutList.zzz}
+		
 		}
+		
 		String user_id_str		= request.getParameter("user_id");
 		String pro_id_str		= request.getParameter("pro_id");
 		String art_id_str 		= request.getParameter("art_id");
 		String price_str 		= request.getParameter("price");
 		String pro_name 	= request.getParameter("pro_name");
 		String ord_amount_str 	= request.getParameter("ord_amount");
-		
 		
 		int user_id = 0 ; 
 		int pro_id = 0 ;
@@ -81,13 +85,12 @@ public class BuyProductNowServlet extends HttpServlet {
 		OrderBean ob = new OrderBean(user_id, art_id, artUserName, "", 0, 0, "", 0, 1,
 									pro_id, pro_name, price, ord_amount);
 		
+		checkoutlist.addCheckOutList(art_id, ob);
+		request.setAttribute("total", checkoutlist.getTotal());
 		
-		
-		
-		// 將OrderItemBean加入ShoppingCart的物件內
-		cart.addToCart(pro_id, ob);
-		orderList.addOrderList(art_id, ob);
-		RequestDispatcher rd = request.getRequestDispatcher("_15_Product_info/ShoppingCart_List");
+		RequestDispatcher rd = request.getRequestDispatcher("../_15_ShoppingCart/ShoppingCart_Order.jsp");
 		rd.forward(request, response);
+		
+		
 	}
 }
