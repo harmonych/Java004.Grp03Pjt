@@ -2,6 +2,7 @@ package _11_message.model.message;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name="message")
 public class MessageBean implements Serializable{
@@ -20,7 +25,7 @@ public class MessageBean implements Serializable{
 	int r_user_id;
 	String title;	
 	String msg_txt;
-	Timestamp msg_time;
+	Date msg_time;
 	int s_msg_status;
 	int r_msg_status;
 	int msg_read = 0;
@@ -40,7 +45,7 @@ public class MessageBean implements Serializable{
 	}
 
 	public MessageBean(int s_user_id, String sender_name, String receiver_name, int r_user_id, String title,
-			String msg_txt, Timestamp msg_time, int s_msg_status, int r_msg_status) {
+			String msg_txt, Date msg_time, int s_msg_status, int r_msg_status) {
 		super();
 		this.s_user_id = s_user_id;
 		this.sender_name = sender_name;
@@ -54,7 +59,7 @@ public class MessageBean implements Serializable{
 	}
 	
 	public MessageBean(int msg_id, int s_user_id, String sender_name, String receiver_name, int r_user_id, String title,
-			String msg_txt, Timestamp msg_time, int s_msg_status, int r_msg_status, int msg_read) {
+			String msg_txt, Date msg_time, int s_msg_status, int r_msg_status, int msg_read) {
 		super();
 		this.msg_id = msg_id;
 		this.s_user_id = s_user_id;
@@ -70,7 +75,7 @@ public class MessageBean implements Serializable{
 	}
 
 	public MessageBean(int msg_id, int s_user_id, String sender_name, String receiver_name, int r_user_id,
-			String title,String msg_txt, Timestamp msg_time,int s_msg_status,int r_msg_status) {
+			String title,String msg_txt, Date msg_time,int s_msg_status,int r_msg_status) {
 		super();
 		this.msg_id = msg_id;
 		this.s_user_id = s_user_id;
@@ -135,10 +140,12 @@ public class MessageBean implements Serializable{
 	public void setMsg_txt(String msg_txt) {
 		this.msg_txt = msg_txt;
 	}
-	public Timestamp getMsg_time() {
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getMsg_time() {
 		return msg_time;
 	}
-	public void setMsg_time(Timestamp msg_time) {
+	public void setMsg_time(Date msg_time) {
 		this.msg_time = msg_time;
 	}
 	public int getS_msg_status() {
@@ -154,9 +161,6 @@ public class MessageBean implements Serializable{
 		this.r_msg_status = r_msg_status;
 	}
 	
-   
-	
-	
-	
+   	
 	
 }

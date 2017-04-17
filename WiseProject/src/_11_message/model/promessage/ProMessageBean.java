@@ -1,6 +1,7 @@
 package _11_message.model.promessage;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="pro_message")
@@ -18,14 +23,14 @@ public class ProMessageBean {
 	private int user_id;
 	private String sender_name;
 	private String receiver_name;
-	private Timestamp msg_time;
+	private Date msg_time;
 	private int pro_id;
 	private String msg_text;
 	private int msg_status;
 	
 	//所有建構子
 	public ProMessageBean(int msg_id, String msg_title, int prev_msg_id, int user_id, String sender_name,
-			String receiver_name, Timestamp msg_time, int pro_id, String msg_text, int msg_status) {
+			String receiver_name, Date msg_time, int pro_id, String msg_text, int msg_status) {
 		super();
 		this.msg_id = msg_id;
 		this.msg_title = msg_title;
@@ -65,7 +70,7 @@ public class ProMessageBean {
 	}
 
 	public ProMessageBean(String msg_title, int prev_msg_id, int user_id, String sender_name, String receiver_name,
-			Timestamp msg_time, int pro_id, String msg_text, int msg_status) {
+			Date msg_time, int pro_id, String msg_text, int msg_status) {
 		super();
 		this.msg_title = msg_title;
 		this.prev_msg_id = prev_msg_id;
@@ -121,10 +126,12 @@ public class ProMessageBean {
 	public void setReceiver_name(String receiver_name) {
 		this.receiver_name = receiver_name;
 	}
-	public Timestamp getMsg_time() {
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getMsg_time() {
 		return msg_time;
 	}
-	public void setMsg_time(Timestamp msg_time) {
+	public void setMsg_time(Date msg_time) {
 		this.msg_time = msg_time;
 	}
 	@Column(nullable = false)

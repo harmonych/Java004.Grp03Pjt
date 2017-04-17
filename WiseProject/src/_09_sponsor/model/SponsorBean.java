@@ -2,6 +2,7 @@ package _09_sponsor.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.google.gson.annotations.Expose;
 
@@ -22,7 +27,7 @@ public class SponsorBean implements Serializable {
 @Expose		private int fc_id;
 @Expose		private int user_id;
 @Expose		private int spon_money;
-@Expose		private Timestamp spon_time;
+@Expose		private Date spon_time;
 @Expose		private int spon_mode;
 @Expose		private String spon_account;
 		
@@ -49,7 +54,7 @@ public class SponsorBean implements Serializable {
 			this.spon_account = spon_account;
 		}
 		//所有
-		public SponsorBean(int sponid, int fcid, int userid, int sponmoney, Timestamp spontime, int sponmode,
+		public SponsorBean(int sponid, int fcid, int userid, int sponmoney, Date spontime, int sponmode,
 				String sponaccount) {
 			super();
 			this.spon_id = sponid;
@@ -94,8 +99,10 @@ public class SponsorBean implements Serializable {
 		public void setSpon_money(int sponmoney) {
 			this.spon_money = sponmoney;
 		}
+		@CreationTimestamp
+		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "spon_time")
-		public Timestamp getSpon_time() {
+		public Date getSpon_time() {
 			return spon_time;
 		}
 		public void setSpon_time(Timestamp spontime) {
