@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" href="../css/ShoppingCart_Order.css">
-<title>購物車明細</title>
+<title>結帳清單</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -314,7 +314,7 @@ desired effect
 			<!-- /.sidebar -->
 		</aside>
 
-
+ 	
 
 
 		<!-- Content Wrapper. Contains page content -->
@@ -330,8 +330,9 @@ desired effect
 					<div class="order_body">
 						<div class="box box-warning">
 							<div class="box-header with-border">
-								<h3>
-									<b>XXX作者訂購明細</b>
+								<h3 class="box-title"><Input type='hidden' id='loop' value="${loop}"> 
+									
+									<b>訂購明細</b>
 								</h3>
 							</div>
 
@@ -341,7 +342,7 @@ desired effect
 										<tr>
 											<th class="mailbox-name">商品圖片</th>
 											<th class="mailbox-name">商品名稱</th>
-											<th class="mailbox-star">單價</th>
+											<th class="mailbox-name">單價</th>
 											<th class="mailbox-star">數量</th>
 											<th class="mailbox-star">小記</th>
 											<th class="mailbox-star">刪除商品</th>
@@ -349,103 +350,49 @@ desired effect
 									</thead>
 
 									<tbody id="table_text">
+										<c:forEach varStatus="vs" var="checkout" items="${CheckOutList.checkoutlist}">
 										<tr>
-											<td id="td1">
+								
+										<td>
+										
 												<div id="order_img">
-													<img id="pro_img" src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg"  
-														 width="100px" height="100px">
+													<img src="<c:out value=""/>" id="loop_pro_id'<c:out value="${checkout.value.pro_id}"/>'"
+														width="100px" height="100px">
 												</div>
 											</td>
-											<td id="td2" class="mailbox-name">
+											 
+											<td class="mailbox-name">
 												<div id="pro_name">
-													<a href="../_13_Product_info/Product_info.jsp">同墨一斑</a>
+													<a href="../_13_Product_info/Product_info.jsp">${checkout.value.pro_name}</a>
 												</div>
 											</td>
 
-											<td id="td2" class="mailbox-star">
-												<font color="red">$150</font>
-											</td>
+											<td id="red" class="mailbox-star">${checkout.value.price}</td>
 
-											<td id="td2" class="mailbox-star">
-												<select id="quantity" class="form-control">
-									            	<option value="1"> 1</option>
-									                <option value="2"> 2</option>
-									                <option value="3"> 3</option>
-									                <option value="4"> 4</option>
-									                <option value="5"> 5</option>
-									                <option value="6"> 6</option>
-									                <option value="7"> 7</option>
-									                <option value="8"> 8</option>
-									                <option value="9"> 9</option>
-									                <option value="10"> 10</option>
-									            </select>
-											</td>
+											<td class="mailbox-star">${checkout.value.ord_amount}</td>
 
-											<td id="td2" class="mailbox-star">
-												<font color="red">$150</font>
-											</td>
+											<td id="red" class="mailbox-star">${checkout.value.subtotal}</td>
 
-											<td id="td2" class="mailbox-star">
-												<div id="delete">
-													<button type="button" class="btn btn-default btn-sm">
-														<i class="fa fa-trash-o"></i>
-													</button>
-												</div>
+											<td class="mailbox-star">
+												
+												<a href="<c:url value='/_04_ShoppingCart/deleteProduct.do?pro_id=${checkout.value.pro_id}'/>">
+												<button type="button" class="btn btn-default btn-sm" id="delete">
+													<i class="fa fa-trash-o"></i>
+												</button></a>
+												
 											</td>
+											</c:forEach>
 										</tr>
-
-										<tr>
-											<td id="td1">
-												<div id="order_img">
-													<img id="pro_img" src="http://saudade.myasustor.com/JPjt/pro_pic_address/2.jpg"  
-														 width="100px" height="100px">
-												</div>
-											</td>
-											<td id="td2" class="mailbox-name">
-												<div id="pro_name">
-													<a href="../_13_Product_info/Product_info.jsp">需求與供給</a>
-												</div>
-											</td>
-
-											<td id="td2" class="mailbox-star">
-												<font color="red">$150</font>
-											</td>
-
-											<td id="td2" class="mailbox-star">
-												<select id="quantity" class="form-control">
-									            	<option value="1"> 1</option>
-									                <option value="2"> 2</option>
-									                <option value="3"> 3</option>
-									                <option value="4"> 4</option>
-									                <option value="5"> 5</option>
-									                <option value="6"> 6</option>
-									                <option value="7"> 7</option>
-									                <option value="8"> 8</option>
-									                <option value="9"> 9</option>
-									                <option value="10"> 10</option>
-									            </select>
-											</td>
-
-											<td id="td2" class="mailbox-star">
-												<font color="red">$150</font>
-											</td>
-
-											<td id="td2" class="mailbox-star">
-												<div id="delete">
-													<button type="button" class="btn btn-default btn-sm">
-														<i class="fa fa-trash-o"></i>
-													</button>
-												</div>
-											</td>
-										</tr>
+										
+										
 
 									</tbody>
 								</table>
 								<!-- /.table -->
 								<footer id="price_area">									
 										<div id="total">
-											<span class="">總金額</span>
-											<span id="price" class="">$779</span>
+											<span class="">總金額:</span>
+											<span id="total" class="">${total}</span>
 										</div>									
 								</footer>
 							</div>
@@ -463,19 +410,19 @@ desired effect
 							<!-- /.box-header -->
 							<!-- form start -->
 
-							<form role="form">
+							<form id="form1" action="<c:url value='/_04_ShoppingCart/CreateOrder.do' />">
 								<div class="box-body">
 									<div class="form-group">
 										<label for="exampleInputEmail1">收件人</label> 
-										<input type="text" class="form-control" id="exampleInputEmail1" placeholder="real_name">
+										<input type="text" class="form-control" name="real_name" id="exampleInputEmail1" placeholder="real_name">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">寄送地址</label> 
-										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="address">
+										<input type="text" class="form-control" name="address" id="exampleInputPassword1" placeholder="address">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">連絡電話</label> 
-										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="連絡電話">
+										<input type="password" class="form-control" name="phone" id="exampleInputPassword1" placeholder="連絡電話">
 									</div>
 									<div class="form-group">
 										<label for="">付款方式</label><br /> 
@@ -495,9 +442,7 @@ desired effect
 								<!-- /.box-body -->
 
 								<div class="box-footer">
-									<div id="bt_area">
-									<button type="submit" id="bt1" class="btn btn-warning btn-lg">確認訂購</button>
-								
+									<button type="submit" class="btn btn-warning">確認訂購</button>
 								</div>
 							</form>
 						</div>
@@ -602,17 +547,59 @@ desired effect
 
 	<!-- REQUIRED JS SCRIPTS -->
 
-	<!-- jQuery 2.2.3 -->
-	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<!-- Bootstrap 3.3.6 -->
-	<script src="../bootstrap/js/bootstrap.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="../dist/js/app.min.js"></script>
+
 
 	<!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
 </body>
-
+<script>
+// var pro_id = 
+// $(document).ready(function(){
+// $.ajax({
+// 				  //得到所有該Artist的商品 01 ArtistToProducts Servlet
+// 				  url: "\_08_product\\allProductsByArtist.json",
+// 				  type: "GET", 
+// 				  async: false,
+// 				  data: { 
+// 				    "art_id":id, 
+// 				  },
+// 				  success: function(responseProducts) {
+// 					  products_content = '<h2>商品</h2>';
+// 					  prods_len = 0;
+// 					  $("#products").empty();
+// 					  prods_len = responseProducts.length;
+// 					  for(var i=0; i < prods_len ; i++){
+// 						  products_content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
+// 						  $.ajax({
+// 							url: "\_08_product\\singlepropic.json",
+// 							type: "GET",
+// 							async: false,
+// 							data: {
+// 								"pro_id": responseProducts[i].pro_id,
+// 							},
+// 							success: function(resProAdrs){
+// 								//套上簡介圖片
+// 								products_content += '<a href = "#"><img src = "' + resProAdrs[0].pic_adress; 
+// 								//套上img-link跟ip_pro_id
+// 								products_content += '" class="img-thumbnail img-link" width=90% height=50% title="" id ="ip_pro_id'+ responseProducts[i].pro_id +'"></a>';
+// 							}
+// 						  })
+// 						  //end of ajax-ProAdr
+// 						  products_content += "</div>"; 
+// 					  }
+// 					  //end of for-pBA
+// 					  console.log("這是長度");
+// 					  console.log(responseProducts.length);
+// 					  var divpr = document.getElementById("products");
+// 					  divpr.innerHTML = products_content;
+// 					  console.log(products_content);
+// 				  },
+// 				  error: function(responseProductsErr) {
+// 					  responseProductsErr.abort();
+// 				  }
+// 			});
+// })
+</script>
 </html>

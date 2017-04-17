@@ -158,7 +158,7 @@ desired effect
                       <ul class="menu">
                         <li>
                           <!-- start message -->
-                          <a href="#">
+                          <a href="#"><input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
                             <div class="pull-left">
                               <!-- User Image -->
                               <!-- 留言系統代入留言者頭像及資料 -->                      
@@ -587,6 +587,8 @@ desired effect
       	    });
       	  });
           
+    	  var member_id = $('#user_id').val();
+    	  console.log(member_id);
 	      $("#sp-product").click(function(){
 	    	    $.ajax({
 					url:"\_13_Product_info\\Product_All.jsp",
@@ -611,7 +613,7 @@ desired effect
 		  });
 	      $("#isThisAnEffingJoke").click(function(){
 			  	$.ajax({
-					url:"\_05_CreationsFrame\\CreationsPage2.jsp",
+					url:"\_05_CreationsFrame\\DisplayArtist?art_id=" + member_id,
 					context: document.body,
 					success: function(responseRSS){
 						$("#mainframe").empty();

@@ -77,7 +77,7 @@
                 <div class="jumbotron">
                     <div class="container text-center">
 <!--                         <h1>作品募資</h1> -->
-							<img src="${context}/images/words/fundsWord1s.png" >
+							<img src="${context}/images/words/fundsWord1sa.png" >
 
                     </div>
                 </div>

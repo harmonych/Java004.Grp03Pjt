@@ -213,8 +213,9 @@
         	</div>
        
       	</section>
-      	</form>
       	</c:when>
+      	</form>
+      	
       	<c:otherwise>
       		<section class="content">
           	<div class="row">
@@ -357,19 +358,19 @@
 									  //如果設為私密，但讀者非寄送者或者擁有者 first if
 									  if(respm[i].msg_status == 0 && (reader_id != respm[i].user_id && reader_id != receiver_id || reader_id == null || reader_id =="" )){
 										  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-										  msgStr += '</h4></div><br><div>';
+										  msgStr += '</h4></div><br><div>#' + (i+1);
 										  msgStr += '<div class="mes_by"></div></div></div>';
 										  msgStr += '<div class="box-body"><div class="message">此為私密留言內容</div></div>';
 									  }else{
 										  //second if 讀者為寄送者或者擁有者
 										  if(respm[i].msg_status == 0 && (reader_id == respm[i].user_id || reader_id == receiver_id)){
 											  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-											  msgStr += respm[i].msg_title + '</h4></div><br><div>';
+											  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
 											  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
 											  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
 										  }else{						  
 											  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-											  msgStr += respm[i].msg_title + '</h4></div><br><div>';
+											  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
 											  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
 											  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
 										  }//end of second if
