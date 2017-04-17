@@ -1,9 +1,7 @@
 package _08_product.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -21,14 +19,17 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import _00_init.GlobalService;
-
+import _01_register.util.DBUtils;
+import _08_product.model.IProPicDAO;
 import _08_product.model.IProductDAO;
+import _08_product.model.ProPicBean;
+import _08_product.model.ProPicHBNDAO;
 import _08_product.model.ProductBean;
 import _08_product.model.ProductHibernateDAO;
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
-@WebServlet("/_09_product/ProductCreate.do")
+@WebServlet("/_12_Product_Create/ProductCreate.do")
 public class ProCreateServletMP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,15 +47,22 @@ public class ProCreateServletMP extends HttpServlet {
 		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
 		
 		
-		String proname="";
+		String pro_name="";
 		int price=0;
-		String prices="";
-		String saletime="";
-		int proinv=0;
-		String proinvs="";
-		String prointroduction="";
-		int artid = 1;
+		String sale_time = "" ;
+		int pro_inv = 0;
+		String pro_introduction="";
+		int art_id = 0;
 		String hashtag="";
+		String introPicName = "";
+		String fileName1 = "";
+		String fileName2 = "";
+		String fileName3 = "";
+		InputStream ipsintro = null;
+		InputStream ips1 = null;
+		InputStream ips2 = null;
+		InputStream ips3 = null;
+		
 
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
 														// request內所有的parts
@@ -67,40 +75,71 @@ public class ProCreateServletMP extends HttpServlet {
 
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
-					if (fldName.equals("proname")) {
-						proname = value;
-					} else if (fldName.equals("prices")) {
-						prices= value;
-					} else if (fldName.equalsIgnoreCase("saletime")) {
-						saletime = value;
-					} else if (fldName.equalsIgnoreCase("proinvs")) {
-						proinvs = value;
-					} else if (fldName.equalsIgnoreCase("prointroduction")) {
-						prointroduction = value;
+					if (fldName.equals("pro_name")) {
+						pro_name = value;
+					} else if (fldName.equals("price")) {
+						price = Integer.parseInt(value);
+					} else if (fldName.equals("art_id")) {
+						art_id = Integer.parseInt(value);
+					} else if (fldName.equalsIgnoreCase("sale_time")) {
+						sale_time = value;
+					} else if (fldName.equals("pro_inv")) {
+						pro_inv = Integer.parseInt(value);
+					} else if (fldName.equalsIgnoreCase("pro_introduction")) {
+						pro_introduction = value;
 					} else if (fldName.equalsIgnoreCase("hashtag")) {
 						hashtag = value;
 					}
-				}	
+				} else {
+					
+					if (fldName.equalsIgnoreCase("intro_pic")) {
+						introPicName = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						if (introPicName != null && introPicName.trim().length() > 0) {
+							ipsintro = p.getInputStream();
+						}
+					}else if (fldName.equalsIgnoreCase("pic_1")) {
+						fileName1 = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName1 = GlobalService.adjustFileName(fileName1 ,
+								GlobalService.IMAGE_FILENAME_LENGTH);
+						if (fileName1 != null && fileName1.trim().length() > 0) {
+							ips1 = p.getInputStream();
+						}
+					}else if (fldName.equalsIgnoreCase("pic_2")) {
+						fileName2 = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName2 = GlobalService.adjustFileName(fileName2,
+								GlobalService.IMAGE_FILENAME_LENGTH);
+						if (fileName2 != null && fileName2.trim().length() > 0) {
+							ips2 = p.getInputStream();
+						}
+					}else if (fldName.equalsIgnoreCase("pic_3")) {
+						fileName3 = GlobalService.getFileName(p); // 此為圖片檔的檔名
+						fileName3 = GlobalService.adjustFileName(fileName3,
+								GlobalService.IMAGE_FILENAME_LENGTH);
+						if (fileName3 != null && fileName3.trim().length() > 0) {
+							ips3 = p.getInputStream();
+						}
+					}	
 				
+				}
 			}
 			System.out.println("123");
 				// 2. 進行必要的資料轉換
 
 				// 3. 檢查使用者輸入資料
-				if (proname == null || proname.trim().length() == 0) {
+				if (pro_name == null || pro_name.trim().length() == 0) {
 					errorMsg.put("errorpronameEmpty", "商品名稱欄必須輸入");
 				}
-				if (prices == null || prices.trim().length() == 0) {
-					errorMsg.put("errorpricesEmpty", "商品金額欄必須輸入");
+				if (price <= 0 ) {
+					errorMsg.put("errorpricesEmpty", "商品金額欄必須輸入正確");
 				}
-				if (saletime == null || saletime.trim().length() == 0) {
+				if (sale_time == null || sale_time.trim().length() == 0) {
 					errorMsg.put("errorsaletimeEmpty", "上架日期欄必須輸入");
 				}
-				if (proinvs == null || proinvs.trim().length() == 0) {
-					errorMsg.put("errorproinvsEmpty", "庫存個數欄必須輸入");
+				if (pro_inv <= 0) {
+					errorMsg.put("errorproinvsEmpty", "庫存個數欄必須輸入正確");
 				} 
 				if (hashtag == null || hashtag.trim().length() == 0) {
-					errorMsg.put("errorhashtagEmpty", "tag欄必須輸入");
+					errorMsg.put("errorhashtagEmpty", "hashtag欄必須輸入");
 				} 
 				
 				
@@ -111,16 +150,15 @@ public class ProCreateServletMP extends HttpServlet {
 				if (!errorMsg.isEmpty()) {
 					// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 					//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProductA.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create_NEW.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("Product_Create_NEW.jsp");
 					rd.forward(request, response);
 					return;
 				}
 			
 				System.out.println("123");
-				price = Integer.parseInt(prices);
-				SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
+				SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 				Date date = new Date();
-				saletime = sdFormat.format(date);
+				sale_time = sdFormat.format(date);
 				
 				try {
 					// 4. 進行Business Logic運算
@@ -128,13 +166,47 @@ public class ProCreateServletMP extends HttpServlet {
 				
 					IProductDAO rs = new ProductHibernateDAO();
 
-					ProductBean pb = new ProductBean(proname, price, saletime, proinv, prointroduction, artid,
-							hashtag);
+					ProductBean pb = new ProductBean(pro_name, price, sale_time, pro_inv, pro_introduction, art_id, hashtag);
 					
 					int n = rs.insert(pb);
 					if (n == 1) {
 						msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../_12_Product_Create/Product_Create_Pic.jsp");
+						pb.setPro_id(pb.getPro_id());
+						System.out.println("==========");
+						int pid = pb.getPro_id();
+
+						System.out.println(pid);
+						System.out.println("==========");
+						int i =0;
+						if(ipsintro != null){
+							introPicName = GlobalService.adjustPicName(introPicName, pid);
+							String dirPortrait = getServletContext().getInitParameter("upload.location.pro");
+							DBUtils.isToFiles(ipsintro, introPicName, dirPortrait);
+							ProPicBean ppb = new ProPicBean(pid, "http://saudade.myasustor.com/JPjt/pro_pic_address/" + introPicName);
+							IProPicDAO ppdao = new ProPicHBNDAO();
+							n = ppdao.insert(ppb);
+							if(ips1 != null){
+								String dirPortrait1 = getServletContext().getInitParameter("upload.location.pro");
+								DBUtils.isToFiles(ips1, fileName1, dirPortrait1);
+								ProPicBean ppb1 = new ProPicBean(pid, "http://saudade.myasustor.com/JPjt/pro_pic_address/" + fileName1);
+								ppdao.insert(ppb1);
+								if(ips2 != null){
+									String dirPortrait2 = getServletContext().getInitParameter("upload.location.pro");
+									DBUtils.isToFiles(ips2, fileName2, dirPortrait2);
+									ProPicBean ppb2 = new ProPicBean(pid, "http://saudade.myasustor.com/JPjt/pro_pic_address/" + fileName2);
+									ppdao.insert(ppb2);
+									if(ips3 != null){
+										String dirPortrait3 = getServletContext().getInitParameter("upload.location.pro");
+										DBUtils.isToFiles(ips3, fileName3, dirPortrait3);
+										ProPicBean ppb3 = new ProPicBean(pid, "http://saudade.myasustor.com/JPjt/pro_pic_address/" + fileName3);
+										ppdao.insert(ppb3);
+									}
+								}								
+							}
+						}						
+						
+						
+						response.sendRedirect("../index.jsp");
 						return;
 					} else {
 						errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
@@ -144,7 +216,7 @@ public class ProCreateServletMP extends HttpServlet {
 					if (!errorMsg.isEmpty()) {
 						// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 						//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProductA.jsp");
-						RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create_NEW.jsp");
+						RequestDispatcher rd = request.getRequestDispatcher("../index.jsp");
 						rd.forward(request, response);
 						return;
 					}
@@ -152,7 +224,7 @@ public class ProCreateServletMP extends HttpServlet {
 					e.printStackTrace();
 					errorMsg.put("errorAccountDup", e.getMessage());
 					//RequestDispatcher rd = request.getRequestDispatcher("../_03_productsale/CreateProductA.jsp");
-					RequestDispatcher rd = request.getRequestDispatcher("../_12_Product_Create/Product_Create_NEW.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("../index.jsp");
 					rd.forward(request, response);
 				}
 			

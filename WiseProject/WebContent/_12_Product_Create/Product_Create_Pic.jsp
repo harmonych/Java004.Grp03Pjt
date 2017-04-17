@@ -5,10 +5,12 @@
 <html>
 
 <head>
+
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>建立商品</title>
-<link rel="stylesheet" href="../css/Product_Create.css">
+<link rel="stylesheet" href="${context}/css/Product_Create.css">
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -95,7 +97,7 @@ desired effect
 				        	</div>
 							
 							<div class="box-body">
-								<form ENCTYPE="multipart/form-data" method="POST"action="<c:url value='../_09_product/ProductCreate.do' />"
+								<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_12_Product_Create/ProductCreate.do' />"
 									  id="ProductCreate.do">														
 									
 									<div id="ipt1">

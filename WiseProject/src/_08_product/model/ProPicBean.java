@@ -35,6 +35,7 @@ public class ProPicBean implements Serializable {
 		super();
 	}
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getPic_id() {
 		return pic_id;
 	}

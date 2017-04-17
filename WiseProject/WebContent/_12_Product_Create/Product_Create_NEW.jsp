@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <c:set var="context" value="${pageContext.request.contextPath}" />
@@ -13,29 +12,6 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
-<!-- Bootstrap 3.3.6 -->
-<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.min.css">
-<!-- Font Awesome -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<!-- Ionicons -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-<!-- Theme style -->
-<link rel="stylesheet" href="${context}/dist/css/AdminLTE.min.css">
-<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect.
-  -->
-<!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
-<link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 <style>
 .logo img {
 	width: 50px;
@@ -95,28 +71,29 @@ desired effect
 				        	</div>
 				        	
 							<div class="box-body">
-								<form ENCTYPE="multipart/form-data" method="POST"action="<c:url value='../_09_product/ProductCreate.do' />"
+								<form ENCTYPE="multipart/form-data" method="POST"action="<c:url value='/_12_Product_Create/ProductCreate.do' />"
 									  id="ProductCreate.do">
 									
 									<div>
 										<div id="ipt1">
+											<input id="art_id" name = "art_id" value="<c:out value ="${IsArtist.art_id}"/>" type="hidden"/>
 											<label id="lb">商品名稱</label> <br>
-											<input type="text" name="proname" value="${param.proname}" class="form-control"> 
+											<input type="text" name="pro_name" value="${param.proname}" class="form-control"> 
 											<font size="-1" color="#FF0000">${MsgMap.errorpronameEmpty}</font>
 										</div>
 										<div id="ipt1">
 											<label id="lb">商品金額</label> <br>
-											<input type="text" name="prices" value="${param.prices}" class="form-control"> 
+											<input type="text" name="price" value="${param.price}" class="form-control"> 
 											<font color="red" size="-1">${MsgMap.errorpricesEmpty}</font>
 										</div>
 										<div id="ipt1">
 											<label id="lb">上架時間</label> <br>
-											<input type="date" name="saletime" value="${param.saletime}" class="form-control"> 
+											<input type="date" name="sale_time" value="${param.saletime}" class="form-control"> 
 											<font color="red" size="-1">${MsgMap.errorsaletimeEmpty}</font>
 										</div>
 										<div id="ipt1">
 											<label id="lb">庫存數量</label> <br>
-											<input type="number" min="0"name="proinvs" value="${param.proinvs}" class="form-control">
+											<input type="number" min="0"name="pro_inv" value="${param.proinvs}" class="form-control">
 											<font color="red" size="-1">${MsgMap.errorproinvsEmpty}</font>
 										</div>
 										<div id="ipt1">
@@ -126,26 +103,42 @@ desired effect
 										</div>
 										<div id="ipt1">
 											<label id="lb">商品簡介</label> <br>
-											<textarea name="prointroduction" class="form-control" rows="5"></textarea><br>
+											<textarea name="pro_introduction" class="form-control" rows="5"></textarea><br>
 											<font color="red" size="-1">${MsgMap.errorprointroduction}</font>
 										</div>
 									</div>
 									
-<!-- 									<div id="ipt1"> -->
-<!-- 									    <label for="exampleInputFile">上傳圖片</label> -->
-<!-- 									    <input type="file" id="exampleInputFile"> -->
+									<div id="ipt1">
+									    <label for="exampleInputFile">上傳簡介圖檔</label>
+									    <input type="file" id="intro_pic" name ="intro_pic">
 									
-<!-- 									    <p class="help-block">請選擇上傳圖檔</p> -->
-<!-- 									</div> -->
+									    <p class="help-block">請選擇上傳圖檔</p>
+									</div>
+									<div id="ipt2">
+									    <label for="exampleInputFile">上傳圖檔</label>
+									    <input type="file" id="pic_1" name = "pic_1">
+									
+									    <p class="help-block">請選擇上傳圖檔</p>
+									</div>
+									<div id="ipt3">
+									    <label for="exampleInputFile">上傳圖檔</label>
+									    <input type="file" id="pic_2" name ="pic_2">
+									
+									    <p class="help-block">請選擇上傳圖檔</p>
+									</div>
+									<div id="ipt4">
+									    <label for="exampleInputFile">上傳圖檔</label>
+									    <input type="file" id="pic_3" name ="pic_3">
+									
+									    <p class="help-block">請選擇上傳圖檔</p>
+									</div>
+									
 									
 									<div class="box-footer">
 										<div id="bt_area">
 										<a href="">
 											<input type="submit" name="submit" class="btn1 btn-lg " value="建立商品資訊"></a>
 										</div>
-<!-- 									<div id="bt"> -->
-<!-- 										<input type="reset" name="cancel" class="btn2 btn-lg btn-block" value="清除重填"> -->
-<!-- 									</div> -->
 									</div>
 								</form>
 							</div>
@@ -154,23 +147,10 @@ desired effect
 				</div>
 			</section>
 			<!-- /.content -->
-	
-
-
-
-	<!-- REQUIRED JS SCRIPTS -->
-
 	<!-- jQuery 2.2.3 -->
-	<script src="${context}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<%-- 	<script src="${context}/plugins/jQuery/jquery-2.2.3.min.js"></script> --%>
 	<!-- Bootstrap 3.3.6 -->
-	<script src="${context}/bootstrap/js/bootstrap.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="${context}/dist/js/app.min.js"></script>
-
-	<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<%-- 	<script src="${context}/bootstrap/js/bootstrap.min.js"></script> --%>
 </body>
 
 </html>
