@@ -127,7 +127,8 @@
 				</div>
 
 								
-			  	<!-- 留言填寫欄位 -->                      
+			  	<!-- 留言填寫欄位 -->   
+			  	                 
 	          	<div id="r2" class="row">
 	          		<form ENCTYPE="multipart/form-data" method="POST"  id="proMessage" >
 	          		<div class="card03 col-md-8 col-md-offset-2">
@@ -138,32 +139,22 @@
 	            				<input id="receiver_id" name = "receiver_id" value="<c:out value ="${mb.user_id}"/>" type="hidden"/>
 	            				<input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
 	              				<input id="sender_name" name = "sender_name" value="<c:out value ="${LoginOK.user_name}"/>" type="hidden"/>
+	              				<c:choose>
+								<c:when test= "${LoginOK != null}">  
 	              				<h3 class="box-title">我要留言給<c:out value ="${mb.user_name}"/>
 									<input type="checkbox" name="msg_status" value="0">並設為私密留言</h3>
 	            			</div>
 	            					            	
-					       <c:choose>
-					       	<c:when test= "${LoginOK != null}"> 
+					       
 			         			<div class="box-body">
 			              			<div class="form-group">
 			                			<input class="form-control" name= "msg_title" placeholder="留言標題">
-			              			</div>
-			              			              	
+			              			</div>      	
 			              			<div class="form-group">
 			                    		<textarea id="compose-textarea" class="form-control" name ="msg_txt" placeholder="在此輸入內容" style="height: 300px"></textarea>
 			              			</div>
-			              	
-			              	   <!-- <div class="form-group">
-			                			<div class="btn btn-default btn-file">
-			                  				<i class="fa fa-paperclip"></i> Attachment
-			                  				<input type="file" name="attachment">
-			                			</div>
-			                	    </div> -->
 			            		</div>
 			            		<!-- /.box-body -->
-			            	</c:when>
-			            		
-			            		
 			            		<div class="box-footer">
 			              			<div class="pull-right">
 			                			<button type="submit" id="btn3" class="btn btn-warning">送出留言 </button> 
@@ -174,13 +165,10 @@
 	          			<!-- /. box box-warning -->
 	        		</div>
 	        		</form>
-	        	</div>       
-	      	
+	        	</div>
 	      	</section>
+	      	</c:when>
 	      	
-      	
-      	
-      	
       	<c:otherwise>
       		<section class="content">
 	          	<div class="row">
@@ -220,12 +208,7 @@
 <!-- 			        </div> -->
 			   </div>     
 			</div>	        
-        </section>
-<!-- 		</div> -->
-		<!-- /.content-wrapper -->
-		
-		
-		
+        </section>		
 <script>
 $(document).ready(function(){
 	$(function() {
