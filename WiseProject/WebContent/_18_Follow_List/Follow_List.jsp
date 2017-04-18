@@ -106,7 +106,7 @@ desired effect
 									</thead>
 
 									<tbody>
-										<tr id="follow"></tr>
+										<thead id="follow"></thead>
 									</tbody>
 								</table>
 								<!-- /.table -->
@@ -144,7 +144,8 @@ desired effect
 	$(document).ready(function(){
 		
 		var content="";
-		var id =1; //${mb.user_id};
+		var id = ${LoginOK.user_id};
+		console.log(${LoginOK.user_id})
 		var art_name;
 		console.log(id)
 		$.ajax({
@@ -176,10 +177,10 @@ desired effect
 							}
 					 })
 						
-					 	 content += '<td class="mailbox-name"><a href="javascript:" class="img-link" id="ip_ar_id'+response[i].f_user_id+'">'+art_name+'</a></td>'
+					 	 content += '<tr><td class="mailbox-name"><a href="javascript:" class="img-link" id="ip_ar_id'+response[i].f_user_id+'">'+art_name+'</a></td>'
 						 content +=	'<td class="mailbox-name">'+response[i].follow_time+'</td>'
 						 content +='<td class="mailbox-star"><button type="button" id="'+response[i].follow_id+'" class="btn btn-default btn-sm" >'
-						 content +='<i class="fa fa-trash-o"></i></button></td>'
+						 content +='<i class="fa fa-trash-o"></i></button></td><tr>'
 							
 					 
 				  }

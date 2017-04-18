@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
@@ -40,12 +40,13 @@
 	
 	<mapping class="_01_register.model.MemberBean"/>
 	<mapping class="_01_register.model.ArtistBean"/>
-	<mapping class="_04_ShoppingCart.model.OrderBean"/>
+  	<mapping class="_04_ShoppingCart.model.OrderBean"/>
 	<mapping class="_04_ShoppingCart.model.OrderItemBean"/>
+	<mapping class="_06_follow.model.FollowBean"/>
 	<mapping class="_07_funds.model.FundsBean"/>
 	<mapping class="_07_funds.model.FcPicBean"/>
 	<mapping class="_08_product.model.ProductBean"/>
-	<mapping class="_08_product.model.ProPicBean"/>			
+	<mapping class="_08_product.model.ProPicBean"/>		
 	<mapping class="_09_sponsor.model.SponsorBean"/>
 	<mapping class="_11_message.model.promessage.ProMessageBean"/>
 	<mapping class="_11_message.model.fcmessage.FcMessageBean"/>

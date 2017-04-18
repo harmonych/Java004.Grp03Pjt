@@ -67,7 +67,7 @@ public class FollowHBNDAO implements IFollowDAO {
 		List<FollowBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-		String hql="from FollowBean where userid=\""+user_id+"\"";
+		String hql="from FollowBean where user_id="+user_id;
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
@@ -92,7 +92,7 @@ public class FollowHBNDAO implements IFollowDAO {
 		List<FollowBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
-		String hql="from FollowBean where artid=\""+art_id+"\"";
+		String hql="from FollowBean where art_id="+art_id;
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();

@@ -3,7 +3,10 @@ package _06_follow.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -32,6 +35,8 @@ public class FollowBean implements Serializable {
 		super();
 	}
 	@Id
+	@Column(name = "follow_id", unique = true, nullable = false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getFollow_id() {
 		return follow_id;
 	}
@@ -44,6 +49,7 @@ public class FollowBean implements Serializable {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+	@Column(name="art_id")
 	public int getF_user_id() {
 		return f_user_id;
 	}
