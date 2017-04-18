@@ -24,7 +24,7 @@ public class HibernateUtil {
 			
 	        // Hibernate 5.x 的寫法: 在組態檔內定義永續類別
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
-	                .configure("_01_register/util/hibernate.cfg.xml").build();
+	                .configure("_04_ShoppingCart/util/hibernate.cfg.xml").build();
 	        Metadata metadata = new MetadataSources(standardRegistry).getMetadataBuilder().build();
 	        SessionFactory sessionFactory  = metadata.getSessionFactoryBuilder().build();
 	        return sessionFactory;

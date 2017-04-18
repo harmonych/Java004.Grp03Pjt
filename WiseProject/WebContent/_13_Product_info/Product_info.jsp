@@ -117,10 +117,10 @@
 								
 								<div id="bt_area">
 								<input type="button" id = "sp-OrderList" name="addShoppingCart" class="btn2 btn-lg btn-block" 
-								value="加入購物車" onClick="this.form.action='<c:url value='/_15_ShoppingCart/OrderList.do' />';this.form.submit();">
+								value="加入購物車" onClick="this.form.action='<c:url value='/_04_ShoppingCart/OrderList.do' />';this.form.submit();">
 								
 								<input type="button" id ="sp-ListNow" name="buyNow" class="btn1 btn-lg btn-block"
-									value="立即購買" onClick="this.form.action='<c:url value='/_15_ShoppingCart/OrderListNow.do' />';this.form.submit();">
+									value="立即購買" onClick="this.form.action='<c:url value='/_04_ShoppingCart/OrderListNow.do' />';this.form.submit();">
 								
 <!-- 								<button type="submit" id = "sp-OrderList" name="addShoppingCart" class="btn2 btn-lg btn-block formSubmit"  -->
 <!-- 								value="submit" >加入購物車</button> -->
@@ -374,12 +374,12 @@ $(document).ready(function(){
 		}   
 	}
 	var optsOrderList = {
-			url:'\_15_ShoppingCart\\OrderList.do',
+			url:'\_04_ShoppingCart\\OrderList.do',
 // 			target: '#mainframe',
 			type:"post",
 			success: function(){	
 		        $.ajax({
-					  url: "\_15_ShoppingCart\\ShoppingCart_List.jsp",
+					  url: "\_04_ShoppingCart\\ShoppingCart_List.jsp",
 					  context: document.body,
 					  success: function(resCartOK) {
 						$("#mainframe").empty();
@@ -398,12 +398,12 @@ $(document).ready(function(){
 		return false;
 	})
 		var optsOrderNow = {
-			url:'\_15_ShoppingCart\\OrderNow.do',
+			url:'\_04_ShoppingCart\\OrderNow.do',
 // 			target: '#mainframe',
 			type:"post",
 			success: function(){	
 		        $.ajax({
-					  url: "\_15_ShoppingCart\\ShoppingCart_Order.jsp",
+					  url: "\_04_ShoppingCart\\ShoppingCart_Order.jsp",
 					  context: document.body,
 					  success: function(resCartOK) {
 						$("#mainframe").empty();

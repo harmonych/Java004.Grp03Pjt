@@ -414,15 +414,15 @@ desired effect
 								<div class="box-body">
 									<div class="form-group">
 										<label for="exampleInputEmail1">收件人</label> 
-										<input type="text" class="form-control" name="real_name" id="exampleInputEmail1" placeholder="real_name">
+										<input type="text"  class="form-control" value="${IsArtist.art_name}"	 name="real_name" id="exampleInputEmail1" placeholder="real_name">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">寄送地址</label> 
-										<input type="text" class="form-control" name="address" id="exampleInputPassword1" placeholder="address">
+										<input type="text" class="form-control" value="${IsArtist.art_address}" name="address" id="exampleInputPassword1" placeholder="address">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">連絡電話</label> 
-										<input type="text" class="form-control" name="phone" id="exampleInputPassword1" placeholder="連絡電話">
+										<input type="text" class="form-control" value="${LoginOK.phonenum}" name="phone" id="exampleInputPassword1" placeholder="連絡電話">
 									</div>
 									<div class="form-group">
 										<label for="">付款方式</label><br /> 

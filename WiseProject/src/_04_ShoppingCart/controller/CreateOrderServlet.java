@@ -42,6 +42,7 @@ public class CreateOrderServlet extends HttpServlet {
 		ShoppingCart orderList = (ShoppingCart)session.getAttribute("OrderList");
 		ShoppingCart checkoutlist = (ShoppingCart)session.getAttribute("CheckOutList");
 		
+		
 		String real_name	= request.getParameter("real_name");
 		String address		= request.getParameter("address");
 		String phone 		= request.getParameter("phone");
@@ -81,9 +82,14 @@ public class CreateOrderServlet extends HttpServlet {
 		// 將訂單細項資料封裝到OrderItemBean內,並將oib存入資料庫
 		oib = new OrderItemBean(order_id, pro_id, ord_amount, discount);
 		orderItemDAO.insert(oib);
-		
+		//刪除結帳清單內已結帳商品的Session
+		checkoutlist.deleteProduct(pro_id);
 		}
+		//刪除訂單清單內已結帳訂單的Session
+		orderList.deleteOrderListItem(art_id);
 		
-		response.sendRedirect("https://goo.gl/f0ItZ5");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("../_15_ShoppingCart/Shopping_OK.jsp");
+		rd.forward(request, response);
 	}
 }
