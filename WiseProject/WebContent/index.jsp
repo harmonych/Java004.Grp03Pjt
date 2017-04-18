@@ -377,7 +377,7 @@ desired effect
 <!--                 </ul> -->
 <!--               </li> -->
               
-              <li id = "sp_search"><a href="javascript:;"><i class="glyphicon glyphicon-search"></i><span>搜尋系統</span></a></li>
+              <li class = "sp_search"><a href="javascript:;" ><i class="glyphicon glyphicon-search"></i><span>搜尋系統</span></a></li>
               <li id = "sp-artist"><a href="javascript:;"><i class="glyphicon glyphicon-pencil"></i><span>創作平台</span></a></li>
               <li id = "sp-funds"><a href="javascript:;"><i class="glyphicon glyphicon-picture"></i><span>作品募資</span></a></li>
               <li id = "sp-product"><a href="javascript:;"><i class="glyphicon glyphicon-gift"></i><span>文創商城</span></a></li>
