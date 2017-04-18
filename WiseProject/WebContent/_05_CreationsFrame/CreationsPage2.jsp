@@ -27,11 +27,40 @@
 /*     border-bottom: 1px solid #f4f4f4; */
     text-align: center;
 }
-          
+
+#bt_area{
+	margin-top: 20px;
+	
+}
+
+#create-product{
+	display: inline-block;
+}
+
+#create-funds{
+	display: inline-block;
+}
+
+#Sale_List{
+	display: inline-block;
+}
+
+#Fc_list_Artist{
+	display: inline-block;
+}
+
+#msgsys{
+	display: inline-block;
+}
+
+#follow{
+	display: inline-block;
+}
+
 </style>
         
         
-    </head>
+</head>
 
 <body>
         <!-- 標題列 -->
@@ -162,42 +191,75 @@
 												<div>
 													<font color="red" size="-1">${MsgMap.errorIntroPic}</font>
 												</div>										
-										</li>
+										
                                                                        
 											<li><a href="#section3">${ab.introduction}</a></li>
                                                               
+	
+										<div>
+											<c:if test="${LoginOK != null}">     
+											 <c:if test ="${account == mb.account}">                      
+																																
+<!-- 												<a id="create-product" class="btn btn-app"> -->
+<!-- 									            	<i class="fa fa-play"></i>新增商品 -->
+<!-- 									            </a> -->
+<!-- 												<a id="create-funds" class="btn btn-app"> -->
+<!-- 									            	<i class="fa fa-play"></i>新增募資 -->
+<!-- 									            </a> -->
+												
+<!-- 										        <a class="btn btn-block btn-social btn-facebook"> -->
+<!-- 									            	<i class="fa fa-facebook"></i> 新增募資 -->
+<!-- 									            </a><br> -->
+									            
+									            <div id="area" class="btn-group-vertical">
+							                    	<a id="create-product" class="btn btn-block btn-social btn-warning">
+									            		<i class="glyphicon glyphicon-plus"></i> 新增商品
+									            	</a>
+							                    	
+							                      	<a id="create-funds" class="btn btn-block btn-social btn-warning">
+									            		<i class="glyphicon glyphicon-plus"></i> 新增募資
+									            	</a>
+							                      	
+							                      	<a id="Sale_List" class="btn btn-block btn-social btn-warning">
+									            		<i class="glyphicon glyphicon-list-alt"></i> 販售清單
+									            	</a>
+							                      	
+							                      	<a id="Fc_list_Artist" class="btn btn-block btn-social btn-warning">
+									            		<i class="glyphicon glyphicon-search"></i> 誰贊助我
+									            	</a>
+							                    </div>
+										                                       
+											 </c:if>
+											</c:if>
+										</div>	
 										
-										<!--Facebook-->
-										<button type="button" class="btn btn-fb">
-										<i class="fa fa-facebook left"></i> 
-										Facebook</button>
-										<!--Google +-->
-										<button type="button" class="btn btn-gplus">
-										<i class="fa fa-google-plus left"></i> 
-										Google +</button>
-										<!--Twitter-->
-										<button type="button" class="btn btn-tw">
-										<i class="fa fa-twitter left"></i> 
-										Twitter	</button>
-										<br><br>
-										<c:if test="${LoginOK != null}">     
-										 <c:if test ="${account == mb.account}">                      
-<!-- 											<input type="button" value="新增作品" name="新增" style="width:100px;height:30px;"> -->
-											<button id="create-product">新增商品</button><br>
-											<br>
-											<br>
-									        <button id="create-funds">新增募資</button>                                
-										 </c:if>
-										</c:if>	
-										<c:choose>
-										<c:when test="${LoginOK == null}"> 
-									<li><a href="${context}/_02_login/login.jsp"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
-                                		</c:when>
-                                		<c:otherwise>
-                                	<li><a href="javascript:;" id="msgsys"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
-                                		</c:otherwise>
-                                		</c:choose>
-                                </ul><br>
+										<div id="bt_area" class="btn-group-vertical">							
+											<c:choose>
+											<c:when test="${LoginOK == null}"> 
+	<%-- 									<a href="${context}/_02_login/login.jsp"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> --%>
+	                                			
+	                                			<a href="${context}/_02_login/login.jsp" id="msgsys" class="btn btn-block btn-social btn-warning">
+										        	<i class="glyphicon glyphicon-send"></i> 訪客留言
+										        </a>
+										        <a href="javascript:;" id="follow" class="btn btn-block btn-social btn-warning">
+										    		<i class="glyphicon glyphicon-heart"></i> 加入追蹤
+										    	</a>	    	
+										            	
+										            	
+	                                		</c:when>
+	                                		<c:otherwise>
+<!-- 	                                		<a href="javascript:;" id="msgsys"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> -->
+	                                		
+	                                		<a href="javascript:;" id="msgsys" class="btn btn-block btn-social btn-warning">
+										    	<i class="glyphicon glyphicon-send"></i> 訪客留言
+										    </a>
+										    <a href="javascript:;" id="follow" class="btn btn-block btn-social btn-warning">
+										    	<i class="glyphicon glyphicon-heart"></i> 加入追蹤
+										    </a>
+	                                		
+	                                		</c:otherwise>
+	                                		</c:choose>
+                                		</div>
                          </div>
 
 

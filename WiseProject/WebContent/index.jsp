@@ -297,7 +297,7 @@ desired effect
                               <a href="javasript:;" id="sp_user_list">投資計畫</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="_15_ShoppingCart/ShoppingCart_List.jsp">訂購清單</a>
+                              <a href="_15_ShoppingCart/ShoppingCart_List.jsp">購物車</a>
                             </div>
                           </div>
                           <!-- /.row -->
