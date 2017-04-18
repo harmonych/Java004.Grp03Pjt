@@ -40,8 +40,12 @@
           height: 35px;
         }
         
-        .carousel-inner .item img {
-          height: 600px;
+        .carousel-inner {
+			height: 100%; 
+ 		}
+ 		.img {
+ 			max-width: 100%;
+            height: auto;
         }
         .navbar-form{
           display: inline-flex;
@@ -403,7 +407,7 @@ desired effect
 	                    <div class="carousel-inner">
 	                      <div class="item" align ="center">
 	<!--                         <img src="http://img.91ddcc.com/ue_65828_1731.jpg" alt="First slide"> -->
-							<img src="${context}/images/Creations/10.jpg" alt="First slide">
+							<img src="${context}/images/Creations/12.jpg" alt="First slide">
 	                        <div class="carousel-caption">
 	                          	新近作品
 	                        </div>
@@ -418,7 +422,7 @@ desired effect
 	                      </div>
 	                      <div class="item" align ="center">
 	<!--                         <img src="http://img10.3lian.com/d0214/file/2011/08/14/05a25b2ca462adafb8f6a258f8db2739.jpg" alt="Third slide"> -->
-	 						<img src="${context}/images/Creations/1.jpg" alt="Third slide" >
+	 						<img src="${context}/images/Creations/11.jpg" alt="Third slide" >
 	                        <div class="carousel-caption">
 	                           	人氣最高
 	                        </div>

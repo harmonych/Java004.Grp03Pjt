@@ -57,9 +57,9 @@
 					margin-bottom: 15px;
 				}
 				
-				label {
-					margin-bottom: 15px;
-				}
+/* 				label { */
+/* 					margin-bottom: 15px; */
+/* 				} */
 				
 				input,
 				input::-webkit-input-placeholder {
@@ -180,17 +180,19 @@
 				
 				label {
 				    margin-bottom: 15px;
-				    color: #f39c12;
+				    color: #000;
 				}
 				p {
 				    margin: 0 0 10px;
 					color: black;
 				}
 					
-				a {
+				a {					
 				    color: #f39c12;
 				    text-decoration: none;
 				}
+				
+				
 			</style>
             <title>Login</title>
     </head>

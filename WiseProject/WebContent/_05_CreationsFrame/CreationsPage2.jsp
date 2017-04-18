@@ -90,19 +90,19 @@
 							                    <div class="carousel-inner">
 							                      <div class="item" align ="center">
 							
-													<img src="${context}/images/Creations/8.jpg" alt="First slide" width="460" height="345">
+													<img src="${context}/images/Creations/8.jpg" alt="First slide" width=100%>
 							                        <div class="carousel-caption">
 							                          	
 							                        </div>
 							                      </div>
 							                      <div class="item active" align ="center" >
-							                        <img src="${context}/images/Creations/5.jpg" alt="Second slide" width="460" height="345"> 
+							                        <img src="${context}/images/Creations/5.jpg" alt="Second slide" width=100%> 
 							                        <div class="carousel-caption">
 							                          	
 							                        </div>
 							                      </div>
 							                      <div class="item" align ="center">
-														<img src="${context}/images/Creations/2.jpg" alt="Third slide" width="460" height="345">
+														<img src="${context}/images/Creations/7.jpg" alt="Third slide" width=100%>
 							                        <div class="carousel-caption">
 							                           	 
 							                        </div>

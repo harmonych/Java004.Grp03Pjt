@@ -134,13 +134,14 @@ input, input::-webkit-input-placeholder {
 	margin: 0 auto;
 	max-width: 400px;
 	padding: 10px 40px;
-	background: #fff;
+	background: rgba(167, 142, 12, 0.2);
 	/*background: #009edf;*/
 	color: dodgerblue;
 	text-shadow: none;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
 	-moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
 	box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+	border-top: 5px solid #f39c12;
 }
 
 span.input-group-addon i {
@@ -164,6 +165,68 @@ span.input-group-addon i {
 .input-group-addon:first-child {
 	width: 50px;
 }
+
+h5,b{
+	color:black;
+}
+.fa-user-circle-o:before {  
+	content: "\f2be";  
+	color:#f39c12;  
+}  
+
+.fa-lock:before {	
+	content: "\f023"; 	
+	color: #f39c12;	
+} 
+.fa-vcard:before, .fa-address-card:before {
+	content: "\f2bb";
+	color: #f39c12;	
+}
+
+.fa-mobile-phone:before, .fa-mobile:before {
+	content: "\f10b";
+	color: #f39c12;	
+}
+
+.fa-envelope:before {
+	content: "\f0e0";
+	color: #f39c12;
+}
+.fa-address-book-o:before {
+	content: "\f2ba";
+	color: #f39c12;
+}
+fa-drivers-license:before, .fa-id-card:before {
+    content: "\f2c2";
+    color:#f39c12
+}
+
+.fa-institution:before, .fa-bank:before, .fa-university:before {
+    content: "\f19c";
+    color:#f39c12
+}
+
+button, input, optgroup, select, textarea {
+    color: #f39c12;
+}
+label {
+    margin-bottom: 15px;
+    color: black;
+}
+p {
+    margin: 0 0 10px;
+	color: black;
+}
+	
+a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+.nav>li>a {
+       font-weight: bold;
+}
+
 </style>
 <title>修改會員資料</title>
 </head>
@@ -433,7 +496,7 @@ span.input-group-addon i {
 					</div>
 
 					<div class="form-group ">
-						<input class="btn btn-primary btn-lg btn-block login-button"
+						<input class="btn btn-warning btn-lg btn-block login-button"
 							type="submit" name="submit" id="submit" value="送出" />
 
 					</div>

@@ -192,6 +192,16 @@
 					content: "\f2ba";
 					color: #f39c12;
 				}
+				fa-drivers-license:before, .fa-id-card:before {
+				    content: "\f2c2";
+				    color:#f39c12
+				}
+				
+				
+				.fa-institution:before, .fa-bank:before, .fa-university:before {
+				    content: "\f19c";
+				    color:#f39c12
+				}
 				label {
 				    margin-bottom: 15px;
 				    color: black;
@@ -229,12 +239,12 @@
 							<div id="normal" class="tab-pane fade in active">
 								<div class="form-group">
 									<div class="cols-sm-10">
-										<div class="input-group">
-											<span class="input-group-addon addon-facebook">
-									<i class="fa fa-fw fa-2x fa-facebook fa-fw" ></i>
-								</span>
-											<a class="btn btn-lg btn-block btn-facebook" href="#"> Register with Facebook</a>
-										</div>
+<!-- 										<div class="input-group"> -->
+<!-- 											<span class="input-group-addon addon-facebook"> -->
+<!-- 									<i class="fa fa-fw fa-2x fa-facebook fa-fw" ></i> -->
+<!-- 								</span> -->
+<!-- 											<a class="btn btn-lg btn-block btn-facebook" href="#"> Register with Facebook</a> -->
+<!-- 										</div> -->
 									</div>
 								</div>
 								<div class="form-group">
