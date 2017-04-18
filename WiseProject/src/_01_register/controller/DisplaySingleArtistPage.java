@@ -1,6 +1,7 @@
 package _01_register.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,9 @@ import _01_register.model.ArtistBean;
 import _01_register.model.ArtistHibernateDAO;
 import _01_register.model.IArtistDAO;
 import _01_register.model.MemberBean;
+import _06_follow.model.FollowBean;
+import _06_follow.model.FollowHBNDAO;
+import _06_follow.model.IFollowDAO;
 
 @WebServlet("/_05_CreationsFrame/DisplayArtist")
 public class DisplaySingleArtistPage extends HttpServlet{
@@ -25,7 +29,11 @@ public class DisplaySingleArtistPage extends HttpServlet{
 		IArtistDAO adao = new ArtistHibernateDAO();
 		ArtistBean ab = adao.findByArtId(Integer.parseInt(req.getParameter("art_id")));
 		MemberBean mb =  ab.getMemberbean();
+		IFollowDAO rs = new FollowHBNDAO();
+
+		List<FollowBean> fb = rs.artfollowquery(Integer.parseInt(req.getParameter("art_id")));
 //		System.out.println(Integer.parseInt(req.getPathInfo().substring(1)));
+		req.setAttribute("fb", fb);
 		req.setAttribute("ab", ab);
 		req.setAttribute("mb", mb);
 		req.getRequestDispatcher("CreationsPage2.jsp").forward(req, resp);

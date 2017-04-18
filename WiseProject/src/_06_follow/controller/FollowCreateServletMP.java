@@ -78,15 +78,12 @@ public class FollowCreateServletMP extends HttpServlet {
 		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
 		
 		
-				String user_ids=request.getParameter("user_ids");
-				int user_id=0;
-				String art_ids=request.getParameter("art_ids");
-				int art_id =0;
+				
 		
 				Timestamp ts=new Timestamp(System.currentTimeMillis());
 		
-				user_id= Integer.parseInt(user_ids);
-				art_id = Integer.parseInt(art_ids);
+				int user_id= Integer.parseInt(request.getParameter("user_id"));
+				int art_id = Integer.parseInt(request.getParameter("art_id"));
 				
 				System.out.println("123");
 								
@@ -99,7 +96,9 @@ public class FollowCreateServletMP extends HttpServlet {
 					int n = rs.follow(fb);
 					if (n == 1) {
 						msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../index.jsp");
+//						RequestDispatcher rd = request.getRequestDispatcher("/_05_CreationsFrame/CreationsPage2.jsp?art_id="+art_id);
+//						rd.forward(request, response);
+						
 						return;
 					} else {
 						errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");

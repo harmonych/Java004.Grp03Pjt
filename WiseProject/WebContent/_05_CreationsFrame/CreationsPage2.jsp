@@ -1,270 +1,243 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<c:set var="context" value="${pageContext.request.contextPath}" />
-	<c:set var="account" value="${LoginOK.account}" />
-	<head>        
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="account" value="${LoginOK.account}" />
+<c:set var="userId" value ="${LoginOK.user_id}"/>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 <!--         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-        <link rel="stylesheet" href="${context}/css/Creations_page2.css">
-        <title>創作者主頁</title>
+<link rel="stylesheet" href="${context}/css/Creations_page2.css">
+<title>創作者主頁</title>
 <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-  }
- .img-circle {
-    border-radius: 50%;
-    margin-left: 50px;
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 70%;
+	margin: auto;
 }
+
+.img-circle {
+	border-radius: 50%;
+	margin-left: 50px;
+}
+
 .box-header.with-border {
-/*     border-bottom: 1px solid #f4f4f4; */
-    text-align: center;
+	/*     border-bottom: 1px solid #f4f4f4; */
+	text-align: center;
 }
-
-#bt_area{
-	margin-top: 20px;
-	
-}
-
-#create-product{
-	display: inline-block;
-}
-
-#create-funds{
-	display: inline-block;
-}
-
-#Sale_List{
-	display: inline-block;
-}
-
-#Fc_list_Artist{
-	display: inline-block;
-}
-
-#msgsys{
-	display: inline-block;
-}
-
-#follow{
-	display: inline-block;
-}
-
 </style>
-        
-        
+
+
 </head>
 
 <body>
-        <!-- 標題列 -->
-<!--         <section class="container-fluid" id="about"> -->
-<!--             <div id="wrapper"> -->
-                <!-- Sidebar -->
-<!--                 <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation"> -->
-<!--                     <ul class="nav sidebar-nav"> -->
-<!--                         <li class="sidebar-brand"> -->
-<!--                             <a href="#"> </a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="../index.jsp">Home</a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="../_07_fundsFrame/funds.jsp">募資大廳</a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="#">商城系統</a> -->
-<!--                         </li> -->
-<!--                         <li class="dropdown"> -->
-<!--                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a> -->
-<!--                             <ul class="dropdown-menu" role="menu"> -->
-<!--                                 <li class="dropdown-header">下拉標題</li> -->
-<!--                                 <li><a href="#">副選單一</a></li> -->
-<!--                                 <li><a href="#">副選單二</a></li> -->
-<!--                             </ul> -->
-<!--                         </li> -->
-<!--                     </ul> -->
-<!--                 </nav> -->
-                <!-- #sidebar-->
-<!--                 <div class="row"> -->
-                    <!-- Modal -->
-                    <div class="container-fluid">
-                        <div class="row content">
-                           <div class="col-md-9 col-xs-9">
-                            <div class="box-header with-border">
-<!-- 					        	<h2 class="box-title">創作者主頁</h2> -->
-                                <img src="${context}/images/words/CreationsWord1s.png" >
+	<!-- 標題列 -->
+	<!--         <section class="container-fluid" id="about"> -->
+	<!--             <div id="wrapper"> -->
+	<!-- Sidebar -->
+	<!--                 <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation"> -->
+	<!--                     <ul class="nav sidebar-nav"> -->
+	<!--                         <li class="sidebar-brand"> -->
+	<!--                             <a href="#"> </a> -->
+	<!--                         </li> -->
+	<!--                         <li> -->
+	<!--                             <a href="../index.jsp">Home</a> -->
+	<!--                         </li> -->
+	<!--                         <li> -->
+	<!--                             <a href="../_07_fundsFrame/funds.jsp">募資大廳</a> -->
+	<!--                         </li> -->
+	<!--                         <li> -->
+	<!--                             <a href="#">商城系統</a> -->
+	<!--                         </li> -->
+	<!--                         <li class="dropdown"> -->
+	<!--                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉 <span class="caret"></span></a> -->
+	<!--                             <ul class="dropdown-menu" role="menu"> -->
+	<!--                                 <li class="dropdown-header">下拉標題</li> -->
+	<!--                                 <li><a href="#">副選單一</a></li> -->
+	<!--                                 <li><a href="#">副選單二</a></li> -->
+	<!--                             </ul> -->
+	<!--                         </li> -->
+	<!--                     </ul> -->
+	<!--                 </nav> -->
+	<!-- #sidebar-->
+	<!--                 <div class="row"> -->
+	<!-- Modal -->
+	<div class="container-fluid">
+		<div class="row content">
+			<div class="col-md-9 col-xs-9">
+				<div class="box-header with-border">
+					<!-- 					        	<h2 class="box-title">創作者主頁</h2> -->
+					<img src="${context}/images/words/CreationsWord1s.png">
 
-					       	</div>
-                                <div class="BH-lbox MSG-box5">
-                                    <div class="HOME-mainbox1">
-                                        <!--內容開始-->
-                                        <div class="row">
-                                       
-                                            <h2>作品</h2>
-                                       									
-                                            <div class="box-body">
-							                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-							                    <ol class="carousel-indicators">
-							                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-							                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-							                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-							                    </ol>
-							                    <div class="carousel-inner">
-							                      <div class="item" align ="center">
-							
-													<img src="${context}/images/Creations/8.jpg" alt="First slide" width=100%>
-							                        <div class="carousel-caption">
-							                          	
-							                        </div>
-							                      </div>
-							                      <div class="item active" align ="center" >
-							                        <img src="${context}/images/Creations/5.jpg" alt="Second slide" width=100%> 
-							                        <div class="carousel-caption">
-							                          	
-							                        </div>
-							                      </div>
-							                      <div class="item" align ="center">
-														<img src="${context}/images/Creations/7.jpg" alt="Third slide" width=100%>
-							                        <div class="carousel-caption">
-							                           	 
-							                        </div>
-							                      </div>
-							                  
-							                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-							                      <span class="fa fa-angle-left"></span>
-							                    </a>
-							                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-							                      <span class="fa fa-angle-right"></span>
-							                    </a>
-							                  </div>
-							                </div>
-<!-- 							                /.box-body -->
-							              </div>
-<!-- 							              /.box -->
-							             </div>
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6" id="sp_pro_id" > -->
-<!--                                             <a href="#pro_id"> -->
-<!--                                             <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=100% height=80% title=""></a> </div> -->
-<!-- 												<p> <a href="CreationsPage3.jsp"><h5>作品1</h5></a> --> 
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
-                                        </div>
-                                        <div class="row" id = "products">                                            
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
-                                            <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
-                                        </div>
-                                        <div class="row" id ="funds">
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
-<!--                                             <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" width=50% title=""></div> -->
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
-<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
-                                         </div>
+				</div>
+				<div class="BH-lbox MSG-box5">
+					<div class="HOME-mainbox1">
+						<!--內容開始-->
+						<div class="row">
 
-                                    </div>
-                                </div>
-                          
-                            
-                            <div class="col-md-3 col-xs-3">
-                        	  <input id="art_id" value="<c:out value ="${ab.art_id}"/>" type="hidden"/>
-                                <ul class="nav nav-pills nav-stacked"> 								
-										<li><a href="javascript:;">作者資訊</a>
-												<img src = "<c:out value ="${mb.file_name}"/>" class ="img-circle" width="100" height="100"/>
-											 <li>
-												<ul class="MSG-mydata1">
-													<li id="artUserName"><c:out value ="${mb.user_name}"/><span class="user_name "></span></li>
-													<input id="user_id" value="<c:out value ="${mb.user_id}"/>" type="hidden"/>														
-														<a href="pic_address 簡介圖片位址">
-													<img src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號" width ="150px"></a>
-												</ul>
-											 </li>
-												<div>
-													<font color="red" size="-1">${MsgMap.errorIntroPic}</font>
-												</div>										
-										
-                                                                       
-											<li><a href="#section3">${ab.introduction}</a></li>
-                                                              
-	
-										<div>
-											<c:if test="${LoginOK != null}">     
-											 <c:if test ="${account == mb.account}">                      
-																																
-<!-- 												<a id="create-product" class="btn btn-app"> -->
-<!-- 									            	<i class="fa fa-play"></i>新增商品 -->
-<!-- 									            </a> -->
-<!-- 												<a id="create-funds" class="btn btn-app"> -->
-<!-- 									            	<i class="fa fa-play"></i>新增募資 -->
-<!-- 									            </a> -->
-												
-<!-- 										        <a class="btn btn-block btn-social btn-facebook"> -->
-<!-- 									            	<i class="fa fa-facebook"></i> 新增募資 -->
-<!-- 									            </a><br> -->
-									            
-									            <div id="bt_area" class="btn-group-vertical">
-							                    	<a id="create-product" class="btn btn-block btn-social btn-warning">
-									            		<i class="glyphicon glyphicon-plus"></i> 新增商品
-									            	</a>
-							                    	
-							                      	<a id="create-funds" class="btn btn-block btn-social btn-warning">
-									            		<i class="glyphicon glyphicon-plus"></i> 新增募資
-									            	</a>
-							                      	
-							                      	<a id="Sale_List" class="btn btn-block btn-social btn-warning">
-									            		<i class="glyphicon glyphicon-list-alt"></i> 販售清單
-									            	</a>
-							                      	
-							                      	<a id="Fc_list_Artist" class="btn btn-block btn-social btn-warning">
-									            		<i class="glyphicon glyphicon-search"></i> 誰贊助我
-									            	</a>
-							                    </div>
-										                                       
-											 </c:if>
-											</c:if>
-										</div>	
-										
-										<div id="bt_area" class="btn-group-vertical">							
-											<c:choose>
-											<c:when test="${LoginOK == null}"> 
-	<%-- 									<a href="${context}/_02_login/login.jsp"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> --%>
-	                                			
-	                                			<a href="${context}/_02_login/login.jsp" id="msgsys" class="btn btn-block btn-social btn-warning">
-										        	<i class="glyphicon glyphicon-send"></i> 訪客留言
-										        </a>
-										        <a href="javascript:;" id="follow" class="btn btn-block btn-social btn-warning">
-										    		<i class="glyphicon glyphicon-heart"></i> 加入追蹤
-										    	</a>	    	
-										            	
-										            	
-	                                		</c:when>
-	                                		<c:otherwise>
-<!-- 	                                		<a href="javascript:;" id="msgsys"><i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> -->
-	                                		
-	                                		<a href="javascript:;" id="msgsys" class="btn btn-block btn-social btn-warning">
-										    	<i class="glyphicon glyphicon-send"></i> 訪客留言
-										    </a>
-										    <a href="javascript:;" id="follow" class="btn btn-block btn-social btn-warning">
-										    	<i class="glyphicon glyphicon-heart"></i> 加入追蹤
-										    </a>
-	                                		
-	                                		</c:otherwise>
-	                                		</c:choose>
-                                		</div>
-                         </div>
+							<h2>作品</h2>
+
+							<div class="box-body">
+								<div id="carousel-example-generic" class="carousel slide"
+									data-ride="carousel">
+									<ol class="carousel-indicators">
+										<li data-target="#carousel-example-generic" data-slide-to="0"
+											class=""></li>
+										<li data-target="#carousel-example-generic" data-slide-to="1"
+											class="active"></li>
+										<li data-target="#carousel-example-generic" data-slide-to="2"
+											class=""></li>
+									</ol>
+									<div class="carousel-inner">
+										<div class="item" align="center">
+
+											<img src="${context}/images/Creations/8.jpg"
+												alt="First slide" width=100%>
+											<div class="carousel-caption"></div>
+										</div>
+										<div class="item active" align="center">
+											<img src="${context}/images/Creations/5.jpg"
+												alt="Second slide" width=100%>
+											<div class="carousel-caption"></div>
+										</div>
+										<div class="item" align="center">
+											<img src="${context}/images/Creations/7.jpg"
+												alt="Third slide" width=100%>
+											<div class="carousel-caption"></div>
+										</div>
+
+										<a class="left carousel-control"
+											href="#carousel-example-generic" data-slide="prev"> <span
+											class="fa fa-angle-left"></span>
+										</a> <a class="right carousel-control"
+											href="#carousel-example-generic" data-slide="next"> <span
+											class="fa fa-angle-right"></span>
+										</a>
+									</div>
+								</div>
+								<!-- 							                /.box-body -->
+							</div>
+							<!-- 							              /.box -->
+						</div>
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6" id="sp_pro_id" > -->
+						<!--                                             <a href="#pro_id"> -->
+						<!--                                             <img src="http://saudade.myasustor.com/JPjt/pro_pic_address/1.jpg" class="img-thumbnail" width=100% height=80% title=""></a> </div> -->
+						<!-- 												<p> <a href="CreationsPage3.jsp"><h5>作品1</h5></a> -->
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+					</div>
+					<div class="row" id="products">
+						<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
+						<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
+						<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
+						<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div>
+					</div>
+					<div class="row" id="funds">
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
+						<!--                                             <img src="http://saudade.myasustor.com/JPjt/fc_pic_address/2.jpg" width=50% title=""></div> -->
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+						<!--                                             <div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6"></div> -->
+					</div>
+
+				</div>
+			</div>
 
 
-  <script src="${context}/js/default.js"></script>                          
-  <script>
+			<div class="col-md-3 col-xs-3">
+				<input id="art_id" value="<c:out value ="${ab.art_id}"/>"
+					type="hidden" />
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="javascript:;">作者資訊</a> <img
+						src="<c:out value ="${mb.file_name}"/>" class="img-circle"
+						width="100" height="100" />
+					<li>
+						<ul class="MSG-mydata1">
+							<li id="artUserName"><c:out value="${mb.user_name}" /><span
+								class="user_name "></span></li>
+							<input id="user_id" value="<c:out value ="${mb.user_id}"/>"
+								type="hidden" />
+							<a href="pic_address 簡介圖片位址"> <img
+								src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號"
+								width="150px"></a>
+						</ul>
+					</li>
+					<div>
+						<font color="red" size="-1">${MsgMap.errorIntroPic}</font>
+					</div>
+					</li>
+
+					<li><a href="#section3">${ab.introduction}</a></li>
+
+
+					<!-- 										Facebook -->
+					<!-- 										<button type="button" class="btn btn-fb"> -->
+					<!-- 										<i class="fa fa-facebook left"></i>  -->
+					<!-- 										Facebook</button> -->
+					<!-- 										Google + -->
+					<!-- 										<button type="button" class="btn btn-gplus"> -->
+					<!-- 										<i class="fa fa-google-plus left"></i>  -->
+					<!-- 										Google +</button> -->
+					<!-- 										Twitter -->
+					<!-- 										<button type="button" class="btn btn-tw"> -->
+					<!-- 										<i class="fa fa-twitter left"></i>  -->
+					<!-- 										Twitter	</button> -->
+					<br>
+					<br>
+					<c:if test="${LoginOK != null}">
+						<c:if test="${account == mb.account}">
+							<!-- 											<input type="button" value="新增作品" name="新增" style="width:100px;height:30px;"> -->
+							<button id="create-product">新增商品</button>
+							<br>
+							<br>
+							<br>
+							<button id="create-funds">新增募資</button>
+						</c:if>
+					</c:if>
+					<c:choose>
+						<c:when test="${LoginOK == null}">
+							<li><a href="${context}/_02_login/login.jsp"><i
+									class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
+						</c:when>
+						<c:otherwise>
+
+							<c:set var="contains" value="false" />
+							<c:forEach var="i" begin="0" end="${fn:length(fb)}">
+								<c:if test="${(fb[i].user_id) == (userId)}">
+									<!-- 偵測追隨與否 -->
+<%-- 								<c:set var="art_id" value="${(fb[i].art_id)}" /> --%>
+									<c:set var="contains" value="true" />
+<%-- 									<c:out value ="${contains}"/> --%>
+<%-- 									<c:out value ="${fb[i].user_id}"/> --%>
+								</c:if>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${(contains)== true}">
+									<span class="" align="center">您已追隨此作者</span>
+								</c:when>
+								<c:otherwise>
+									<li><a href="javascript:" id="followdo"><i
+									class="fa fa-fw fa-heart-o" id="msgsys"></i>追隨作者</a></li>
+								</c:otherwise>
+							</c:choose>
+							<li><a href="javascript:;" id="msgsys"><i
+									class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+				<br>
+			</div>
+
+
+			<script src="${context}/js/default.js"></script>
+			<script>
 	var funds_content = '<h2>募資</h2>';
 	var funds_len = 0;
 	var products_content = '<h2>商品</h2>';
@@ -398,13 +371,31 @@
 					  }
 				});
 			})
-	
-	})
+			
+			$("#followdo").click(function(){
+				$.ajax({
+					  url: "\_06_follow\\follow.do",
+					  type: "POST", 
+					  async: false,
+					  data: { 
+					    "user_id":${LoginOK.user_id},
+					    "art_id":${ab.art_id},
+					  },
+					  success: function(responseMsg) {
+						alert('追隨成功');
+					  },
+					  error: function(responseMsgErr) {
+						  responseMsgErr.abort();
+					   } 
+				});
+			});
+			
+	});
     </script>
-<!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-<!--                     <script src="asset/js/bootstrap.min.js"></script> -->
-    
-<!--         </section> -->
-    </body>
+			<!--                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+			<!--                     <script src="asset/js/bootstrap.min.js"></script> -->
 
-    </html>
+			<!--         </section> -->
+</body>
+
+</html>
