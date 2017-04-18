@@ -1,10 +1,7 @@
 package _07_funds.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -23,12 +20,12 @@ import javax.servlet.http.Part;
 
 import _00_init.GlobalService;
 import _01_register.util.DBUtils;
+import _07_funds.model.FcPicBean;
+import _07_funds.model.FcPicHBNDAO;
 import _07_funds.model.FundsBean;
 import _07_funds.model.FundsHibernateDAO;
+import _07_funds.model.IFcPicDAO;
 import _07_funds.model.IFundsDAO;
-import _08_product.model.IProPicDAO;
-import _08_product.model.ProPicBean;
-import _08_product.model.ProPicHBNDAO;
 
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
@@ -108,7 +105,7 @@ public class FundCreateServletMP extends HttpServlet {
 
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
-					if (fldName.equals("artids")) {
+					if (fldName.equals("art_id")) {
 						artid = Integer.parseInt(value);
 					} else if (fldName.equals("fcname")) {
 						fcname = value;
@@ -186,7 +183,7 @@ public class FundCreateServletMP extends HttpServlet {
 
 		System.out.println("123");
 		int fcmoney = Integer.parseInt(fcmoneys);
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		createtime = sdFormat.format(date);
 		updatetime = createtime;
@@ -209,26 +206,26 @@ public class FundCreateServletMP extends HttpServlet {
 					introPicName = GlobalService.adjustPicName(introPicName, fcid);
 					String dirPortrait = getServletContext().getInitParameter("upload.location.fc");
 					DBUtils.isToFiles(ipsintro, introPicName, dirPortrait);
-					ProPicBean ppb = new ProPicBean(fcid,
+					FcPicBean ppb = new FcPicBean(fcid,
 							"http://saudade.myasustor.com/JPjt/fc_pic_address/" + introPicName);
-					IProPicDAO ppdao = new ProPicHBNDAO();
+					IFcPicDAO ppdao = new FcPicHBNDAO();
 					n = ppdao.insert(ppb);
 					if (ips1 != null) {
 						String dirPortrait1 = getServletContext().getInitParameter("upload.location.fc");
 						DBUtils.isToFiles(ips1, fileName1, dirPortrait1);
-						ProPicBean ppb1 = new ProPicBean(fcid,
+						FcPicBean ppb1 = new FcPicBean(fcid,
 								"http://saudade.myasustor.com/JPjt/fc_pic_address/" + fileName1);
 						ppdao.insert(ppb1);
 						if (ips2 != null) {
 							String dirPortrait2 = getServletContext().getInitParameter("upload.location.fc");
 							DBUtils.isToFiles(ips2, fileName2, dirPortrait2);
-							ProPicBean ppb2 = new ProPicBean(fcid,
+							FcPicBean ppb2 = new FcPicBean(fcid,
 									"http://saudade.myasustor.com/JPjt/fc_pic_address/" + fileName2);
 							ppdao.insert(ppb2);
 							if (ips3 != null) {
 								String dirPortrait3 = getServletContext().getInitParameter("upload.location.fc");
 								DBUtils.isToFiles(ips3, fileName3, dirPortrait3);
-								ProPicBean ppb3 = new ProPicBean(fcid,
+								FcPicBean ppb3 = new FcPicBean(fcid,
 										"http://saudade.myasustor.com/JPjt/fc_pic_address/" + fileName3);
 								ppdao.insert(ppb3);
 							}
