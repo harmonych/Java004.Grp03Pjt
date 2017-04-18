@@ -211,7 +211,7 @@
 <!-- 									            	<i class="fa fa-facebook"></i> 新增募資 -->
 <!-- 									            </a><br> -->
 									            
-									            <div id="area" class="btn-group-vertical">
+									            <div id="bt_area" class="btn-group-vertical">
 							                    	<a id="create-product" class="btn btn-block btn-social btn-warning">
 									            		<i class="glyphicon glyphicon-plus"></i> 新增商品
 									            	</a>

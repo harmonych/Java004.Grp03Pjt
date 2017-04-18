@@ -48,6 +48,10 @@
 .navbar-form {
 	display: inline-flex;
 }
+
+#s1{
+    background: #ecf0f5;
+}    
 </style>
 </head>
 <!--
@@ -79,7 +83,7 @@ desired effect
 
 
 		<!-- Main content -->
-		<section class="content">
+		<section id="s1" class="content">
 			<!-- Your Page Content Here -->
 			<div class="row">
 				<div class="card1 col-md-8 col-md-offset-2">
