@@ -364,21 +364,23 @@ desired effect
             <ul class="sidebar-menu">
               <li class="header"></li> <!-- HEADER -->
               <!-- Optionally, you can add icons to the links -->
-              <li class="treeview">
-                <a href="#"><i class="fa fa-fw fa-search"></i><span>搜尋系統</span>
-		            <span class="pull-right-container">
-		              <i class="fa fa-angle-left pull-right"></i>
-		            </span>
-         		 </a>
-                <ul class="treeview-menu">
-                  <li><a href="#" class = "sp_search">創作者</a></li>
-                  <li><a href="#" class = "sp_search">商城作品</a></li>
-                  <li><a href="#" class = "sp_search">募集作品</a></li>
-                </ul>
-              </li>
-              <li id = "sp-artist"><a href="javascript:;"><i class="fa fa-fw fa-paint-brush"></i><span>創作平台</span></a></li>
-              <li id = "sp-funds"><a href="javascript:;"><i class="fa fa-fw fa-group"></i><span>作品募資</span></a></li>
-              <li id = "sp-product"><a href="javascript:;"><i class="fa fa-fw fa-gift"></i><span>文創商城</span></a></li>
+<!--               <li class="treeview"> -->
+<!--                 <a href="#"><i class="fa fa-fw fa-search"></i><span>搜尋系統</span> -->
+<!-- 		            <span class="pull-right-container"> -->
+<!-- 		              <i class="fa fa-angle-left pull-right"></i> -->
+<!-- 		            </span> -->
+<!--          		 </a> -->
+<!--                 <ul class="treeview-menu"> -->
+<!--                   <li><a href="#" class = "sp_search">創作者</a></li> -->
+<!--                   <li><a href="#" class = "sp_search">商城作品</a></li> -->
+<!--                   <li><a href="#" class = "sp_search">募集作品</a></li> -->
+<!--                 </ul> -->
+<!--               </li> -->
+              
+              <li id = "sp_search"><a href="javascript:;"><i class="glyphicon glyphicon-search"></i><span>搜尋系統</span></a></li>
+              <li id = "sp-artist"><a href="javascript:;"><i class="glyphicon glyphicon-pencil"></i><span>創作平台</span></a></li>
+              <li id = "sp-funds"><a href="javascript:;"><i class="glyphicon glyphicon-picture"></i><span>作品募資</span></a></li>
+              <li id = "sp-product"><a href="javascript:;"><i class="glyphicon glyphicon-gift"></i><span>文創商城</span></a></li>
 				
             </ul>
             <!-- /.sidebar-menu -->
