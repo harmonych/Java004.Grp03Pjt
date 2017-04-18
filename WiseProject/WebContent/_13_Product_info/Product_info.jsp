@@ -9,6 +9,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>商品內容頁</title>
+	            				
 		<!-- Tell the browser to be responsive to screen width -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js" ></script>
 		<meta
@@ -30,6 +31,7 @@
 <!-- 			<section class="content-header"></section> -->
 
 			<!-- Main content -->
+			<input id="proid"  value="<c:out value ="${pb.pro_id}"/>" type="hidden"/>
 			<section class="content">
 				<!-- Your Page Content Here -->
 				<div class="row">
@@ -152,6 +154,8 @@
 			  	<!-- 留言填寫欄位 -->   
 			  	                 
 	          	<div id="r2" class="row">
+	          	<c:choose>
+								<c:when test= "${LoginOK != null}"> 
 	          		<form ENCTYPE="multipart/form-data" method="POST"  id="proMessage" >
 	          		<div class="card03 col-md-8 col-md-offset-2">
 	          			<div class="box box-warning">
@@ -161,8 +165,7 @@
 	            				<input id="receiver_id" name = "receiver_id" value="<c:out value ="${mb.user_id}"/>" type="hidden"/>
 	            				<input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
 	              				<input id="sender_name" name = "sender_name" value="<c:out value ="${LoginOK.user_name}"/>" type="hidden"/>
-	              				<c:choose>
-								<c:when test= "${LoginOK != null}">  
+	              				 
 	              				<h3 class="box-title">我要留言給<c:out value ="${mb.user_name}"/>
 									<input type="checkbox" name="msg_status" value="0">並設為私密留言</h3>
 	            			</div>
@@ -244,7 +247,7 @@ $(document).ready(function(){
         $(".showbox").append('<img src="' + $(this).attr('src') + '" id="pro_img"  width="400px" height="400px">');
         });	
     });
-	var pro_id = $('#pro_id').val();
+	var pro_id = $('#proid').val();
 	//讀取瀏覽者user_id
 	var reader_id = $('#user_id').val();
 	//讀取創作者user_id

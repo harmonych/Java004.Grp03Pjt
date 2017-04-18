@@ -183,7 +183,9 @@
 					</div>
 				</div>		
 		  		<br><br>
-		  		
+		  		<c:choose>
+	         		<c:when test= "${(LoginOK != null)}">	         		
+		          <form ENCTYPE="multipart/form-data" method="POST"  id="fcMessage" >
 		  		<div id="r2" class="row">
 	          		<div class="card03 col-md-8 col-md-offset-2">
 	          			<div class="box box-warning">
@@ -198,8 +200,7 @@
 	            			</div>
 	            			
 	            		<!-- /.box-header -->
-	        		<c:choose>
-	         		<c:when test= "${(LoginOK != null)}"> 
+	        		
 	            		<div class="box-body">
 	              			<div class="form-group">
 	                			<input class="form-control" name= "msg_title" placeholder="留言標題">
@@ -237,7 +238,6 @@
          
          <!-- 留言填寫欄位 -->
 
-          <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_11_message/fcMessage.do' />"  id="fcMessage" >
 <!--         	<section class="content">          	       -->
 <!--       		</section> -->
       	  </form>
@@ -298,7 +298,7 @@
 		        $(".showbox").append('<img src="' + $(this).attr('src') + '" id="pro_img"  width="400px" height="400px">');
 		        });	
 		    });
-			var fc_id = $('#fc_id').val();
+			var fc_id = $('#fcid').val();
 			//讀取瀏覽者user_id
 			var reader_id = $('#user_id').val();
 			//讀取創作者user_id
