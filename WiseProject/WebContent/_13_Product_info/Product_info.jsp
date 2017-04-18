@@ -10,8 +10,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>商品內容頁</title>
 		<!-- Tell the browser to be responsive to screen width -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js" integrity="sha384-tIwI8+qJdZBtYYCKwRkjxBGQVZS3gGozr3CtI+5JF/oL1JmPEHzCEnIKbDbLTCer" crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js" ></script>
 		<meta
 			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Font Awesome -->
@@ -22,31 +21,9 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 			
 		<link rel="stylesheet" href="${context}/css/Product_info.css">
-	
-	<script type="text/javascript">
-
-	function CheckForm(){
-		var pro_inv = document.getElementById("pro_inv_input").value;
-		var ord_amount = document.getElementById("ord_amount").value;
-		if(pro_inv < ord_amount){
-			alert("訂購數量高於庫存數量");
-			return false;
-		}else{
-			  if(confirm("是否將此商品加入購物車?")){
-				  return true;
-			  }else{
-				  return false;
-			  }
-		}   
-}
-</script>
-	
-	
+		
 	</head>
-	
-	
 	<body class="hold-transition skin-yellow-light sidebar-mini ">
-	
 	<!-- Content Wrapper. Contains page content -->
 <!-- 		<div class="content-wrapper"> -->
 			<!-- Content Header (Page header) -->
@@ -59,7 +36,7 @@
 					<!-- 圖片顯示欄 -->
 					<div class="card_card01 col-md-4 col-md-offset-2">
 					  <div id="img_area" class = "showbox">
-						<img src=" <c:out value ="${pbl[0].pic_adress}"/>" id ="pro_img">						
+						<img src=" <c:out value ="${pbl[0].pic_adress}"/>" id="pro_img" width="400" height="400">						
 					  </div>
 					  <a>
 					  <div class="pic_address" id ="selections">
@@ -76,11 +53,10 @@
 						<header id="info_area">
 							
 								<div id="pro_name">
-									
-									<h1>商品名稱：<c:out value ="${pb.pro_name}"/></h1>
+									<h1><c:out value ="${pb.pro_name}"/></h1>
 								</div>
 							
-								<div id="art_id">
+								<div id="art_id" >
 									<h3>賣家名稱：<c:out value ="${mb.user_name}"/></h3>
 								</div>
 							
@@ -103,16 +79,13 @@
 									<c:out value ="${pb.pro_introduction}"/> <br>
 								</p>
 							</div>
+						</header>
+					
+						<div id="line"></div>
+					<c:choose>
+						<c:when test="${LoginOK != null}">
 						<div id="buy_area">
-							<form id="form1" action="<c:url value='/_04_ShoppingCart/OrderList.do' />" 
-								method="POST">
-								<c:choose>
-								<c:when test="${empty LoginOK}">
-								<a href="${context}/_02_login/login.jsp"> 
-										<input type="button" class="btn1 btn-lg btn-block" value="立即登入購買">
- 									</a>
-								</c:when>
-								<c:when test="${!empty LoginOK}">
+							<form id="cartFormList"  method="POST">
 								<div id="quantity">
 									<div>
 										<label>購買數量</label>
@@ -140,154 +113,313 @@
 									<Input type='hidden' id='user_id_input' name='user_id' value='${LoginOK.user_id}'>
 
 								
+								<div id="bt_area">
+								<input type="button" id = "sp-OrderList" name="addShoppingCart" class="btn2 btn-lg btn-block" 
+								value="加入購物車" onClick="this.form.action='<c:url value='/_15_ShoppingCart/OrderList.do' />';this.form.submit();">
 								
-								<input type="button" name="addShoppingCart" class="btn2 btn-lg btn-block" 
-								value="加入購物車" onClick="this.form.action='<c:url value='/_04_ShoppingCart/OrderList.do' />';this.form.submit();">
+								<input type="button" id ="sp-ListNow" name="buyNow" class="btn1 btn-lg btn-block"
+									value="立即購買" onClick="this.form.action='<c:url value='/_15_ShoppingCart/OrderListNow.do' />';this.form.submit();">
 								
-								<input type="button" name="buyNow" class="btn1 btn-lg btn-block"
-									value="立即購買" onClick="this.form.action='<c:url value='/_04_ShoppingCart/OrderListNow.do' />';this.form.submit();">
+<!-- 								<button type="submit" id = "sp-OrderList" name="addShoppingCart" class="btn2 btn-lg btn-block formSubmit"  -->
+<!-- 								value="submit" >加入購物車</button> -->
+								
+<!-- 								<button type="submit" id ="sp-ListNow" name="buyNow" class="btn1 btn-lg btn-block orderNow" -->
+<!-- 									value="submit"> 立即購買</button> -->
+								</div>
 							</form>
-
-							
-							</div>
-							</c:when>
-							</c:choose>
-
-				<div id="line"></div>
-				</header>	
+						</div>
+						</c:when>
+						<c:otherwise>
+						<div id="buy_area">
+							<form id="form1">													
+								<div id="bt_area">
+									<a href="${context}/_02_login/login.jsp">
+										<input type="button" class="btn1 btn-lg btn-block" value="立即登入購買">
+									</a>
+									<a href="${context}/_01_register/register.jsp">
+										<input type="button" class="btn2 btn-lg btn-block" value="立即註冊購買">
+									</a>
+								</div>
+							</form>		
+						</div>
 						
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${LoginOK != null}"> --%>
-<!-- 						<div id="buy_area"> -->
-<!-- 							<form id="form1">													 -->
-<!-- 								<div id="bt_area"> -->
-<%-- 									<a href="${context}/_15_ShoppingCart/ShoppingCart_Order.jsp"> --%>
-<!-- 										<input type="button" class="btn1 btn-lg btn-block" value="立即購買"> -->
-<!-- 									</a> -->
-<!-- 									<button id="addSoppingCart" class="btn2 btn-lg btn-block">加入購物車</button> -->
-<!-- 								</div> -->
-<!-- 							</form>		 -->
-<!-- 						</div> -->
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<!-- 						<div id="buy_area"> -->
-<!-- 							<form id="form1">													 -->
-<!-- 								<div id="bt_area"> -->
-<%-- 									<a href="${context}/_02_login/login.jsp"> --%>
-<!-- 										<input type="button" class="btn1 btn-lg btn-block" value="立即登入購買"> -->
-<!-- 									</a> -->
-<%-- 									<a href="${context}/_01_register/register.jsp"> --%>
-<!-- 										<input type="button" class="btn2 btn-lg btn-block" value="立即註冊購買"> -->
-<!-- 									</a> -->
-<!-- 								</div> -->
-<!-- 							</form>		 -->
-<!-- 						</div> -->
-						
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
+						</c:otherwise>
+					</c:choose>
 					</div>
 				</div>
 
-			</section>
-			<!-- /.content -->
-			
-			
-		  <!-- 留言填寫欄位 -->
-		  <form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_11_message/proMessage.do' />"  id="proMessage.do" >
-          <section class="content">
-          	<div class="row">
-          		<div class="card03 col-md-8 col-md-offset-2">
-          			<div class="box box-warning">
-            			<div class="box-header with-border">
-            				<input id="pro_id" name = "pro_id" value="<c:out value ="${pb.pro_id}"/>" type="hidden"/>
-            				<input id="reciever_name" name = "reciever_name" value="<c:out value ="${mb.user_name}"/>" type="hidden"/>
-            				<input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
-              				<input id="sender_name" name = "sender_name" value="<c:out value ="${LoginOK.user_name}"/>" type="hidden"/>
-              				<h3 class="box-title">我要留言給<c:out value ="${mb.user_name}"/>
-								<input type="checkbox" name="msg_status" value="0">並設為私密留言</h3>
-            			</div>
-            			
-            		<!-- /.box-header -->
-            		<div class="box-body">
-              			<div class="form-group">
-                			<input class="form-control" name= "msg_title" placeholder="留言標題">
-              			</div>
-              			              	
-              			<div class="form-group">
-                    		<textarea id="compose-textarea" class="form-control" name ="msg_txt" placeholder="在此輸入內容" style="height: 300px"></textarea>
-              			</div>
-              	
-              	   <!-- <div class="form-group">
-                			<div class="btn btn-default btn-file">
-                  				<i class="fa fa-paperclip"></i> Attachment
-                  				<input type="file" name="attachment">
-                			</div>
-                	    </div> -->
-            		</div> 
-            		
-            		<!-- /.box-body -->
-            		<div class="box-footer">
-              			<div class="pull-right">
-                			<button type="submit" id="btn3" class="btn btn-warning">送出留言 </button> 
-           
-                			<!--<i class="fa fa-envelope-o"></i> Send  -->
-              			</div>
-              			
-            		</div>
-           			<!-- /.box-footer -->
-          			</div>
-          		<!-- /. box -->
-        		</div>
-        	</div>
-       
-      	</section>
-      	</form>
+								
+			  	<!-- 留言填寫欄位 -->   
+			  	                 
+	          	<div id="r2" class="row">
+	          		<form ENCTYPE="multipart/form-data" method="POST"  id="proMessage" >
+	          		<div class="card03 col-md-8 col-md-offset-2">
+	          			<div class="box box-warning">
+	            			<div class="box-header with-border">
+	            				<input id="pro_id" name = "pro_id" value="<c:out value ="${pb.pro_id}"/>" type="hidden"/>
+	            				<input id="receiver_name" name = "receiver_name" value="<c:out value ="${mb.user_name}"/>" type="hidden"/>
+	            				<input id="receiver_id" name = "receiver_id" value="<c:out value ="${mb.user_id}"/>" type="hidden"/>
+	            				<input id="user_id" name = "user_id" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
+	              				<input id="sender_name" name = "sender_name" value="<c:out value ="${LoginOK.user_name}"/>" type="hidden"/>
+	              				<c:choose>
+								<c:when test= "${LoginOK != null}">  
+	              				<h3 class="box-title">我要留言給<c:out value ="${mb.user_name}"/>
+									<input type="checkbox" name="msg_status" value="0">並設為私密留言</h3>
+	            			</div>
+	            					            	
+					       
+			         			<div class="box-body">
+			              			<div class="form-group">
+			                			<input class="form-control" name= "msg_title" placeholder="留言標題">
+			              			</div>      	
+			              			<div class="form-group">
+			                    		<textarea id="compose-textarea" class="form-control" name ="msg_txt" placeholder="在此輸入內容" style="height: 300px"></textarea>
+			              			</div>
+			            		</div>
+			            		<!-- /.box-body -->
+			            		<div class="box-footer">
+			              			<div class="pull-right">
+			                			<button type="submit" id="btn3" class="btn btn-warning">送出留言 </button> 
+			              			</div>
+			            		</div>
+			           			<!-- /.box-footer -->
+	          			</div>
+	          			<!-- /. box box-warning -->
+	        		</div>
+	        		</form>
+	        	</div>
+	      	</section>
+	      	</c:when>
+	      	
+      	<c:otherwise>
+      		<section class="content">
+	          	<div class="row">
+	          		<div class="card03 col-md-8 col-md-offset-2">
+	          			<div class="box box-warning">
+	            			<div class="box-header warning">
+	            				<h3 class="box-title">欲留言請先登入</h3>
+	            			</div>
+	            		</div>
+	          		<!-- /. box -->
+	        		</div>
+	        	</div>      
+      		</section>
+      	</c:otherwise>
+      	</c:choose>
         <!-- /.content -->
-        <!-- 留言串列 -->
+       
+
+		<!-- 留言串列 -->
         <section>
-        	<div class="row">
+        	<div class="row" id ="renewToView">
           		<div class="card03 col-md-8 col-md-offset-2">
-			        <div class="box box-warning " id = "previous_msg">
-			          <div class="box-header with-border">
-			            <div>
-			            	<h4 class="box-title">留言標題</h4>
-			            </div>
-			            <br>
-			            <div>
-			            	<div class="mes_by">留言人</div>
-			            </div>
-			          </div>
-			          <div class="box-body">
-			          		<div class="message">留言內容</div>
-			          </div>
-			          <!-- /.box-body -->
-			        </div>
+<!-- 			        <div class="box box-warning " id = "previous_msg"> -->
+<!-- 			          <div class="box-header with-border"> -->
+<!-- 			            <div> -->
+<!-- 			            	<h4 class="box-title">留言標題</h4> -->
+<!-- 			            </div> -->
+<!-- 			            <br> -->
+<!-- 			            <div> -->
+<!-- 			            	<div class="mes_by">留言人</div> -->
+<!-- 			            </div> -->
+<!-- 			          </div> -->
+<!-- 			          <div class="box-body"> -->
+<!-- 			          		<div class="message">留言內容</div> -->
+<!-- 			          </div> -->
+<!-- 			          /.box-body -->
+<!-- 			        </div> -->
 			   </div>     
 			</div>	        
-        </section>
-<!-- 		</div> -->
-		<!-- /.content-wrapper -->
+        </section>		
 <script>
-$(function() {
-    $("#selections").find('img').bind("click", function() {
-    var src = $(this).attr("src");
-    // 把src抓到的當前url值帶入
-    $(this).attr("src", src);
-    //把當前的元素砍掉
-    $(".showbox").children('img').remove();
-    //增加新url在showbox這class下面
-    $(".showbox").append('<img src="' + $(this).attr('src') + '" id="pro_img"  width = "400px">');
-    });	
-});
 $(document).ready(function(){
-	$('#myForm').ajaxForm(function() {
-        alert("留言成功!");
+	$(function() {
+	    $("#selections").find('img').bind("click", function() {
+        var src = $(this).attr("src");
+        // 把src抓到的當前url值帶入
+        $(this).attr("src", src);
+        //把當前的元素砍掉
+        $(".showbox").children('img').remove();
+        //增加新url在showbox這class下面
+        $(".showbox").append('<img src="' + $(this).attr('src') + '" id="pro_img"  width="400px" height="400px">');
+        });	
     });
+	var pro_id = $('#pro_id').val();
+	//讀取瀏覽者user_id
+	var reader_id = $('#user_id').val();
+	//讀取創作者user_id
+	var receiver_id = $('#receiver_id').val();
+	console.log(pro_id);
+	console.log(reader_id);
+	console.log(receiver_id);
+	
+	$.ajax({
+		  url: "\_11_message\\promessage.json",
+		  type: "GET", 
+		  data: { 
+		    "pro_id": pro_id, 
+		  },
+		  success: function(resMsgOK) {
+			  var respm = resMsgOK;
+			  var msgStr ='<div class="card03 col-md-8 col-md-offset-2">';
+			  msgStr += '<div class="box box-warning " id = "previous_msg">';
+			  //start of fist for-loop
+			  for (var i = 0 ; i<respm.length; i++){
+				  //如果設為私密，但讀者非寄送者或者擁有者 first if
+				  if(respm[i].msg_status == 0 && (reader_id != respm[i].user_id && reader_id != receiver_id || reader_id == null || reader_id =="" )){
+					  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
+					  msgStr += '</h4></div><br><div>#' + (i+1);
+					  msgStr += '<div class="mes_by"></div></div></div>';
+					  msgStr += '<div class="box-body"><div class="message">此為私密留言內容</div></div>';
+				  }else{
+					  //second if 讀者為寄送者或者擁有者
+					  if(respm[i].msg_status == 0 && (reader_id == respm[i].user_id || reader_id == receiver_id)){
+						  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
+						  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
+						  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
+						  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
+					  }else{						  
+						  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
+						  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
+						  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
+						  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
+					  }//end of second if
+					  
+				  }//end of first if
+				  
+			  }
+			  msgStr += '</div></div>';
+			  console.log(msgStr);
+			  console.log(resMsgOK);
+			  var divm = document.getElementById('renewToView');
+			  divm.innerHTML = msgStr;
+		  },
+		  error: function(resMsgErr) {
+			  resMsgErr.abort();
+		  }
+});
+	var opts = {
+			url:'\_11_message\\proMessage.do',
+			success: function(){	
+				$('#renewToView').empty();
+		        alert("留言成功!");
+		        $.ajax({
+					  url: "\_11_message\\promessage.json",
+					  type: "GET", 
+					  data: { 
+					    "pro_id": pro_id, 
+					  },
+					  success: function(resMsgOK) {
+						  var respm = resMsgOK;
+						  var msgStr ='<div class="card03 col-md-8 col-md-offset-2">';
+						  msgStr += '<div class="box box-warning " id = "previous_msg">';
+						  //start of fist for-loop
+						  for (var i = 0 ; i<respm.length; i++){
+							  //如果設為私密，但讀者非寄送者或者擁有者 first if
+							  if(respm[i].msg_status == 0 && (reader_id != respm[i].user_id && reader_id != receiver_id || reader_id == null || reader_id =="" )){
+								  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
+								  msgStr += '</h4></div><br><div>#' + (i+1);
+								  msgStr += '<div class="mes_by"></div></div></div>';
+								  msgStr += '<div class="box-body"><div class="message">此為私密留言內容</div></div>';
+							  }else{
+								  //second if 讀者為寄送者或者擁有者
+								  if(respm[i].msg_status == 0 && (reader_id == respm[i].user_id || reader_id == receiver_id)){
+									  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
+									  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
+									  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
+									  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
+								  }else{						  
+									  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
+									  msgStr += respm[i].msg_title + '</h4></div><br><div>#' + (i+1);
+									  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
+									  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
+								  }//end of second if
+								  
+							  }//end of first if
+							  
+						  }
+						  msgStr += '</div></div>';
+						  console.log(msgStr);
+						  console.log(resMsgOK);
+						  var divm = document.getElementById('renewToView');
+						  divm.innerHTML = msgStr;
+					  },
+					  error: function(resMsgErr) {
+						  resMsgErr.abort();
+					  }
+				});
+			}
+	}
+	$('#proMessage').on('submit', function(e){
+	    e.preventDefault();
+		$(this).ajaxSubmit(opts);		
+		return false;
+	})
+	function CheckForm(){
+		var pro_inv = document.getElementById("pro_inv_input").value;
+		var ord_amount = document.getElementById("ord_amount").value;
+		if(pro_inv < ord_amount){
+			alert("訂購數量高於庫存數量");
+			return false;
+		}else{
+			  if(confirm("是否將此商品加入購物車?")){
+				  return true;
+			  }else{
+				  return false;
+			  }
+		}   
+	}
+	var optsOrderList = {
+			url:'\_15_ShoppingCart\\OrderList.do',
+// 			target: '#mainframe',
+			type:"post",
+			success: function(){	
+		        $.ajax({
+					  url: "\_15_ShoppingCart\\ShoppingCart_List.jsp",
+					  context: document.body,
+					  success: function(resCartOK) {
+						$("#mainframe").empty();
+		  				$('#mainframe').html(resCartOK);
+
+					  },
+					  error: function(resCartErr) {
+						  resCartErr.abort();
+					  }
+				});
+			}
+	}
+	$('#cartFormList').on('submit', function(e){
+	    e.preventDefault();
+		$(this).ajaxSubmit(optsOrderList);		
+		return false;
+	})
+		var optsOrderNow = {
+			url:'\_15_ShoppingCart\\OrderNow.do',
+// 			target: '#mainframe',
+			type:"post",
+			success: function(){	
+		        $.ajax({
+					  url: "\_15_ShoppingCart\\ShoppingCart_Order.jsp",
+					  context: document.body,
+					  success: function(resCartOK) {
+						$("#mainframe").empty();
+		  				$('#mainframe').html(resCartOK);
+
+					  },
+					  error: function(resCartErr) {
+						  resCartErr.abort();
+					  }
+				});
+			}
+	}
+	$('#cartFormList').on('submit','.orderNow', function(e){
+	    e.preventDefault();
+		$(this).ajaxSubmit(optsOrderNow);		
+		return false;
+	})
+	
 })
-
-
 </script>
-
 </body>
 
 </html>
