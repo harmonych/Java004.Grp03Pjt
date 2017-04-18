@@ -73,7 +73,7 @@ public class FollowCancelServletMP extends HttpServlet {
 			int n = rs.cencelfollw(follow_id);
 			if (n == 1) {
 				msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-				response.sendRedirect("../index.jsp");
+				request.getRequestDispatcher("/_18_Follow_List/Follow_List.jsp").forward(request, response);
 				return;
 			} else {
 				errorMsg.put("errorAccountDup", "新增此筆資料有誤(RegisterServlet)");
