@@ -345,8 +345,8 @@ desired effect
 <!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
 <!-- 	                </button> -->
 	                <div class="btn-group">
-	                	<a href="../_13_Product_info/Product_info.jsp">	                	
-	 	                	<button type="button" class="btn btn-block btn-warning">回上頁	           	
+	                	<a href="../_13_Product_info/Product_All.jsp">	                	
+	 	                	<button type="button" class="btn btn-block btn-warning">返回商城	           	
 	 	                	</button>
  	                	</a>
 	                </div>
@@ -363,8 +363,8 @@ desired effect
 	                  	<tr>
 	                    	<th class="mailbox-name">創作者名稱</th>
 	                    	<th class="mailbox-name">購物車內商品數</th>
-	                    	<th class="mailbox-star">檢視購物車</th>
-	                    	<th class="mailbox-star">刪除購物車</th>            
+	                    	<th class="mailbox-star">檢視訂單</th>
+	                    	<th class="mailbox-star">刪除訂單</th>            
 	                  	</tr>
 					</thead>
 	                  
@@ -400,8 +400,8 @@ desired effect
 	            <div class="box-footer no-padding">
 	              <div class="mailbox-controls">
 	              	<div class="btn-group">
-	                	<a href="../_13_Product_info/Product_info.jsp">	                	
-	 	                	<button type="button" class="btn btn-block btn-warning">回上頁	           	
+	                	<a href="../_13_Product_info/Product_All.jsp">	                	
+	 	                	<button type="button" class="btn btn-block btn-warning">返回商城	           	
 	 	                	</button>
  	                	</a>
 	                </div>

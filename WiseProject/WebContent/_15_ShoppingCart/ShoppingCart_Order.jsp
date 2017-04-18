@@ -442,9 +442,13 @@ desired effect
 								<!-- /.box-body -->
 
 								<div class="box-footer">
-									<button type="submit" class="btn btn-warning">
-										<a href="">確認訂購</a>
-									</button>
+									<div id="bt_area">
+										<a href="">
+											<button type="submit" id="bt1" class="btn btn-lg btn-warning">
+												確認訂購
+											</button>
+										</a>
+									</div>	
 								</div>
 							</form>
 						</div>
