@@ -103,7 +103,7 @@
             <div class="box-body no-padding">
               <div class="mailbox-read-info">
                 <h3>標題：<c:out value ="${msgb.title}"/></h3>
-                <h5>寄信者：<c:out value ="${msgb.sender_name}"/>
+                <h5>收信者：<c:out value ="${msgb.receiver_name}"/>
                   <span class="mailbox-read-time pull-right"><c:out value ="${msgb.msg_time}"/></span></h5>
               </div>
               <!-- /.mailbox-read-info -->

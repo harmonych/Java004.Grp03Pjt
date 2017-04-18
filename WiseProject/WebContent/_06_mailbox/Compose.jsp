@@ -104,7 +104,7 @@
 							<!-- /.box-header -->
 							<div class="box-body">
 								<div class="form-group">收件者: <c:out value ="${mb.user_name}" />
-								</div><input type="hidden" class="form-control" id = "rn" name='receiver_name' value='${mb.user_id}' placeholder="To:">
+								</div><input type="hidden" class="form-control" id = "rn" name='receiver_name' value='${mb.user_name}' placeholder="To:">
 								<div class="form-group">
 								</div><input class="form-control" name='title' value='${param.title}' placeholder="主題:">
 								<div class="form-group" id="w5">

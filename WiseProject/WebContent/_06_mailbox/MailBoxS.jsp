@@ -132,11 +132,17 @@
                 <table class="table table-hover table-striped">
                   <tbody>
 					<c:forEach var="i" begin="0" end="${fn:length(smbl)}">
+					<c:choose>
+					<c:when test="${empty smbl[i].msg_id}">
+					</c:when>
+					<c:otherwise>
 						<tr class="readMailLink" id ="<c:out value ="${smbl[i].msg_id}"/>">
-					<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+					<td class="mailbox-star"><a href="javascript:;"><i class="fa fa-star-o text-yellow"></i></a></td>
                     <td class="mailbox-name"><c:out value = "${smbl[i].receiver_name }"/></td>
 	                <td class="mailbox-subject"><a href="javascript:;"><b><c:out value = "${smbl[i].title}"/></b></a></td>
 						</tr>
+								</c:otherwise>
+					</c:choose>
 					</c:forEach>
 <!--                   <tr> -->
 <!--                     <td><input type="checkbox"></td> -->
