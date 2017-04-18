@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
     <html>
@@ -287,7 +287,7 @@ desired effect
                         <li class="user-body">
                           <div class="row">
                             <div class="col-xs-4 text-center">
-                              <a href="#">追蹤名單</a>
+                              <a href="Javascript:" id="Follow">追蹤名單</a>
                             </div>
                             <div class="col-xs-4 text-center">
                               <a href="javasript:;" id="sp_user_list">投資計畫</a>
@@ -642,6 +642,17 @@ desired effect
 				});
 		  });
 		});
+	     $("#Follow").click(function(){
+			  	$.ajax({
+					url:"\_18_Follow_List\\Follow_List.jsp",
+					context: document.body,
+					success: function(responseFollow){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseFollow);
+						$(".mainfooter").empty();
+			    	}
+				});
+
       </script>
 
    </body>

@@ -27,7 +27,7 @@
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
 <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
-<link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="${context}/dist/css/skins/_all-skins.min.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,13 +92,7 @@ desired effect
 
 						<!-- /.box-header -->
 						<div class="box-body no-padding">
-							<div class="mailbox-controls">
-								<div class="btn-group">
-									<a href="/index.jsp">
-										<button type="button" class="btn btn-block btn-warning">回上頁</button>
-									</a>
-								</div>
-							</div>
+							
 
 							<div class="table-responsive mailbox-messages">
 								<table class="table table-hover table-striped">
@@ -112,22 +106,7 @@ desired effect
 									</thead>
 
 									<tbody>
-										<tr>
-											<td class="mailbox-name"><a
-												href="../_05_CreationsFrame/CreationsPage2.jsp">XXX 作者名稱</a>
-											</td>
-											<td class="mailbox-name">加入時間 follow_time</td>
-											<td class="mailbox-star">
-												<button type="button" class="btn btn-default btn-sm">
-													<i class="fa fa-trash-o"></i>
-												</button>
-											</td>
-										</tr>
-
-										
-
-										<div id="follow"></div>
-
+										<tr id="follow"></tr>
 									</tbody>
 								</table>
 								<!-- /.table -->
@@ -136,16 +115,7 @@ desired effect
 						</div>
 
 						<!-- /.box-body -->
-						<div class="box-footer no-padding">
-							<div class="mailbox-controls">
-								<div class="btn-group">
-									<a href="../_13_Product_info/Product_info.jsp">
-										<button type="button" class="btn btn-block btn-warning">回上頁</button>
-									</a>
-								</div>
-							</div>
-						</div>
-						<!-- /. box -->
+						
 					</div>
 				</div>
 			</div>
@@ -163,9 +133,9 @@ desired effect
 
 	<!-- jQuery 2.2.3 -->
 <!-- 	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script> -->
-<!-- 	<!-- Bootstrap 3.3.6 --> -->
+<!-- 	<!-- Bootstrap 3.3.6 -->
 <!-- 	<script src="../bootstrap/js/bootstrap.min.js"></script> -->
-<!-- 	<!-- AdminLTE App --> -->
+<!-- 	<!-- AdminLTE App -->
 <!-- 	<script src="../dist/js/app.min.js"></script> -->
 
 <!-- 	<script src="default.js"></script> -->
@@ -176,46 +146,68 @@ desired effect
 		var content="";
 		var id =1; //${mb.user_id};
 		var art_name;
+		console.log(id)
 		$.ajax({
 			  //得到所有該artist的募資計畫 01 ArtToFunds Servlet
-			  url: "\_06_follow\follow.json",
+			  url: "\_06_follow\\follow.json",
 			  type: "GET", 
 			  async: false,
 			  data: { 
 			    "user_id":id, 
+			   
 			  },
 			  success: function(response) {
-				 
+				  console.log(id)
 				  follows_len = response.length;
+				  console.log(response)
 				  $("#follow").empty();
-				  for(var i=0; i < follows_len ; i++){
-					 content += '<div class="card col-lg-3 col-md-3 col-sm-6 col-xs-6">';
+				  for(var i=0; i <follows_len ; i++){
+					 					
 					 $.ajax({
-							url: "\_07_funds\\singleFcPic.json",
+							url: "\_01_register\\singleartusername.json",
 							type: "GET",
 							async: false,
 							data: {
-								"art_id": response[i].follow_id,
+								"art_id": response[i].f_user_id,
 							},
 							success: function(artname) {
 								art_name=artname;
+								console.log(art_name)
 							}
 					 })
-					 content += '<td class="mailbox-name"><a href="/_05_CreationsFrame/CreationsPage2.jsp">'+art_name+'</a>'
-						 content +=		'</td>'
-						 content +=		'<td class="mailbox-name">'+response[i].follow_time+'</td>'
-						 content +=		'<button type="button" class="btn btn-default btn-sm">'
-						 content +=		'<i class="fa fa-trash-o"></i></button></td>'
-					  //end of ajax-fcAdr
-					 content += "</div>"; 
+						
+					 	 content += '<td class="mailbox-name"><a href="javascript:" class="img-link" id="ip_ar_id'+response[i].f_user_id+'">'+art_name+'</a></td>'
+						 content +=	'<td class="mailbox-name">'+response[i].follow_time+'</td>'
+						 content +='<td class="mailbox-star"><button type="button" id="'+response[i].follow_id+'" class="btn btn-default btn-sm" >'
+						 content +='<i class="fa fa-trash-o"></i></button></td>'
+							
+					 
 				  }
 				  //end of for-fBA
 				  var divp = document.getElementById("follow");
 				  divp.innerHTML = content;
 			  },			 
 		});
-	})
+	
+	 $('button').on('click', function(){
+		 console.log($(this).attr('id'))
+		 $.ajax({
+				url: "\_06_follow\\cancelfollow.do",
+				type: "POST",
+				async: false,
+				data: {
+					"follow_id":$(this).attr('id'),
+				},
+				success: function(cancel) {
+					console.log("delete")
+					$("#mainframe").empty();
+					$('#mainframe').html(cancel);
+				}
+		 	})
+		})
+	});
 	</script>
+	<script src="${context}\js\default.js"></script>
 	<!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
