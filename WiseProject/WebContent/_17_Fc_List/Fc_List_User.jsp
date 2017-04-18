@@ -39,19 +39,7 @@
 	            
 	            <!-- /.box-header -->
 	            <div class="box-body no-padding">
-	              <div class="mailbox-controls">
-	                <!-- Check all button -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
-<!-- 	                </button> -->
-	                <div id="btn_area">
-	                	<a href="../_11_Fc_info/Fc_Info.jsp">	              		
-		              		<input type="button" class="btn btn-warning" id="btn1" value="回上頁">
-		              	</a>
-<!-- 		                	<input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
-	              	</div>
-	              	<!-- /.btn-group -->
-	              
-	              </div>
+
 	              <div class="table-responsive mailbox-messages">
 	                <table class="table table-hover table-striped">
 	                
@@ -100,19 +88,6 @@
 	              <!-- /.mail-box-messages -->
 	            </div>
 	            
-	            <!-- /.box-body -->
-	            <div class="box-footer no-padding">
-	              <div class="mailbox-controls">
-	              	<div id="btn_area">	              		
-		              	<a href="${context}/_11_Fc_info/Fc_Info.jsp">	              		
-		              		<input type="button" class="btn btn-warning" id="btn1" value="回上頁">
-		              	</a>
-		              	
-<!-- 		                	<input type="submit" class="btn btn-danger" id="btn2" value="確認修改">     -->
-	              	</div>
-	              	<!-- /.btn-group -->
-	            </div>
-	          </div>
 	          <!-- /. box -->
 	        </div>
 			</div>
@@ -173,7 +148,7 @@
 						 }
 						 fcl_content += '<td class="mailbox-name">' + sponMode + '</td><td class="mailbox-name">NTD$' + fclist[i][6] + '</td>';
 						 fcl_content += '<td class="mailbox-name">'+ fclist[i][8] +'</a></td>';
-						 fcl_content += '<td class="mailbox-name">'+ fcPercentage +'%</a></td>';
+						 fcl_content += '<td class="mailbox-name">'+ fcPercentage.toFixed(2) +'%</a></td>';
 						 fcl_content += '</tr>';
 						}//end of fcl-loop					
 					 console.log(fcl_content);

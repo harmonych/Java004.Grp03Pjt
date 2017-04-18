@@ -378,8 +378,8 @@
 					  type: "POST", 
 					  async: false,
 					  data: { 
-					    "user_id":${LoginOK.user_id},
-					    "art_id":${ab.art_id},
+					    "user_id":user_id,
+					    "art_id":id,
 					  },
 					  success: function(responseMsg) {
 						alert('追隨成功');
