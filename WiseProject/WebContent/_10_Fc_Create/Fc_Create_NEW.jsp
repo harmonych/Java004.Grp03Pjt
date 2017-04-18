@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
     <html>
 	<c:set var="context" value="${pageContext.request.contextPath}" />
     <head>
@@ -11,18 +10,7 @@
 	  <title>建立專案</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-      <!-- Bootstrap 3.3.6 -->
-      <link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.min.css">
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-      <!-- Ionicons -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-      <!-- Theme style -->
-      <link rel="stylesheet" href="${context}/dist/css/AdminLTE.min.css">
-      
-      <link rel="stylesheet" href="${context}/dist/css/skins/_all-skins.min.css">
 
-   
       <style>
         .logo img {
           width: 50px;
@@ -54,8 +42,8 @@
 				<div class="card02 col-md-8 col-md-offset-2">
 					<div class="box box-warning">
 						<div class="box-header with-border">
-				        	<h3 class=""><b>建立專案</b></h3>
-				        	<div class="box-title">步驟1 >> 填寫資訊</div>
+				        	<h3 class="" ><b>建立專案</b></h3>
+				        	<div class="box-title" id ="demo3">步驟1 >> 填寫資訊</div>
 				        </div>
 						
 						<div class="box-body">	
@@ -65,7 +53,7 @@
 								<div id="ipt1">
 						        	<label>專案名稱</label>
 						        	<input id="art_id" name = "art_id" value="<c:out value ="${IsArtist.art_id}"/>" type="hidden"/>
-						        	<input type="text" name="fcname" value="${param.fcname}" class="form-control">
+						        	<input type="text" id= "fcname" name="fcname" value="${param.fcname}" class="form-control">
 									<font size="-1" color="#FF0000">${MsgMap.errorfcnameEmpty}${MsgMap.errorfcnameDup}</font>
 					            </div>
 										
@@ -146,10 +134,25 @@
 <%--       <script src="${context}/bootstrap/js/bootstrap.min.js"></script> --%>
 <!--       AdminLTE App -->
 <%--       <script src="${context}/dist/js/app.min.js"></script> --%>
-		
-      <!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+	<script type="text/javascript">
+$(function() {
+
+    $("#demo3").click(function() {
+    	//若會員輸入區塊有空格則填滿。
+    	if($('input[name="fcname"]').val() === "")	$('input[name="fcname"]').val("人類與狗的一生");            	 
+        console.log($('input[name="fcname"]').val());
+        if($('input[name="fcmoneys"]').val() === "")	$('input[name="fcmoneys"]').val("17630");            	 
+        console.log($('input[name="fcmoneys"]').val());
+        if($('input[name="starttime"]').val() === "")	$('input[name="starttime"]').val("2017-04-21");
+        console.log($('input[name="starttime"]').val());
+        if($('input[name="endtime"]').val() === "")	$('input[name="endtime"]').val("2017-07-21");        
+        console.log($('input[name="endtime"]').val());
+        if($('input[name="hashtag"]').val() === "")	$('input[name="hashtag"]').val("#狗 #人類 #好朋友 #動物 #城市");            	 
+        console.log($('input[name="hashtag"]').val());
+        if($('textarea[name="fcintroduction"]').val() === "")	$('textarea[name="fcintroduction"]').val("狗是人類最好的朋友不僅是狗狗種種窩心的舉動，讓人類認定狗狗是最好的動物朋友，連冷冰冰的科學研究也指出「狗是人類最好的朋友」這句話可能不是人類的一廂情願，是禁得起考驗的。狗會義氣相挺");            	      
+    });
+});
+</script>	
 </body>
+
 </html>
