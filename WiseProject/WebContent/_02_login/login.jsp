@@ -73,9 +73,9 @@
 					-moz-border-radius: 2px;
 					-webkit-border-radius: 2px;
 					border-radius: 2px;
-					-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-					-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-					box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+					-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0);
+					-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0);
+					box-shadow: 0px 2px 2px rgba(0, 0, 0);
 				}
 				
 				.form-control {
@@ -197,7 +197,7 @@
             <title>Login</title>
     </head>
 
-    <body>
+    <body background="http://yejuan.com.cn/blog/wp-content/uploads/2017/02/131-5-1920x1200.jpg">
         <c:set var="funcName" value="LOG" scope="session"/>
 <c:set var="msg" value="登入" />
 <%-- <c:if test="${ ! empty sessionScope.timeOut }" > <!-- 表示使用逾時，重新登入 --> --%>

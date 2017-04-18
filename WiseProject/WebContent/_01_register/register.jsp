@@ -215,9 +215,17 @@
 				    color: #f39c12;
 				    text-decoration: none;
 				}
+				
+				body {
+    				margin:0;
+    				padding:0;
+    				background: #000 url(http://yejuan.com.cn/blog/wp-content/uploads/2017/02/131-5-1920x1200.jpg) center center fixed no-repeat;
+    				-moz-background-size: cover;
+    				background-size: cover;
+					}
 
 </style>
-			<title>Login</title>
+			<title>Register</title>
 	</head>
 
 	<body>
