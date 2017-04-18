@@ -6,7 +6,9 @@
     <head>
 	  <c:set var="context" value="${pageContext.request.contextPath}" />
 	  <c:set var="userName" value="${LoginOK.user_name}" />
+	  <c:set var="userId" value="${LoginOK.user_id}" />
       <c:set var="file_name" value="${LoginOK.file_name}" />
+      
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Wise彙思創作募資</title>
@@ -150,10 +152,10 @@ desired effect
                   <!-- Menu toggle button -->
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="label label-success">4</span>
+                    <span class="label label-success">1</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li class="header">You have 4 messages</li>
+                    <li class="header">You have 1 messages</li>
                     <li>
                       <!-- inner menu: contains the messages -->
                       <ul class="menu">
@@ -163,24 +165,26 @@ desired effect
                             <div class="pull-left">
                               <!-- User Image -->
                               <!-- 留言系統代入留言者頭像及資料 -->                      
-                              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                              <img src="image/logo-tw.png" class="img-circle" alt="User Image">
                             </div>
                             <!-- Message title and timestamp -->
                             <h4>
-                              Support Team
-                              <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                              彙思
+<!--                               <small><i class="fa fa-clock-o"></i> 5 mins</small> -->
                             </h4>
                             <!-- The message -->
-                            <p>Why not buy a new awesome theme?</p>
+                            <p>彙思團隊歡迎您加入！</p>
                           </a>
                         </li>
                         <!-- end message -->
                       </ul>
                       <!-- /.menu -->
                     </li>
-                    <li class="footer"><a href="#">See All Messages</a></li>
+                    <li class="footer"><a href="javascript:;" >See All Messages</a></li>
                   </ul>
                 </li>
+                <input id="msg_user_id" value="<c:out value ="${LoginOK.user_id}"/>" type="hidden"/>
+                  
                 <!-- /.messages-menu -->
                 </c:when>
                </c:choose>
@@ -286,7 +290,7 @@ desired effect
                               <a href="#">追蹤名單</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="_17_Fc_List/Fc_List_User.jsp">投資計畫</a>
+                              <a href="javasript:;" id="sp_user_list">投資計畫</a>
                             </div>
                             <div class="col-xs-4 text-center">
                               <a href="_15_ShoppingCart/ShoppingCart_List.jsp">訂購清單</a>
@@ -300,8 +304,9 @@ desired effect
                             <a href="${context}/_14_UserData/ModifyUserInfo.jsp" id="mid_bt" class="btn btn-default btn-flat">個人資料</a>
                           </div>
                           <c:if test = "${LoginOK.check_tag}" >
-                          <div id="mid" class="mid">
-                            <a href="Javascript:;" class="btn btn-default btn-flat" id="isThisAnEffingJoke">個人主頁</a>
+                          <div id="mid" class="mid" >
+                          <input id="artId" name = "artId" value="<c:out value ="${IsArtist.art_id}"/>" type="hidden"/>
+                            <a href="Javascript:;" class="btn btn-default btn-flat" id="sp-personal-page">個人主頁</a>
                           </div>
                           </c:if>
                           <div id="mid" class="mid">
@@ -612,9 +617,11 @@ desired effect
 		    	}
 			});
 		  });
-	      $("#isThisAnEffingJoke").click(function(){
+	      $("#sp-personal-page").click(function(){
+	    	  var artId = $('#artId').val();
+	    	  console.log(artId);
 			  	$.ajax({
-					url:"\_05_CreationsFrame\\CreationsPage2.jsp",
+					url:"\_05_CreationsFrame\\DisplayArtist?art_id=" + artId,
 					context: document.body,
 					success: function(responseRSS){
 						$("#mainframe").empty();
@@ -622,7 +629,18 @@ desired effect
 						$(".mainfooter").empty();
 			    	}
 				});
-		  });  
+		  });
+	      $("#sp_user_list").click(function(){
+	         	$.ajax({
+                    url:"\_17_Fc_List\\Fc_List_User.jsp",
+					context: document.body,
+					success: function(responseUsL){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseUsL);
+						$(".mainfooter").empty();
+			    	}
+				});
+		  });
 		});
       </script>
 

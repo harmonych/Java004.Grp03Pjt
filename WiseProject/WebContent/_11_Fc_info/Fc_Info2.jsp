@@ -7,6 +7,7 @@
 
 <head>
 	  <c:set var = "fc_id" value = "${fb.fc_id}" />
+	  <c:set var = "userId" value = "${LoginOK.user_id}" />
 	  <c:set var="context" value="${pageContext.request.contextPath}" />
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -91,22 +92,36 @@
 						<div id="line"></div>
 					<c:choose>	
 					<c:when test="${(LoginOK != null )}">
+						<c:set var="contains" value="false" />
+						<c:forEach var="i" begin="0" end="${fn:length(sl)}">
+	   					<c:if test="${(sl[i].user_id) == (userId)}">
+<!-- 	   					偵測投資與否 -->
+						<c:set var = "spond_money" value ="${(sl[i].spon_money)}"/>
+	   					<c:set var="contains" value="true" />
+<%-- 	   					<c:out value ="${contains }"/> --%>
+	   					</c:if>
+						</c:forEach>
 						<div id="sponsor_area">
 						<h4 class="control-sidebar-subheading">
-	                       	募資計畫：風景畫募資
+	                       	募資進度：
 	                      <span class="pull-right-container">
-	                  <span class="label label-danger pull-right">目前進度：<fmt:formatNumber  value ="${(fb.now_money)/(fb.fc_money)*100}" maxFractionDigits="3"/>%</span>
+	                  <span class="label label-danger pull-right">目前進度：<fmt:formatNumber  value ="${(fb.now_money)/(fb.fc_money)*100}" maxFractionDigits="2"/>%</span>
 	                      </span>
 	                    </h4>
 	
 	                    <div class="progress progress-xxs">
-	                      <div class="progress-bar progress-bar-danger" style="width: <fmt:formatNumber  value ="${(fb.now_money)/(fb.fc_money)*100}" maxFractionDigits="3"/>%"></div>
+	                      <div class="progress-bar progress-bar-danger" style="width: <fmt:formatNumber  value ="${(fb.now_money)/(fb.fc_money)*100}" maxFractionDigits="2"/>%"></div>
 	                    </div>
 							<form ENCTYPE="multipart/form-data" method="POST" action="<c:url value='/_09_sponsor/sponsoringFc.do' />"  id="sponsoringFc" >
 	          				  <input id="fc_id2" name = "fc_id2" value="<c:out value ="${fb.fc_id}"/>" type="hidden"/>
 	            			  <input id="user_id2" name = "user_id2" value="<c:out value ="${LoginOK.user_id }"/>" type="hidden"/>
 	              			  <input id="spon_account" name = "spon_account" value="<c:out value ="${IsArtist.bank_account}"/>" type="hidden"/>			
-								<div id="sponsor_money">
+								<c:choose>
+								  <c:when test ="${(contains)== true}">
+								  	<span class ="btn1 btn-lg btn-block" align ="center">感謝您的支持</span>
+								  </c:when>
+								  <c:otherwise>
+								  <div id="sponsor_money">
 									<div>
 										<label>贊助金額</label>
 									</div>
@@ -126,18 +141,29 @@
 	                                    <label>贊助方式</label>                                
 	                                    <select class="form-control" id = "spon_mode" name ="spon_mode">
 	                                        <option value="1">轉帳</option>
-	                                        <option value="2">匯款</option>
+	                                        <option value="2">信用卡</option>
 	                                        
 	                                    </select>
 	                                </div>
 										
 							  </div>
-	
+
 								<div id="bt_area">
+								  
 									<input type="submit" name="submit" class="btn1 btn-lg btn-block" value="我要贊助">
+									</c:otherwise>
+									</c:choose>
 								</div>
 							</form>
 						</div>
+<%-- 						<c:set var="contains" value="false" /> --%>
+<%-- 						<c:forEach var="item" items="${sl.user_id}"> --%>
+<%--   						<c:if test="${item eq userId}"> --%>
+<%--   						<c:out value="${item } }"></c:out> --%>
+<%--     					<c:set var="contains" value="true" /> --%>
+<%--   						</c:if> --%>
+<%-- 						</c:forEach> --%>
+<%-- 						<c:if test ="${!empty sl['userId'] }"> --%>
 						</c:when>
 						<c:otherwise>
 							<div id="buy_area">
@@ -415,7 +441,22 @@
 							  resSponErr.abort();
 						  }
 					})
-			        alert("贊助成功!");	
+			        alert("贊助成功!");
+					$.ajax({
+						  url: "\_11_Fc_info\\DisplayFund",
+						  type: "GET", 
+						  data: { 
+						    "fc_id": fc_id, 
+						  },
+						  success: function(resSPage){
+							  $("#mainframe").empty();
+								$('#mainframe').html(resSPage);
+								$(".mainfooter").empty();
+						  },
+						  error: function(resSpageErr){
+							  resSpageErr.abort();
+						  }
+					})
 				}
 			}
 			

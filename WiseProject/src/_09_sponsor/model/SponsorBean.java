@@ -105,7 +105,7 @@ public class SponsorBean implements Serializable {
 		public Date getSpon_time() {
 			return spon_time;
 		}
-		public void setSpon_time(Timestamp spontime) {
+		public void setSpon_time(Date spontime) {
 			this.spon_time = spontime;
 		}
 		@Column(name = "spon_mode")

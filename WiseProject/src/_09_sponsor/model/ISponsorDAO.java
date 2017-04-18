@@ -15,5 +15,6 @@ public interface ISponsorDAO {
 	public SponsorBean FindByPrimaryKey(int spon_id);
 	public List<SponsorBean> getAllByFcId(int fcid);
 	public List<SponsorBean> getAllByUserId(int userid);
+	public List<SponsorBean> findAllByFcId(int fcid);
 
 }

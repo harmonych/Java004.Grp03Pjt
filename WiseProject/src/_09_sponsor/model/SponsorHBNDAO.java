@@ -11,6 +11,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import _01_register.util.HibernateUtil;
+import _07_funds.model.FundsBean;
+import _07_funds.model.FundsHibernateDAO;
+import _07_funds.model.IFundsDAO;
 
 
 public class SponsorHBNDAO implements ISponsorDAO {
@@ -47,11 +50,16 @@ public class SponsorHBNDAO implements ISponsorDAO {
 	@Override
 	public int sponsor(SponsorBean sb) {
 		int updateCount = 0;
+		FundsBean fb = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = null;
+		IFundsDAO fdao = new FundsHibernateDAO();
 		try{
 			tx = session.beginTransaction();
+			fb = fdao.findByPrimaryKey(sb.getFc_id());
+			fb.setNow_money((fb.getNow_money()+sb.getSpon_money()));
+			session.saveOrUpdate(fb);
 			session.save(sb);
 			updateCount = 1;
 			tx.commit();
@@ -91,8 +99,37 @@ public class SponsorHBNDAO implements ISponsorDAO {
 		List<SponsorBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
+//		String hql	= "SELECT b.user_name 'user_name', a.fc_id 'fc_id', a.spon_account 'spon_account', a.spon_mode ' spon_mode ', "
+//				+ "		a.spon_money ' spon_money', a.spon_time 'spon_time ', a.user_id ' user_id' ";
 		String hql	= "SELECT b.user_name, a.fc_id, a.spon_account, a.spon_mode, a.spon_money, a.spon_time, a.user_id ";
 		hql += "FROM SponsorBean a JOIN MemberBean b ON a.user_id = b.user_id WHERE fc_id = " + fcid + " ORDER BY spon_time desc";
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			TypedQuery<SponsorBean> query= session.createQuery(hql);
+			list = query.getResultList();
+			//list =session.createQuery("from FundsBean").getResultList();
+			Hibernate.initialize(list);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			if(tx!=null){
+				tx.rollback();
+			}
+		}finally{
+			session.close();
+		}
+		return list;
+	}
+	@Override
+	//純list
+	public List<SponsorBean> findAllByFcId(int fcid) {
+		List<SponsorBean> list =new ArrayList<>();
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.openSession();
+//		String hql	= "SELECT b.user_name 'user_name', a.fc_id 'fc_id', a.spon_account 'spon_account', a.spon_mode ' spon_mode ', "
+//				+ "		a.spon_money ' spon_money', a.spon_time 'spon_time ', a.user_id ' user_id' ";
+		String hql	= "FROM SponsorBean WHERE fc_id = " + fcid + " ORDER BY spon_time desc";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
@@ -136,13 +173,15 @@ public class SponsorHBNDAO implements ISponsorDAO {
 	}
 	
 	@Override
-	public List<SponsorBean> getAllByUserId(int userid) {
+	public List<SponsorBean> getAllByUserId(int userId) {
 		List<SponsorBean> list =new ArrayList<>();
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
 				
-		String hql = " SELECT b.fc_name, a.* "; 
-		hql +=		 " FROM SponsorBean a JOIN FundsBean b ON a.fc_id = b.fc_id WHERE user_id = " + userid + " ORDER BY spon_time desc";
+//		String hql = " SELECT b.fc_name, a.* "; 
+//		hql +=		 " FROM SponsorBean a JOIN FundsBean b ON a.fc_id = b.fc_id WHERE user_id = " + userid + " ORDER BY spon_time desc";
+		String hql = "SELECT a.user_id, a.fc_id, b.fc_name, b.art_id, a.spon_account, a.spon_mode, a.spon_money, a.spon_time, b.end_time, b.now_money, b.fc_money ";
+		hql += "FROM SponsorBean a JOIN FundsBean b ON a.fc_id = b.fc_id WHERE a.user_id = " + userId + " ORDER BY spon_time desc";
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();

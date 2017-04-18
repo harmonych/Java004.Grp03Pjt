@@ -36,12 +36,11 @@ public class SponsorUserJsonServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("application/json; charset=utf-8");
-	    int userid = Integer.parseInt(request.getParameter("userid").trim());
+	    int userId = Integer.parseInt(request.getParameter("userId").trim());
 	    PrintWriter out = response.getWriter();
 		try {
 			ISponsorDAO dao = new SponsorHBNDAO();
-			dao.setUser_id(userid);
-			List<SponsorBean> sb = dao.getAllByUserId(userid);
+			List<SponsorBean> sb = dao.getAllByUserId(userId);
 			final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			String categoriesJson = gson.toJson(sb);
             out.write(categoriesJson);

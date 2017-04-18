@@ -48,6 +48,7 @@ public class SponsorServlet extends HttpServlet {
 		String sps="";
 		int spon_mode = 0; //(String)session.getAttribute("user_name");
 		String spon_account ="" ;
+		ISponsorDAO dao = new SponsorHBNDAO();
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
 		GlobalService.exploreParts(parts, request);
 		
@@ -96,16 +97,11 @@ public class SponsorServlet extends HttpServlet {
 			int n = 0;
 			
 			if(spon_account == "" && spon_mode ==0){
-				ISponsorDAO dao = new SponsorHBNDAO();
 				SponsorBean sb = new SponsorBean(fc_id, user_id, spon_money);
 				n = dao.sponsor(sb);
-			}else if(spon_mode != 0 || spon_account != ""){
-				ISponsorDAO dao = new SponsorHBNDAO();
+			}else {
 				SponsorBean sb = new SponsorBean(fc_id, user_id, spon_money, spon_mode, spon_account);
 				n = dao.sponsor(sb);
-			}else{	
-				ISponsorDAO dao = new SponsorHBNDAO();
-				SponsorBean sb = new SponsorBean(fc_id, user_id, spon_money, spon_mode, spon_account);
 			}
 			
 		if (n == 0) {

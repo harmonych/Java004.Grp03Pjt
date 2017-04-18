@@ -219,7 +219,7 @@
 				var content = '';
 				console.log("this is products:");
 				console.log(products);	
-				for(var j =0  ; j <(products.length / 3-1) ; j++){
+				for(var j =0  ; j <(products.length / 3) ; j++){
 					content += '<div class="row">';
 					for(var i=0; i < 3; i++){
 						content += '<div class="card col-sm-4 col-md-4 col-md-4" data-toggle="modal" >';
@@ -233,11 +233,12 @@
 							  },
 							  success: function(resProPica) {
 								 //丟回針對pro_id的所有pic_address
-// 								 if (!$.trim(resProPica)){  
-									 pn = resProPica;	 
-// 								 }else{
-// 									 return false;
-// 								 }								 
+ 								 if (!$.trim(resProPica)){  
+									 return false;	 
+ 								 }else{
+ 									 
+									 pn = resProPica;
+ 								 }								 
 							  },
 							  error: function(proPicErr) {
 								 console.log(proPicErr);
@@ -250,7 +251,7 @@
 						content += '<p text-align = "center">' + products[k].pro_name + '</p>' + '</a></div>';   
 						
 						k++;
-// 						if (k == products.length-1) break;
+ 						if (k == products.length) break;
 					}//end of inner-for-ajax
 				
 					content += '</div>';
