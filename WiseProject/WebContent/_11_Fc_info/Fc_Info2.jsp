@@ -262,7 +262,7 @@
         <!-- 留言串列 -->
         <section>
         	<div class="row" id ="renewToView">
-<!--           		<div class="card03 col-md-8 col-md-offset-2"> -->
+          		<div class="card03 col-md-8 col-md-offset-2">
 <!-- 			        <div class="box box-default" id = "previous_msg"> -->
 <!-- 			          <div class="box-header with-border"> -->
 <!-- 			            <div> -->
@@ -278,7 +278,7 @@
 <!-- 			          </div> -->
 <!-- 			          /.box-body -->
 <!-- 			        </div> -->
-<!-- 			   </div>      -->
+			   </div>     
 			</div>	        
         </section>
 <!--       </div> -->
@@ -317,23 +317,24 @@
 					  var msgStr ='<div class="card03 col-md-8 col-md-offset-2">';
 					  msgStr += '<div class="box box-default " id = "previous_msg">';
 					  //start of fist for-loop
+					  var j = respm.length;
 					  for (var i = 0 ; i<respm.length; i++){
 						  //如果設為私密，但讀者非寄送者或者擁有者 first if
 						  if(respm[i].msg_status == 0 && (reader_id != respm[i].user_id && reader_id != receiver_id || reader_id == null || reader_id =="" )){
-							  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-							  msgStr += '</h4></div><br><div>';
-							  msgStr += '<div class="mes_by"></div></div></div>';
-							  msgStr += '<div class="box-body"><div class="message">此為私密留言內容</div></div>';
+							  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">#' + (j--);
+							  msgStr += '</h4></div><br>';
+// 							  msgStr += '<div><div class="mes_by"></div></div>';
+							  msgStr += '</div><div class="box-body"><div class="message">此為私密留言內容</div></div>';
 						  }else{
 							  //second if 讀者為寄送者或者擁有者
 							  if(respm[i].msg_status == 0 && (reader_id == respm[i].user_id || reader_id == receiver_id)){
-								  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-								  msgStr += respm[i].msg_title + '</h4></div><br><div>';
+								  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">#';
+								  msgStr += (j--) + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_title + '</h4></div><br><div>';
 								  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
 								  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
 							  }else{						  
-								  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">';
-								  msgStr += respm[i].msg_title + '</h4></div><br><div>';
+								  msgStr += '<div class="box-header with-border"><div><h4 class="box-title">#';
+								  msgStr += (j--) + respm[i].msg_title + '</h4></div><br><div>';
 								  msgStr += '<div class="mes_by">' + respm[i].sender_name + '&nbsp&nbsp&nbsp&nbsp' + respm[i].msg_time +'</div></div></div>';
 								  msgStr += '<div class="box-body"><div class="message">' + respm[i].msg_text + '</div></div>';
 							  }//end of second if
