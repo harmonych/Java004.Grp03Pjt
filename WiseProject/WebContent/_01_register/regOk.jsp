@@ -21,7 +21,7 @@
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
 <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-<title>商品建立成功</title>
+<title>註冊成功</title>
 
 
 <style >

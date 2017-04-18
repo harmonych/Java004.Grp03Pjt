@@ -345,13 +345,10 @@ desired effect
 <!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
 <!-- 	                </button> -->
 	                <div class="btn-group">
-	                		                	
- 	                	<button type="button" href="../_13_Product_info/Product_info.jsp" class="btn btn-block btn-warning">回上頁
- 	                		
- 	                	</button>
-<!-- 	            	<button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button> -->
-<!-- 	                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
+	                	<a href="../_13_Product_info/Product_info.jsp">	                	
+	 	                	<button type="button" class="btn btn-block btn-warning">回上頁	           	
+	 	                	</button>
+ 	                	</a>
 	                </div>
 	              </div>
 	              <div class="table-responsive mailbox-messages">
@@ -403,12 +400,11 @@ desired effect
 	            <div class="box-footer no-padding">
 	              <div class="mailbox-controls">
 	              	<div class="btn-group">
-	                	<a type="" href="../_13_Product_info/Product_info.jsp" class="">回上頁</a>
-<!-- 	            	
+	                	<a href="../_13_Product_info/Product_info.jsp">	                	
+	 	                	<button type="button" class="btn btn-block btn-warning">回上頁	           	
+	 	                	</button>
+ 	                	</a>
 	                </div>
-	                <!-- /.btn-group -->
-	                
-	              </div>
 	            </div>
 	          </div>
 	          <!-- /. box -->

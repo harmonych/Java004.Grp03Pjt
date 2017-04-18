@@ -422,7 +422,7 @@ desired effect
 									</div>
 									<div class="form-group">
 										<label for="exampleInputPassword1">連絡電話</label> 
-										<input type="password" class="form-control" name="phone" id="exampleInputPassword1" placeholder="連絡電話">
+										<input type="text" class="form-control" name="phone" id="exampleInputPassword1" placeholder="連絡電話">
 									</div>
 									<div class="form-group">
 										<label for="">付款方式</label><br /> 
@@ -442,7 +442,9 @@ desired effect
 								<!-- /.box-body -->
 
 								<div class="box-footer">
-									<button type="submit" class="btn btn-warning">確認訂購</button>
+									<button type="submit" class="btn btn-warning">
+										<a href="">確認訂購</a>
+									</button>
 								</div>
 							</form>
 						</div>
