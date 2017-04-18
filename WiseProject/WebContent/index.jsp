@@ -180,7 +180,7 @@ desired effect
                       </ul>
                       <!-- /.menu -->
                     </li>
-                    <li class="footer"><a href="javascript:;" >See All Messages</a></li>
+                    <li class="footer"><a href="javascript:;" id = "msg-sys-tog">觀看全部留言訊息</a></li>
                   </ul>
                 </li>
                 <input id="msg_user_id" value="<c:out value ="${LoginOK.user_id}"/>" type="hidden"/>
@@ -632,7 +632,7 @@ desired effect
 		  });
 	      $("#sp_user_list").click(function(){
 	         	$.ajax({
-                    url:"\_17_Fc_List\\Fc_List_User.jsp",
+                  url:"\_17_Fc_List\\Fc_List_User.jsp",
 					context: document.body,
 					success: function(responseUsL){
 						$("#mainframe").empty();
@@ -641,7 +641,21 @@ desired effect
 			    	}
 				});
 		  });
-		
+	      var userId = $('#msg_user_id').val();
+	      $("#msg-sys-tog").click(function(){
+	    	  $.ajax({
+				  url: "\_06_mailbox\\messageReceived.do?r_user_id=" + userId,
+				  type: "GET", 
+				  success: function(responseMsg) {
+					$("#mainframe").empty();
+					$('#mainframe').html(responseMsg);
+				  },
+				  error: function(responseMsgErr) {
+					  responseMsgErr.abort();
+				  }
+			});
+		  });
+		});
 	     $("#Follow").click(function(){
 			  	$.ajax({
 					url:"\_18_Follow_List\\Follow_List.jsp",
@@ -652,8 +666,8 @@ desired effect
 						$(".mainfooter").empty();
 			    	}
 				});
-	     });
-      });   
+	     })
+	     
       </script>
 
    </body>

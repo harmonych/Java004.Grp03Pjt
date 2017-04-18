@@ -50,5 +50,6 @@
 	<mapping class="_09_sponsor.model.SponsorBean"/>
 	<mapping class="_11_message.model.promessage.ProMessageBean"/>
 	<mapping class="_11_message.model.fcmessage.FcMessageBean"/>
+	<mapping class="_11_message.model.message.MessageBean"/>
 	</session-factory>
 </hibernate-configuration>

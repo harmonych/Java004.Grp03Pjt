@@ -98,10 +98,10 @@
               <h3 class="box-title">收件匣</h3>
 
               <div class="box-tools pull-right">
-                <div class="has-feedback">
-                  <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
+<!--                 <div class="has-feedback"> -->
+<!--                   <input type="text" class="form-control input-sm" placeholder="Search Mail"> -->
+<!--                   <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
+<!--                 </div> -->
               </div>
               <!-- /.box-tools -->
             </div>
@@ -111,29 +111,29 @@
                 <!-- Check all button -->
                 <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                 </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                </div>
+<!--                 <div class="btn-group"> -->
+<!--                   <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button> -->
+<!--                   <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button> -->
+<!--                   <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button> -->
+<!--                 </div> -->
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  1-10/50
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
+<!--                 <div class="pull-right"> -->
+<!--                   1-10/50 -->
+<!--                   <div class="btn-group"> -->
+<!--                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button> -->
+<!--                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+<!--                   </div> -->
                   <!-- /.btn-group -->
-                </div>
+<!--                 </div> -->
                 <!-- /.pull-right -->
               </div>
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                   <tbody>
-					<c:forEach var="i" begin="0" end="${fn:length(rmbl)-1}">
+					<c:forEach var="i" begin="0" end="${fn:length(rmbl)}">
 						<tr class="readMailLink" id ="<c:out value ="${rmbl[i].msg_id}"/>">
-					<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+					<td class="mailbox-star"><a href="javascript:;"><i class="fa fa-star-o text-yellow"></i></a></td>
                     <td class="mailbox-name"><c:out value = "${rmbl[i].sender_name }"/></td>
 	                <td class="mailbox-subject"><a href="javascript:;"><b><c:out value = "${rmbl[i].title}"/></b></a></td>
 						</tr>
@@ -166,14 +166,14 @@
                 </div>
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-                  </div>
+<!--                 <div class="pull-right"> -->
+<!--                   1-50/200 -->
+<!--                   <div class="btn-group"> -->
+<!--                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button> -->
+<!--                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+<!--                   </div> -->
                   <!-- /.btn-group -->
-                </div>
+<!--                 </div> -->
                 <!-- /.pull-right -->
               </div>
             </div>
