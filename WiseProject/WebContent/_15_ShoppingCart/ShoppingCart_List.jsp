@@ -1,17 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
 
     <head>
+    
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <link rel="stylesheet" href="../css/ShoppingCart_List.css">
-	  <title>購物車清單</title>
-      <!-- Tell the browser to be responsive to screen width -->
+      <title>購物車清單</title>
+	  <c:set var="context" value="${pageContext.request.contextPath}" />
+	  <c:set var="userName" value="${LoginOK.user_name}" />
+	  <c:set var="userId" value="${LoginOK.user_id}" />
+      <c:set var="file_name" value="${LoginOK.file_name}" />
+	  <!-- Tell the browser to be responsive to screen width -->     
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-      <!-- Bootstrap 3.3.6 -->
       <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
       <!-- Font Awesome -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -19,11 +21,15 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
       <!-- Theme style -->
       <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-      <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
+
       <!-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> -->
       <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+      
+	<link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
+	
+      <link rel="stylesheet" href="../css/index.css">
+      
+      <link rel="stylesheet" href="../css/ShoppingCart_List.css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,12 +43,49 @@
           height: 35px;
         }
         
-        .carousel-inner .item img {
-          max-height: 600px;
+        .carousel-inner {
+			height: 100%; 
+ 		}
+ 		.img {
+ 			max-width: 100%;
+            height: auto;
         }
         .navbar-form{
           display: inline-flex;
         }
+/*      側邊欄判斷螢幕視窗,變動選項欄位 */
+		@media screen and (max-width: 766px) {
+	  		.skin-yellow-light .sidebar-menu>li.header {
+		   		 padding: 40px;
+			    }
+			.user-panel{
+				 padding-top: 80px;
+			
+				}
+		}
+		.fa{
+			color:gray;
+		}
+		.box-title{
+			font-family:Microsoft JhengHei;
+			font-weight:bloder;
+		}
+		skin-yellow-light .sidebar-menu>li:hover>a, 
+			.skin-yellow-light .sidebar-menu>li.active>a {
+		    color: #000;
+		    background: rgba(102, 102, 102, 0.2);
+		}
+
+		.skin-yellow-light .wrapper, .skin-yellow-light .main-sidebar, 
+			.skin-yellow-light .left-side {
+		    background-color: rgba(243, 156, 18, 0.4);
+		}
+
+		.skin-yellow-light .sidebar-menu>li.header {
+		    color: #848484;
+		    background: rgba(243, 156, 18, 0);
+		
+		} 
       </style>
     </head>
     <!--
@@ -66,34 +109,41 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-    <body class="hold-transition skin-yellow-light sidebar-mini ">
-      <c:set var="userName" value="${LoginOK.user_name}" />
-      <c:set var="file_name" value="${LoginOK.file_name}" />
-      <div class="wrapper">
+  <body class="hold-transition skin-yellow-light sidebar-mini ">
+    <div class="wrapper">
 
         <!-- Main Header -->
         <header class="main-header">
 
           <!-- Logo -->
-          <a href="../index.jsp" class="logo">
+          <a href="index.jsp" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><img src="../image/logo-tw-1.png" alt="minilogo"></span>
+            <span class="logo-mini"><img src="${context }/image/logo-tw-1.png" alt="minilogo"></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><img src="../image/logo-tw.png" alt="normallogo"></span>
+            <span class="logo-lg"><img src="${context }/image/logo-tw.png" alt="normallogo"></span>
           </a>
 
           <!-- Header Navbar -->
           <nav class="navbar navbar-static-top" role="navigation">
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="navbar-form">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-              </div>
-            </form>
+           <!-- search form (Optional) -->
+<!--             <form action="#" method="get" class="navbar-form"> -->
+<!--               <div class="input-group"> -->
+<!--                 <input type="text" name="q" class="form-control" placeholder="Search..."> -->
+<!--                 <span class="input-group-btn"> -->
+<!--                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i> -->
+<!--                 </button> -->
+<!--               </span> -->
+<!--               </div> -->
+<!--             </form> -->
+			  <form class="navbar-form" role="search">
+			    <div class="input-group">
+                    <input type="text" class="form-control icon-search" id="search" name="search" placeholder="Search">
+                    <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+	                </button>
+	               </span>
+	              </div>
+                </form>
             <!-- /.search form -->
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -103,14 +153,16 @@ desired effect
             <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
+               <c:choose>
+              	<c:when test="${!empty LoginOK}">
                 <li class="dropdown messages-menu">
                   <!-- Menu toggle button -->
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="label label-success">4</span>
+                    <span class="label label-success">1</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li class="header">You have 4 messages</li>
+                    <li class="header">You have 1 messages</li>
                     <li>
                       <!-- inner menu: contains the messages -->
                       <ul class="menu">
@@ -120,93 +172,35 @@ desired effect
                             <div class="pull-left">
                               <!-- User Image -->
                               <!-- 留言系統代入留言者頭像及資料 -->                      
-                              <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                              <img src="image/logo-tw.png" class="img-circle" alt="User Image">
                             </div>
                             <!-- Message title and timestamp -->
                             <h4>
-                              Support Team
-                              <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                              彙思
+<!--                               <small><i class="fa fa-clock-o"></i> 5 mins</small> -->
                             </h4>
                             <!-- The message -->
-                            <p>Why not buy a new awesome theme?</p>
+                            <p>彙思團隊歡迎您加入！</p>
                           </a>
                         </li>
                         <!-- end message -->
                       </ul>
                       <!-- /.menu -->
                     </li>
-                    <li class="footer"><a href="#">See All Messages</a></li>
+                    <li class="footer"><a href="javascript:;" id = "msg-sys-tog">觀看全部留言訊息</a></li>
                   </ul>
                 </li>
+                <input id="msg_user_id" value="<c:out value ="${LoginOK.user_id}"/>" type="hidden"/>
+                  
                 <!-- /.messages-menu -->
-
-                <!-- Notifications Menu -->
-                <li class="dropdown notifications-menu">
-                  <!-- Menu toggle button -->
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="label label-warning">10</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">You have 10 notifications</li>
-                    <li>
-                      <!-- Inner Menu: contains the notifications -->
-                      <ul class="menu">
-                        <li>
-                          <!-- start notification -->
-                          <a href="#">
-                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                          </a>
-                        </li>
-                        <!-- end notification -->
-                      </ul>
-                    </li>
-                    <li class="footer"><a href="#">View all</a></li>
-                  </ul>
-                </li>
-                <!-- Tasks Menu -->
-                <li class="dropdown tasks-menu">
-                  <!-- Menu Toggle Button -->
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-flag-o"></i>
-                    <span class="label label-danger">9</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">You have 9 tasks</li>
-                    <li>
-                      <!-- Inner menu: contains the tasks -->
-                      <ul class="menu">
-                        <li>
-                          <!-- Task item -->
-                          <a href="#">
-                            <!-- Task title and progress text -->
-                            <h3>
-                              Design some buttons
-                              <small class="pull-right">20%</small>
-                            </h3>
-                            <!-- The progress bar -->
-                            <div class="progress xs">
-                              <!-- Change the css width attribute to simulate progress -->
-                              <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">20% Complete</span>
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                        <!-- end task item -->
-                      </ul>
-                    </li>
-                    <li class="footer">
-                      <a href="#">View all tasks</a>
-                    </li>
-                  </ul>
-                </li>
+                </c:when>
+               </c:choose>      
+  
                 <!-- User Account Menu -->
 
-
-                <c:choose>
+               <c:choose>
                   <c:when test="${empty LoginOK}">
-                    <li><a href="../_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+                    <li><a href="_02_login/login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
                   </c:when>
                   <c:when test="${!empty LoginOK}">
                     <li class="dropdown user user-menu">
@@ -230,24 +224,30 @@ desired effect
                         <li class="user-body">
                           <div class="row">
                             <div class="col-xs-4 text-center">
-                              <a href="#">追蹤名單</a>
+                              <a href="Javascript:" id="Follow">追蹤名單</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="#">投資計畫</a>
+                              <a href="javasript:;" id="sp_user_list">投資計畫</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                              <a href="#">訂購清單</a>
+                              <a href="_15_ShoppingCart/ShoppingCart_List.jsp">購物車</a>
                             </div>
                           </div>
                           <!-- /.row -->
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                          <div class="pull-left">
-                            <a href="../_14_UserData/ModifyUserInfo.jsp" class="btn btn-default btn-flat">個人資料</a>
+                          <div id="mid" class="mid">
+                            <a href="${context}/_14_UserData/ModifyUserInfo.jsp" id="mid_bt" class="btn btn-default btn-flat">個人資料</a>
                           </div>
-                          <div class="pull-right">
-                            <a href="../_02_login/logout.jsp" class="btn btn-default btn-flat">登出</a>
+                          <c:if test = "${LoginOK.check_tag}" >
+                          <div id="mid" class="mid" >
+                          <input id="artId" name = "artId" value="<c:out value ="${IsArtist.art_id}"/>" type="hidden"/>
+                            <a href="Javascript:;" class="btn btn-default btn-flat" id="sp-personal-page">個人主頁</a>
+                          </div>
+                          </c:if>
+                          <div id="mid" class="mid">
+                            <a href="${context}/_02_login/logout.jsp" id="mid_bt" class="btn btn-default btn-flat">登出</a>
                           </div>
                         </li>
                       </ul>
@@ -256,7 +256,7 @@ desired effect
                 </c:choose>
                 <c:choose>
                   <c:when test="${empty LoginOK}">
-                    <li><a href="../_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
+                    <li><a href="_01_register/register.jsp"><span class="glyphicon glyphicon-registration-mark"></span>註冊</a></li>
                   </c:when>
                 </c:choose>
                 <!-- User Account Menu -->
@@ -276,47 +276,33 @@ desired effect
           <section class="sidebar">
 
             <!-- Sidebar user panel (optional) -->
-            <c:choose>
-            	<c:when test="${empty LoginOK}">
-                </c:when>
-                <c:when test="${!empty LoginOK}">
-		            <div class="user-panel">
-		              <div class="pull-left image">
-		                <img src="${file_name}" class="img-circle" alt="User Image">
-		              </div>
-		              <div class="pull-left info">
-		                <p>${userName}</p>
-		                <!-- Status -->
-		                <a href="#"><i class="fa fa-circle text-success"></i> 在線</a>
-		              </div>
-		            </div>
-				</c:when>
-			</c:choose>
+<%--             <c:choose> --%>
+<%--             	<c:when test="${empty LoginOK}"> --%>
+<%--                 </c:when> --%>
+<%--                 <c:when test="${!empty LoginOK}"> --%>
+<!-- 		            <div class="user-panel"> -->
+<!-- 		              <div class="pull-left image"> -->
+<%-- 		                <img src="${file_name}" class="img-circle" alt="User Image"> --%>
+<!-- 		              </div> -->
+<!-- 		              <div class="pull-left info"> -->
+<%-- 		                <p>${userName}</p> --%>
+<!-- 		                Status -->
+<!-- 		                <a href="#"><i class="fa fa-circle text-success"></i> 在線</a> -->
+<!-- 		              </div> -->
+<!-- 		            </div> -->
+<%-- 				</c:when> --%>
+<%-- 			</c:choose> --%>
 
 
             <!-- Sidebar Menu -->
-            <ul class="sidebar-menu">
-              <li class="header">HEADER</li>
+			<ul class="sidebar-menu">
+              <li class="header"></li> <!-- HEADER -->
               <!-- Optionally, you can add icons to the links -->
-              <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>搜尋系統</span>
-		            <span class="pull-right-container">
-		              <i class="fa fa-angle-left pull-right"></i>
-		            </span>
-         		 </a>
-                <ul class="treeview-menu">
-                  <li><a href="../_08_ImgSearch\img-search-page.html">創作者</a></li>
-                  <li><a href="../_08_ImgSearch\img-search-page.html">商城作品</a></li>
-                  <li><a href="../_08_ImgSearch\img-search-page.html">募集作品</a></li>
-                </ul>
-              </li>
-              <li class="active"><a href="../_05_CreationsFrame/Creations.jsp"><i class="fa fa-link"></i> 
-              <span>創作平台</span></a>
-              </li>
-              <li><a href="../_06_fundsFrame/funds.jsp"><i class="fa fa-link"></i> 
-              <span>募資平台</span></a>
-              </li>
-
+              <li class = "sp_search"><a href="javascript:;"><i class="fa fa-fw fa-search"></i><span>搜尋系統</span></a></li>
+              <li id = "sp-artist"><a href="javascript:;"><i class="fa fa-fw fa-paint-brush"></i><span>創作平台</span></a></li>
+              <li id = "sp-funds"><a href="javascript:;"><i class="fa fa-fw fa-group"></i><span>作品募資</span></a></li>
+              <li id = "sp-product"><a href="javascript:;"><i class="fa fa-fw fa-gift"></i><span>文創商城</span></a></li>
+				
             </ul>
             <!-- /.sidebar-menu -->
           </section>
@@ -324,7 +310,7 @@ desired effect
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" id="mainframe">
           <!-- Content Header (Page header) -->
           <section class="content-header">
           </section>
@@ -345,7 +331,8 @@ desired effect
 <!-- 	                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i> -->
 <!-- 	                </button> -->
 	                <div class="btn-group">
-	                	<a href="../_13_Product_info/Product_All.jsp">	                	
+<!-- 	                	<a href="javascript:;" class="sp-product">	                	 -->
+							<a href="${context}/index.jsp">
 	 	                	<button type="button" class="btn btn-block btn-warning">返回商城	           	
 	 	                	</button>
  	                	</a>
@@ -400,8 +387,9 @@ desired effect
 	            <div class="box-footer no-padding">
 	              <div class="mailbox-controls">
 	              	<div class="btn-group">
-	                	<a href="../_13_Product_info/Product_All.jsp">	                	
-	 	                	<button type="button" class="btn btn-block btn-warning">返回商城	           	
+<!-- 	                	<a href="javascript:;" class="sp-product">	                	 -->
+						<a href="${context}/index.jsp">
+	 	                	<button type="button" class="btn btn-block btn-warning" >返回商城	           	
 	 	                	</button>
  	                	</a>
 	                </div>
@@ -518,5 +506,106 @@ desired effect
      user experience. Slimscroll is required when using the
      fixed layout. -->
 </body>
+<script type="text/javascript">
+      $(document).ready(function(){
+    	  $("#sp-artist").click(function(){
+      	    $.ajax({
+  				url:"\_05_CreationsFrame\\Creations_All.jsp",
+  				context: document.body,
+  				success: function(responseCreatorAll){
+  					$("#mainframe").empty();
+  					$('#mainframe').html(responseCreatorAll);
+//       	    	  $('.content-wrapper').append('<section class =".content-header"></section>');
+  					$(".mainfooter").empty();
+      	      }
+      	    });
+      	  })
+    	  
+    	  $("#sp-funds").click(function(){
+      	    $.ajax({
+  				url:"../_07_fundsFrame/funds.jsp",
+  				context: document.body,
+  				success: function(responseFundsAll){
+  					$("#mainframe").empty();
+  					$('#mainframe').html(responseFundsAll);
+  					$(".mainfooter").empty();
+      	      }
+      	    });
+      	  });
+          
+	      $(".sp-product").click(function(){
+	    	    $.ajax({
+					url:"../_13_Product_info/Product_All.jsp",
+					context: document.body,
+					success: function(responseProAll){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseProAll);
+						$(".mainfooter").empty();
+	    	      }
+	    	    });
+	    	  });
+	      $(".sp_search").click(function(){
+		  	$.ajax({
+				url:"../_08_ImgSearch/img-search-page.jsp",
+				context: document.body,
+				success: function(responseImgSearch){
+					$("#mainframe").empty();
+					$('#mainframe').html(responseImgSearch);
+					$(".mainfooter").empty();
+		    	}
+			});
+		  });
+	      $("#sp-personal-page").click(function(){
+	    	  var artId = $('#artId').val();
+	    	  console.log(artId);
+			  	$.ajax({
+					url:"\_05_CreationsFrame\\DisplayArtist?art_id=" + artId,
+					context: document.body,
+					success: function(responseRSS){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseRSS);
+						$(".mainfooter").empty();
+			    	}
+				});
+		  });
+	      $("#sp_user_list").click(function(){
+	         	$.ajax({
+                  url:"\_17_Fc_List\\Fc_List_User.jsp",
+					context: document.body,
+					success: function(responseUsL){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseUsL);
+						$(".mainfooter").empty();
+			    	}
+				});
+		  });
+	      var userId = $('#msg_user_id').val();
+	      $("#msg-sys-tog").click(function(){
+	    	  $.ajax({
+				  url: "\_06_mailbox\\messageReceived.do?r_user_id=" + userId,
+				  type: "GET", 
+				  success: function(responseMsg) {
+					$("#mainframe").empty();
+					$('#mainframe').html(responseMsg);
+				  },
+				  error: function(responseMsgErr) {
+					  responseMsgErr.abort();
+				  }
+			});
+		  });
+		});
+	     $("#Follow").click(function(){
+			  	$.ajax({
+					url:"\_18_Follow_List\\Follow_List.jsp",
+					context: document.body,
+					success: function(responseFollow){
+						$("#mainframe").empty();
+						$('#mainframe').html(responseFollow);
+						$(".mainfooter").empty();
+			    	}
+				});
+	     })
+	     
+      </script>
 
 </html>
