@@ -641,7 +641,7 @@ desired effect
 			    	}
 				});
 		  });
-		});
+		
 	     $("#Follow").click(function(){
 			  	$.ajax({
 					url:"\_18_Follow_List\\Follow_List.jsp",
@@ -652,7 +652,8 @@ desired effect
 						$(".mainfooter").empty();
 			    	}
 				});
-
+	     });
+      });   
       </script>
 
    </body>
