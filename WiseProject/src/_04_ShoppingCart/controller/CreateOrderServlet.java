@@ -38,9 +38,17 @@ public class CreateOrderServlet extends HttpServlet {
 			return;
 		}
 		// 取出存放在session物件內的ShoppingCart物件
-		ShoppingCart cart = (ShoppingCart)session.getAttribute("ShoppingCart");
+		
 		ShoppingCart orderList = (ShoppingCart)session.getAttribute("OrderList");
 		ShoppingCart checkoutlist = (ShoppingCart)session.getAttribute("CheckOutList");
+		
+		if(orderList == null){
+			// 就新建orderList物件
+			orderList = new ShoppingCart();
+			// 將此新建orderList的物件放到session物件內
+			session.setAttribute("OrderList", orderList);   // ${ShoppingCart.zzz}
+		}
+				
 		
 		
 		String real_name	= request.getParameter("real_name");
@@ -61,17 +69,14 @@ public class CreateOrderServlet extends HttpServlet {
 			user_id = ob1.getUser_id();
 			art_id = ob1.getArt_id();
 			total = ob1.getTotal();
-			}
-		
+		}
 		// 將訂單資料封裝到OrderBean內，並將ob存入資料庫。
-		OrderBean ob = new OrderBean(user_id, art_id, 0, real_name,
-						total, address, phone, transport, payment);
-		IOrderDAO orderDAO = new OrderHibernateDAO();
-		orderDAO.insert(ob);
-		
-		// 取出ob存入資料庫後自動產生order_id
-		order_id = ob.getOrder_id();
-		
+				OrderBean ob = new OrderBean(user_id, art_id, 0, real_name,
+								total, address, phone, transport, payment);
+				IOrderDAO orderDAO = new OrderHibernateDAO();
+				orderDAO.insert(ob);
+				// 取出ob存入資料庫後自動產生order_id
+				order_id = ob.getOrder_id();
 		
 		OrderItemBean oib = null;
 		IOrderItemDAO orderItemDAO = new OrderItemHibernateDAO();
@@ -85,6 +90,7 @@ public class CreateOrderServlet extends HttpServlet {
 		//刪除結帳清單內已結帳商品的Session
 		checkoutlist.deleteProduct(pro_id);
 		}
+		
 		//刪除訂單清單內已結帳訂單的Session
 		orderList.deleteOrderListItem(art_id);
 		
