@@ -224,17 +224,17 @@
 						</c:if>
 					</c:if>
 					<div id="bt_area" class="btn-group-vertical">   
+					<c:if test="${account != mb.account}">
 					<c:choose>
 						<c:when test="${LoginOK == null}">
 <%-- 							<li><a href="${context}/_02_login/login.jsp"> --%>
 <!-- 							<i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> -->
 								
 								<a href="${context}/_02_login/login.jsp" id="msgsys" class="btn btn-block btn-social btn-warning">
-								<i class="glyphicon glyphicon-send"></i> 訪客留言
-								</a>
+								<i class="glyphicon glyphicon-send"></i> 訪客留言</a>
 						</c:when>
 						<c:otherwise>
-
+							
 							<c:set var="contains" value="false" />
 							<c:forEach var="i" begin="0" end="${fn:length(fb)}">
 								<c:if test="${(fb[i].user_id) == (userId)}">
@@ -247,29 +247,21 @@
 							
 							<c:choose>
 								<c:when test="${(contains)== true}">
-									<span class="" align="center">您已追隨此作者</span>
+									<a href="javascript:;" id="" class="btn btn-social btn-warning">
+											<i class="glyphicon glyphicon-star" ></i>您已追隨此作者	</a></li>
 								</c:when>
 								<c:otherwise>
-<!-- 									<li><a href="javascript:" id="followdo"><i -->
-<!-- 									class="fa fa-fw fa-heart-o" id="msgsys"></i>追隨作者</a></li> -->
-<!-- 										
-											<a href="javascript:" id="followdo" class="btn btn-social btn-warning"> -->
-<!-- 											<i class="glyphicon glyphicon-heart"></i> 加入追蹤 -->
-<!-- 										</a> -->
-<li>
-										<a href="javascript:;" id="followdo" class="btn btn-social btn-warning">
-											<i class="glyphicon glyphicon-heart" id="msgsys"></i>追隨作者
-										</a></li>
+											<li><a href="javascript:;" id="followdo" class="btn btn-social btn-warning">
+											<i class="glyphicon glyphicon-heart" ></i>追隨作者	</a></li>
 								</c:otherwise>
 							</c:choose>
-<!-- 							<li><a href="javascript:;" id="msgsys"><i -->
-<!-- 									class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> -->
+							
 										<a href="javascript:;" id="msgsys" class="btn btn-block btn-social btn-warning">
-												<i class="glyphicon glyphicon-send"></i> 訪客留言
-										</a>
-						</c:otherwise>
-					</c:choose>
-				</ul>
+										<i class="glyphicon glyphicon-send"></i>訪客留言</a>
+							</c:otherwise>
+						</c:choose>
+						</c:if>
+					</ul>
 				</div>
 				
 			</div>
@@ -417,7 +409,7 @@
 					  type: "POST", 
 					  async: false,
 					  data: { 
-					    "user_id":user_id,
+					    "user_id":userId,
 					    "art_id":id,
 					  },
 					  success: function(responseMsg) {
