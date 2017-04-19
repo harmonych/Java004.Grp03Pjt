@@ -182,6 +182,8 @@
 								class="user_name "></span></li>
 							<input id="user_id" value="<c:out value ="${mb.user_id}"/>"
 								type="hidden" />
+							<input id="userId" value="<c:out value ="${LoginOK.user_id}"/>"
+								type="hidden" />
 							<a href="pic_address 簡介圖片位址"> <img
 								src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號"
 								width="150px"></a>
@@ -209,58 +211,55 @@
 					<!-- 										Twitter	</button> -->
 					<br>
 					<br>
-					<c:if test="${LoginOK != null}">
-						<c:if test="${account == mb.account}">
-
-							<div id="bt_area" class="btn-group-vertical">
-								<a id="create-product" class="btn btn-block btn-social btn-warning">
-								<i class="glyphicon glyphicon-plus"></i> 新增商品
-								</a>
-								
-								<a id="create-funds" class="btn btn-block btn-social btn-warning">
-								<i class="glyphicon glyphicon-plus"></i> 新增募資
-								</a>
-							</div>
-						</c:if>
-					</c:if>
-					<div id="bt_area" class="btn-group-vertical">   
-					<c:if test="${account != mb.account}">
-					<c:choose>
+					
+					
+					
+						
+						<c:choose>
 						<c:when test="${LoginOK == null}">
-<%-- 							<li><a href="${context}/_02_login/login.jsp"> --%>
-<!-- 							<i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> -->
-								
-								<a href="${context}/_02_login/login.jsp" id="msgsys" class="btn btn-block btn-social btn-warning">
-								<i class="glyphicon glyphicon-send"></i> 訪客留言</a>
+<%-- 							    <a href="${context}/_02_login/login.jsp" id="msgsys" class="btn btn-block btn-social btn-warning"> --%>
+<!--                                 	<i class="glyphicon glyphicon-send"></i> 訪客留言 -->
+<!--                                 </a> -->
 						</c:when>
+						<c:when test = "${LoginOK.user_id == mb.user_id }">
+						    <div id="bt_area" class="btn-group-vertical">
+                                <a id="create-product" class="btn btn-block btn-social btn-warning">
+                                <i class="glyphicon glyphicon-plus"></i> 新增商品
+ 								</a>                                
+                                <a id="create-funds" class="btn btn-block btn-social btn-warning">
+                                <i class="glyphicon glyphicon-plus"></i> 新增募資
+                                </a>
+                            </div>
+						</c:when>
+						
 						<c:otherwise>
-							
+
 							<c:set var="contains" value="false" />
 							<c:forEach var="i" begin="0" end="${fn:length(fb)}">
 								<c:if test="${(fb[i].user_id) == (userId)}">
 									<!-- 偵測追隨與否 -->
-
-									<c:set var="contains" value="true" />
+										<c:set var="contains" value="true" />
+<%-- 									<c:out value ="${contains}"/> --%>
 
 								</c:if>
 							</c:forEach>
+							 <div id="bt_area" class="btn-group-vertical">
+							<c:choose>							
 							
-							<c:choose>
-								<c:when test="${(contains)== true}">
-									<a href="javascript:;" id="" class="btn btn-social btn-warning">
-											<i class="glyphicon glyphicon-star" ></i>您已追隨此作者	</a></li>
-								</c:when>
-								<c:otherwise>
-											<li><a href="javascript:;" id="followdo" class="btn btn-social btn-warning">
-											<i class="glyphicon glyphicon-heart" ></i>追隨作者	</a></li>
-								</c:otherwise>
-							</c:choose>
-							
-										<a href="javascript:;" id="msgsys" class="btn btn-block btn-social btn-warning">
-										<i class="glyphicon glyphicon-send"></i>訪客留言</a>
+							<c:when test="${(contains)== true}">
+										<a href="javascript:;" id="" class="btn btn-social btn-warning">
+										<i class="glyphicon glyphicon-star-empty"></i>已追隨此作者</a>
+							</c:when>
+							<c:otherwise>
+									<a href="javascript:;" id="followdo" class="btn btn-social btn-warning">
+                                    <i class="glyphicon glyphicon-heart"></i>追隨作者</a>
 							</c:otherwise>
-						</c:choose>
-						</c:if>
+							</c:choose>
+							<a href="javascript:;" id="msgsys" class="btn btn-block btn-social btn-warning msgsys">
+                            <i class="glyphicon glyphicon-send"></i>訪客留言</a><br>
+                           </div>
+						</c:otherwise>
+					</c:choose>
 					</ul>
 				</div>
 				
@@ -385,6 +384,7 @@
               });
 			//讀取作者暱稱
 			var user_id = $('#user_id').val();
+			var userId = $('#userId').val();
 			$("#msgsys").click(function(){
 				$.ajax({
 					  url: "\_06_mailbox\\messageReply.do",
