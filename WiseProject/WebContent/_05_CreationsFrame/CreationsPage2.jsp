@@ -49,6 +49,11 @@
 #msgsys{
     display: inline-block;
 }
+li#artUserName {
+	font-size: 28px;
+	font-weight:bold;
+	font-family: Microsoft JhengHei;
+}
 </style>
 
 
@@ -184,8 +189,8 @@
 								type="hidden" />
 							<input id="userId" value="<c:out value ="${LoginOK.user_id}"/>"
 								type="hidden" />
-							<a href="pic_address 簡介圖片位址"> <img
-								src="<c:out value ="${ab.file_name}"/>" class="pic_id 簡介圖片編號"
+							<a href="javascript:;"> <img
+								src="<c:out value ="${ab.file_name}"/>"
 								width="150px"></a>
 						</ul>
 					</li>
