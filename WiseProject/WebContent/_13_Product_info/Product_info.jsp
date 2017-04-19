@@ -355,10 +355,12 @@ $(document).ready(function(){
 				});
 			}
 	}
-	$('#proMessage').on('submit', function(e){
-	    e.preventDefault();
-		$(this).ajaxSubmit(opts);		
-		return false;
+	$("#proMessage").unbind('click').click(function(){
+		$('#proMessage').on('submit', function(e){
+		    e.preventDefault();
+			$(this).ajaxSubmit(opts);		
+			return false;
+		})
 	})
 	function CheckForm(){
 		var pro_inv = document.getElementById("pro_inv_input").value;

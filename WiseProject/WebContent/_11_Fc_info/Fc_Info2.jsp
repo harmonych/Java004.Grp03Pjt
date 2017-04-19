@@ -418,12 +418,15 @@
 					}
 			}
 			
-			
-			$('#fcMessage').on('submit', function(e){
-			    e.preventDefault();
-				$(this).ajaxSubmit(opts);		
-				return false;
+			$("#fcMessage").unbind('click').click(function(){
+				$('#fcMessage').on('submit', function(e){
+				    e.preventDefault();
+					$(this).ajaxSubmit(opts);		
+					return false;
+				})
 			})
+			
+			
 			
 			
 			var options={

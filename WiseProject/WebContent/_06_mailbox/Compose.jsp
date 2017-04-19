@@ -172,10 +172,12 @@
 			        alert("寄信成功!");	
 				}
 			}			
-		$('#messagecreate').on('submit', function(e){
-		    e.preventDefault();
-			$(this).ajaxSubmit(options);		
-			return false;
+		$("#messagecreate").unbind('click').click(function(){
+			$('#messagecreate').on('submit', function(e){
+			    e.preventDefault();
+				$(this).ajaxSubmit(options);		
+				return false;
+			})
 		})
 		var s_user_id = $('#s_user_id').val();
 		$("#mailBox").click(function(){
