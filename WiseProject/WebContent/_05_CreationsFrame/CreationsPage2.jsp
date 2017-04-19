@@ -408,7 +408,7 @@ li#artUserName {
 				});
 			})
 			
-			$("#followdo").click(function(){
+			$("#followdo").unbind('click').click(function(){
 				$.ajax({
 					  url: "\_06_follow\\follow.do",
 					  type: "POST", 
