@@ -39,7 +39,7 @@ public class FollowJsonServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("application/json; charset=utf-8");
-	    int user_id=1;
+	    int user_id=Integer.parseInt(request.getParameter("user_id"));
 		PrintWriter out = response.getWriter();
 		try {
 			IFollowDAO dao = new FollowHBNDAO();
