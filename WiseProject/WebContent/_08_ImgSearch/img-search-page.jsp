@@ -66,8 +66,8 @@
         </div>
        </div>
 <!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-        <script src="${context}\js\jquery-3.1.1.min.js"></script>
-        <script src="${context}\asset\js\bootstrap.min.js"></script>
+<%--         <script src="${context}\js\jquery-3.1.1.min.js"></script> --%>
+<%--         <script src="${context}\asset\js\bootstrap.min.js"></script> --%>
         <script src="${context}\js\isotope.pkgd.min.js"></script>
         <script src="${context}\js\img-search.js?ver=1"></script>
 	 	<script src="${context}\js\default.js"></script>
