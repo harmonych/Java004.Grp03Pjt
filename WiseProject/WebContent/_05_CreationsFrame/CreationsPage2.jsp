@@ -31,6 +31,24 @@
 	/*     border-bottom: 1px solid #f4f4f4; */
 	text-align: center;
 }
+ #bt_area{
+    margin-top: 20px;
+    
+}
+
+#create-product{
+    display: inline-block;
+}
+
+#create-funds{
+    display: inline-block;
+}
+#followdo{
+    display: inline-block;
+}
+#msgsys{
+    display: inline-block;
+}
 </style>
 
 
@@ -193,18 +211,27 @@
 					<br>
 					<c:if test="${LoginOK != null}">
 						<c:if test="${account == mb.account}">
-							<!-- 											<input type="button" value="新增作品" name="新增" style="width:100px;height:30px;"> -->
-							<button id="create-product">新增商品</button>
-							<br>
-							<br>
-							<br>
-							<button id="create-funds">新增募資</button>
+
+							<div id="bt_area" class="btn-group-vertical">
+								<a id="create-product" class="btn btn-block btn-social btn-warning">
+								<i class="glyphicon glyphicon-plus"></i> 新增商品
+								</a>
+								
+								<a id="create-funds" class="btn btn-block btn-social btn-warning">
+								<i class="glyphicon glyphicon-plus"></i> 新增募資
+								</a>
+							</div>
 						</c:if>
 					</c:if>
+					<div id="bt_area" class="btn-group-vertical">   
 					<c:choose>
 						<c:when test="${LoginOK == null}">
-							<li><a href="${context}/_02_login/login.jsp"><i
-									class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
+<%-- 							<li><a href="${context}/_02_login/login.jsp"> --%>
+<!-- 							<i class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> -->
+								
+								<a href="${context}/_02_login/login.jsp" id="msgsys" class="btn btn-block btn-social btn-warning">
+								<i class="glyphicon glyphicon-send"></i> 訪客留言
+								</a>
 						</c:when>
 						<c:otherwise>
 
@@ -212,27 +239,39 @@
 							<c:forEach var="i" begin="0" end="${fn:length(fb)}">
 								<c:if test="${(fb[i].user_id) == (userId)}">
 									<!-- 偵測追隨與否 -->
-<%-- 								<c:set var="art_id" value="${(fb[i].art_id)}" /> --%>
+
 									<c:set var="contains" value="true" />
-<%-- 									<c:out value ="${contains}"/> --%>
-<%-- 									<c:out value ="${fb[i].user_id}"/> --%>
+
 								</c:if>
 							</c:forEach>
+							
 							<c:choose>
 								<c:when test="${(contains)== true}">
 									<span class="" align="center">您已追隨此作者</span>
 								</c:when>
 								<c:otherwise>
-									<li><a href="javascript:" id="followdo"><i
-									class="fa fa-fw fa-heart-o" id="msgsys"></i>追隨作者</a></li>
+<!-- 									<li><a href="javascript:" id="followdo"><i -->
+<!-- 									class="fa fa-fw fa-heart-o" id="msgsys"></i>追隨作者</a></li> -->
+<!-- 										
+											<a href="javascript:" id="followdo" class="btn btn-social btn-warning"> -->
+<!-- 											<i class="glyphicon glyphicon-heart"></i> 加入追蹤 -->
+<!-- 										</a> -->
+<li>
+										<a href="javascript:;" id="followdo" class="btn btn-social btn-warning">
+											<i class="glyphicon glyphicon-heart" id="msgsys"></i>追隨作者
+										</a></li>
 								</c:otherwise>
 							</c:choose>
-							<li><a href="javascript:;" id="msgsys"><i
-									class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li>
+<!-- 							<li><a href="javascript:;" id="msgsys"><i -->
+<!-- 									class="fa fa-fw fa-commenting-o" id="msgsys"></i>訪客留言</a></li> -->
+										<a href="javascript:;" id="msgsys" class="btn btn-block btn-social btn-warning">
+												<i class="glyphicon glyphicon-send"></i> 訪客留言
+										</a>
 						</c:otherwise>
 					</c:choose>
 				</ul>
-				<br>
+				</div>
+				
 			</div>
 
 
